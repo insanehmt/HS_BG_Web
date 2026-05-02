@@ -42,10 +42,30 @@ def get_db():
     return conn
 
 
+def _ensure_db():
+    """確保資料表存在（雲端首次啟動時建立空資料表）。"""
+    with get_db() as conn:
+        conn.execute("""
+            CREATE TABLE IF NOT EXISTS games (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                start_time TEXT, end_time TEXT,
+                hero_name TEXT, hero_card_id TEXT,
+                placement INTEGER, turns INTEGER, max_gold INTEGER,
+                final_board TEXT, trinket1 TEXT, trinket2 TEXT,
+                opponents TEXT, game_mode TEXT DEFAULT 'solo',
+                duration_sec INTEGER, patch TEXT,
+                exported INTEGER DEFAULT 0
+            )
+        """)
+        conn.commit()
+
+
+_ensure_db()
+
 @app.route("/")
 def index():
     if PUBLIC_MODE:
-        return redirect(url_for("tier_list"))
+        return redirect(url_for("tier_list_page"))
     return render_template("index.html")
 
 
@@ -2179,7 +2199,7 @@ def api_heroes():
 @app.route("/upload", methods=["GET", "POST"])
 def upload():
     if PUBLIC_MODE:
-        return redirect(url_for("tier_list"))
+        return redirect(url_for("tier_list_page"))
     if request.method == "GET":
         return render_template("upload.html")
 
