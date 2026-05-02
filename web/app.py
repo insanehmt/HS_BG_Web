@@ -19,6 +19,7 @@ BG_HEROES_CACHE   = os.path.join(os.path.dirname(__file__), "..", "data", "bg_he
 BG_COMPS_CACHE    = os.path.join(os.path.dirname(__file__), "..", "data", "bg_comps.json")
 CARDS_CACHE       = os.path.join(os.path.dirname(__file__), "..", "data", "cards_cache.json")
 HS_CARDS_FULL     = os.path.join(os.path.dirname(__file__), "..", "data", "hs_cards_full.json")
+HS_BG_HEROES      = os.path.join(os.path.dirname(__file__), "..", "data", "hs_bg_heroes.json")
 DB_PATH          = os.path.join(os.path.dirname(__file__), "..", "data", "records.db")
 
 UPLOAD_DIR  = os.path.join(os.path.dirname(__file__), "uploads")
@@ -47,14 +48,28 @@ def _ensure_db():
     with get_db() as conn:
         conn.execute("""
             CREATE TABLE IF NOT EXISTS games (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                start_time TEXT, end_time TEXT,
-                hero_name TEXT, hero_card_id TEXT,
-                placement INTEGER, turns INTEGER, max_gold INTEGER,
-                final_board TEXT, trinket1 TEXT, trinket2 TEXT,
-                opponents TEXT, game_mode TEXT DEFAULT 'solo',
-                duration_sec INTEGER, patch TEXT,
-                exported INTEGER DEFAULT 0
+                game_id TEXT PRIMARY KEY,
+                start_time TEXT NOT NULL,
+                end_time TEXT,
+                build_version TEXT DEFAULT '',
+                game_mode TEXT DEFAULT 'solo',
+                hero_card_id TEXT DEFAULT '',
+                hero_name TEXT DEFAULT '',
+                hero_power_ids TEXT DEFAULT '[]',
+                hero_power_names TEXT DEFAULT '[]',
+                trinket_ids TEXT DEFAULT '[]',
+                trinket_names TEXT DEFAULT '[]',
+                placement INTEGER DEFAULT 0,
+                final_board TEXT DEFAULT '[]',
+                turn_count INTEGER DEFAULT 0,
+                max_gold INTEGER DEFAULT 0,
+                duration_seconds INTEGER DEFAULT 0,
+                opponent_heroes TEXT DEFAULT '[]',
+                opponent_boards TEXT DEFAULT '{}',
+                exported INTEGER DEFAULT 0,
+                teammate_hero_card_id TEXT DEFAULT '',
+                teammate_hero_name TEXT DEFAULT '',
+                penultimate_board TEXT DEFAULT '[]'
             )
         """)
         conn.commit()
@@ -2097,6 +2112,7 @@ _SYNC_ALLOWED = {
     "hero_meta.json",
     "hsreplay_meta_cache.json",
     "bg_config.json",
+    "hs_bg_heroes.json",
 }
 
 _DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
@@ -2401,7 +2417,13 @@ def _find_hero_power(cards, cid):
 
 @app.route("/api/hero-guide")
 def api_hero_guide():
-    cards = _load_json(HS_CARDS_FULL) if os.path.exists(HS_CARDS_FULL) else {}
+    # Prefer full cards file; fall back to lightweight pre-built heroes file
+    if os.path.exists(HS_CARDS_FULL):
+        cards = _load_json(HS_CARDS_FULL)
+    elif os.path.exists(HS_BG_HEROES):
+        cards = _load_json(HS_BG_HEROES)
+    else:
+        cards = {}
     q = (request.args.get("q") or "").strip().lower()
     heroes = []
     for cid, card in cards.items():
