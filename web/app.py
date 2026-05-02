@@ -2155,8 +2155,73 @@ def api_push_data():
     })
 
 
-@app.route("/heroes")
-def heroes_page():
+@app.route("/api/sync-to-cloud", methods=["POST"])
+def api_sync_to_cloud():
+    """從本地 Flask 推送資料到雲端（讀取 .push_config）。"""
+    if PUBLIC_MODE:
+        return jsonify({"success": False, "error": "雲端模式不支援同步"}), 403
+
+    body = request.get_json(silent=True) or {}
+    full = body.get("full", False)   # full=True → 包含大型卡牌快取
+
+    # 讀取 .push_config
+    config_path = os.path.join(os.path.dirname(__file__), "..", ".push_config")
+    web_url, sync_token = "", ""
+    if os.path.exists(config_path):
+        for line in open(config_path, encoding="utf-8").read().splitlines():
+            if line.startswith("WEB_URL="):
+                web_url = line[len("WEB_URL="):]
+            elif line.startswith("SYNC_TOKEN="):
+                sync_token = line[len("SYNC_TOKEN="):]
+
+    if not web_url or not sync_token:
+        return jsonify({"success": False,
+                        "error": "找不到 .push_config（需含 WEB_URL 和 SYNC_TOKEN）"}), 400
+
+    default_files = [
+        "bg_comps.json", "hero_meta.json",
+        "hsreplay_meta_cache.json", "bg_config.json", "hs_bg_heroes.json",
+    ]
+    all_files = default_files + [
+        "bg_minions_cache.json", "bg_spells_cache.json",
+        "bg_trinkets_cache.json", "bg_heroes_cache.json",
+    ]
+    files_to_sync = all_files if full else default_files
+
+    data_dir = os.path.join(os.path.dirname(__file__), "..", "data")
+    payload = {}
+    for fname in files_to_sync:
+        fpath = os.path.join(data_dir, fname)
+        if os.path.exists(fpath):
+            with open(fpath, encoding="utf-8") as f:
+                payload[fname] = json.load(f)
+
+    if not payload:
+        return jsonify({"success": False, "error": "沒有可同步的資料檔"}), 400
+
+    try:
+        import requests as req
+        push_url = web_url.rstrip("/") + "/api/push-data"
+        r = req.post(push_url, json={"token": sync_token, "files": payload}, timeout=60)
+    except Exception as e:
+        return jsonify({"success": False, "error": f"連線失敗：{e}"}), 500
+
+    if r.status_code == 200:
+        result = r.json()
+        return jsonify({
+            "success": True,
+            "updated": result.get("updated", 0),
+            "files":   result.get("files", []),
+            "web_url": web_url,
+        })
+    elif r.status_code == 403:
+        return jsonify({"success": False, "error": "SYNC_TOKEN 錯誤"}), 403
+    else:
+        return jsonify({"success": False,
+                        "error": f"雲端回應 HTTP {r.status_code}"}), 500
+
+
+
     return render_template("heroes.html")
 
 

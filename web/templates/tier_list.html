@@ -44,6 +44,8 @@ document.addEventListener('alpine:init', () => {
     hsreplayPreview: [],
     hsreplayImporting: false,
     scrapeHsreplayLoading: false,
+    syncLoading: false,
+    syncMsg: '',
     // ── Card Picker ──
     showPicker: false,
     pickerTarget: null,
@@ -396,6 +398,7 @@ document.addEventListener('alpine:init', () => {
           this.comps = d.comps || []
           this.hiddenCount = d.hidden || 0
           this.filterComps()
+          await this.syncToCloud(false, true)  // 抓取後自動同步
         } else {
           this.updateMsg = '❌ 抓取失敗：' + (d.error || '未知錯誤')
         }
@@ -418,6 +421,7 @@ document.addEventListener('alpine:init', () => {
           this.comps = d.comps || []
           this.hiddenCount = d.hidden || 0
           this.filterComps()
+          await this.syncToCloud(false, true)  // 抓取後自動同步
         } else {
           this.updateMsg = '❌ 抓取失敗：' + (d.error || '未知錯誤')
         }
@@ -425,6 +429,31 @@ document.addEventListener('alpine:init', () => {
         this.updateMsg = '❌ 抓取失敗：' + e.message
       } finally {
         this.scrapeHsreplayLoading = false
+      }
+    },
+
+    async syncToCloud(full = false, auto = false) {
+      this.syncLoading = true
+      if (!auto) this.syncMsg = '⏳ 同步中…'
+      try {
+        const r = await fetch('/api/sync-to-cloud', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({full})
+        })
+        const d = await r.json()
+        if (d.success) {
+          this.syncMsg = `🌐 已同步 ${d.updated} 個檔案到 ${d.web_url || '雲端'}`
+          if (!auto) this.updateMsg = this.syncMsg
+        } else {
+          this.syncMsg = '⚠️ 同步失敗：' + (d.error || '未知')
+          if (!auto) this.updateMsg = this.syncMsg
+        }
+      } catch(e) {
+        this.syncMsg = '⚠️ 同步失敗：' + e.message
+        if (!auto) this.updateMsg = this.syncMsg
+      } finally {
+        this.syncLoading = false
       }
     },
   }))
@@ -642,6 +671,21 @@ document.addEventListener('alpine:init', () => {
               :title="'從 HSReplay 網站自動抓取牌組評級（需要 Playwright）'">
         <span x-text="scrapeHsreplayLoading ? '⏳ 抓取中…（約40秒）' : '🕷️ 自動抓取 HSReplay'"></span>
       </button>
+      <div style="width:1px;height:20px;background:#2a1040;margin:0 2px"></div>
+      <button class="add-btn" @click="syncToCloud(false)"
+              :disabled="syncLoading"
+              style="border-color:#206040;color:#50d090"
+              title="將 bg_comps.json 等資料推送到 Render 雲端">
+        <span x-text="syncLoading ? '⏳ 同步中…' : '🌐 同步雲端'"></span>
+      </button>
+      <button class="add-btn" @click="syncToCloud(true)"
+              :disabled="syncLoading"
+              style="border-color:#104030;color:#308060;font-size:.7rem"
+              title="完整同步，含手下/法術/飾品大型快取（換版本後使用）">
+        <span>🌐 完整同步</span>
+      </button>
+      <span x-show="syncMsg" x-text="syncMsg"
+            style="font-size:.7rem;color:#60d090;max-width:320px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"></span>
       {% endif %}
     </div>
 
