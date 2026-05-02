@@ -571,12 +571,14 @@ document.addEventListener('alpine:init', () => {
     <span class="page-title">⚔️ 當季最強</span>
     <span style="background:#3a0a0a;border:1px solid #8a2020;color:#ff6060;font-size:.72rem;font-weight:700;padding:2px 9px;border-radius:10px;letter-spacing:.06em" x-text="'S'+season">S13</span>
     <span x-show="patchBuild" style="background:#0a1a1a;border:1px solid #205050;color:#60b0a0;font-size:.65rem;padding:2px 8px;border-radius:8px" x-text="'Build '+patchBuild"></span>
+    {% if not public_mode %}
     <button @click="updateCards()" :disabled="updateLoading"
       style="background:transparent;border:1px solid #205040;color:#50c090;font-size:.72rem;padding:3px 11px;border-radius:7px;cursor:pointer;white-space:nowrap;transition:all .15s"
       :style="updateLoading ? 'opacity:.5;cursor:not-allowed' : ''"
       x-text="updateLoading ? '更新中…' : '🔄 更新牌庫'">
     </button>
     <span x-show="updateMsg" x-text="updateMsg" style="font-size:.7rem;color:#80c080;max-width:260px"></span>
+    {% endif %}
     <div class="flex items-center gap-2 ml-auto flex-wrap">
       {% if not public_mode %}<a href="/"           class="nav-link">🎮 對局紀錄</a>{% endif %}
       <a href="/tier-list"  class="nav-link active">⚔️ 當季最強</a>
@@ -592,10 +594,12 @@ document.addEventListener('alpine:init', () => {
 
 <div class="max-w-5xl mx-auto px-4 py-6">
 
+  {% if not public_mode %}
   <!-- version update banner -->
   <div x-show="needsUpdate && updateBanner" x-text="updateBanner"
     style="background:#1a0a00;border:1px solid #805020;color:#ffa040;font-size:.75rem;padding:8px 14px;border-radius:8px;margin-bottom:12px;display:flex;align-items:center;gap:8px">
   </div>
+  {% endif %}
 
   <!-- toolbar -->
   <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px">
@@ -621,6 +625,7 @@ document.addEventListener('alpine:init', () => {
         :title="showHidden ? '隱藏已移出版本的牌組' : '顯示已移出版本的牌組（資料庫備份）'">
         <span x-text="showHidden ? '🗃️ 歷史牌組 (' + hiddenCount + ')' : '🗃️ ' + hiddenCount + ' 組已隱藏'"></span>
       </button>
+      {% if not public_mode %}
       <button class="add-btn" @click="openAddModal()">➕ 新增組合</button>
       <button class="add-btn" @click="showFirestoneModal=true" style="border-color:#a06030;color:#ffa060">📋 匯入 Firestone</button>
       <button class="add-btn" @click="showHsreplayModal=true" style="border-color:#306080;color:#60a0ff">📋 匯入 HSReplay</button>
@@ -637,6 +642,7 @@ document.addEventListener('alpine:init', () => {
               :title="'從 HSReplay 網站自動抓取牌組評級（需要 Playwright）'">
         <span x-text="scrapeHsreplayLoading ? '⏳ 抓取中…（約40秒）' : '🕷️ 自動抓取 HSReplay'"></span>
       </button>
+      {% endif %}
     </div>
 
     <!-- Row 2: 族裔篩選 -->
@@ -754,8 +760,10 @@ document.addEventListener('alpine:init', () => {
               </div>
             </div>
             <button @click="modal=null" style="margin-left:auto;color:#6a5a7a;font-size:1.4rem;line-height:1;background:none;border:none;cursor:pointer">✕</button>
+            {% if not public_mode %}
             <button @click.stop="openEditModal(modal)"
                     style="background:#1a0a2a;border:1px solid #5040a0;color:#a090e0;border-radius:6px;padding:5px 12px;font-size:.78rem;cursor:pointer">✏️ 編輯</button>
+            {% endif %}
           </div>
         </div>
         <div class="modal-body">
