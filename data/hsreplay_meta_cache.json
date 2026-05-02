@@ -1,0 +1,1890 @@
+{
+  "as_of": "2026-04-30T09:11:51Z",
+  "decks": [
+    {
+      "archetype_id": 171,
+      "name": "Aggro Paladin",
+      "class": "PALADIN",
+      "class_zh": "聖騎士",
+      "win_rate": 64.5,
+      "pct_of_total": 3.7,
+      "total_games": 18985,
+      "core_cards": [
+        "TLC_603",
+        "CORE_UNG_205",
+        "TLC_249",
+        "EDR_849",
+        "CATA_556",
+        "TLC_254",
+        "CATA_479",
+        "CORE_ULD_723"
+      ],
+      "rank": 1
+    },
+    {
+      "archetype_id": 595,
+      "name": "Bubble Paladin",
+      "class": "PALADIN",
+      "class_zh": "聖騎士",
+      "win_rate": 63.0,
+      "pct_of_total": 5.5,
+      "total_games": 28557,
+      "core_cards": [
+        "END_011",
+        "CATA_473",
+        "CATA_475",
+        "TIME_019",
+        "TIME_700",
+        "TIME_009",
+        "TIME_009t1",
+        "TIME_009t2"
+      ],
+      "rank": 2
+    },
+    {
+      "archetype_id": 19,
+      "name": "Dragon Warrior",
+      "class": "WARRIOR",
+      "class_zh": "戰士",
+      "win_rate": 62.1,
+      "pct_of_total": 10.5,
+      "total_games": 54006,
+      "core_cards": [
+        "TIME_034",
+        "EDR_456",
+        "TLC_600",
+        "END_033",
+        "EDR_457",
+        "CORE_EX1_414",
+        "DINO_401",
+        "EDR_889"
+      ],
+      "rank": 3
+    },
+    {
+      "archetype_id": 654,
+      "name": "Aura Paladin",
+      "class": "PALADIN",
+      "class_zh": "聖騎士",
+      "win_rate": 59.6,
+      "pct_of_total": 0.8,
+      "total_games": 3881,
+      "core_cards": [
+        "TIME_015",
+        "CORE_KAR_061",
+        "EDR_259",
+        "TIME_019",
+        "TIME_700",
+        "END_011",
+        "EDR_255",
+        "TIME_009"
+      ],
+      "rank": 4
+    },
+    {
+      "archetype_id": 857,
+      "name": "Herald Shaman",
+      "class": "SHAMAN",
+      "class_zh": "薩滿",
+      "win_rate": 59.5,
+      "pct_of_total": 5.5,
+      "total_games": 28110,
+      "core_cards": [
+        "TIME_209",
+        "TIME_209t",
+        "TIME_209t2",
+        "CATA_210",
+        "TIME_213",
+        "CORE_WC_042",
+        "CORE_EX1_259",
+        "CATA_722"
+      ],
+      "rank": 5
+    },
+    {
+      "archetype_id": 569,
+      "name": "Spell Demon Hunter",
+      "class": "DEMONHUNTER",
+      "class_zh": "惡魔獵人",
+      "win_rate": 59.4,
+      "pct_of_total": 4.4,
+      "total_games": 22759,
+      "core_cards": [
+        "TIME_443",
+        "TIME_444",
+        "TIME_446",
+        "TIME_448",
+        "END_007",
+        "TIME_449",
+        "EDR_820",
+        "TIME_020"
+      ],
+      "rank": 6
+    },
+    {
+      "archetype_id": 556,
+      "name": "Unholy Death Knight",
+      "class": "DEATHKNIGHT",
+      "class_zh": "死亡騎士",
+      "win_rate": 59.1,
+      "pct_of_total": 1.8,
+      "total_games": 9308,
+      "core_cards": [
+        "RLK_707",
+        "TLC_245",
+        "TIME_610",
+        "EDR_816",
+        "CATA_471",
+        "TLC_443",
+        "CORE_EDR_003",
+        "TIME_059"
+      ],
+      "rank": 7
+    },
+    {
+      "archetype_id": 52,
+      "name": "Aggro Druid",
+      "class": "DRUID",
+      "class_zh": "德魯伊",
+      "win_rate": 58.0,
+      "pct_of_total": 1.5,
+      "total_games": 7872,
+      "core_cards": [
+        "CATA_138",
+        "CATA_210",
+        "DINO_130",
+        "TLC_603",
+        "CATA_135",
+        "TLC_232",
+        "TLC_233",
+        "CATA_134"
+      ],
+      "rank": 8
+    },
+    {
+      "archetype_id": 850,
+      "name": "Herald Warrior",
+      "class": "WARRIOR",
+      "class_zh": "戰士",
+      "win_rate": 56.8,
+      "pct_of_total": 9.1,
+      "total_games": 46703,
+      "core_cards": [
+        "CATA_580",
+        "CATA_160",
+        "CATA_150",
+        "CATA_190h",
+        "CATA_722",
+        "CATA_497",
+        "EDR_572",
+        "EDR_456"
+      ],
+      "rank": 9
+    },
+    {
+      "archetype_id": 355,
+      "name": "Face Hunter",
+      "class": "HUNTER",
+      "class_zh": "獵人",
+      "win_rate": 55.6,
+      "pct_of_total": 3.5,
+      "total_games": 17894,
+      "core_cards": [
+        "TIME_606",
+        "TLC_249",
+        "TIME_600",
+        "CATA_557",
+        "DINO_434",
+        "CATA_615",
+        "FIR_909",
+        "CORE_DS1_185"
+      ],
+      "rank": 10
+    },
+    {
+      "archetype_id": 782,
+      "name": "Imbue Paladin",
+      "class": "PALADIN",
+      "class_zh": "聖騎士",
+      "win_rate": 55.5,
+      "pct_of_total": 4.1,
+      "total_games": 21306,
+      "core_cards": [
+        "EDR_451",
+        "EDR_852",
+        "EDR_264",
+        "EDR_800",
+        "EDR_256",
+        "FIR_921",
+        "EDR_888",
+        "CORE_CS2_093"
+      ],
+      "rank": 11
+    },
+    {
+      "archetype_id": 842,
+      "name": "Imbue Rogue",
+      "class": "ROGUE",
+      "class_zh": "盜賊",
+      "win_rate": 54.4,
+      "pct_of_total": 7.4,
+      "total_games": 38109,
+      "core_cards": [
+        "END_000",
+        "EDR_852",
+        "EDR_860",
+        "EDR_800",
+        "END_001",
+        "CORE_CS2_072",
+        "CATA_785",
+        "EDR_528"
+      ],
+      "rank": 12
+    },
+    {
+      "archetype_id": 384,
+      "name": "Egg Warrior",
+      "class": "WARRIOR",
+      "class_zh": "戰士",
+      "win_rate": 54.3,
+      "pct_of_total": 0.9,
+      "total_games": 4830,
+      "core_cards": [
+        "TLC_106",
+        "DINO_410",
+        "DINO_411",
+        "EDR_531",
+        "CATA_581",
+        "EDR_856",
+        "TIME_873",
+        "TIME_715"
+      ],
+      "rank": 13
+    },
+    {
+      "archetype_id": 851,
+      "name": "Herald Death Knight",
+      "class": "DEATHKNIGHT",
+      "class_zh": "死亡騎士",
+      "win_rate": 53.8,
+      "pct_of_total": 5.0,
+      "total_games": 25780,
+      "core_cards": [
+        "CATA_156",
+        "CATA_780",
+        "CATA_155",
+        "CATA_190h",
+        "CATA_722",
+        "CATA_497",
+        "TIME_616",
+        "CORE_EDR_002"
+      ],
+      "rank": 14
+    },
+    {
+      "archetype_id": 859,
+      "name": "Merithra Druid",
+      "class": "DRUID",
+      "class_zh": "德魯伊",
+      "win_rate": 53.6,
+      "pct_of_total": 3.1,
+      "total_games": 15740,
+      "core_cards": [
+        "EDR_000",
+        "END_011",
+        "CATA_140",
+        "CORE_RLK_657",
+        "EDR_856",
+        "TLC_100",
+        "EDR_844",
+        "FIR_959"
+      ],
+      "rank": 15
+    },
+    {
+      "archetype_id": 79,
+      "name": "Quest Paladin",
+      "class": "PALADIN",
+      "class_zh": "聖騎士",
+      "win_rate": 53.6,
+      "pct_of_total": 0.2,
+      "total_games": 1082,
+      "core_cards": [
+        "TLC_426",
+        "TLC_429",
+        "EDR_999",
+        "TLC_442",
+        "CORE_EX1_506",
+        "TLC_240",
+        "TLC_428",
+        "CORE_EX1_507"
+      ],
+      "rank": 16
+    },
+    {
+      "archetype_id": 856,
+      "name": "Herald Rogue",
+      "class": "ROGUE",
+      "class_zh": "盜賊",
+      "win_rate": 53.4,
+      "pct_of_total": 4.4,
+      "total_games": 22781,
+      "core_cards": [
+        "CATA_200",
+        "TLC_100",
+        "TIME_875",
+        "TIME_875t",
+        "TIME_875t1",
+        "CORE_BT_701",
+        "EDR_846",
+        "TIME_770"
+      ],
+      "rank": 17
+    },
+    {
+      "archetype_id": 852,
+      "name": "Herald Demon Hunter",
+      "class": "DEMONHUNTER",
+      "class_zh": "惡魔獵人",
+      "win_rate": 52.0,
+      "pct_of_total": 0.7,
+      "total_games": 3476,
+      "core_cards": [
+        "CATA_525",
+        "CATA_530",
+        "CATA_151",
+        "CATA_190h",
+        "CATA_497",
+        "FIR_952",
+        "CATA_529",
+        "CATA_722"
+      ],
+      "rank": 18
+    },
+    {
+      "archetype_id": 36,
+      "name": "Control Priest",
+      "class": "PRIEST",
+      "class_zh": "牧師",
+      "win_rate": 52.0,
+      "pct_of_total": 3.1,
+      "total_games": 15897,
+      "core_cards": [
+        "TIME_433",
+        "EDR_464",
+        "CORE_CFM_604",
+        "TLC_835",
+        "CORE_NEW1_021",
+        "CORE_CS1_112",
+        "EDR_476",
+        "EDR_800"
+      ],
+      "rank": 19
+    },
+    {
+      "archetype_id": 211,
+      "name": "Quest Hunter",
+      "class": "HUNTER",
+      "class_zh": "獵人",
+      "win_rate": 51.9,
+      "pct_of_total": 0.9,
+      "total_games": 4460,
+      "core_cards": [
+        "TLC_830",
+        "CORE_UNG_912",
+        "TLC_825",
+        "TLC_366",
+        "TLC_824",
+        "CORE_EX1_014",
+        "TIME_053",
+        "TLC_603"
+      ],
+      "rank": 20
+    },
+    {
+      "archetype_id": 860,
+      "name": "Murloc Hunter",
+      "class": "HUNTER",
+      "class_zh": "獵人",
+      "win_rate": 51.6,
+      "pct_of_total": 0.1,
+      "total_games": 492,
+      "core_cards": [
+        "CORE_EX1_506",
+        "CORE_EX1_103",
+        "CORE_EX1_509",
+        "CORE_EX1_507",
+        "CORE_ULD_723",
+        "EDR_999",
+        "CORE_DMF_067",
+        "TIME_428"
+      ],
+      "rank": 21
+    },
+    {
+      "archetype_id": 56,
+      "name": "Quest Priest",
+      "class": "PRIEST",
+      "class_zh": "牧師",
+      "win_rate": 51.6,
+      "pct_of_total": 4.3,
+      "total_games": 22392,
+      "core_cards": [
+        "TLC_817",
+        "CATA_308",
+        "CATA_301",
+        "CORE_AT_055",
+        "TIME_890",
+        "TIME_890t",
+        "TIME_890t2",
+        "CATA_302"
+      ],
+      "rank": 22
+    },
+    {
+      "archetype_id": 594,
+      "name": "Burn Mage",
+      "class": "MAGE",
+      "class_zh": "法師",
+      "win_rate": 51.4,
+      "pct_of_total": 1.0,
+      "total_games": 5270,
+      "core_cards": [
+        "CORE_EX1_012",
+        "FIR_929",
+        "TLC_226",
+        "CATA_452",
+        "CATA_487",
+        "CORE_CS2_029",
+        "CORE_CS2_024",
+        "CATA_209"
+      ],
+      "rank": 23
+    },
+    {
+      "archetype_id": 213,
+      "name": "Dragon Hunter",
+      "class": "HUNTER",
+      "class_zh": "獵人",
+      "win_rate": 51.3,
+      "pct_of_total": 0.6,
+      "total_games": 3242,
+      "core_cards": [
+        "CATA_551",
+        "CATA_556",
+        "END_033",
+        "CATA_111",
+        "CATA_552",
+        "CATA_553",
+        "TIME_045",
+        "EDR_889"
+      ],
+      "rank": 24
+    },
+    {
+      "archetype_id": 817,
+      "name": "Egg Warlock",
+      "class": "WARLOCK",
+      "class_zh": "術士",
+      "win_rate": 51.3,
+      "pct_of_total": 2.1,
+      "total_games": 10660,
+      "core_cards": [
+        "TLC_106",
+        "DINO_411",
+        "EDR_491",
+        "CORE_CS2_188",
+        "TLC_252",
+        "EDR_482",
+        "CORE_BOT_222",
+        "FIR_954"
+      ],
+      "rank": 25
+    },
+    {
+      "archetype_id": 472,
+      "name": "Quest Demon Hunter",
+      "class": "DEMONHUNTER",
+      "class_zh": "惡魔獵人",
+      "win_rate": 50.5,
+      "pct_of_total": 0.4,
+      "total_games": 2008,
+      "core_cards": [
+        "TLC_833",
+        "TLC_631",
+        "DINO_136",
+        "TLC_630",
+        "TLC_840",
+        "TLC_987",
+        "CORE_BT_491",
+        "CORE_BT_187"
+      ],
+      "rank": 26
+    },
+    {
+      "archetype_id": 832,
+      "name": "Rafaam Warlock",
+      "class": "WARLOCK",
+      "class_zh": "術士",
+      "win_rate": 49.7,
+      "pct_of_total": 1.7,
+      "total_games": 8715,
+      "core_cards": [
+        "TIME_005",
+        "TIME_005t1",
+        "TIME_005t2",
+        "TIME_005t3",
+        "TIME_005t4",
+        "TIME_005t5",
+        "TIME_005t6",
+        "TIME_005t7"
+      ],
+      "rank": 27
+    },
+    {
+      "archetype_id": 833,
+      "name": "Arena Warrior",
+      "class": "WARRIOR",
+      "class_zh": "戰士",
+      "win_rate": 49.5,
+      "pct_of_total": 0.3,
+      "total_games": 1583,
+      "core_cards": [
+        "EDR_455",
+        "TIME_870",
+        "EDR_471",
+        "EDR_454",
+        "EDR_465",
+        "DINO_401",
+        "TIME_715",
+        "EDR_531"
+      ],
+      "rank": 28
+    },
+    {
+      "archetype_id": 162,
+      "name": "Quest Warrior",
+      "class": "WARRIOR",
+      "class_zh": "戰士",
+      "win_rate": 49.4,
+      "pct_of_total": 0.5,
+      "total_games": 2776,
+      "core_cards": [
+        "TLC_602",
+        "CATA_615",
+        "END_023",
+        "EDR_000",
+        "EDR_979",
+        "TIME_715",
+        "CORE_EX1_007",
+        "CORE_CS2_108"
+      ],
+      "rank": 29
+    },
+    {
+      "archetype_id": 142,
+      "name": "Quest Mage",
+      "class": "MAGE",
+      "class_zh": "法師",
+      "win_rate": 48.9,
+      "pct_of_total": 3.6,
+      "total_games": 18643,
+      "core_cards": [
+        "TLC_460",
+        "EDR_872",
+        "TLC_365",
+        "TLC_461",
+        "CATA_614",
+        "Core_UNG_072",
+        "TIME_EVENT_999",
+        "END_036"
+      ],
+      "rank": 30
+    },
+    {
+      "archetype_id": -6,
+      "name": "-6",
+      "class": "PRIEST",
+      "class_zh": "牧師",
+      "win_rate": 48.3,
+      "pct_of_total": 0.2,
+      "total_games": 1179,
+      "core_cards": [],
+      "rank": 31
+    },
+    {
+      "archetype_id": -8,
+      "name": "-8",
+      "class": "SHAMAN",
+      "class_zh": "薩滿",
+      "win_rate": 48.3,
+      "pct_of_total": 0.3,
+      "total_games": 1386,
+      "core_cards": [],
+      "rank": 32
+    },
+    {
+      "archetype_id": 776,
+      "name": "Imbue Druid",
+      "class": "DRUID",
+      "class_zh": "德魯伊",
+      "win_rate": 47.8,
+      "pct_of_total": 1.8,
+      "total_games": 9043,
+      "core_cards": [
+        "EDR_845",
+        "EDR_800",
+        "EDR_852",
+        "EDR_888",
+        "EDR_847",
+        "EDR_273",
+        "FIR_908",
+        "EDR_270"
+      ],
+      "rank": 33
+    },
+    {
+      "archetype_id": 783,
+      "name": "Imbue Priest",
+      "class": "PRIEST",
+      "class_zh": "牧師",
+      "win_rate": 47.4,
+      "pct_of_total": 0.9,
+      "total_games": 4428,
+      "core_cards": [
+        "EDR_888",
+        "FIR_777",
+        "FIR_921",
+        "EDR_979",
+        "TLC_820",
+        "EDR_800",
+        "EDR_476",
+        "EDR_846"
+      ],
+      "rank": 34
+    },
+    {
+      "archetype_id": 846,
+      "name": "Dragon Warlock",
+      "class": "WARLOCK",
+      "class_zh": "術士",
+      "win_rate": 47.1,
+      "pct_of_total": 0.1,
+      "total_games": 274,
+      "core_cards": [
+        "END_033",
+        "CATA_556",
+        "EDR_889",
+        "CATA_111",
+        "CORE_EX1_319",
+        "TIME_026",
+        "END_018",
+        "TIME_025"
+      ],
+      "rank": 35
+    },
+    {
+      "archetype_id": 444,
+      "name": "Heal Priest",
+      "class": "PRIEST",
+      "class_zh": "牧師",
+      "win_rate": 46.7,
+      "pct_of_total": 0.3,
+      "total_games": 1390,
+      "core_cards": [
+        "CORE_AT_055",
+        "END_028",
+        "CATA_301",
+        "TIME_890",
+        "TIME_890t",
+        "TIME_890t2",
+        "CATA_302",
+        "CATA_216"
+      ],
+      "rank": 36
+    },
+    {
+      "archetype_id": 780,
+      "name": "Imbue Mage",
+      "class": "MAGE",
+      "class_zh": "法師",
+      "win_rate": 46.5,
+      "pct_of_total": 0.9,
+      "total_games": 4724,
+      "core_cards": [
+        "EDR_800",
+        "EDR_519",
+        "EDR_852",
+        "EDR_871",
+        "EDR_430",
+        "EDR_888",
+        "FIR_921",
+        "EDR_860"
+      ],
+      "rank": 37
+    },
+    {
+      "archetype_id": -5,
+      "name": "-5",
+      "class": "PALADIN",
+      "class_zh": "聖騎士",
+      "win_rate": 46.3,
+      "pct_of_total": 0.1,
+      "total_games": 771,
+      "core_cards": [],
+      "rank": 38
+    },
+    {
+      "archetype_id": -2,
+      "name": "-2",
+      "class": "DRUID",
+      "class_zh": "德魯伊",
+      "win_rate": 45.8,
+      "pct_of_total": 0.3,
+      "total_games": 1665,
+      "core_cards": [],
+      "rank": 39
+    },
+    {
+      "archetype_id": 555,
+      "name": "Blood Death Knight",
+      "class": "DEATHKNIGHT",
+      "class_zh": "死亡騎士",
+      "win_rate": 45.7,
+      "pct_of_total": 0.4,
+      "total_games": 1970,
+      "core_cards": [
+        "CORE_RLK_087",
+        "CORE_RLK_066",
+        "EDR_000",
+        "FIR_959",
+        "CORE_RLK_706",
+        "EDR_819",
+        "RLK_024",
+        "CORE_CATA_007"
+      ],
+      "rank": 40
+    },
+    {
+      "archetype_id": -3,
+      "name": "-3",
+      "class": "HUNTER",
+      "class_zh": "獵人",
+      "win_rate": 45.4,
+      "pct_of_total": 0.4,
+      "total_games": 1928,
+      "core_cards": [],
+      "rank": 41
+    },
+    {
+      "archetype_id": 786,
+      "name": "Wallow Warlock",
+      "class": "WARLOCK",
+      "class_zh": "術士",
+      "win_rate": 45.3,
+      "pct_of_total": 0.3,
+      "total_games": 1757,
+      "core_cards": [
+        "EDR_487",
+        "EDR_856",
+        "FIR_924",
+        "EDR_105",
+        "EDR_654",
+        "EDR_102",
+        "EDR_488",
+        "EDR_001"
+      ],
+      "rank": 42
+    },
+    {
+      "archetype_id": 858,
+      "name": "Herald Warlock",
+      "class": "WARLOCK",
+      "class_zh": "術士",
+      "win_rate": 45.1,
+      "pct_of_total": 0.7,
+      "total_games": 3682,
+      "core_cards": [
+        "CATA_722",
+        "CATA_210",
+        "CATA_190h",
+        "CATA_497",
+        "CATA_726",
+        "CORE_ULD_723",
+        "CORE_REV_308",
+        "TLC_831"
+      ],
+      "rank": 43
+    },
+    {
+      "archetype_id": -7,
+      "name": "-7",
+      "class": "ROGUE",
+      "class_zh": "盜賊",
+      "win_rate": 44.5,
+      "pct_of_total": 0.4,
+      "total_games": 2140,
+      "core_cards": [],
+      "rank": 44
+    },
+    {
+      "archetype_id": -1,
+      "name": "-1",
+      "class": "DEATHKNIGHT",
+      "class_zh": "死亡騎士",
+      "win_rate": 42.8,
+      "pct_of_total": 0.4,
+      "total_games": 1967,
+      "core_cards": [],
+      "rank": 45
+    },
+    {
+      "archetype_id": 202,
+      "name": "Evolve Shaman",
+      "class": "SHAMAN",
+      "class_zh": "薩滿",
+      "win_rate": 42.5,
+      "pct_of_total": 0.4,
+      "total_games": 1883,
+      "core_cards": [
+        "EDR_800",
+        "EDR_238",
+        "EDR_518",
+        "EDR_231",
+        "EDR_852",
+        "EDR_888",
+        "EDR_529",
+        "EDR_860"
+      ],
+      "rank": 46
+    },
+    {
+      "archetype_id": 306,
+      "name": "Quest Shaman",
+      "class": "SHAMAN",
+      "class_zh": "薩滿",
+      "win_rate": 41.1,
+      "pct_of_total": 0.1,
+      "total_games": 621,
+      "core_cards": [
+        "CORE_GVG_085",
+        "CORE_ULD_723",
+        "TLC_229",
+        "DINO_412",
+        "TIME_045",
+        "CATA_614",
+        "EDR_856",
+        "TIME_218"
+      ],
+      "rank": 47
+    },
+    {
+      "archetype_id": -14,
+      "name": "-14",
+      "class": "DEMONHUNTER",
+      "class_zh": "惡魔獵人",
+      "win_rate": 40.5,
+      "pct_of_total": 0.2,
+      "total_games": 881,
+      "core_cards": [],
+      "rank": 48
+    },
+    {
+      "archetype_id": -9,
+      "name": "-9",
+      "class": "WARLOCK",
+      "class_zh": "術士",
+      "win_rate": 40.5,
+      "pct_of_total": 0.2,
+      "total_games": 1307,
+      "core_cards": [],
+      "rank": 49
+    },
+    {
+      "archetype_id": 561,
+      "name": "Arcane Mage",
+      "class": "MAGE",
+      "class_zh": "法師",
+      "win_rate": 35.4,
+      "pct_of_total": 0.1,
+      "total_games": 728,
+      "core_cards": [
+        "EDR_874",
+        "TIME_852",
+        "TIME_852t3",
+        "TIME_852t1",
+        "TIME_856",
+        "TIME_006",
+        "TIME_045",
+        "END_025"
+      ],
+      "rank": 50
+    },
+    {
+      "archetype_id": -4,
+      "name": "-4",
+      "class": "MAGE",
+      "class_zh": "法師",
+      "win_rate": 35.4,
+      "pct_of_total": 0.2,
+      "total_games": 1132,
+      "core_cards": [],
+      "rank": 51
+    }
+  ],
+  "by_class": {
+    "PALADIN": [
+      {
+        "archetype_id": 171,
+        "name": "Aggro Paladin",
+        "class": "PALADIN",
+        "class_zh": "聖騎士",
+        "win_rate": 64.5,
+        "pct_of_total": 3.7,
+        "total_games": 18985,
+        "core_cards": [
+          "TLC_603",
+          "CORE_UNG_205",
+          "TLC_249",
+          "EDR_849",
+          "CATA_556",
+          "TLC_254",
+          "CATA_479",
+          "CORE_ULD_723"
+        ],
+        "rank": 1
+      },
+      {
+        "archetype_id": 595,
+        "name": "Bubble Paladin",
+        "class": "PALADIN",
+        "class_zh": "聖騎士",
+        "win_rate": 63.0,
+        "pct_of_total": 5.5,
+        "total_games": 28557,
+        "core_cards": [
+          "END_011",
+          "CATA_473",
+          "CATA_475",
+          "TIME_019",
+          "TIME_700",
+          "TIME_009",
+          "TIME_009t1",
+          "TIME_009t2"
+        ],
+        "rank": 2
+      },
+      {
+        "archetype_id": 654,
+        "name": "Aura Paladin",
+        "class": "PALADIN",
+        "class_zh": "聖騎士",
+        "win_rate": 59.6,
+        "pct_of_total": 0.8,
+        "total_games": 3881,
+        "core_cards": [
+          "TIME_015",
+          "CORE_KAR_061",
+          "EDR_259",
+          "TIME_019",
+          "TIME_700",
+          "END_011",
+          "EDR_255",
+          "TIME_009"
+        ],
+        "rank": 4
+      },
+      {
+        "archetype_id": 782,
+        "name": "Imbue Paladin",
+        "class": "PALADIN",
+        "class_zh": "聖騎士",
+        "win_rate": 55.5,
+        "pct_of_total": 4.1,
+        "total_games": 21306,
+        "core_cards": [
+          "EDR_451",
+          "EDR_852",
+          "EDR_264",
+          "EDR_800",
+          "EDR_256",
+          "FIR_921",
+          "EDR_888",
+          "CORE_CS2_093"
+        ],
+        "rank": 11
+      },
+      {
+        "archetype_id": 79,
+        "name": "Quest Paladin",
+        "class": "PALADIN",
+        "class_zh": "聖騎士",
+        "win_rate": 53.6,
+        "pct_of_total": 0.2,
+        "total_games": 1082,
+        "core_cards": [
+          "TLC_426",
+          "TLC_429",
+          "EDR_999",
+          "TLC_442",
+          "CORE_EX1_506",
+          "TLC_240",
+          "TLC_428",
+          "CORE_EX1_507"
+        ],
+        "rank": 16
+      },
+      {
+        "archetype_id": -5,
+        "name": "-5",
+        "class": "PALADIN",
+        "class_zh": "聖騎士",
+        "win_rate": 46.3,
+        "pct_of_total": 0.1,
+        "total_games": 771,
+        "core_cards": [],
+        "rank": 38
+      }
+    ],
+    "WARRIOR": [
+      {
+        "archetype_id": 19,
+        "name": "Dragon Warrior",
+        "class": "WARRIOR",
+        "class_zh": "戰士",
+        "win_rate": 62.1,
+        "pct_of_total": 10.5,
+        "total_games": 54006,
+        "core_cards": [
+          "TIME_034",
+          "EDR_456",
+          "TLC_600",
+          "END_033",
+          "EDR_457",
+          "CORE_EX1_414",
+          "DINO_401",
+          "EDR_889"
+        ],
+        "rank": 3
+      },
+      {
+        "archetype_id": 850,
+        "name": "Herald Warrior",
+        "class": "WARRIOR",
+        "class_zh": "戰士",
+        "win_rate": 56.8,
+        "pct_of_total": 9.1,
+        "total_games": 46703,
+        "core_cards": [
+          "CATA_580",
+          "CATA_160",
+          "CATA_150",
+          "CATA_190h",
+          "CATA_722",
+          "CATA_497",
+          "EDR_572",
+          "EDR_456"
+        ],
+        "rank": 9
+      },
+      {
+        "archetype_id": 384,
+        "name": "Egg Warrior",
+        "class": "WARRIOR",
+        "class_zh": "戰士",
+        "win_rate": 54.3,
+        "pct_of_total": 0.9,
+        "total_games": 4830,
+        "core_cards": [
+          "TLC_106",
+          "DINO_410",
+          "DINO_411",
+          "EDR_531",
+          "CATA_581",
+          "EDR_856",
+          "TIME_873",
+          "TIME_715"
+        ],
+        "rank": 13
+      },
+      {
+        "archetype_id": 833,
+        "name": "Arena Warrior",
+        "class": "WARRIOR",
+        "class_zh": "戰士",
+        "win_rate": 49.5,
+        "pct_of_total": 0.3,
+        "total_games": 1583,
+        "core_cards": [
+          "EDR_455",
+          "TIME_870",
+          "EDR_471",
+          "EDR_454",
+          "EDR_465",
+          "DINO_401",
+          "TIME_715",
+          "EDR_531"
+        ],
+        "rank": 28
+      },
+      {
+        "archetype_id": 162,
+        "name": "Quest Warrior",
+        "class": "WARRIOR",
+        "class_zh": "戰士",
+        "win_rate": 49.4,
+        "pct_of_total": 0.5,
+        "total_games": 2776,
+        "core_cards": [
+          "TLC_602",
+          "CATA_615",
+          "END_023",
+          "EDR_000",
+          "EDR_979",
+          "TIME_715",
+          "CORE_EX1_007",
+          "CORE_CS2_108"
+        ],
+        "rank": 29
+      }
+    ],
+    "SHAMAN": [
+      {
+        "archetype_id": 857,
+        "name": "Herald Shaman",
+        "class": "SHAMAN",
+        "class_zh": "薩滿",
+        "win_rate": 59.5,
+        "pct_of_total": 5.5,
+        "total_games": 28110,
+        "core_cards": [
+          "TIME_209",
+          "TIME_209t",
+          "TIME_209t2",
+          "CATA_210",
+          "TIME_213",
+          "CORE_WC_042",
+          "CORE_EX1_259",
+          "CATA_722"
+        ],
+        "rank": 5
+      },
+      {
+        "archetype_id": -8,
+        "name": "-8",
+        "class": "SHAMAN",
+        "class_zh": "薩滿",
+        "win_rate": 48.3,
+        "pct_of_total": 0.3,
+        "total_games": 1386,
+        "core_cards": [],
+        "rank": 32
+      },
+      {
+        "archetype_id": 202,
+        "name": "Evolve Shaman",
+        "class": "SHAMAN",
+        "class_zh": "薩滿",
+        "win_rate": 42.5,
+        "pct_of_total": 0.4,
+        "total_games": 1883,
+        "core_cards": [
+          "EDR_800",
+          "EDR_238",
+          "EDR_518",
+          "EDR_231",
+          "EDR_852",
+          "EDR_888",
+          "EDR_529",
+          "EDR_860"
+        ],
+        "rank": 46
+      },
+      {
+        "archetype_id": 306,
+        "name": "Quest Shaman",
+        "class": "SHAMAN",
+        "class_zh": "薩滿",
+        "win_rate": 41.1,
+        "pct_of_total": 0.1,
+        "total_games": 621,
+        "core_cards": [
+          "CORE_GVG_085",
+          "CORE_ULD_723",
+          "TLC_229",
+          "DINO_412",
+          "TIME_045",
+          "CATA_614",
+          "EDR_856",
+          "TIME_218"
+        ],
+        "rank": 47
+      }
+    ],
+    "DEMONHUNTER": [
+      {
+        "archetype_id": 569,
+        "name": "Spell Demon Hunter",
+        "class": "DEMONHUNTER",
+        "class_zh": "惡魔獵人",
+        "win_rate": 59.4,
+        "pct_of_total": 4.4,
+        "total_games": 22759,
+        "core_cards": [
+          "TIME_443",
+          "TIME_444",
+          "TIME_446",
+          "TIME_448",
+          "END_007",
+          "TIME_449",
+          "EDR_820",
+          "TIME_020"
+        ],
+        "rank": 6
+      },
+      {
+        "archetype_id": 852,
+        "name": "Herald Demon Hunter",
+        "class": "DEMONHUNTER",
+        "class_zh": "惡魔獵人",
+        "win_rate": 52.0,
+        "pct_of_total": 0.7,
+        "total_games": 3476,
+        "core_cards": [
+          "CATA_525",
+          "CATA_530",
+          "CATA_151",
+          "CATA_190h",
+          "CATA_497",
+          "FIR_952",
+          "CATA_529",
+          "CATA_722"
+        ],
+        "rank": 18
+      },
+      {
+        "archetype_id": 472,
+        "name": "Quest Demon Hunter",
+        "class": "DEMONHUNTER",
+        "class_zh": "惡魔獵人",
+        "win_rate": 50.5,
+        "pct_of_total": 0.4,
+        "total_games": 2008,
+        "core_cards": [
+          "TLC_833",
+          "TLC_631",
+          "DINO_136",
+          "TLC_630",
+          "TLC_840",
+          "TLC_987",
+          "CORE_BT_491",
+          "CORE_BT_187"
+        ],
+        "rank": 26
+      },
+      {
+        "archetype_id": -14,
+        "name": "-14",
+        "class": "DEMONHUNTER",
+        "class_zh": "惡魔獵人",
+        "win_rate": 40.5,
+        "pct_of_total": 0.2,
+        "total_games": 881,
+        "core_cards": [],
+        "rank": 48
+      }
+    ],
+    "DEATHKNIGHT": [
+      {
+        "archetype_id": 556,
+        "name": "Unholy Death Knight",
+        "class": "DEATHKNIGHT",
+        "class_zh": "死亡騎士",
+        "win_rate": 59.1,
+        "pct_of_total": 1.8,
+        "total_games": 9308,
+        "core_cards": [
+          "RLK_707",
+          "TLC_245",
+          "TIME_610",
+          "EDR_816",
+          "CATA_471",
+          "TLC_443",
+          "CORE_EDR_003",
+          "TIME_059"
+        ],
+        "rank": 7
+      },
+      {
+        "archetype_id": 851,
+        "name": "Herald Death Knight",
+        "class": "DEATHKNIGHT",
+        "class_zh": "死亡騎士",
+        "win_rate": 53.8,
+        "pct_of_total": 5.0,
+        "total_games": 25780,
+        "core_cards": [
+          "CATA_156",
+          "CATA_780",
+          "CATA_155",
+          "CATA_190h",
+          "CATA_722",
+          "CATA_497",
+          "TIME_616",
+          "CORE_EDR_002"
+        ],
+        "rank": 14
+      },
+      {
+        "archetype_id": 555,
+        "name": "Blood Death Knight",
+        "class": "DEATHKNIGHT",
+        "class_zh": "死亡騎士",
+        "win_rate": 45.7,
+        "pct_of_total": 0.4,
+        "total_games": 1970,
+        "core_cards": [
+          "CORE_RLK_087",
+          "CORE_RLK_066",
+          "EDR_000",
+          "FIR_959",
+          "CORE_RLK_706",
+          "EDR_819",
+          "RLK_024",
+          "CORE_CATA_007"
+        ],
+        "rank": 40
+      },
+      {
+        "archetype_id": -1,
+        "name": "-1",
+        "class": "DEATHKNIGHT",
+        "class_zh": "死亡騎士",
+        "win_rate": 42.8,
+        "pct_of_total": 0.4,
+        "total_games": 1967,
+        "core_cards": [],
+        "rank": 45
+      }
+    ],
+    "DRUID": [
+      {
+        "archetype_id": 52,
+        "name": "Aggro Druid",
+        "class": "DRUID",
+        "class_zh": "德魯伊",
+        "win_rate": 58.0,
+        "pct_of_total": 1.5,
+        "total_games": 7872,
+        "core_cards": [
+          "CATA_138",
+          "CATA_210",
+          "DINO_130",
+          "TLC_603",
+          "CATA_135",
+          "TLC_232",
+          "TLC_233",
+          "CATA_134"
+        ],
+        "rank": 8
+      },
+      {
+        "archetype_id": 859,
+        "name": "Merithra Druid",
+        "class": "DRUID",
+        "class_zh": "德魯伊",
+        "win_rate": 53.6,
+        "pct_of_total": 3.1,
+        "total_games": 15740,
+        "core_cards": [
+          "EDR_000",
+          "END_011",
+          "CATA_140",
+          "CORE_RLK_657",
+          "EDR_856",
+          "TLC_100",
+          "EDR_844",
+          "FIR_959"
+        ],
+        "rank": 15
+      },
+      {
+        "archetype_id": 776,
+        "name": "Imbue Druid",
+        "class": "DRUID",
+        "class_zh": "德魯伊",
+        "win_rate": 47.8,
+        "pct_of_total": 1.8,
+        "total_games": 9043,
+        "core_cards": [
+          "EDR_845",
+          "EDR_800",
+          "EDR_852",
+          "EDR_888",
+          "EDR_847",
+          "EDR_273",
+          "FIR_908",
+          "EDR_270"
+        ],
+        "rank": 33
+      },
+      {
+        "archetype_id": -2,
+        "name": "-2",
+        "class": "DRUID",
+        "class_zh": "德魯伊",
+        "win_rate": 45.8,
+        "pct_of_total": 0.3,
+        "total_games": 1665,
+        "core_cards": [],
+        "rank": 39
+      }
+    ],
+    "HUNTER": [
+      {
+        "archetype_id": 355,
+        "name": "Face Hunter",
+        "class": "HUNTER",
+        "class_zh": "獵人",
+        "win_rate": 55.6,
+        "pct_of_total": 3.5,
+        "total_games": 17894,
+        "core_cards": [
+          "TIME_606",
+          "TLC_249",
+          "TIME_600",
+          "CATA_557",
+          "DINO_434",
+          "CATA_615",
+          "FIR_909",
+          "CORE_DS1_185"
+        ],
+        "rank": 10
+      },
+      {
+        "archetype_id": 211,
+        "name": "Quest Hunter",
+        "class": "HUNTER",
+        "class_zh": "獵人",
+        "win_rate": 51.9,
+        "pct_of_total": 0.9,
+        "total_games": 4460,
+        "core_cards": [
+          "TLC_830",
+          "CORE_UNG_912",
+          "TLC_825",
+          "TLC_366",
+          "TLC_824",
+          "CORE_EX1_014",
+          "TIME_053",
+          "TLC_603"
+        ],
+        "rank": 20
+      },
+      {
+        "archetype_id": 860,
+        "name": "Murloc Hunter",
+        "class": "HUNTER",
+        "class_zh": "獵人",
+        "win_rate": 51.6,
+        "pct_of_total": 0.1,
+        "total_games": 492,
+        "core_cards": [
+          "CORE_EX1_506",
+          "CORE_EX1_103",
+          "CORE_EX1_509",
+          "CORE_EX1_507",
+          "CORE_ULD_723",
+          "EDR_999",
+          "CORE_DMF_067",
+          "TIME_428"
+        ],
+        "rank": 21
+      },
+      {
+        "archetype_id": 213,
+        "name": "Dragon Hunter",
+        "class": "HUNTER",
+        "class_zh": "獵人",
+        "win_rate": 51.3,
+        "pct_of_total": 0.6,
+        "total_games": 3242,
+        "core_cards": [
+          "CATA_551",
+          "CATA_556",
+          "END_033",
+          "CATA_111",
+          "CATA_552",
+          "CATA_553",
+          "TIME_045",
+          "EDR_889"
+        ],
+        "rank": 24
+      },
+      {
+        "archetype_id": -3,
+        "name": "-3",
+        "class": "HUNTER",
+        "class_zh": "獵人",
+        "win_rate": 45.4,
+        "pct_of_total": 0.4,
+        "total_games": 1928,
+        "core_cards": [],
+        "rank": 41
+      }
+    ],
+    "ROGUE": [
+      {
+        "archetype_id": 842,
+        "name": "Imbue Rogue",
+        "class": "ROGUE",
+        "class_zh": "盜賊",
+        "win_rate": 54.4,
+        "pct_of_total": 7.4,
+        "total_games": 38109,
+        "core_cards": [
+          "END_000",
+          "EDR_852",
+          "EDR_860",
+          "EDR_800",
+          "END_001",
+          "CORE_CS2_072",
+          "CATA_785",
+          "EDR_528"
+        ],
+        "rank": 12
+      },
+      {
+        "archetype_id": 856,
+        "name": "Herald Rogue",
+        "class": "ROGUE",
+        "class_zh": "盜賊",
+        "win_rate": 53.4,
+        "pct_of_total": 4.4,
+        "total_games": 22781,
+        "core_cards": [
+          "CATA_200",
+          "TLC_100",
+          "TIME_875",
+          "TIME_875t",
+          "TIME_875t1",
+          "CORE_BT_701",
+          "EDR_846",
+          "TIME_770"
+        ],
+        "rank": 17
+      },
+      {
+        "archetype_id": -7,
+        "name": "-7",
+        "class": "ROGUE",
+        "class_zh": "盜賊",
+        "win_rate": 44.5,
+        "pct_of_total": 0.4,
+        "total_games": 2140,
+        "core_cards": [],
+        "rank": 44
+      }
+    ],
+    "PRIEST": [
+      {
+        "archetype_id": 36,
+        "name": "Control Priest",
+        "class": "PRIEST",
+        "class_zh": "牧師",
+        "win_rate": 52.0,
+        "pct_of_total": 3.1,
+        "total_games": 15897,
+        "core_cards": [
+          "TIME_433",
+          "EDR_464",
+          "CORE_CFM_604",
+          "TLC_835",
+          "CORE_NEW1_021",
+          "CORE_CS1_112",
+          "EDR_476",
+          "EDR_800"
+        ],
+        "rank": 19
+      },
+      {
+        "archetype_id": 56,
+        "name": "Quest Priest",
+        "class": "PRIEST",
+        "class_zh": "牧師",
+        "win_rate": 51.6,
+        "pct_of_total": 4.3,
+        "total_games": 22392,
+        "core_cards": [
+          "TLC_817",
+          "CATA_308",
+          "CATA_301",
+          "CORE_AT_055",
+          "TIME_890",
+          "TIME_890t",
+          "TIME_890t2",
+          "CATA_302"
+        ],
+        "rank": 22
+      },
+      {
+        "archetype_id": -6,
+        "name": "-6",
+        "class": "PRIEST",
+        "class_zh": "牧師",
+        "win_rate": 48.3,
+        "pct_of_total": 0.2,
+        "total_games": 1179,
+        "core_cards": [],
+        "rank": 31
+      },
+      {
+        "archetype_id": 783,
+        "name": "Imbue Priest",
+        "class": "PRIEST",
+        "class_zh": "牧師",
+        "win_rate": 47.4,
+        "pct_of_total": 0.9,
+        "total_games": 4428,
+        "core_cards": [
+          "EDR_888",
+          "FIR_777",
+          "FIR_921",
+          "EDR_979",
+          "TLC_820",
+          "EDR_800",
+          "EDR_476",
+          "EDR_846"
+        ],
+        "rank": 34
+      },
+      {
+        "archetype_id": 444,
+        "name": "Heal Priest",
+        "class": "PRIEST",
+        "class_zh": "牧師",
+        "win_rate": 46.7,
+        "pct_of_total": 0.3,
+        "total_games": 1390,
+        "core_cards": [
+          "CORE_AT_055",
+          "END_028",
+          "CATA_301",
+          "TIME_890",
+          "TIME_890t",
+          "TIME_890t2",
+          "CATA_302",
+          "CATA_216"
+        ],
+        "rank": 36
+      }
+    ],
+    "MAGE": [
+      {
+        "archetype_id": 594,
+        "name": "Burn Mage",
+        "class": "MAGE",
+        "class_zh": "法師",
+        "win_rate": 51.4,
+        "pct_of_total": 1.0,
+        "total_games": 5270,
+        "core_cards": [
+          "CORE_EX1_012",
+          "FIR_929",
+          "TLC_226",
+          "CATA_452",
+          "CATA_487",
+          "CORE_CS2_029",
+          "CORE_CS2_024",
+          "CATA_209"
+        ],
+        "rank": 23
+      },
+      {
+        "archetype_id": 142,
+        "name": "Quest Mage",
+        "class": "MAGE",
+        "class_zh": "法師",
+        "win_rate": 48.9,
+        "pct_of_total": 3.6,
+        "total_games": 18643,
+        "core_cards": [
+          "TLC_460",
+          "EDR_872",
+          "TLC_365",
+          "TLC_461",
+          "CATA_614",
+          "Core_UNG_072",
+          "TIME_EVENT_999",
+          "END_036"
+        ],
+        "rank": 30
+      },
+      {
+        "archetype_id": 780,
+        "name": "Imbue Mage",
+        "class": "MAGE",
+        "class_zh": "法師",
+        "win_rate": 46.5,
+        "pct_of_total": 0.9,
+        "total_games": 4724,
+        "core_cards": [
+          "EDR_800",
+          "EDR_519",
+          "EDR_852",
+          "EDR_871",
+          "EDR_430",
+          "EDR_888",
+          "FIR_921",
+          "EDR_860"
+        ],
+        "rank": 37
+      },
+      {
+        "archetype_id": 561,
+        "name": "Arcane Mage",
+        "class": "MAGE",
+        "class_zh": "法師",
+        "win_rate": 35.4,
+        "pct_of_total": 0.1,
+        "total_games": 728,
+        "core_cards": [
+          "EDR_874",
+          "TIME_852",
+          "TIME_852t3",
+          "TIME_852t1",
+          "TIME_856",
+          "TIME_006",
+          "TIME_045",
+          "END_025"
+        ],
+        "rank": 50
+      },
+      {
+        "archetype_id": -4,
+        "name": "-4",
+        "class": "MAGE",
+        "class_zh": "法師",
+        "win_rate": 35.4,
+        "pct_of_total": 0.2,
+        "total_games": 1132,
+        "core_cards": [],
+        "rank": 51
+      }
+    ],
+    "WARLOCK": [
+      {
+        "archetype_id": 817,
+        "name": "Egg Warlock",
+        "class": "WARLOCK",
+        "class_zh": "術士",
+        "win_rate": 51.3,
+        "pct_of_total": 2.1,
+        "total_games": 10660,
+        "core_cards": [
+          "TLC_106",
+          "DINO_411",
+          "EDR_491",
+          "CORE_CS2_188",
+          "TLC_252",
+          "EDR_482",
+          "CORE_BOT_222",
+          "FIR_954"
+        ],
+        "rank": 25
+      },
+      {
+        "archetype_id": 832,
+        "name": "Rafaam Warlock",
+        "class": "WARLOCK",
+        "class_zh": "術士",
+        "win_rate": 49.7,
+        "pct_of_total": 1.7,
+        "total_games": 8715,
+        "core_cards": [
+          "TIME_005",
+          "TIME_005t1",
+          "TIME_005t2",
+          "TIME_005t3",
+          "TIME_005t4",
+          "TIME_005t5",
+          "TIME_005t6",
+          "TIME_005t7"
+        ],
+        "rank": 27
+      },
+      {
+        "archetype_id": 846,
+        "name": "Dragon Warlock",
+        "class": "WARLOCK",
+        "class_zh": "術士",
+        "win_rate": 47.1,
+        "pct_of_total": 0.1,
+        "total_games": 274,
+        "core_cards": [
+          "END_033",
+          "CATA_556",
+          "EDR_889",
+          "CATA_111",
+          "CORE_EX1_319",
+          "TIME_026",
+          "END_018",
+          "TIME_025"
+        ],
+        "rank": 35
+      },
+      {
+        "archetype_id": 786,
+        "name": "Wallow Warlock",
+        "class": "WARLOCK",
+        "class_zh": "術士",
+        "win_rate": 45.3,
+        "pct_of_total": 0.3,
+        "total_games": 1757,
+        "core_cards": [
+          "EDR_487",
+          "EDR_856",
+          "FIR_924",
+          "EDR_105",
+          "EDR_654",
+          "EDR_102",
+          "EDR_488",
+          "EDR_001"
+        ],
+        "rank": 42
+      },
+      {
+        "archetype_id": 858,
+        "name": "Herald Warlock",
+        "class": "WARLOCK",
+        "class_zh": "術士",
+        "win_rate": 45.1,
+        "pct_of_total": 0.7,
+        "total_games": 3682,
+        "core_cards": [
+          "CATA_722",
+          "CATA_210",
+          "CATA_190h",
+          "CATA_497",
+          "CATA_726",
+          "CORE_ULD_723",
+          "CORE_REV_308",
+          "TLC_831"
+        ],
+        "rank": 43
+      },
+      {
+        "archetype_id": -9,
+        "name": "-9",
+        "class": "WARLOCK",
+        "class_zh": "術士",
+        "win_rate": 40.5,
+        "pct_of_total": 0.2,
+        "total_games": 1307,
+        "core_cards": [],
+        "rank": 49
+      }
+    ]
+  },
+  "fetched_at": 1777578651.757609
+}

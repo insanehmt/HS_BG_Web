@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  web:
+    build: .
+    ports:
+      - "5001:5000"          # 用 5001 避免跟本地 5000 衝突
+    environment:
+      - PUBLIC_MODE=1
+      - SYNC_TOKEN=${SYNC_TOKEN:-changeme}
+    volumes:
+      - ./data:/app/data     # 掛載 data 目錄，推送後資料持久化
+    restart: unless-stopped

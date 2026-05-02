@@ -1,0 +1,78 @@
+{
+  "archetype_id": 142,
+  "name": "Quest Mage",
+  "name_zh": "",
+  "class": "MAGE",
+  "class_zh": "法師",
+  "style": "任務",
+  "win_rate": 48.9,
+  "pct_of_total": 3.6,
+  "rank": 30,
+  "core_cards": [
+    {
+      "card_id": "TLC_460",
+      "name": "禁忌序列",
+      "type": "SPELL",
+      "cost": 1,
+      "text": "任務：發現 7張卡牌 獎勵：本源之石"
+    },
+    {
+      "card_id": "EDR_872",
+      "name": "生命火花",
+      "type": "SPELL",
+      "cost": 1,
+      "text": "二選一：發現一個法師法術，或是發現一個德魯伊法術"
+    },
+    {
+      "card_id": "TLC_365",
+      "name": "翻箱倒櫃",
+      "type": "SPELL",
+      "cost": 3,
+      "text": "對一個手下造成$3點傷害。若你在本回合有發現過卡牌，此卡牌消耗改為(0)"
+    },
+    {
+      "card_id": "TLC_461",
+      "name": "襤褸拾荒者",
+      "type": "MINION",
+      "cost": 1,
+      "text": "戰吼：發現一張消耗等同當前剩餘法力水晶的卡牌"
+    },
+    {
+      "card_id": "CATA_614",
+      "name": "暗影告密者",
+      "type": "MINION",
+      "cost": 2,
+      "text": "戰吼：發現一個你職業的法術(每回合變換職業！)"
+    },
+    {
+      "card_id": "Core_UNG_072",
+      "name": "石丘防衛者",
+      "type": "MINION",
+      "cost": 3,
+      "text": "嘲諷 戰吼：發現一個 有嘲諷的手下"
+    },
+    {
+      "card_id": "TIME_EVENT_999",
+      "name": "時間之沙",
+      "type": "SPELL",
+      "cost": 1,
+      "text": "倒轉 發現一個任何職業的法術(在你倒轉後只會有你職業的法術！)"
+    },
+    {
+      "card_id": "END_036",
+      "name": "米羅克",
+      "type": "MINION",
+      "cost": 4,
+      "text": "你的倒轉保留兩種可能的結果 戰吼：發現一張任何職業的倒轉牌"
+    }
+  ],
+  "play_style": "任務型，完成特定任務後解鎖強力能力或獎勵",
+  "win_condition": "任務完成前決出勝負，或之後快速答問",
+  "key_turns": "任務完成前（通常 5-8 回合）是最佳攻勢視窗",
+  "against_tips": [
+    "積極施壓，不要給對手安穩完成任務的時間",
+    "注意對手完成任務的時間節點，判斷威脅等級",
+    "任務完成後遊戲通常進入對方優勢，需在此之前分出勝負"
+  ],
+  "notes": ""
+}

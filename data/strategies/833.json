@@ -1,0 +1,77 @@
+{
+  "archetype_id": 833,
+  "name": "Arena Warrior",
+  "name_zh": "",
+  "class": "WARRIOR",
+  "class_zh": "戰士",
+  "style": "",
+  "win_rate": 49.5,
+  "pct_of_total": 0.3,
+  "rank": 28,
+  "core_cards": [
+    {
+      "card_id": "EDR_455",
+      "name": "臣服瘋狂",
+      "type": "SPELL",
+      "cost": 3,
+      "text": "發現一個本賽局中死亡的友方龍類，重新召喚它"
+    },
+    {
+      "card_id": "TIME_870",
+      "name": "競技血戰",
+      "type": "SPELL",
+      "cost": 6,
+      "text": "從你的牌堆召喚一個隨機手下。為對手召喚一個有潛行的5/5 猛虎"
+    },
+    {
+      "card_id": "EDR_471",
+      "name": "托爾托拉",
+      "type": "MINION",
+      "cost": 10,
+      "text": "嘲諷、飄渺 在此手下受到傷害後，獲得1點護甲值並賦予此手下+1攻擊力"
+    },
+    {
+      "card_id": "EDR_454",
+      "name": "腐化蛋窩",
+      "type": "LOCATION",
+      "cost": 2,
+      "text": "選擇一個友方龍類，召喚一顆會孵化為它的分身的0/2蛋"
+    },
+    {
+      "card_id": "EDR_465",
+      "name": "伊索德雷",
+      "type": "MINION",
+      "cost": 7,
+      "text": "嘲諷。死亡之聲：召喚隨機龍類，數量等同於伊索德雷在本賽局中的死亡次數"
+    },
+    {
+      "card_id": "DINO_401",
+      "name": "偉大的德雷克斯",
+      "type": "MINION",
+      "cost": 8,
+      "text": "衝刺 在此手下攻擊一個敵方手下後，它會對全部其他敵方手下造成傷害"
+    },
+    {
+      "card_id": "TIME_715",
+      "name": "為了榮耀！",
+      "type": "SPELL",
+      "cost": 5,
+      "text": "抽2張牌。對手場上每個手下使其消耗減少(1)"
+    },
+    {
+      "card_id": "EDR_531",
+      "name": "虹吸生長",
+      "type": "SPELL",
+      "cost": 1,
+      "text": "摧毀一個友方手下並獲得8點護甲值"
+    }
+  ],
+  "play_style": "此牌型目前尚無詳細資料，請根據對手打出的牌判斷風格",
+  "win_condition": "根據你的牌組優勢施展",
+  "key_turns": "依對手行動判斷",
+  "against_tips": [
+    "觀察對手的出牌節奏判斷是快攻/中速/控制",
+    "記錄對手核心牌型"
+  ],
+  "notes": ""
+}

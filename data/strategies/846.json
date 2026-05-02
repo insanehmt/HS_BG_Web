@@ -1,0 +1,78 @@
+{
+  "archetype_id": 846,
+  "name": "Dragon Warlock",
+  "name_zh": "",
+  "class": "WARLOCK",
+  "class_zh": "術士",
+  "style": "中速",
+  "win_rate": 47.1,
+  "pct_of_total": 0.1,
+  "rank": 35,
+  "core_cards": [
+    {
+      "card_id": "END_033",
+      "name": "預知滑龍",
+      "type": "MINION",
+      "cost": 7,
+      "text": "飄渺 若你手中有其他龍類，消耗減少(3)"
+    },
+    {
+      "card_id": "CATA_556",
+      "name": "運送幼龍",
+      "type": "MINION",
+      "cost": 1,
+      "text": "戰吼：獲得一個消耗為(3)以下的隨機龍類"
+    },
+    {
+      "card_id": "EDR_889",
+      "name": "花卉小販",
+      "type": "MINION",
+      "cost": 2,
+      "text": "在你的回合結束時，賦予另一個隨機友方龍類+1/+1"
+    },
+    {
+      "card_id": "CATA_111",
+      "name": "暗鱗育母",
+      "type": "MINION",
+      "cost": 3,
+      "text": "戰吼：若你手中有龍類，回復2顆法力水晶"
+    },
+    {
+      "card_id": "CORE_EX1_319",
+      "name": "烈焰小鬼",
+      "type": "MINION",
+      "cost": 1,
+      "text": "戰吼：對你的英雄造成3點傷害"
+    },
+    {
+      "card_id": "TIME_026",
+      "name": "混亂連鎖",
+      "type": "SPELL",
+      "cost": 1,
+      "text": "賦予你的手下+1/+1。將2張時間殘片洗入你的牌堆"
+    },
+    {
+      "card_id": "END_018",
+      "name": "恆龍侍僧",
+      "type": "MINION",
+      "cost": 3,
+      "text": "戰吼：使你手中一張隨機卡牌的消耗改為無限！死亡之聲：將其改回來"
+    },
+    {
+      "card_id": "TIME_025",
+      "name": "暮光時空跳躍者",
+      "type": "MINION",
+      "cost": 2,
+      "text": "戰吼：將2張時間殘片洗入你的牌堆，抽中時對你的英雄造成3點傷害"
+    }
+  ],
+  "play_style": "中速型，平衡前後期，有多樣化的應對手段",
+  "win_condition": "耗盡對手資源或建立不可解的板面",
+  "key_turns": "5-8 回合決定走向",
+  "against_tips": [
+    "觀察對手打出的關鍵牌，判斷其 win condition",
+    "小心中期威脅，注意是否有 buff 型隨從雪球",
+    "保留高費法術應對關鍵隨從"
+  ],
+  "notes": ""
+}

@@ -1,0 +1,77 @@
+{
+  "archetype_id": 561,
+  "name": "Arcane Mage",
+  "name_zh": "",
+  "class": "MAGE",
+  "class_zh": "法師",
+  "style": "",
+  "win_rate": 35.4,
+  "pct_of_total": 0.1,
+  "rank": 50,
+  "core_cards": [
+    {
+      "card_id": "EDR_874",
+      "name": "星界平衡",
+      "type": "SPELL",
+      "cost": 2,
+      "text": "獲得一個月火術跟一個星火術。它們的法術傷害+1"
+    },
+    {
+      "card_id": "TIME_852",
+      "name": "蒼藍女王辛德拉苟莎",
+      "type": "MINION",
+      "cost": 5,
+      "text": "顯赫 若你場上有其他龍類，你的秘法法術消耗減少(2)"
+    },
+    {
+      "card_id": "TIME_852t3",
+      "name": "蒼藍誓言石",
+      "type": "SPELL",
+      "cost": 8,
+      "text": "召喚本賽局中死亡的友方龍類"
+    },
+    {
+      "card_id": "TIME_852t1",
+      "name": "蒼藍之王瑪里苟斯",
+      "type": "MINION",
+      "cost": 5,
+      "text": "若你場上有其他龍類，你的秘法法術施放兩次"
+    },
+    {
+      "card_id": "TIME_856",
+      "name": "阿爾蓋薩講師",
+      "type": "MINION",
+      "cost": 5,
+      "text": "法術傷害+2"
+    },
+    {
+      "card_id": "TIME_006",
+      "name": "鏡像次元",
+      "type": "SPELL",
+      "cost": 1,
+      "text": "召喚一個有嘲諷的0/4手下。若你手上有龍類，再召喚另一個手下"
+    },
+    {
+      "card_id": "TIME_045",
+      "name": "恆龍幼龍",
+      "type": "MINION",
+      "cost": 3,
+      "text": "致命劇毒 重生"
+    },
+    {
+      "card_id": "END_025",
+      "name": "永恆火焰箭",
+      "type": "SPELL",
+      "cost": 3,
+      "text": "生命竊取。對一個手下造成$3點傷害。若其死亡，在你的回合結束時使此牌返回你的手中"
+    }
+  ],
+  "play_style": "此牌型目前尚無詳細資料，請根據對手打出的牌判斷風格",
+  "win_condition": "根據你的牌組優勢施展",
+  "key_turns": "依對手行動判斷",
+  "against_tips": [
+    "觀察對手的出牌節奏判斷是快攻/中速/控制",
+    "記錄對手核心牌型"
+  ],
+  "notes": ""
+}

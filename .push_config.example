@@ -1,0 +1,7 @@
+# 本地推送設定（請勿提交到 Git）
+# 填入你的雲端網址和 Token 後，直接執行：
+#   python scripts/push_to_web.py
+#   python scripts/push_to_web.py --all   （含手下/法術/飾品/英雄快取）
+
+WEB_URL=https://your-app.onrender.com
+SYNC_TOKEN=your_sync_token_here

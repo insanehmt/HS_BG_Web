@@ -1,0 +1,20 @@
+{
+  "archetype_id": -1,
+  "name": "-1",
+  "name_zh": "",
+  "class": "DEATHKNIGHT",
+  "class_zh": "死亡騎士",
+  "style": "",
+  "win_rate": 42.8,
+  "pct_of_total": 0.4,
+  "rank": 45,
+  "core_cards": [],
+  "play_style": "此牌型目前尚無詳細資料，請根據對手打出的牌判斷風格",
+  "win_condition": "根據你的牌組優勢施展",
+  "key_turns": "依對手行動判斷",
+  "against_tips": [
+    "觀察對手的出牌節奏判斷是快攻/中速/控制",
+    "記錄對手核心牌型"
+  ],
+  "notes": ""
+}

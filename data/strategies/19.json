@@ -1,0 +1,78 @@
+{
+  "archetype_id": 19,
+  "name": "Dragon Warrior",
+  "name_zh": "",
+  "class": "WARRIOR",
+  "class_zh": "戰士",
+  "style": "中速",
+  "win_rate": 62.1,
+  "pct_of_total": 10.5,
+  "rank": 3,
+  "core_cards": [
+    {
+      "card_id": "TIME_034",
+      "name": "競技場播報員",
+      "type": "MINION",
+      "cost": 4,
+      "text": "倒轉 戰吼：雙方裝備一把隨機武器，賦予你的武器+1/+1"
+    },
+    {
+      "card_id": "EDR_456",
+      "name": "黑暗騎兵",
+      "type": "MINION",
+      "cost": 1,
+      "text": "戰吼：若你手中有龍類，發現一個有 黑暗贈禮的龍類"
+    },
+    {
+      "card_id": "TLC_600",
+      "name": "巔風飛龍",
+      "type": "MINION",
+      "cost": 8,
+      "text": "[x]戰吼：造成5點傷害並 獲得5點護甲值 同類：消耗減少(3)"
+    },
+    {
+      "card_id": "END_033",
+      "name": "預知滑龍",
+      "type": "MINION",
+      "cost": 7,
+      "text": "飄渺 若你手中有其他龍類，消耗減少(3)"
+    },
+    {
+      "card_id": "EDR_457",
+      "name": "母巢守衛者",
+      "type": "MINION",
+      "cost": 2,
+      "text": "戰吼：若你手中有龍類，裝備一把2/2的劍"
+    },
+    {
+      "card_id": "CORE_EX1_414",
+      "name": "葛羅瑪許‧地獄吼",
+      "type": "MINION",
+      "cost": 8,
+      "text": "衝鋒 受傷時+6攻擊力"
+    },
+    {
+      "card_id": "DINO_401",
+      "name": "偉大的德雷克斯",
+      "type": "MINION",
+      "cost": 8,
+      "text": "衝刺 在此手下攻擊一個敵方手下後，它會對全部其他敵方手下造成傷害"
+    },
+    {
+      "card_id": "EDR_889",
+      "name": "花卉小販",
+      "type": "MINION",
+      "cost": 2,
+      "text": "在你的回合結束時，賦予另一個隨機友方龍類+1/+1"
+    }
+  ],
+  "play_style": "中速型，平衡前後期，有多樣化的應對手段",
+  "win_condition": "耗盡對手資源或建立不可解的板面",
+  "key_turns": "5-8 回合決定走向",
+  "against_tips": [
+    "觀察對手打出的關鍵牌，判斷其 win condition",
+    "小心中期威脅，注意是否有 buff 型隨從雪球",
+    "保留高費法術應對關鍵隨從"
+  ],
+  "notes": ""
+}

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>英雄圖鑑 — HS BG Tracker</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  [x-cloak]{display:none}
+  body{background:#0d0718;color:#d4c4a8;font-family:'Segoe UI',sans-serif;min-height:100vh}
+  ::-webkit-scrollbar{width:5px;height:5px}
+  ::-webkit-scrollbar-track{background:#0d0718}
+  ::-webkit-scrollbar-thumb{background:#3a1a50;border-radius:3px}
+
+  .page-title{font-family:'Cinzel',serif;font-size:1.6rem;font-weight:900;color:#d0a0f0;text-shadow:0 0 30px #9060c080}
+  .nav-link{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:8px;
+    border:1px solid #3a1a50;color:#8060a0;font-size:.82rem;transition:all .15s;text-decoration:none}
+  .nav-link:hover,.nav-link.active{border-color:#9060c0;color:#d0a0f0;background:#1a0a28}
+
+  .toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+    background:#120820;border:1px solid #2a1040;border-radius:10px;padding:10px 14px}
+  .search-box{flex:1;min-width:140px;max-width:260px;
+    background:#0d0718;border:1px solid #3a1a50;border-radius:6px;
+    color:#d4c4a8;font-size:.8rem;padding:5px 10px;outline:none}
+  .search-box:focus{border-color:#7040b0}
+  .count-bar{font-size:.75rem;color:#7050a0}
+  .empty{text-align:center;padding:60px;color:#4a3060}
+
+  /* Hero grid */
+  .hero-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+
+  /* Hero card */
+  .h-card{
+    background:linear-gradient(160deg,#120820,#180a26);
+    border:1px solid #2a1040;border-radius:14px;
+    padding:12px 9px 10px;
+    display:flex;flex-direction:column;align-items:center;gap:6px;
+    transition:border-color .15s,transform .12s,box-shadow .15s;
+    cursor:default;position:relative;
+  }
+  .h-card:hover{border-color:#6030a0;transform:translateY(-3px);box-shadow:0 8px 24px #00000070}
+
+  /* Hero portrait */
+  .h-oval{
+    width:80px;height:80px;border-radius:50%;
+    overflow:hidden;border:2px solid #5030a0;background:#1a0a28;
+    flex-shrink:0;
+  }
+  .h-oval img{width:100%;height:100%;object-fit:cover;object-position:center 15%}
+
+  .h-name{font-size:.78rem;font-weight:700;color:#c0a0e0;text-align:center;line-height:1.3}
+
+  /* Hero power section */
+  .h-power{
+    width:100%;background:#0d0718;border:1px solid #2a1040;border-radius:8px;
+    padding:7px 8px;display:flex;flex-direction:column;align-items:center;gap:4px;margin-top:2px;
+  }
+  .h-power-oval{
+    width:48px;height:48px;border-radius:50%;
+    overflow:hidden;border:1.5px solid #7040b0;background:#1a0a28;flex-shrink:0;
+  }
+  .h-power-oval img{width:100%;height:100%;object-fit:cover}
+  .h-power-name{font-size:.68rem;font-weight:700;color:#a080d0;text-align:center}
+  .h-power-cost{font-size:.6rem;color:#80c0ff;font-weight:700}
+  .h-power-text{font-size:.6rem;color:#8070a0;text-align:center;line-height:1.4;margin-top:2px}
+
+  /* Buddy section */
+  .h-buddy{
+    width:100%;background:#0d0718;border:1px solid #3a2010;border-radius:8px;
+    padding:7px 8px;display:flex;flex-direction:column;align-items:center;gap:4px;margin-top:4px;
+  }
+  .h-buddy-label{font-size:.55rem;font-weight:900;color:#c89800;letter-spacing:.06em;margin-bottom:1px}
+  .h-buddy-oval{
+    width:48px;height:48px;border-radius:50%;
+    overflow:hidden;border:1.5px solid #c89800;background:#1a1000;flex-shrink:0;
+  }
+  .h-buddy-oval img{width:100%;height:100%;object-fit:cover}
+  .h-buddy-name{font-size:.68rem;font-weight:700;color:#d4af37;text-align:center}
+  .h-buddy-stats{display:flex;gap:8px;font-size:.62rem;font-weight:900}
+  .h-buddy-text{font-size:.6rem;color:#a09050;text-align:center;line-height:1.4;margin-top:2px}
+</style>
+</head>
+<body x-data="heroApp()" x-init="init()" x-cloak>
+<div class="max-w-7xl mx-auto px-4 py-6">
+
+  <!-- Header -->
+  <header class="flex items-center justify-between mb-6 flex-wrap gap-3">
+    <div>
+      <h1 class="page-title">🦸 英雄圖鑑</h1>
+      <p class="text-xs mt-1" style="color:#5a3a70">
+        BG Hero Database · <span x-text="total"></span> 位英雄
+      </p>
+    </div>
+    <div class="flex gap-2 flex-wrap">
+      {% if not public_mode %}<a href="/"           class="nav-link">📋 紀錄總覽</a>{% endif %}
+      {% if not public_mode %}<a href="/heroes"     class="nav-link">🏆 英雄排名</a>{% endif %}
+      <a href="/hero-guide" class="nav-link active">🦸 英雄圖鑑</a>
+      <a href="/tier-list"  class="nav-link">⚔️ 當季最強</a>
+      {% if not public_mode %}<a href="/comps"      class="nav-link">🎯 組合排名</a>{% endif %}
+      <a href="/minions"    class="nav-link">🐾 手下圖鑑</a>
+      <a href="/spells"     class="nav-link">✨ 法術圖鑑</a>
+      <a href="/trinkets"   class="nav-link">💎 飾品圖鑑</a>
+    </div>
+  </header>
+
+  <!-- Toolbar -->
+  <div class="toolbar mb-4">
+    <input class="search-box" type="text" placeholder="搜尋英雄名稱或技能說明…"
+           x-model="q" @input.debounce.300ms="load()">
+    <span class="count-bar" x-text="filtered.length + ' / ' + total + ' 位英雄'"></span>
+  </div>
+
+  <!-- Grid -->
+  <div class="hero-grid" x-show="filtered.length > 0">
+    <template x-for="h in filtered" :key="h.id">
+      <div class="h-card">
+        <!-- Hero portrait -->
+        <div class="h-oval">
+          <img :src="'https://art.hearthstonejson.com/v1/256x/'+h.id+'.jpg'"
+               onerror="this.style.display='none'" :alt="h.name">
+        </div>
+        <div class="h-name" x-text="h.name"></div>
+        <!-- Hero power -->
+        <div class="h-power">
+          <div class="h-power-oval">
+            <img :src="'https://art.hearthstonejson.com/v1/256x/'+h.power_id+'.jpg'"
+                 onerror="this.style.display='none'" :alt="h.power_name">
+          </div>
+          <div class="h-power-name" x-text="h.power_name"></div>
+          <div class="h-power-cost" x-show="h.power_cost >= 0" x-text="'費用：' + h.power_cost"></div>
+          <div class="h-power-text" x-html="h.power_text"></div>
+        </div>
+        <!-- Buddy -->
+        <template x-if="h.buddy_id">
+          <div class="h-buddy">
+            <div class="h-buddy-label">★ 英雄夥伴</div>
+            <div class="h-buddy-oval">
+              <img :src="'https://art.hearthstonejson.com/v1/256x/'+h.buddy_id+'.jpg'"
+                   onerror="this.style.display='none'" :alt="h.buddy_name">
+            </div>
+            <div class="h-buddy-name" x-text="h.buddy_name"></div>
+            <div class="h-buddy-stats" x-show="h.buddy_attack != null">
+              <span style="color:#f0c040">⚔ <b x-text="h.buddy_attack"></b></span>
+              <span style="color:#ff6060">❤ <b x-text="h.buddy_health"></b></span>
+            </div>
+            <div class="h-buddy-text" x-html="h.buddy_text"></div>
+          </div>
+        </template>
+      </div>
+    </template>
+  </div>
+  <div class="empty" x-show="filtered.length === 0">找不到相符的英雄</div>
+
+</div>
+<script>
+function heroApp() {
+  return {
+    all: [], filtered: [], total: 0, q: '',
+
+    async init() {
+      await this.load()
+    },
+
+    async load() {
+      const q = encodeURIComponent(this.q)
+      const r = await fetch(`/api/hero-guide?q=${q}`)
+      const d = await r.json()
+      this.all = d.heroes || []
+      this.filtered = this.all
+      this.total = d.total || 0
+    },
+  }
+}
+</script>
+</body>
+</html>

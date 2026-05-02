@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>手下圖鑑 — HS BG Tracker</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  [x-cloak]{display:none}
+  body{background:#0d0718;color:#d4c4a8;font-family:'Segoe UI',sans-serif;min-height:100vh}
+  ::-webkit-scrollbar{width:5px;height:5px}
+  ::-webkit-scrollbar-track{background:#0d0718}
+  ::-webkit-scrollbar-thumb{background:#3a1a50;border-radius:3px}
+
+  .page-title{font-family:'Cinzel',serif;font-size:1.6rem;font-weight:900;color:#d0a0f0;text-shadow:0 0 30px #9060c080}
+  .nav-link{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:8px;
+    border:1px solid #3a1a50;color:#8060a0;font-size:.82rem;transition:all .15s;text-decoration:none}
+  .nav-link:hover,.nav-link.active{border-color:#9060c0;color:#d0a0f0;background:#1a0a28}
+
+  /* ── Toolbar ── */
+  .toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+    background:#120820;border:1px solid #2a1040;border-radius:10px;padding:10px 14px}
+  .fbtn{padding:4px 11px;border-radius:6px;border:1px solid #3a1a50;
+    color:#8060a0;font-size:.75rem;cursor:pointer;transition:all .15s;background:transparent;white-space:nowrap}
+  .fbtn.on,.fbtn:hover{background:#2a0a40;border-color:#9060c0;color:#d0a0ff}
+  .search-box{flex:1;min-width:130px;max-width:220px;
+    background:#0d0718;border:1px solid #3a1a50;border-radius:6px;
+    color:#d4c4a8;font-size:.8rem;padding:5px 10px;outline:none}
+  .search-box:focus{border-color:#7040b0}
+  .sort-sel{background:#0d0718;border:1px solid #3a1a50;border-radius:6px;
+    color:#a070c0;font-size:.75rem;padding:4px 7px;outline:none;cursor:pointer}
+  .sep{color:#2a1040;font-size:1.2rem;padding:0 2px}
+
+  /* ── tier badge ── */
+  .tier-badge{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:18px;height:18px;border-radius:4px;font-size:.62rem;font-weight:900;
+    flex-shrink:0;
+  }
+  .t1{background:#5a8a30;color:#fff}
+  .t2{background:#2070c0;color:#fff}
+  .t3{background:#8030a0;color:#fff}
+  .t4{background:#c07020;color:#fff}
+  .t5{background:#c02020;color:#fff}
+  .t6{background:#202060;color:#c0c0ff;border:1px solid #6060c0}
+
+  /* ── tribe pill ── */
+  .tribe-pill{display:inline-flex;align-items:center;gap:3px;
+    font-size:.6rem;font-weight:700;padding:1px 6px;border-radius:8px;
+    border:1px solid transparent;white-space:nowrap}
+  .tr-BEAST    {background:#1a2a10;border-color:#4a7020;color:#90c050}
+  .tr-MURLOC   {background:#101a30;border-color:#204880;color:#5090e0}
+  .tr-MECHANICAL{background:#1a1a2a;border-color:#505080;color:#9090d0}
+  .tr-DEMON    {background:#2a0a10;border-color:#801020;color:#e05050}
+  .tr-DRAGON   {background:#1a1000;border-color:#806000;color:#e0a020}
+  .tr-PIRATE   {background:#0a1a1a;border-color:#207060;color:#40c0a0}
+  .tr-QUILBOAR {background:#2a1010;border-color:#803030;color:#d07070}
+  .tr-ELEMENTAL{background:#1a1a00;border-color:#707000;color:#d0d030}
+  .tr-NAGA     {background:#0a2020;border-color:#106060;color:#40c0c0}
+  .tr-UNDEAD   {background:#1a0a2a;border-color:#502060;color:#a050d0}
+  .tr-ALL      {background:#202020;border-color:#606060;color:#c0c0c0}
+  .tr-NONE     {background:#1a1a1a;border-color:#3a3a3a;color:#808080}
+
+  /* ── Card grid ── */
+  .minion-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:12px}
+
+  /* ── Card ── */
+  .m-card{
+    background:linear-gradient(160deg,#120820,#180a26);
+    border:1px solid #2a1040;border-radius:12px;
+    padding:10px 7px 9px;
+    display:flex;flex-direction:column;align-items:center;gap:5px;
+    transition:border-color .15s,transform .12s,box-shadow .15s;
+    cursor:default;position:relative;
+  }
+  .m-card:hover{border-color:#6030a0;transform:translateY(-3px);box-shadow:0 8px 24px #00000070;z-index:10}
+  .m-card.seen-card{border-color:#3a1a50}
+  .m-card.seen-card:hover{border-color:#8040c0}
+
+  /* portrait oval */
+  .m-oval{
+    width:68px;height:90px;
+    border-radius:50% 50% 44% 44% / 46% 46% 54% 54%;
+    overflow:hidden;border:2px solid #6a4020;background:#140a04;flex-shrink:0;
+  }
+  .m-oval.golden-border{border:2.5px solid #d4af37;box-shadow:0 0 12px #d4af3760}
+  .m-oval.seen-border{border-color:#8a6040}
+  .m-oval img{width:100%;height:100%;object-fit:cover;object-position:center 15%}
+
+  /* top row: tier + tribe */
+  .m-header{display:flex;align-items:center;justify-content:space-between;width:100%;padding:0 1px}
+
+  /* ATK / HP row under oval */
+  .m-base-stats{display:flex;gap:5px;font-size:.68rem;font-weight:900;margin-top:1px}
+  .m-atk{color:#f0c040}.m-hp{color:#ff6060}
+
+  /* name */
+  .m-name{font-size:.7rem;font-weight:700;color:#c0a070;text-align:center;
+    line-height:1.3;max-width:110px;word-break:break-all}
+
+  /* personal stats bar */
+  .p-stats{
+    width:100%;background:#0d0718;border:1px solid #2a1040;border-radius:6px;
+    padding:4px 6px;display:flex;flex-direction:column;gap:2px;margin-top:2px;
+  }
+  .p-row{display:flex;justify-content:space-between;font-size:.62rem}
+  .p-lbl{color:#5a3a70}
+  .avg-good{color:#48e080;font-weight:900}
+  .avg-mid {color:#f0c040;font-weight:900}
+  .avg-bad {color:#ff6060;font-weight:900}
+  .val-purple{color:#c080e0;font-weight:700}
+
+  /* golden badge */
+  .golden-badge{position:absolute;top:6px;right:6px;font-size:.58rem;font-weight:900;
+    color:#ffd060;background:#2a1a00;border:1px solid #c8980050;border-radius:8px;padding:1px 4px}
+
+  /* "seen" glow indicator */
+  .seen-dot{width:6px;height:6px;border-radius:50%;background:#9060c0;
+    box-shadow:0 0 6px #9060c0;flex-shrink:0}
+
+  /* empty */
+  .empty{text-align:center;padding:60px;color:#4a3060}
+
+  /* count bar */
+  .count-bar{font-size:.75rem;color:#7050a0}
+
+  /* ── gold toggle button ── */
+  .gold-toggle{
+    position:absolute;bottom:6px;left:6px;
+    width:22px;height:22px;border-radius:50%;
+    background:#1a1000;border:1px solid #806000;
+    color:#d4af37;font-size:.7rem;font-weight:900;
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;transition:all .15s;z-index:10;
+  }
+  .gold-toggle:hover{background:#2a2000;border-color:#d4af37;box-shadow:0 0 8px #d4af3770}
+  .gold-toggle.on{background:#c89800;color:#1a0a00;border-color:#ffd060;box-shadow:0 0 10px #c8980080}
+
+  .card-text-tip{
+    display:none;position:absolute;bottom:calc(100% + 6px);left:50%;
+    transform:translateX(-50%);z-index:30;
+    background:#100820;border:1px solid #5a2080;border-radius:8px;
+    padding:8px 10px;min-width:170px;max-width:230px;
+    font-size:.67rem;color:#c0a0e0;line-height:1.5;
+    pointer-events:none;box-shadow:0 4px 20px #00000090;
+  }
+  .m-card:hover .card-text-tip{display:block}
+  .tip-section{margin-bottom:5px}
+  .tip-title{font-size:.6rem;font-weight:900;letter-spacing:.05em;margin-bottom:2px}
+  .tip-normal{color:#9060b0}
+  .tip-gold-title{color:#d4af37}
+  .tip-gold-text{color:#f0d080}
+  .tip-divider{border:none;border-top:1px solid #3a1a50;margin:5px 0}
+  .tip-stats{display:flex;gap:8px;font-size:.65rem;font-weight:900;margin-top:3px}
+</style>
+</head>
+<body x-data="app()" x-init="init()" x-cloak>
+<div class="max-w-7xl mx-auto px-4 py-6">
+
+  <!-- Header -->
+  <header class="flex items-center justify-between mb-6 flex-wrap gap-3">
+    <div>
+      <h1 class="page-title">🐾 手下圖鑑</h1>
+      <p class="text-xs mt-1" style="color:#5a3a70">
+        BG Minion Database · <span x-text="total"></span> 隻手下
+      </p>
+    </div>
+    <div class="flex gap-2 flex-wrap">
+      {% if not public_mode %}<a href="/"           class="nav-link">📋 紀錄總覽</a>{% endif %}
+      {% if not public_mode %}<a href="/heroes"     class="nav-link">🏆 英雄排名</a>{% endif %}
+      <a href="/hero-guide" class="nav-link">🦸 英雄圖鑑</a>
+      <a href="/tier-list"  class="nav-link">⚔️ 當季最強</a>
+      {% if not public_mode %}<a href="/comps"      class="nav-link">🎯 組合排名</a>{% endif %}
+      <a href="/minions"    class="nav-link active">🐾 手下圖鑑</a>
+      <a href="/spells"     class="nav-link">✨ 法術圖鑑</a>
+      <a href="/trinkets"   class="nav-link">💎 飾品圖鑑</a>
+    </div>
+  </header>
+
+  <!-- Toolbar -->
+  <div class="toolbar mb-4">
+    <!-- Category filter -->
+    <span style="font-size:.75rem;color:#6a4a80;font-weight:700">分類</span>
+    <template x-for="cat in categories">
+      <button class="fbtn" :class="catFilter===cat.key?'on':''"
+              @click="catFilter=cat.key;applyFilter()"
+              x-text="cat.label"></button>
+    </template>
+
+    <span class="sep">|</span>
+
+    <!-- Tier filter -->
+    <span style="font-size:.75rem;color:#6a4a80;font-weight:700">酒館</span>
+    <template x-for="t in [0,1,2,3,4,5,6]">
+      <button class="fbtn" :class="tierFilter===t?'on':''"
+              @click="tierFilter=t;applyFilter()"
+              x-text="t===0?'全部':'★'+t"></button>
+    </template>
+
+    <span class="sep">|</span>
+
+    <!-- Tribe filter -->
+    <span style="font-size:.75rem;color:#6a4a80;font-weight:700">部族</span>
+    <select class="sort-sel" x-model="tribeFilter" @change="applyFilter()">
+      <option value="">全部</option>
+      <template x-for="tr in tribes">
+        <option :value="tr" x-text="tribeName(tr)"></option>
+      </template>
+    </select>
+
+    <span class="sep">|</span>
+
+    <!-- Sort -->
+    <span style="font-size:.75rem;color:#6a4a80;font-weight:700">排序</span>
+    <select class="sort-sel" x-model="sortBy" @change="applyFilter()">
+      <option value="tier_name">酒館等級</option>
+      <option value="atk_desc">攻擊力 ↓</option>
+      <option value="hp_desc">血量 ↓</option>
+      <option value="seen_desc">我的出場 ↓</option>
+      <option value="avg_asc">我的均名次 ↑</option>
+    </select>
+
+    <!-- Seen only toggle -->
+    <button class="fbtn" :class="seenOnly?'on':''" @click="seenOnly=!seenOnly;applyFilter()">
+      👁 只看出場過
+    </button>
+
+    <!-- Search -->
+    <input class="search-box" type="text" placeholder="🔍 搜尋手下名稱…"
+           x-model="search" @input="applyFilter()">
+
+    <!-- Count -->
+    <span class="count-bar ml-auto">
+      顯示 <b x-text="paged.length" style="color:#9060b0"></b> /
+      <b x-text="filtered.length" style="color:#6040a0"></b> 張
+    </span>
+  </div>
+
+  <!-- Loading -->
+  <div x-show="loading" class="empty">⏳ 載入中…</div>
+  <div x-show="!loading && filtered.length===0" class="empty">沒有符合條件的手下。</div>
+
+  <!-- Grid -->
+  <div class="minion-grid" x-show="!loading && filtered.length>0">
+    <template x-for="m in paged" :key="m.card_id">
+      <div class="m-card" :class="m.seen>0?'seen-card':''" x-data="{showGold:false}">
+
+        <!-- tooltip: card text + golden text -->
+        <div class="card-text-tip" x-show="m.text||m.golden_text" style="display:none">
+          <!-- normal card -->
+          <template x-if="m.text">
+            <div class="tip-section">
+              <div class="tip-title tip-normal">普通</div>
+              <div style="color:#c0a0e0;white-space:pre-line" x-html="m.text"></div>
+              <div class="tip-stats" x-show="m.attack>0">
+                <span style="color:#f0c040">⚔ <b x-text="m.attack"></b></span>
+                <span style="color:#ff6060">❤ <b x-text="m.health"></b></span>
+              </div>
+            </div>
+          </template>
+          <!-- golden card -->
+          <template x-if="m.has_golden && m.golden_text">
+            <div>
+              <hr class="tip-divider">
+              <div class="tip-section">
+                <div class="tip-title tip-gold-title">★ 閃光</div>
+                <div class="tip-gold-text" style="white-space:pre-line" x-html="m.golden_text"></div>
+                <div class="tip-stats" x-show="m.golden_attack>0">
+                  <span style="color:#f0c040">⚔ <b x-text="m.golden_attack"></b></span>
+                  <span style="color:#ff6060">❤ <b x-text="m.golden_health"></b></span>
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
+
+        <!-- golden badge (personal seen count) -->
+        <div class="golden-badge" x-show="m.golden_count>0" x-text="'★×'+m.golden_count"></div>
+
+        <!-- gold toggle button (only for cards with golden version) -->
+        <button class="gold-toggle" x-show="m.has_golden"
+                :class="showGold?'on':''"
+                @click.stop="showGold=!showGold"
+                :title="showGold?'顯示普通版':'切換金卡'">★</button>
+
+        <!-- tier + tribe -->
+        <div class="m-header">
+          <span class="tier-badge" :class="'t'+m.tech_level" x-text="'T'+m.tech_level"></span>
+          <div style="display:flex;gap:2px;flex-wrap:wrap;justify-content:flex-end">
+            <template x-for="race in m.races">
+              <span class="tribe-pill" :class="'tr-'+race" x-text="tribeName(race)"></span>
+            </template>
+          </div>
+        </div>
+
+        <!-- oval portrait — toggles between normal and golden image -->
+        <div class="m-oval"
+             :class="showGold?'golden-border':(m.golden_count>0?'golden-border':(m.seen>0?'seen-border':''))">
+          <img :src="showGold
+                       ? `https://art.hearthstonejson.com/v1/256x/${m.card_id}_G.jpg`
+                       : `https://art.hearthstonejson.com/v1/256x/${m.card_id}.jpg`"
+               :alt="m.name" onerror="this.style.opacity='.15'">
+        </div>
+
+        <!-- ATK / HP — shows golden stats when toggled -->
+        <div class="m-base-stats">
+          <span class="m-atk"
+                x-text="'⚔'+(showGold && m.golden_attack ? m.golden_attack : m.attack)"></span>
+          <span style="color:#5a3a50">/</span>
+          <span class="m-hp"
+                x-text="'❤'+(showGold && m.golden_health ? m.golden_health : m.health)"></span>
+        </div>
+
+        <!-- name + gold indicator -->
+        <div class="m-name">
+          <span x-show="showGold" style="color:#d4af37">★ </span>
+          <span x-text="m.name"></span>
+        </div>
+
+        <!-- personal stats (only if seen) -->
+        <template x-if="m.seen>0">
+          <div class="p-stats">
+            <div class="p-row">
+              <span class="p-lbl">均名次</span>
+              <span :class="m.avg_placement<=2?'avg-good':m.avg_placement<=4?'avg-mid':'avg-bad'"
+                    x-text="m.avg_placement?.toFixed(1)??'—'"></span>
+            </div>
+            <div class="p-row">
+              <span class="p-lbl">出場</span>
+              <span class="val-purple" x-text="m.seen+'次'"></span>
+            </div>
+            <div class="p-row">
+              <span class="p-lbl">Top4</span>
+              <span :class="m.top4_rate>=70?'avg-good':m.top4_rate>=40?'avg-mid':'avg-bad'"
+                    x-text="(m.top4_rate??0)+'%'"></span>
+            </div>
+          </div>
+        </template>
+        <template x-if="m.seen===0">
+          <div style="font-size:.6rem;color:#3a2050;margin-top:2px">未出場</div>
+        </template>
+
+      </div>
+    </template>
+  </div>
+
+  <!-- Pagination -->
+  <div x-show="!loading && totalPages > 1"
+       class="flex items-center justify-center gap-3 mt-6 flex-wrap">
+    <button class="fbtn" :disabled="page===1" @click="goPage(page-1)"
+            style="min-width:60px">← 上一頁</button>
+    <template x-for="p in Array.from({length:totalPages},(_,i)=>i+1)" :key="p">
+      <button class="fbtn" :class="page===p?'on':''" @click="goPage(p)"
+              x-text="p" style="min-width:36px"></button>
+    </template>
+    <button class="fbtn" :disabled="page===totalPages" @click="goPage(page+1)"
+            style="min-width:60px">下一頁 →</button>
+    <span style="font-size:.75rem;color:#5a4070">
+      第 <b x-text="page"></b> / <b x-text="totalPages"></b> 頁
+      （每頁 <span x-text="pageSize"></span> 張）
+    </span>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="max-w-7xl mx-auto px-4 py-6 mt-8 border-t text-center text-xs space-y-1"
+        style="border-color:#2a1040;color:#3a2050">
+  <div>Hearthstone™ is a trademark of Blizzard Entertainment, Inc. All card data and images are © Blizzard Entertainment.</div>
+  <div>This project is not affiliated with or endorsed by Blizzard. © 2025 HS BG Tracker. All rights reserved.</div>
+</footer>
+
+<script>
+const TRIBE_ZH = {
+  BEAST:'野獸', MURLOC:'魚人', MECHANICAL:'機械', DEMON:'惡魔',
+  DRAGON:'龍族', PIRATE:'海盜', QUILBOAR:'野豬人', ELEMENTAL:'元素',
+  NAGA:'納迦', UNDEAD:'亡靈', ALL:'混合', NONE:'無部族'
+}
+
+function app() {
+  return {
+    loading: true,
+    all: [], filtered: [], paged: [],
+    total: 0,
+    page: 1, pageSize: 120,
+    tierFilter: 0,
+    tribeFilter: '',
+    catFilter: '一般',
+    sortBy: 'tier_name',
+    search: '',
+    seenOnly: false,
+    categories: [
+      {key:'',      label:'全部'},
+      {key:'一般',  label:'⚔️ 一般'},
+      {key:'手下生成', label:'🃏 手下生成'},
+      {key:'已移除',   label:'🚫 已移除'},
+    ],
+    tribes: ['BEAST','MURLOC','MECHANICAL','DEMON','DRAGON',
+             'PIRATE','QUILBOAR','ELEMENTAL','NAGA','UNDEAD','ALL','NONE'],
+
+    get totalPages() { return Math.ceil(this.filtered.length / this.pageSize) },
+
+    async init() { await this.load() },
+
+    async load() {
+      this.loading = true
+      const r = await fetch('/api/minions')
+      const d = await r.json()
+      this.all   = d.minions || []
+      this.total = d.total   || 0
+      this.applyFilter()
+      this.loading = false
+    },
+
+    applyFilter() {
+      let list = [...this.all]
+
+      if (this.catFilter)
+        list = list.filter(m => m.category === this.catFilter)
+
+      if (this.tierFilter > 0)
+        list = list.filter(m => m.tech_level === this.tierFilter)
+
+      if (this.tribeFilter)
+        list = list.filter(m => m.races.includes(this.tribeFilter))
+
+      if (this.seenOnly)
+        list = list.filter(m => m.seen > 0)
+
+      const q = this.search.trim().toLowerCase()
+      if (q) list = list.filter(m => m.name.toLowerCase().includes(q))
+
+      switch (this.sortBy) {
+        case 'tier_name': list.sort((a,b)=>a.tech_level-b.tech_level||a.name.localeCompare(b.name,'zh')); break
+        case 'atk_desc':  list.sort((a,b)=>b.attack-a.attack); break
+        case 'hp_desc':   list.sort((a,b)=>b.health-a.health); break
+        case 'seen_desc': list.sort((a,b)=>b.seen-a.seen); break
+        case 'avg_asc':
+          list.sort((a,b)=>{
+            if (a.avg_placement==null && b.avg_placement==null) return 0
+            if (a.avg_placement==null) return 1
+            if (b.avg_placement==null) return -1
+            return a.avg_placement - b.avg_placement
+          }); break
+      }
+      this.filtered = list
+      this.page = 1
+      this.updatePage()
+    },
+
+    updatePage() {
+      const start = (this.page - 1) * this.pageSize
+      this.paged = this.filtered.slice(start, start + this.pageSize)
+    },
+
+    goPage(p) {
+      this.page = Math.max(1, Math.min(p, this.totalPages))
+      this.updatePage()
+      window.scrollTo({top: 0, behavior: 'smooth'})
+    },
+
+    tribeName(r) { return TRIBE_ZH[r] || r }
+  }
+}
+</script>
+</body>
+</html>

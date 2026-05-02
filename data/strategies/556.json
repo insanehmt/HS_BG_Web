@@ -1,0 +1,78 @@
+{
+  "archetype_id": 556,
+  "name": "Unholy Death Knight",
+  "name_zh": "",
+  "class": "DEATHKNIGHT",
+  "class_zh": "死亡騎士",
+  "style": "亡語鏈",
+  "win_rate": 59.1,
+  "pct_of_total": 1.8,
+  "rank": 7,
+  "core_cards": [
+    {
+      "card_id": "RLK_707",
+      "name": "墳墓之力",
+      "type": "SPELL",
+      "cost": 4,
+      "text": "賦予你的手下+1點攻擊力。消耗5個 屍體改為賦予+3點攻擊力"
+    },
+    {
+      "card_id": "TLC_245",
+      "name": "遠古迅猛龍",
+      "type": "MINION",
+      "cost": 2,
+      "text": "[x]戰吼：選擇獲得 +3攻擊力、聖盾術， 或「死亡之聲：召喚 兩個1/1植物」"
+    },
+    {
+      "card_id": "TIME_610",
+      "name": "昨日之影",
+      "type": "SPELL",
+      "cost": 6,
+      "text": "倒轉 召喚四個3/2魔影。它們各獲得兩種隨機 加成效果"
+    },
+    {
+      "card_id": "EDR_816",
+      "name": "兇惡蚊蟲",
+      "type": "MINION",
+      "cost": 1,
+      "text": "在你的回合結束時，賦予你的其他 手下+1攻擊力"
+    },
+    {
+      "card_id": "CATA_471",
+      "name": "塔蘭姬的最後一博",
+      "type": "SPELL",
+      "cost": 5,
+      "text": "賦予你的手下「死亡之聲：召喚一個消耗為4的隨機手下」"
+    },
+    {
+      "card_id": "TLC_443",
+      "name": "不情願的馴獸師",
+      "type": "MINION",
+      "cost": 3,
+      "text": "重生。死亡之聲：召喚一個有嘲諷的2/2不死族野獸"
+    },
+    {
+      "card_id": "CORE_EDR_003",
+      "name": "法勒瑞克",
+      "type": "MINION",
+      "cost": 3,
+      "text": "你獲得的屍體變為 兩倍。戰吼：抽一張消耗屍體的牌"
+    },
+    {
+      "card_id": "TIME_059",
+      "name": "活體悖論",
+      "type": "MINION",
+      "cost": 3,
+      "text": "飄渺 戰吼：召喚兩個有飄渺的2/1活體悖論"
+    }
+  ],
+  "play_style": "亡語型，依靠亡語效果獲取額外資源或傷害",
+  "win_condition": "克制亡語後板面穩定推進",
+  "key_turns": "中期亡語鏈是關鍵，3-7 回合需保持清醒",
+  "against_tips": [
+    "若有沉默，優先用在高價值亡語隨從",
+    "盡量讓亡語在你準備好後才觸發（控制交換時間）",
+    "不要用點殺浪費亡語，考慮 AoE 或變形"
+  ],
+  "notes": ""
+}

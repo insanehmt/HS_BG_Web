@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>當季最強 — HS BG Tracker</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+document.addEventListener('alpine:init', () => {
+  Alpine.data('tierApp', () => ({
+    season: 13,
+    patchBuild: '',
+    updateLoading: false,
+    updateMsg: '',
+    needsUpdate: false,
+    updateBanner: '',
+    comps: [],
+    filtered: [],
+    loading: true,
+    tierFilter: '全部',
+    diffFilter: '全部',
+    raceFilter: '全部',
+    showHidden: false,
+    hiddenCount: 0,
+    modal: null,
+    showAddModal: false,
+    addError: '',
+    addLoading: false,
+    showEditModal: false,
+    editError: '',
+    editLoading: false,
+    editForm: {},
+    showFirestoneModal: false,
+    firestoneText: '',
+    firestoneLoading: false,
+    firestoneError: '',
+    firestonePreview: [],
+    firestoneImporting: false,
+    scrapeLoading: false,
+    showHsreplayModal: false,
+    hsreplayText: '',
+    hsreplayLoading: false,
+    hsreplayError: '',
+    hsreplayPreview: [],
+    hsreplayImporting: false,
+    scrapeHsreplayLoading: false,
+    // ── Card Picker ──
+    showPicker: false,
+    pickerTarget: null,
+    pickerType: 'minion',
+    pickerRace: '全部',
+    pickerQuery: '',
+    pickerCards: [],
+    pickerLoading: false,
+    addForm: {
+      name: '', tier: 'A', races: [], difficulty: 'medium',
+      coreCards: [{cid:'',cname:''},{cid:'',cname:''},{cid:'',cname:''},{cid:'',cname:''},{cid:'',cname:''},{cid:'',cname:''}],
+      addon1:    [{cid:'',cname:''},{cid:'',cname:''},{cid:'',cname:''},{cid:'',cname:''}],
+      addon2:    [{cid:'',cname:''},{cid:'',cname:''},{cid:'',cname:''},{cid:'',cname:''}],
+      strategy: '', tips: '',
+    },
+
+    RACES: ['DRAGON','NAGA','DEMON','PIRATE','MECHANICAL','MURLOC','QUILBOAR','UNDEAD','ELEMENTAL','BEAST','ALL'],
+    RACE_LABELS: {
+      DRAGON:'龍族', NAGA:'納迦', DEMON:'惡魔', PIRATE:'海盜',
+      MECHANICAL:'機械', MURLOC:'魚人', QUILBOAR:'野豬人',
+      UNDEAD:'亡靈', ELEMENTAL:'元素', BEAST:'野獸', ALL:'全族',
+    },
+    TIER_LABELS: {
+      S:'🔥 頂級 — 當前賽季最強',
+      A:'⭐ 強力 — 穩定高分',
+      B:'✅ 可用 — 特定情況有效',
+      C:'⚠️ 次選 — 前期過渡',
+    },
+    DIFF_LABELS: { easy:'🟢 簡單', medium:'🟡 中等', hard:'🔴 困難' },
+
+    async init() {
+      try {
+        const r = await fetch('/api/tier-list?include_hidden=1')
+        const d = await r.json()
+        this.comps = d.comps || []
+        this.hiddenCount = d.hidden || 0
+        this.filterComps()
+        this.checkVersion()
+      } catch(e) {
+        console.error('載入組合資料失敗:', e)
+      } finally {
+        this.loading = false
+      }
+    },
+
+    filterComps() {
+      this.filtered = this.comps.filter(c => {
+        if (!this.showHidden && c.rotated) return false
+        const tOk = this.tierFilter === '全部' || c.tier === this.tierFilter
+        const dOk = this.diffFilter === '全部' || c.difficulty === this.diffFilter
+        const rOk = this.raceFilter === '全部' || (c.races||[]).includes(this.raceFilter)
+        return tOk && dOk && rOk
+      })
+    },
+
+    openModal(comp) { this.modal = comp },
+    raceLabel(r)    { return this.RACE_LABELS[r] || r },
+    tierLabel(t)    { return this.TIER_LABELS[t] || t },
+    diffLabel(d)    { return this.DIFF_LABELS[d] || d },
+
+    emptyCards(n = 4) {
+      const r = []
+      for (let i = 0; i < n; i++) r.push({cid:'', cname:''})
+      return r
+    },
+
+    openEditModal(comp) {
+      this.editError = ''
+      const pad = (arr, n=4) => {
+        const r = (arr||[]).map(id => ({cid: id||'', cname: ''}))
+        while (r.length < n) r.push({cid:'',cname:''})
+        return r
+      }
+      const padNames = (ids, names, n=4) => {
+        const r = (ids||[]).map((id,i) => ({cid: id||'', cname: (names||[])[i]||''}))
+        while (r.length < n) r.push({cid:'',cname:''})
+        return r
+      }
+      this.editForm = {
+        id: comp.id,
+        name: comp.name || '',
+        tier: comp.tier || 'A',
+        races: [...(comp.races||[])],
+        difficulty: comp.difficulty || 'medium',
+        coreCards: padNames(comp.core, comp.core_names, 6),
+        addon1: padNames(comp.addon&&comp.addon[0], comp.addon_names&&comp.addon_names[0], 4),
+        addon2: padNames(comp.addon&&comp.addon[1], comp.addon_names&&comp.addon_names[1], 4),
+        strategy: comp.strategy || '',
+        tips: Array.isArray(comp.tips) ? comp.tips.join('\n') : (comp.tips || ''),
+      }
+      this.showEditModal = true
+      this.modal = null
+    },
+
+    async submitEdit() {
+      const f = this.editForm
+      if (!f.name.trim()) { this.editError = '請輸入組合名稱'; return }
+      const core = f.coreCards.filter(c => c.cid.trim())
+      if (!core.length) { this.editError = '請至少填入一張核心卡牌'; return }
+      const a1 = f.addon1.filter(c => c.cid.trim())
+      const a2 = f.addon2.filter(c => c.cid.trim())
+      const tips = f.tips.split('\n').map(t => t.trim()).filter(t => t)
+      const payload = {
+        name: f.name.trim(), tier: f.tier, races: f.races, difficulty: f.difficulty,
+        core: core.map(c => c.cid.trim()),
+        core_names: core.map(c => c.cname.trim()),
+        addon:       [a1.length?a1.map(c=>c.cid.trim()):null, a2.length?a2.map(c=>c.cid.trim()):null].filter(Boolean),
+        addon_names: [a1.length?a1.map(c=>c.cname.trim()):null, a2.length?a2.map(c=>c.cname.trim()):null].filter(Boolean),
+        strategy: f.strategy.trim(), tips,
+      }
+      this.editLoading = true; this.editError = ''
+      try {
+        const r = await fetch('/api/tier-list/' + encodeURIComponent(f.id), {
+          method:'PUT', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify(payload)
+        })
+        const d = await r.json()
+        if (d.success) {
+          this.comps = d.comps
+          this.hiddenCount = d.hidden || 0
+          this.filterComps()
+          this.showEditModal = false
+          this.updateMsg = '✅ 組合已更新！'
+          setTimeout(() => this.updateMsg = '', 3000)
+        } else { this.editError = d.error || '更新失敗' }
+      } catch(e) { this.editError = '網路錯誤：' + e.message }
+      finally { this.editLoading = false }
+    },
+
+    openAddModal() {
+      this.addError = ''
+      this.addForm = {
+        name: '', tier: 'A', races: [], difficulty: 'medium',
+        coreCards: this.emptyCards(6),
+        addon1: this.emptyCards(4),
+        addon2: this.emptyCards(4),
+        strategy: '', tips: '',
+      }
+      this.showAddModal = true
+    },
+
+    async submitAdd() {
+      const f = this.addForm
+      if (!f.name.trim())          { this.addError = '請輸入組合名稱'; return }
+      if (!f.races.length)         { this.addError = '請選擇至少一個族裔'; return }
+      const core = f.coreCards.filter(c => c.cid.trim() && c.cname.trim())
+      if (!core.length)            { this.addError = '請至少填入一張核心卡牌'; return }
+      const a1 = f.addon1.filter(c => c.cid.trim() && c.cname.trim())
+      const a2 = f.addon2.filter(c => c.cid.trim() && c.cname.trim())
+      const tips = f.tips.split('\n').map(t => t.trim()).filter(t => t)
+
+      const payload = {
+        name: f.name.trim(), tier: f.tier, races: f.races, difficulty: f.difficulty,
+        core: core.map(c => c.cid.trim()),
+        core_names: core.map(c => c.cname.trim()),
+        addon:       [a1.length ? a1.map(c=>c.cid.trim())   : null, a2.length ? a2.map(c=>c.cid.trim())   : null].filter(Boolean),
+        addon_names: [a1.length ? a1.map(c=>c.cname.trim()) : null, a2.length ? a2.map(c=>c.cname.trim()) : null].filter(Boolean),
+        strategy: f.strategy.trim(), tips,
+      }
+
+      this.addLoading = true
+      this.addError = ''
+      try {
+        const r = await fetch('/api/tier-list/add', {
+          method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify(payload)
+        })
+        const d = await r.json()
+        if (d.success) {
+          this.comps = d.comps
+          this.filterComps()
+          this.showAddModal = false
+        } else {
+          this.addError = d.error || '新增失敗'
+        }
+      } catch(e) {
+        this.addError = '網路錯誤：' + e.message
+      } finally {
+        this.addLoading = false
+      }
+    },
+
+    async checkVersion() {
+      try {
+        const r = await fetch('/api/check-version')
+        const d = await r.json()
+        if (d.season) this.season = d.season
+        if (d.current_build) this.patchBuild = d.current_build
+        if (d.needs_update) {
+          this.needsUpdate = true
+          this.updateBanner = `偵測到新版本 Build ${d.current_build}（上次更新：Build ${d.stored_build || '未知'}），建議更新牌庫`
+        }
+      } catch(e) { /* silent */ }
+    },
+
+    async updateCards() {
+      this.updateLoading = true
+      this.updateMsg = '更新中…'
+      try {
+        const r = await fetch('/api/update-cards', {method:'POST'})
+        const d = await r.json()
+        if (d.success) {
+          this.updateMsg = `✅ 更新完成！手下 ${d.updated?.minions||0} · 法術 ${d.updated?.spells||0} · 飾品 ${d.updated?.trinkets||0}`
+          this.needsUpdate = false
+          this.updateBanner = ''
+          if (d.build) this.patchBuild = d.build
+        } else {
+          this.updateMsg = '❌ 更新失敗：' + (d.error || '未知錯誤')
+        }
+      } catch(e) {
+        this.updateMsg = '❌ 網路錯誤：' + e.message
+      } finally {
+        this.updateLoading = false
+      }
+    },
+
+    async parseFirestone() {
+      this.firestoneLoading = true
+      this.firestoneError = ''
+      this.firestonePreview = []
+      try {
+        const r = await fetch('/api/parse-firestone', {
+          method: 'POST', headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({text: this.firestoneText})
+        })
+        const d = await r.json()
+        if (d.error) { this.firestoneError = d.error; return }
+        this.firestonePreview = d.parsed || []
+      } catch(e) { this.firestoneError = '解析失敗: ' + e.message }
+      finally { this.firestoneLoading = false }
+    },
+
+    async importFirestone() {
+      this.firestoneImporting = true
+      try {
+        const r = await fetch('/api/import-firestone', {
+          method: 'POST', headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({comps: this.firestonePreview})
+        })
+        const d = await r.json()
+        if (d.success) {
+          this.comps = d.comps
+          this.filterComps()
+          this.showFirestoneModal = false
+          this.updateMsg = '✅ Firestone 匯入完成！更新 ' + d.updated + ' · 新增 ' + d.added
+        }
+      } catch(e) { this.firestoneError = '匯入失敗: ' + e.message }
+      finally { this.firestoneImporting = false }
+    },
+
+    async parseHsreplay() {
+      this.hsreplayLoading = true
+      this.hsreplayError = ''
+      this.hsreplayPreview = []
+      try {
+        const r = await fetch('/api/parse-hsreplay', {
+          method: 'POST', headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({text: this.hsreplayText})
+        })
+        const d = await r.json()
+        if (d.error) { this.hsreplayError = d.error; return }
+        this.hsreplayPreview = d.parsed || []
+      } catch(e) { this.hsreplayError = '解析失敗: ' + e.message }
+      finally { this.hsreplayLoading = false }
+    },
+
+    async importHsreplay() {
+      this.hsreplayImporting = true
+      try {
+        const r = await fetch('/api/import-hsreplay', {
+          method: 'POST', headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({comps: this.hsreplayPreview})
+        })
+        const d = await r.json()
+        if (d.success) {
+          this.comps = d.comps
+          this.filterComps()
+          this.showHsreplayModal = false
+          this.updateMsg = '✅ HSReplay 匯入完成！更新 ' + d.updated + ' · 新增 ' + d.added
+        }
+      } catch(e) { this.hsreplayError = '匯入失敗: ' + e.message }
+      finally { this.hsreplayImporting = false }
+    },
+    // ── Card Picker ──
+    async openPicker(form, section, index) {
+      this.pickerTarget = { form, section, index }
+      this.pickerType  = 'minion'
+      this.pickerRace  = '全部'
+      this.pickerQuery = ''
+      this.showPicker  = true
+      await this.loadPickerCards()
+    },
+    async loadPickerCards() {
+      this.pickerLoading = true
+      this.pickerCards   = []
+      try {
+        const race   = (this.pickerRace === '全部') ? '' : this.pickerRace
+        const params = new URLSearchParams({ type: this.pickerType, q: this.pickerQuery, race })
+        const r      = await fetch('/api/card-picker?' + params)
+        const d      = await r.json()
+        this.pickerCards = d.cards || []
+      } catch(e) { this.pickerCards = [] }
+      finally { this.pickerLoading = false }
+    },
+    async setPickerType(t) {
+      this.pickerType  = t
+      this.pickerRace  = '全部'
+      this.pickerQuery = ''
+      await this.loadPickerCards()
+    },
+    async setPickerRace(r) {
+      this.pickerRace = r
+      await this.loadPickerCards()
+    },
+    selectPickerCard(card) {
+      const { form, section, index } = this.pickerTarget
+      this[form][section][index] = { cid: card.id, cname: card.name }
+      this.showPicker = false
+    },
+    removeCard(form, section, index) {
+      this[form][section][index] = { cid: '', cname: '' }
+    },
+    async searchPicker(q) {
+      this.pickerQuery = q
+      await this.loadPickerCards()
+    },
+    async fixStrategy() {
+      try {
+        const r = await fetch('/api/fix-strategy', {method:'POST'})
+        const d = await r.json()
+        if (d.success) {
+          this.updateMsg = '✅ 已補填 ' + d.fixed + ' 筆說明'
+          const rv = await fetch('/api/tier-list?include_hidden=1')
+          const dv = await rv.json()
+          this.comps = dv.comps || []
+          this.filterComps()
+        }
+      } catch(e) { this.updateMsg = '❌ 補填失敗: ' + e.message }
+    },
+
+    async scrapeFirestone() {
+      if (!confirm('將從 Firestone 網站自動抓取最新牌組數據（約 30 秒），並覆蓋現有牌組清單。\n確定繼續？')) return
+      this.scrapeLoading = true
+      this.updateMsg = '⏳ 正在抓取 Firestone 數據…'
+      try {
+        const r = await fetch('/api/scrape-comps', {method:'POST'})
+        const d = await r.json()
+        if (d.success) {
+          this.updateMsg = `✅ 抓取完成！Firestone ${d.firestone} 筆更新 + 保留自訂 ${d.custom} 筆，共 ${d.total} 個牌組`
+          this.comps = d.comps || []
+          this.hiddenCount = d.hidden || 0
+          this.filterComps()
+        } else {
+          this.updateMsg = '❌ 抓取失敗：' + (d.error || '未知錯誤')
+        }
+      } catch(e) {
+        this.updateMsg = '❌ 抓取失敗：' + e.message
+      } finally {
+        this.scrapeLoading = false
+      }
+    },
+
+    async scrapeHsreplay() {
+      if (!confirm('將從 HSReplay 網站自動抓取牌組評級（約 30-40 秒）。\n確定繼續？')) return
+      this.scrapeHsreplayLoading = true
+      this.updateMsg = '⏳ 正在抓取 HSReplay 數據…'
+      try {
+        const r = await fetch('/api/scrape-hsreplay', {method:'POST'})
+        const d = await r.json()
+        if (d.success) {
+          this.updateMsg = `✅ HSReplay 抓取完成！更新 ${d.updated} 筆，新增 ${d.added} 筆，保留自訂 ${d.kept} 筆，共 ${d.total} 個牌組`
+          this.comps = d.comps || []
+          this.hiddenCount = d.hidden || 0
+          this.filterComps()
+        } else {
+          this.updateMsg = '❌ 抓取失敗：' + (d.error || '未知錯誤')
+        }
+      } catch(e) {
+        this.updateMsg = '❌ 抓取失敗：' + e.message
+      } finally {
+        this.scrapeHsreplayLoading = false
+      }
+    },
+  }))
+})
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  [x-cloak]{display:none}
+  body{background:#0d0718;color:#d4c4a8;font-family:'Segoe UI',sans-serif;min-height:100vh}
+  ::-webkit-scrollbar{width:5px;height:5px}
+  ::-webkit-scrollbar-track{background:#0d0718}
+  ::-webkit-scrollbar-thumb{background:#3a1a50;border-radius:3px}
+
+  .page-title{font-family:'Cinzel',serif;font-size:1.6rem;font-weight:900;color:#d0a0f0;text-shadow:0 0 30px #9060c080}
+  .nav-link{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:8px;
+    border:1px solid #3a1a50;color:#8060a0;font-size:.82rem;transition:all .15s;text-decoration:none}
+  .nav-link:hover,.nav-link.active{border-color:#9060c0;color:#d0a0f0;background:#1a0a28}
+
+  .tier-S{background:linear-gradient(135deg,#ff4d4d,#ff9900);color:#fff;font-weight:900;text-shadow:0 1px 3px #0005}
+  .tier-A{background:linear-gradient(135deg,#ff9900,#ffd700);color:#1a0a00;font-weight:900}
+  .tier-B{background:linear-gradient(135deg,#4caf50,#81c784);color:#fff;font-weight:900}
+  .tier-C{background:linear-gradient(135deg,#2196f3,#64b5f6);color:#fff;font-weight:700}
+  .tier-badge{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+
+  .diff-easy{background:#1a2a1a;border:1px solid #2a4a2a;color:#66bb6a;font-size:.68rem;padding:2px 8px;border-radius:10px}
+  .diff-medium{background:#2a2010;border:1px solid #4a3a10;color:#ffa726;font-size:.68rem;padding:2px 8px;border-radius:10px}
+  .diff-hard{background:#2a1010;border:1px solid #4a2020;color:#ef5350;font-size:.68rem;padding:2px 8px;border-radius:10px}
+
+  .race-pill{font-size:.62rem;padding:2px 7px;border-radius:8px;font-weight:600}
+  .race-DRAGON{background:#1a1040;border:1px solid #4030a0;color:#8080ff}
+  .race-NAGA{background:#001a1a;border:1px solid #006060;color:#00c0c0}
+  .race-DEMON{background:#1a0010;border:1px solid #500030;color:#e040fb}
+  .race-PIRATE{background:#1a1000;border:1px solid #503000;color:#ffb300}
+  .race-MECHANICAL{background:#101a20;border:1px solid #204050;color:#40c8e0}
+  .race-MURLOC{background:#001020;border:1px solid #003060;color:#4080ff}
+  .race-QUILBOAR{background:#201000;border:1px solid #502800;color:#ff7043}
+  .race-UNDEAD{background:#0a1a0a;border:1px solid #1a4020;color:#69f0ae}
+  .race-ELEMENTAL{background:#1a1010;border:1px solid #503010;color:#ffcc02}
+  .race-ALL{background:#1a1a1a;border:1px solid #404040;color:#bdbdbd}
+  .race-BEAST{background:#1a1000;border:1px solid #3a2200;color:#a5d6a7}
+
+  /* Card ovals */
+  .card-oval{border-radius:50% 50% 44% 44% / 46% 46% 54% 54%;overflow:hidden;background:#1a0a28;flex-shrink:0}
+  .card-oval img{width:100%;height:100%;object-fit:cover;object-position:center 15%}
+  .card-oval.core{border:2px solid #ffd700;box-shadow:0 0 8px #ffd70050}
+  .card-oval.addon{border:2px solid #3a2a50}
+  .card-oval.sm{width:44px;height:44px}
+  .card-oval.md{width:56px;height:56px}
+  .card-oval.lg{width:64px;height:64px}
+
+  .cslot{display:flex;flex-direction:column;align-items:center;gap:4px}
+  .cslot .cname{font-size:.55rem;color:#b8a8d0;text-align:center;max-width:60px;line-height:1.25;word-break:break-all}
+
+  /* Comp row — compact like comps.html board-row */
+  .comp-row{
+    background:linear-gradient(90deg,#130820,#1a0a28,#130820);
+    border:1px solid #2a1040;border-radius:10px;
+    display:flex;align-items:center;flex-wrap:nowrap;gap:6px;
+    padding:7px 12px;
+    transition:border-color .15s;cursor:pointer;
+  }
+  .comp-row:hover{border-color:#5a2080}
+  .comp-row.tier-S-row{border-left:3px solid #ff4d4d}
+  .comp-row.tier-A-row{border-left:3px solid #ffd700}
+  .comp-row.tier-B-row{border-left:3px solid #4caf50}
+  .comp-row.tier-C-row{border-left:3px solid #2196f3}
+
+  .tier-sep{display:flex;align-items:center;gap:10px;margin:10px 0 4px;font-size:.7rem;font-weight:700;letter-spacing:.1em;color:#4a3a5a}
+
+  .fbtn{padding:4px 13px;border-radius:6px;border:1px solid #3a1a50;color:#8060a0;font-size:.78rem;cursor:pointer;transition:all .15s;background:transparent;white-space:nowrap}
+  .fbtn.on,.fbtn:hover{background:#2a0a40;border-color:#9060c0;color:#d0a0ff}
+  .add-btn{padding:5px 14px;border-radius:6px;border:1px solid #4a8a4a;color:#69f0ae;font-size:.78rem;cursor:pointer;background:transparent;transition:all .15s;white-space:nowrap}
+  .add-btn:hover{background:#0a1f0a;border-color:#69f0ae}
+
+  /* Modal */
+  .modal-backdrop{position:fixed;inset:0;background:#00000090;z-index:100;display:flex;align-items:center;justify-content:center;padding:16px}
+  .modal-box{background:linear-gradient(160deg,#0e0520,#150830);border:1px solid #3a1a50;border-radius:16px;width:100%;max-width:720px;max-height:90vh;overflow-y:auto;box-shadow:0 24px 80px #00000090}
+  .modal-header{padding:20px 24px 14px;border-bottom:1px solid #2a1040}
+  .modal-body{padding:20px 24px}
+  .section-title{font-size:.7rem;font-weight:700;letter-spacing:.12em;color:#7050a0;text-transform:uppercase;margin-bottom:8px}
+  .tip-item{display:flex;align-items:flex-start;gap:8px;padding:8px 12px;background:#0d0718;border-left:3px solid #5030a0;border-radius:0 6px 6px 0;margin-bottom:6px}
+
+  /* Form */
+  .form-section{margin-bottom:18px}
+  .form-label{font-size:.72rem;color:#9070b0;margin-bottom:4px;display:block}
+  .form-input{background:#0d0718;border:1px solid #3a1a50;border-radius:6px;color:#d4c4a8;padding:7px 10px;font-size:.82rem;width:100%;outline:none;transition:border-color .15s}
+  .form-input:focus{border-color:#7040c0}
+  .form-select{background:#0d0718;border:1px solid #3a1a50;border-radius:6px;color:#d4c4a8;padding:6px 10px;font-size:.82rem;outline:none;width:100%}
+  .form-select:focus{border-color:#7040c0}
+  .form-textarea{background:#0d0718;border:1px solid #3a1a50;border-radius:6px;color:#d4c4a8;padding:8px 10px;font-size:.82rem;width:100%;outline:none;resize:vertical;transition:border-color .15s;font-family:inherit}
+  .form-textarea:focus{border-color:#7040c0}
+  .race-cb{display:flex;align-items:center;padding:2px 0;cursor:pointer}
+  .race-cb input{display:none}
+  .race-cb .race-pill{opacity:.45;transition:opacity .15s;cursor:pointer}
+  .race-cb input:checked ~ .race-pill, .race-cb:hover .race-pill{opacity:1}
+  .submit-btn{padding:8px 24px;border-radius:8px;border:none;background:linear-gradient(135deg,#7040c0,#9060e0);color:#fff;font-size:.88rem;font-weight:600;cursor:pointer;transition:opacity .15s}
+  .submit-btn:hover{opacity:.85}
+  .submit-btn:disabled{opacity:.5;cursor:not-allowed}
+  .cancel-btn{padding:8px 20px;border-radius:8px;border:1px solid #3a1a50;background:transparent;color:#8060a0;font-size:.88rem;cursor:pointer;transition:all .15s}
+  .cancel-btn:hover{border-color:#9060c0;color:#d0a0f0}
+  .pair-row{display:grid;grid-template-columns:160px 1fr;gap:6px;margin-bottom:5px}
+
+  /* Card Slots (Picker) */
+  .card-slots{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:4px}
+  .cslot-btn{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;position:relative;background:none;border:none;padding:0}
+  .cslot-empty{width:58px;height:58px;border-radius:50%;border:2px dashed #3a2060;background:#0d0718;
+    display:flex;align-items:center;justify-content:center;color:#4a3060;font-size:1.2rem;
+    transition:all .15s;cursor:pointer}
+  .cslot-empty:hover{border-color:#9060c0;color:#9060c0;background:#150820}
+  .cslot-filled{position:relative}
+  .cslot-filled img{width:58px;height:58px;border-radius:50%;object-fit:cover;object-position:center 15%;cursor:pointer}
+  .cslot-filled.is-core img{border:2px solid #ffd700;box-shadow:0 0 8px #ffd70050}
+  .cslot-filled.is-addon img{border:2px solid #5a4070}
+  .cslot-remove{position:absolute;top:-4px;right:-4px;width:16px;height:16px;border-radius:50%;
+    background:#3a0a0a;border:1px solid #8a2020;color:#ef5350;font-size:.6rem;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;line-height:1;padding:0}
+  .cslot-name{font-size:.52rem;color:#a090c0;max-width:62px;text-align:center;line-height:1.2;word-break:keep-all;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+
+  /* Picker overlay */
+  .picker-modal{background:linear-gradient(160deg,#0a0420,#110630);border:1px solid #3a1a50;border-radius:16px;
+    width:100%;max-width:740px;max-height:88vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 24px 80px #00000090}
+  .picker-tabs{display:flex;gap:4px;padding:12px 16px 0;background:#0a0420;flex-shrink:0}
+  .picker-tab{padding:6px 14px;border-radius:8px 8px 0 0;font-size:.78rem;cursor:pointer;border:1px solid transparent;
+    border-bottom:none;background:#0d0718;color:#6050a0;transition:all .15s}
+  .picker-tab.on{background:#1a0a30;border-color:#5040a0;color:#d0a0f0;font-weight:600}
+  .picker-race-bar{display:flex;flex-wrap:wrap;gap:4px;padding:8px 16px;background:#0d0718;border-bottom:1px solid #1a0a28;flex-shrink:0}
+  .picker-search{padding:8px 16px;background:#0d0718;flex-shrink:0}
+  .picker-grid{flex:1;overflow-y:auto;padding:10px 14px;display:grid;grid-template-columns:repeat(auto-fill,minmax(68px,1fr));gap:8px}
+  .picker-card{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:4px;border-radius:6px;
+    border:1px solid transparent;transition:all .12s;background:none}
+  .picker-card:hover{background:#1a0a28;border-color:#5040a0}
+  .picker-card img{width:52px;height:52px;border-radius:50%;object-fit:cover;object-position:center 15%;border:1px solid #3a2050}
+  .picker-card .pcname{font-size:.5rem;color:#a090c0;text-align:center;max-width:66px;line-height:1.25;
+    overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+  .picker-card .pctier{font-size:.48rem;background:#1a1030;color:#ffd700;border-radius:3px;padding:0 4px;line-height:1.5}
+</style>
+</head>
+<body x-data="tierApp" x-cloak>
+
+<!-- nav -->
+<header class="sticky top-0 z-40" style="background:#0a0514;border-bottom:1px solid #1a0a28">
+  <div class="max-w-7xl mx-auto px-4 py-3 flex items-center gap-3 flex-wrap">
+    <span class="page-title">⚔️ 當季最強</span>
+    <span style="background:#3a0a0a;border:1px solid #8a2020;color:#ff6060;font-size:.72rem;font-weight:700;padding:2px 9px;border-radius:10px;letter-spacing:.06em" x-text="'S'+season">S13</span>
+    <span x-show="patchBuild" style="background:#0a1a1a;border:1px solid #205050;color:#60b0a0;font-size:.65rem;padding:2px 8px;border-radius:8px" x-text="'Build '+patchBuild"></span>
+    <button @click="updateCards()" :disabled="updateLoading"
+      style="background:transparent;border:1px solid #205040;color:#50c090;font-size:.72rem;padding:3px 11px;border-radius:7px;cursor:pointer;white-space:nowrap;transition:all .15s"
+      :style="updateLoading ? 'opacity:.5;cursor:not-allowed' : ''"
+      x-text="updateLoading ? '更新中…' : '🔄 更新牌庫'">
+    </button>
+    <span x-show="updateMsg" x-text="updateMsg" style="font-size:.7rem;color:#80c080;max-width:260px"></span>
+    <div class="flex items-center gap-2 ml-auto flex-wrap">
+      {% if not public_mode %}<a href="/"           class="nav-link">🎮 對局紀錄</a>{% endif %}
+      <a href="/tier-list"  class="nav-link active">⚔️ 當季最強</a>
+      {% if not public_mode %}<a href="/heroes"     class="nav-link">🏆 英雄排名</a>{% endif %}
+      <a href="/hero-guide" class="nav-link">🦸 英雄圖鑑</a>
+      {% if not public_mode %}<a href="/comps"      class="nav-link">🎯 組合排名</a>{% endif %}
+      <a href="/minions"    class="nav-link">🐾 手下圖鑑</a>
+      <a href="/spells"     class="nav-link">✨ 法術圖鑑</a>
+      <a href="/trinkets"   class="nav-link">💎 飾品圖鑑</a>
+    </div>
+  </div>
+</header>
+
+<div class="max-w-5xl mx-auto px-4 py-6">
+
+  <!-- version update banner -->
+  <div x-show="needsUpdate && updateBanner" x-text="updateBanner"
+    style="background:#1a0a00;border:1px solid #805020;color:#ffa040;font-size:.75rem;padding:8px 14px;border-radius:8px;margin-bottom:12px;display:flex;align-items:center;gap:8px">
+  </div>
+
+  <!-- toolbar -->
+  <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px">
+
+    <!-- Row 1: Tier + 難度 + 功能按鈕 -->
+    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+      <template x-for="t in ['全部','S','A','B','C']">
+        <button class="fbtn" :class="{on: tierFilter===t}" @click="tierFilter=t;filterComps()">
+          <span x-text="t==='全部'?'全部 Tier':'Tier '+t"></span>
+        </button>
+      </template>
+      <div style="width:1px;height:20px;background:#2a1040;margin:0 4px"></div>
+      <template x-for="d in ['全部','easy','medium','hard']">
+        <button class="fbtn" :class="{on: diffFilter===d}" @click="diffFilter=d;filterComps()">
+          <span x-text="d==='全部'?'全部難度':d==='easy'?'🟢 簡單':d==='medium'?'🟡 中等':'🔴 困難'"></span>
+        </button>
+      </template>
+      <span style="font-size:.75rem;color:#6a5a7a;margin-left:auto" x-text="filtered.length + ' 套組合'"></span>
+      <button x-show="hiddenCount > 0"
+        class="add-btn"
+        :style="showHidden ? 'border-color:#886688;color:#cc88cc;background:#1a0a2a' : 'border-color:#443344;color:#886688'"
+        @click="showHidden=!showHidden; filterComps()"
+        :title="showHidden ? '隱藏已移出版本的牌組' : '顯示已移出版本的牌組（資料庫備份）'">
+        <span x-text="showHidden ? '🗃️ 歷史牌組 (' + hiddenCount + ')' : '🗃️ ' + hiddenCount + ' 組已隱藏'"></span>
+      </button>
+      <button class="add-btn" @click="openAddModal()">➕ 新增組合</button>
+      <button class="add-btn" @click="showFirestoneModal=true" style="border-color:#a06030;color:#ffa060">📋 匯入 Firestone</button>
+      <button class="add-btn" @click="showHsreplayModal=true" style="border-color:#306080;color:#60a0ff">📋 匯入 HSReplay</button>
+      <button class="add-btn" @click="fixStrategy()" style="border-color:#307060;color:#50c0a0">🔧 補填說明</button>
+      <button class="add-btn" @click="scrapeFirestone()"
+              :disabled="scrapeLoading"
+              style="border-color:#2060a0;color:#60c0ff"
+              :title="'從 Firestone 網站自動抓取最新牌組（需要 Playwright）'">
+        <span x-text="scrapeLoading ? '⏳ 抓取中…（約30秒）' : '🕷️ 自動抓取 Firestone'"></span>
+      </button>
+      <button class="add-btn" @click="scrapeHsreplay()"
+              :disabled="scrapeHsreplayLoading"
+              style="border-color:#204060;color:#40a0d0"
+              :title="'從 HSReplay 網站自動抓取牌組評級（需要 Playwright）'">
+        <span x-text="scrapeHsreplayLoading ? '⏳ 抓取中…（約40秒）' : '🕷️ 自動抓取 HSReplay'"></span>
+      </button>
+    </div>
+
+    <!-- Row 2: 族裔篩選 -->
+    <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+      <span style="font-size:.68rem;color:#5a4a6a;flex-shrink:0">族裔：</span>
+      <button class="fbtn" :class="{on: raceFilter==='全部'}" @click="raceFilter='全部';filterComps()"
+              style="font-size:.72rem;padding:3px 10px">全部</button>
+      <template x-for="race in RACES.filter(r=>r!=='ALL')" :key="race">
+        <button
+          :class="['race-pill', 'race-'+race, raceFilter===race ? '' : 'race-dim']"
+          style="cursor:pointer;border:1px solid transparent;transition:all .15s;font-size:.72rem;padding:3px 9px"
+          :style="raceFilter===race ? 'outline:2px solid #9060c0;outline-offset:1px' : 'opacity:.55'"
+          @click="raceFilter=(raceFilter===race?'全部':race); filterComps()"
+          x-text="raceLabel(race)">
+        </button>
+      </template>
+    </div>
+
+  </div>
+
+  <!-- loading -->
+  <div x-show="loading" class="text-center py-16" style="color:#6a5a7a">載入中…</div>
+
+  <!-- tier list -->
+  <div x-show="!loading">
+    <template x-for="tier in ['S','A','B','C']">
+      <div x-show="filtered.some(c=>c.tier===tier)">
+
+        <!-- tier separator -->
+        <div class="tier-sep">
+          <div :class="'tier-badge tier-'+tier" x-text="tier"></div>
+          <div style="flex:1;height:1px;background:#2a1040"></div>
+          <span x-text="tierLabel(tier)"></span>
+        </div>
+
+        <!-- comp rows: 全部同一行，info → core cards → addon cards -->
+        <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:10px">
+          <template x-for="comp in filtered.filter(c=>c.tier===tier)" :key="comp.id">
+            <div class="comp-row" :class="'tier-'+comp.tier+'-row'"
+                 :style="comp.rotated ? 'opacity:0.55;border-style:dashed' : ''"
+                 @click="openModal(comp)">
+
+              <!-- tier badge -->
+              <div :class="'tier-badge tier-'+comp.tier" x-text="comp.tier"
+                   style="font-size:.82rem;width:26px;height:26px;border-radius:5px;flex-shrink:0"></div>
+
+              <!-- name (truncated) -->
+              <span style="font-weight:700;color:#e0d0f8;font-size:.86rem;
+                           max-width:140px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-shrink:1"
+                    x-text="comp.name"></span>
+
+              <!-- rotated badge -->
+              <span x-show="comp.rotated"
+                    style="font-size:.65rem;background:#3a1a2a;color:#cc6688;border:1px solid #662244;
+                           border-radius:4px;padding:1px 5px;flex-shrink:0"
+                    title="核心卡牌已從當前版本移除">🗃️ 歸檔</span>
+
+              <!-- race pills -->
+              <template x-for="r in comp.races">
+                <span :class="'race-pill race-'+r" x-text="raceLabel(r)" style="flex-shrink:0"></span>
+              </template>
+
+              <!-- diff -->
+              <span :class="'diff-'+comp.difficulty" x-text="diffLabel(comp.difficulty)" style="flex-shrink:0"></span>
+
+              <!-- divider -->
+              <div style="width:1px;height:18px;background:#2a1040;flex-shrink:0;margin:0 2px"></div>
+
+              <!-- core card ovals (gold) -->
+              <template x-for="(cid, idx) in comp.core" :key="'c'+idx">
+                <div class="card-oval core sm" style="flex-shrink:0" :title="comp.core_names[idx]">
+                  <img :src="'https://art.hearthstonejson.com/v1/256x/'+cid+'.jpg'"
+                       onerror="this.style.display='none'" loading="lazy">
+                </div>
+              </template>
+
+              <!-- divider before addon -->
+              <div style="width:1px;height:18px;background:#2a1040;flex-shrink:0;margin:0 2px"></div>
+
+              <!-- addon[0] card ovals (smaller) -->
+              <template x-for="(cid, ci) in (comp.addon && comp.addon[0] ? comp.addon[0] : [])" :key="'a'+ci">
+                <div class="card-oval addon" style="width:38px;height:38px;flex-shrink:0"
+                     :title="comp.addon_names && comp.addon_names[0] ? comp.addon_names[0][ci] : ''">
+                  <img :src="'https://art.hearthstonejson.com/v1/256x/'+cid+'.jpg'"
+                       onerror="this.style.display='none'" loading="lazy">
+                </div>
+              </template>
+
+              <!-- arrow (pushed to right) -->
+              <span style="color:#4a3a6a;font-size:.9rem;flex-shrink:0;margin-left:auto">›</span>
+
+            </div>
+          </template>
+        </div>
+      </div>
+    </template>
+  </div>
+</div>
+
+<!-- ── DETAIL MODAL ── -->
+<div class="modal-backdrop" x-show="modal" @click.self="modal=null">
+  <div class="modal-box" @click.stop>
+    <template x-if="modal">
+      <div>
+        <div class="modal-header">
+          <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+            <div :class="'tier-badge tier-'+modal.tier" x-text="modal.tier" style="font-size:1.3rem;width:44px;height:44px;border-radius:10px"></div>
+            <div>
+              <div style="font-size:1.2rem;font-weight:700;color:#e0d0f8" x-text="modal.name"></div>
+              <div style="display:flex;gap:6px;margin-top:4px;flex-wrap:wrap">
+                <template x-for="r in modal.races">
+                  <span :class="'race-pill race-'+r" x-text="raceLabel(r)"></span>
+                </template>
+                <span :class="'diff-'+modal.difficulty" x-text="diffLabel(modal.difficulty)"></span>
+              </div>
+            </div>
+            <button @click="modal=null" style="margin-left:auto;color:#6a5a7a;font-size:1.4rem;line-height:1;background:none;border:none;cursor:pointer">✕</button>
+            <button @click.stop="openEditModal(modal)"
+                    style="background:#1a0a2a;border:1px solid #5040a0;color:#a090e0;border-radius:6px;padding:5px 12px;font-size:.78rem;cursor:pointer">✏️ 編輯</button>
+          </div>
+        </div>
+        <div class="modal-body">
+          <!-- Core -->
+          <div style="margin-bottom:20px">
+            <div class="section-title">🔑 核心卡牌 Core Cards</div>
+            <div style="display:flex;gap:14px;flex-wrap:wrap">
+              <template x-for="(cid, idx) in modal.core" :key="cid">
+                <div class="cslot">
+                  <div class="card-oval core lg">
+                    <img :src="'https://art.hearthstonejson.com/v1/256x/'+cid+'.jpg'"
+                         onerror="this.style.display='none'" :alt="modal.core_names[idx]">
+                  </div>
+                  <div class="cname" style="max-width:72px" x-text="modal.core_names[idx]"></div>
+                  <div style="font-size:.5rem;background:#2a1040;border-radius:3px;padding:1px 5px;color:#ffd700">CORE</div>
+                </div>
+              </template>
+            </div>
+          </div>
+          <!-- Addon -->
+          <div style="margin-bottom:20px" x-show="modal.addon && modal.addon.length>0">
+            <div class="section-title">🔧 搭配卡牌 Addon Cards</div>
+            <template x-for="(group, gi) in modal.addon" :key="gi">
+              <div style="margin-bottom:12px">
+                <div style="font-size:.65rem;color:#5a4a6a;margin-bottom:6px" x-text="gi===0?'推薦搭配':'替代選項'"></div>
+                <div style="display:flex;gap:10px;flex-wrap:wrap">
+                  <template x-for="(cid, ci) in group" :key="cid">
+                    <div class="cslot">
+                      <div class="card-oval addon" style="width:56px;height:56px">
+                        <img :src="'https://art.hearthstonejson.com/v1/256x/'+cid+'.jpg'"
+                             onerror="this.style.display='none'" :alt="modal.addon_names[gi][ci]">
+                      </div>
+                      <div class="cname" style="max-width:64px" x-text="modal.addon_names[gi][ci]"></div>
+                    </div>
+                  </template>
+                </div>
+              </div>
+            </template>
+          </div>
+          <!-- Strategy -->
+          <div style="margin-bottom:20px">
+            <div class="section-title">📖 排組說明</div>
+            <div style="background:#0d0718;border:1px solid #2a1040;border-radius:8px;padding:12px 16px;font-size:.83rem;line-height:1.7;color:#c8b8e0" x-html="modal.strategy"></div>
+          </div>
+          <!-- Tips -->
+          <div x-show="modal.tips && modal.tips.length>0">
+            <div class="section-title">💡 注意事項 Tips</div>
+            <template x-for="tip in modal.tips">
+              <div class="tip-item">
+                <span style="color:#9060c0;flex-shrink:0">▸</span>
+                <span style="font-size:.8rem;line-height:1.6" x-html="tip"></span>
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
+    </template>
+  </div>
+</div>
+
+<!-- ── ADD COMP MODAL ── -->
+<div class="modal-backdrop" x-show="showAddModal" @click.self="showAddModal=false" x-transition>
+  <div class="modal-box" style="max-width:660px" @click.stop>
+    <div class="modal-header">
+      <div style="display:flex;align-items:center">
+        <span style="font-size:1.1rem;font-weight:700;color:#e0d0f8">➕ 新增自訂組合</span>
+        <button @click="showAddModal=false" style="margin-left:auto;color:#6a5a7a;font-size:1.4rem;line-height:1;background:none;border:none;cursor:pointer">✕</button>
+      </div>
+    </div>
+    <div class="modal-body">
+
+      <!-- 名稱 -->
+      <div class="form-section">
+        <label class="form-label">組合名稱 *</label>
+        <input class="form-input" type="text" x-model="addForm.name" placeholder="例：亡靈毒鬼連殺流">
+      </div>
+
+      <!-- Tier + 難度 -->
+      <div class="form-section" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div>
+          <label class="form-label">Tier 評級 *</label>
+          <select class="form-select" x-model="addForm.tier">
+            <option value="S">S — 🔥 頂級</option>
+            <option value="A">A — ⭐ 強力</option>
+            <option value="B">B — ✅ 可用</option>
+            <option value="C">C — ⚠️ 次選</option>
+          </select>
+        </div>
+        <div>
+          <label class="form-label">難度 *</label>
+          <select class="form-select" x-model="addForm.difficulty">
+            <option value="easy">🟢 簡單</option>
+            <option value="medium">🟡 中等</option>
+            <option value="hard">🔴 困難</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- 族裔 -->
+      <div class="form-section">
+        <label class="form-label">族裔 * (可多選，點擊切換)</label>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <template x-for="race in RACES" :key="race">
+            <label class="race-cb">
+              <input type="checkbox" :value="race" x-model="addForm.races">
+              <span :class="'race-pill race-'+race" x-text="raceLabel(race)"
+                    :style="addForm.races && addForm.races.includes(race) ? 'opacity:1' : 'opacity:.4'"></span>
+            </label>
+          </template>
+        </div>
+      </div>
+
+      <!-- 核心卡牌 -->
+      <div class="form-section">
+        <div class="section-title">🔑 核心卡牌 (最多6張，至少1張必填)</div>
+        <div class="card-slots">
+          <template x-for="(card, i) in addForm.coreCards" :key="'addcore'+i">
+            <div>
+              <button x-show="!card.cid" class="cslot-empty" @click="openPicker('addForm','coreCards',i)" title="選擇卡牌">＋</button>
+              <div x-show="card.cid" class="cslot-filled is-core">
+                <img :src="'https://art.hearthstonejson.com/v1/256x/'+card.cid+'.jpg'"
+                     onerror="this.src=''" @click="openPicker('addForm','coreCards',i)" :title="card.cname">
+                <button class="cslot-remove" @click.stop="removeCard('addForm','coreCards',i)">✕</button>
+              </div>
+              <div class="cslot-name" x-show="card.cid" x-text="card.cname"></div>
+            </div>
+          </template>
+        </div>
+      </div>
+
+      <!-- Addon 推薦 -->
+      <div class="form-section">
+        <div class="section-title">🔧 搭配推薦 (最多4張)</div>
+        <div class="card-slots">
+          <template x-for="(card, i) in addForm.addon1" :key="'adda1'+i">
+            <div>
+              <button x-show="!card.cid" class="cslot-empty" @click="openPicker('addForm','addon1',i)" title="選擇卡牌">＋</button>
+              <div x-show="card.cid" class="cslot-filled is-addon">
+                <img :src="'https://art.hearthstonejson.com/v1/256x/'+card.cid+'.jpg'"
+                     onerror="this.src=''" @click="openPicker('addForm','addon1',i)" :title="card.cname">
+                <button class="cslot-remove" @click.stop="removeCard('addForm','addon1',i)">✕</button>
+              </div>
+              <div class="cslot-name" x-show="card.cid" x-text="card.cname"></div>
+            </div>
+          </template>
+        </div>
+      </div>
+
+      <!-- Addon 替代 -->
+      <div class="form-section">
+        <div class="section-title">🔄 替代選項 (最多4張，可留空)</div>
+        <div class="card-slots">
+          <template x-for="(card, i) in addForm.addon2" :key="'adda2'+i">
+            <div>
+              <button x-show="!card.cid" class="cslot-empty" @click="openPicker('addForm','addon2',i)" title="選擇卡牌">＋</button>
+              <div x-show="card.cid" class="cslot-filled is-addon">
+                <img :src="'https://art.hearthstonejson.com/v1/256x/'+card.cid+'.jpg'"
+                     onerror="this.src=''" @click="openPicker('addForm','addon2',i)" :title="card.cname">
+                <button class="cslot-remove" @click.stop="removeCard('addForm','addon2',i)">✕</button>
+              </div>
+              <div class="cslot-name" x-show="card.cid" x-text="card.cname"></div>
+            </div>
+          </template>
+        </div>
+      </div>
+
+      <!-- 說明 -->
+      <div class="form-section">
+        <label class="form-label">📖 排組說明</label>
+        <textarea class="form-textarea" rows="3" x-model="addForm.strategy" placeholder="描述核心機制、搭配邏輯…"></textarea>
+      </div>
+
+      <!-- Tips -->
+      <div class="form-section">
+        <label class="form-label">💡 注意事項 (每行一條)</label>
+        <textarea class="form-textarea" rows="4" x-model="addForm.tips"
+                  placeholder="小心對手的聖盾&#10;核心卡要盡早找到&#10;…"></textarea>
+      </div>
+
+      <!-- 錯誤提示 -->
+      <div x-show="addError" style="background:#2a0a0a;border:1px solid #5a2020;border-radius:6px;
+           padding:8px 12px;margin-bottom:14px;font-size:.8rem;color:#ef5350" x-text="addError"></div>
+
+      <!-- 按鈕 -->
+      <div style="display:flex;gap:10px;justify-content:flex-end">
+        <button class="cancel-btn" @click="showAddModal=false">取消</button>
+        <button class="submit-btn" @click="submitAdd()" :disabled="addLoading">
+          <span x-text="addLoading ? '新增中…' : '✓ 新增組合'"></span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- ── EDIT COMP MODAL ── -->
+<div class="modal-backdrop" x-show="showEditModal" @click.self="showEditModal=false">
+  <div class="modal-box" style="max-width:660px" @click.stop>
+    <div class="modal-header">
+      <div style="display:flex;align-items:center">
+        <span style="font-size:1.1rem;font-weight:700;color:#e0d0f8">✏️ 編輯組合</span>
+        <button @click="showEditModal=false" style="margin-left:auto;color:#6a5a7a;font-size:1.4rem;line-height:1;background:none;border:none;cursor:pointer">✕</button>
+      </div>
+    </div>
+    <div class="modal-body">
+
+      <!-- 名稱 -->
+      <div class="form-section">
+        <label class="form-label">組合名稱 *</label>
+        <input class="form-input" type="text" x-model="editForm.name">
+      </div>
+
+      <!-- Tier + 難度 -->
+      <div class="form-section" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div>
+          <label class="form-label">Tier 評級 *</label>
+          <select class="form-select" x-model="editForm.tier">
+            <option value="S">S — 🔥 頂級</option>
+            <option value="A">A — ⭐ 強力</option>
+            <option value="B">B — ✅ 可用</option>
+            <option value="C">C — ⚠️ 次選</option>
+          </select>
+        </div>
+        <div>
+          <label class="form-label">難度 *</label>
+          <select class="form-select" x-model="editForm.difficulty">
+            <option value="easy">🟢 簡單</option>
+            <option value="medium">🟡 中等</option>
+            <option value="hard">🔴 困難</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- 族裔 -->
+      <div class="form-section">
+        <label class="form-label">族裔 (可多選)</label>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <template x-for="race in RACES" :key="race">
+            <label class="race-cb">
+              <input type="checkbox" :value="race" x-model="editForm.races">
+              <span :class="'race-pill race-'+race" x-text="raceLabel(race)"
+                    :style="editForm.races && editForm.races.includes(race) ? 'opacity:1' : 'opacity:.4'"></span>
+            </label>
+          </template>
+        </div>
+      </div>
+
+      <!-- 核心卡牌 -->
+      <div class="form-section">
+        <div class="section-title">🔑 核心卡牌 (至少1張必填)</div>
+        <div class="card-slots">
+          <template x-for="(card, i) in editForm.coreCards" :key="'ecore'+i">
+            <div>
+              <button x-show="!card.cid" class="cslot-empty" @click="openPicker('editForm','coreCards',i)" title="選擇卡牌">＋</button>
+              <div x-show="card.cid" class="cslot-filled is-core">
+                <img :src="'https://art.hearthstonejson.com/v1/256x/'+card.cid+'.jpg'"
+                     onerror="this.src=''" @click="openPicker('editForm','coreCards',i)" :title="card.cname">
+                <button class="cslot-remove" @click.stop="removeCard('editForm','coreCards',i)">✕</button>
+              </div>
+              <div class="cslot-name" x-show="card.cid" x-text="card.cname"></div>
+            </div>
+          </template>
+          <button @click="editForm.coreCards.push({cid:'',cname:''})"
+                  style="width:58px;height:58px;border-radius:50%;border:1px dashed #3a2060;background:none;
+                         color:#5040a0;font-size:.65rem;cursor:pointer;align-self:flex-start">+欄</button>
+        </div>
+      </div>
+
+      <!-- Addon 推薦 -->
+      <div class="form-section">
+        <div class="section-title">🔧 搭配推薦</div>
+        <div class="card-slots">
+          <template x-for="(card, i) in editForm.addon1" :key="'ea1'+i">
+            <div>
+              <button x-show="!card.cid" class="cslot-empty" @click="openPicker('editForm','addon1',i)" title="選擇卡牌">＋</button>
+              <div x-show="card.cid" class="cslot-filled is-addon">
+                <img :src="'https://art.hearthstonejson.com/v1/256x/'+card.cid+'.jpg'"
+                     onerror="this.src=''" @click="openPicker('editForm','addon1',i)" :title="card.cname">
+                <button class="cslot-remove" @click.stop="removeCard('editForm','addon1',i)">✕</button>
+              </div>
+              <div class="cslot-name" x-show="card.cid" x-text="card.cname"></div>
+            </div>
+          </template>
+          <button @click="editForm.addon1.push({cid:'',cname:''})"
+                  style="width:58px;height:58px;border-radius:50%;border:1px dashed #3a2060;background:none;
+                         color:#5040a0;font-size:.65rem;cursor:pointer;align-self:flex-start">+欄</button>
+        </div>
+      </div>
+
+      <!-- Addon 替代 -->
+      <div class="form-section">
+        <div class="section-title">🔄 替代選項 (可留空)</div>
+        <div class="card-slots">
+          <template x-for="(card, i) in editForm.addon2" :key="'ea2'+i">
+            <div>
+              <button x-show="!card.cid" class="cslot-empty" @click="openPicker('editForm','addon2',i)" title="選擇卡牌">＋</button>
+              <div x-show="card.cid" class="cslot-filled is-addon">
+                <img :src="'https://art.hearthstonejson.com/v1/256x/'+card.cid+'.jpg'"
+                     onerror="this.src=''" @click="openPicker('editForm','addon2',i)" :title="card.cname">
+                <button class="cslot-remove" @click.stop="removeCard('editForm','addon2',i)">✕</button>
+              </div>
+              <div class="cslot-name" x-show="card.cid" x-text="card.cname"></div>
+            </div>
+          </template>
+          <button @click="editForm.addon2.push({cid:'',cname:''})"
+                  style="width:58px;height:58px;border-radius:50%;border:1px dashed #3a2060;background:none;
+                         color:#5040a0;font-size:.65rem;cursor:pointer;align-self:flex-start">+欄</button>
+        </div>
+      </div>
+
+      <!-- 說明 -->
+      <div class="form-section">
+        <label class="form-label">📖 排組說明</label>
+        <textarea class="form-textarea" rows="3" x-model="editForm.strategy"></textarea>
+      </div>
+
+      <!-- Tips -->
+      <div class="form-section">
+        <label class="form-label">💡 注意事項 (每行一條)</label>
+        <textarea class="form-textarea" rows="4" x-model="editForm.tips"></textarea>
+      </div>
+
+      <!-- 錯誤提示 -->
+      <div x-show="editError" style="background:#2a0a0a;border:1px solid #5a2020;border-radius:6px;
+           padding:8px 12px;margin-bottom:14px;font-size:.8rem;color:#ef5350" x-text="editError"></div>
+
+      <!-- 按鈕 -->
+      <div style="display:flex;gap:10px;justify-content:flex-end">
+        <button class="cancel-btn" @click="showEditModal=false">取消</button>
+        <button class="submit-btn" @click="submitEdit()" :disabled="editLoading">
+          <span x-text="editLoading ? '儲存中…' : '💾 儲存變更'"></span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Firestone Import Modal -->
+<div x-show="showFirestoneModal" class="modal-backdrop" @click.self="showFirestoneModal=false">
+  <div class="modal-box" style="max-width:680px" @click.stop>
+    <div class="modal-header" style="display:flex;align-items:center;justify-content:space-between">
+      <span style="font-weight:700;color:#e0d0f8;font-size:1rem">📋 匯入 Firestone 組合</span>
+      <button @click="showFirestoneModal=false" style="background:none;border:none;color:#7060a0;font-size:1.2rem;cursor:pointer">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-section">
+        <label class="form-label">從 Firestone 複製貼上組合資料</label>
+        <textarea class="form-textarea" x-model="firestoneText" rows="8"
+          placeholder="貼上 Firestone comps 頁面複製的內容...&#10;（格式：名稱 / X,XXX games / 5.5 / 3.36 / S / Medium）"></textarea>
+      </div>
+      <div style="display:flex;gap:8px;margin-bottom:16px">
+        <button class="submit-btn" @click="parseFirestone()" :disabled="firestoneLoading||!firestoneText.trim()">
+          <span x-text="firestoneLoading?'解析中…':'🔍 解析'"></span>
+        </button>
+        <span x-show="firestoneError" x-text="firestoneError" style="color:#ef5350;font-size:.78rem;align-self:center"></span>
+      </div>
+
+      <div x-show="firestonePreview.length">
+        <div class="section-title" x-text="'解析結果 — ' + firestonePreview.length + ' 個組合'"></div>
+        <div style="max-height:300px;overflow-y:auto;margin-bottom:14px">
+          <table style="width:100%;border-collapse:collapse;font-size:.78rem">
+            <thead>
+              <tr style="color:#7060a0;border-bottom:1px solid #2a1040">
+                <th style="text-align:left;padding:4px 8px">動作</th>
+                <th style="text-align:left;padding:4px 8px">Firestone 名稱</th>
+                <th style="text-align:left;padding:4px 8px">Tier</th>
+                <th style="text-align:left;padding:4px 8px">難度</th>
+                <th style="text-align:left;padding:4px 8px">已有組合</th>
+              </tr>
+            </thead>
+            <tbody>
+              <template x-for="(comp, i) in firestonePreview" :key="i">
+                <tr style="border-bottom:1px solid #1a0a28">
+                  <td style="padding:4px 8px">
+                    <span x-text="comp.action==='update'?'🔄 更新':'✨ 新增'"
+                      :style="comp.action==='update'?'color:#ffa040':'color:#69f0ae'"></span>
+                  </td>
+                  <td style="padding:4px 8px;color:#e0d0f8" x-text="comp.name"></td>
+                  <td style="padding:4px 8px">
+                    <select x-model="firestonePreview[i].tier" class="form-select" style="width:60px;padding:2px 4px;font-size:.75rem">
+                      <option value="S">S</option><option value="A">A</option>
+                      <option value="B">B</option><option value="C">C</option>
+                    </select>
+                  </td>
+                  <td style="padding:4px 8px">
+                    <select x-model="firestonePreview[i].difficulty" class="form-select" style="width:80px;padding:2px 4px;font-size:.75rem">
+                      <option value="easy">簡單</option>
+                      <option value="medium">中等</option>
+                      <option value="hard">困難</option>
+                    </select>
+                  </td>
+                  <td style="padding:4px 8px;color:#9070b0;font-size:.72rem" x-text="comp.existing_name||'—'"></td>
+                </tr>
+              </template>
+            </tbody>
+          </table>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button class="submit-btn" @click="importFirestone()" :disabled="firestoneImporting">
+            <span x-text="firestoneImporting?'匯入中…':'✅ 確認匯入'"></span>
+          </button>
+          <button class="cancel-btn" @click="showFirestoneModal=false">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HSReplay Import Modal -->
+<div x-show="showHsreplayModal" class="modal-backdrop" @click.self="showHsreplayModal=false">
+  <div class="modal-box" style="max-width:720px">
+    <div class="modal-header" style="display:flex;align-items:center;justify-content:space-between">
+      <span style="font-weight:700;color:#e0d0f8;font-size:1rem">📋 匯入 HSReplay 組合</span>
+      <button @click="showHsreplayModal=false" style="background:none;border:none;color:#7060a0;font-size:1.2rem;cursor:pointer">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-section">
+        <label class="form-label">從 HSReplay Battlegrounds Comps 頁面複製貼上</label>
+        <textarea class="form-textarea" x-model="hsreplayText" rows="8"
+          placeholder="貼上 HSReplay comps 頁面複製的全部內容..."></textarea>
+      </div>
+      <div style="display:flex;gap:8px;margin-bottom:16px">
+        <button class="submit-btn" @click="parseHsreplay()" :disabled="hsreplayLoading||!hsreplayText.trim()">
+          <span x-text="hsreplayLoading?'解析中…':'🔍 解析'"></span>
+        </button>
+        <span x-show="hsreplayError" x-text="hsreplayError" style="color:#ef5350;font-size:.78rem;align-self:center"></span>
+      </div>
+
+      <div x-show="hsreplayPreview.length">
+        <div class="section-title" x-text="'解析結果 — ' + hsreplayPreview.length + ' 個組合'"></div>
+        <div style="max-height:300px;overflow-y:auto;margin-bottom:14px">
+          <table style="width:100%;border-collapse:collapse;font-size:.78rem">
+            <thead>
+              <tr style="color:#7060a0;border-bottom:1px solid #2a1040">
+                <th style="text-align:left;padding:4px 8px">動作</th>
+                <th style="text-align:left;padding:4px 8px">組合名稱</th>
+                <th style="text-align:left;padding:4px 8px">Tier</th>
+                <th style="text-align:left;padding:4px 8px">難度</th>
+                <th style="text-align:left;padding:4px 8px">核心卡牌</th>
+                <th style="text-align:left;padding:4px 8px">已有組合</th>
+              </tr>
+            </thead>
+            <tbody>
+              <template x-for="(comp, i) in hsreplayPreview" :key="i">
+                <tr style="border-bottom:1px solid #1a0a28">
+                  <td style="padding:4px 8px">
+                    <span x-text="comp.action==='update'?'🔄 更新':'✨ 新增'"
+                      :style="comp.action==='update'?'color:#ffa040':'color:#69f0ae'"></span>
+                  </td>
+                  <td style="padding:4px 8px;color:#e0d0f8;max-width:140px" x-text="comp.comp_name"></td>
+                  <td style="padding:4px 8px">
+                    <select x-model="hsreplayPreview[i].tier" class="form-select" style="width:60px;padding:2px 4px;font-size:.75rem">
+                      <option value="">—</option>
+                      <option value="S">S</option><option value="A">A</option>
+                      <option value="B">B</option><option value="C">C</option>
+                    </select>
+                  </td>
+                  <td style="padding:4px 8px">
+                    <select x-model="hsreplayPreview[i].difficulty" class="form-select" style="width:80px;padding:2px 4px;font-size:.75rem">
+                      <option value="easy">簡單</option>
+                      <option value="medium">中等</option>
+                      <option value="hard">困難</option>
+                    </select>
+                  </td>
+                  <td style="padding:4px 8px;color:#9070b0;font-size:.68rem;max-width:180px">
+                    <span x-text="(comp.core_names||[]).join(', ')"></span>
+                  </td>
+                  <td style="padding:4px 8px;color:#9070b0;font-size:.72rem" x-text="comp.existing_name||'—'"></td>
+                </tr>
+              </template>
+            </tbody>
+          </table>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button class="submit-btn" @click="importHsreplay()" :disabled="hsreplayImporting">
+            <span x-text="hsreplayImporting?'匯入中…':'✅ 確認匯入'"></span>
+          </button>
+          <button class="cancel-btn" @click="showHsreplayModal=false">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CARD PICKER OVERLAY ──-->
+<div class="modal-backdrop" x-show="showPicker" @click.self="showPicker=false" style="z-index:200" x-transition>
+  <div class="picker-modal" @click.stop>
+
+    <!-- Type Tabs -->
+    <div class="picker-tabs">
+      <button class="picker-tab" :class="{on:pickerType==='minion'}"   @click="setPickerType('minion')">🐾 手下</button>
+      <button class="picker-tab" :class="{on:pickerType==='spell'}"    @click="setPickerType('spell')">✨ 法術</button>
+      <button class="picker-tab" :class="{on:pickerType==='trinket'}"  @click="setPickerType('trinket')">💎 飾品</button>
+      <button class="picker-tab" :class="{on:pickerType==='hero_power'}" @click="setPickerType('hero_power')">⚡ 英雄技能</button>
+      <button @click="showPicker=false"
+              style="margin-left:auto;background:none;border:none;color:#6a5a7a;font-size:1.3rem;cursor:pointer;padding:0 4px;align-self:center">✕</button>
+    </div>
+
+    <!-- Race Filter (minions only) -->
+    <div class="picker-race-bar" x-show="pickerType==='minion'">
+      <button :class="['race-pill', pickerRace==='全部' ? 'race-ALL' : '']"
+              style="font-size:.68rem;cursor:pointer;border:1px solid transparent;padding:2px 8px"
+              :style="pickerRace==='全部' ? 'outline:1px solid #9060c0' : 'opacity:.5'"
+              @click="setPickerRace('全部')">全部</button>
+      <template x-for="race in RACES.filter(r=>r!=='ALL')" :key="race">
+        <button :class="['race-pill','race-'+race]"
+                style="font-size:.68rem;cursor:pointer;border:1px solid transparent;padding:2px 8px"
+                :style="pickerRace===race ? 'outline:1px solid #9060c0' : 'opacity:.45'"
+                @click="setPickerRace(race)"
+                x-text="raceLabel(race)">
+        </button>
+      </template>
+    </div>
+
+    <!-- Search -->
+    <div class="picker-search">
+      <input class="form-input" type="text" placeholder="🔍 搜尋卡牌名稱…" style="font-size:.82rem"
+             :value="pickerQuery"
+             @input.debounce.300ms="searchPicker($event.target.value)">
+    </div>
+
+    <!-- Grid -->
+    <div class="picker-grid">
+      <div x-show="pickerLoading" style="grid-column:1/-1;text-align:center;color:#6a5a7a;padding:40px">載入中…</div>
+      <div x-show="!pickerLoading && pickerCards.length===0"
+           style="grid-column:1/-1;text-align:center;color:#5a4a6a;padding:40px">找不到卡牌</div>
+      <template x-for="card in pickerCards" :key="card.id">
+        <button class="picker-card" @click="selectPickerCard(card)" :title="card.text||card.name">
+          <img :src="'https://art.hearthstonejson.com/v1/256x/'+card.id+'.jpg'"
+               onerror="this.style.display='none'">
+          <div class="pcname" x-text="card.name"></div>
+          <div class="pctier" x-show="card.tl" x-text="card.tl ? 'T'+card.tl : ''"></div>
+        </button>
+      </template>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

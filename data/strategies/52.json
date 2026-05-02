@@ -1,0 +1,79 @@
+{
+  "archetype_id": 52,
+  "name": "Aggro Druid",
+  "name_zh": "",
+  "class": "DRUID",
+  "class_zh": "德魯伊",
+  "style": "快攻",
+  "win_rate": 58.0,
+  "pct_of_total": 1.5,
+  "rank": 8,
+  "core_cards": [
+    {
+      "card_id": "CATA_138",
+      "name": "森林的贈禮",
+      "type": "SPELL",
+      "cost": 2,
+      "text": "你場上每個手下可賦予一個友方手下+1/+1"
+    },
+    {
+      "card_id": "CATA_210",
+      "name": "暮光龍蛋",
+      "type": "MINION",
+      "cost": 1,
+      "text": "死亡之聲：召喚一個 2/2幼龍 (在你的回合開始時獲得+1/+1！)"
+    },
+    {
+      "card_id": "DINO_130",
+      "name": "長頸龍蛋",
+      "type": "MINION",
+      "cost": 2,
+      "text": "死亡之聲：召喚一個3/3野獸。賦予你的手下+1/+1"
+    },
+    {
+      "card_id": "TLC_603",
+      "name": "鴨嘴龍",
+      "type": "MINION",
+      "cost": 1,
+      "text": "[x]戰吼：抽一張牌 死亡之聲：捨棄 那張牌"
+    },
+    {
+      "card_id": "CATA_135",
+      "name": "苔蘚之絆",
+      "type": "SPELL",
+      "cost": 2,
+      "text": "召喚兩個1/2魔像。花費你的所有法力，每點法力使其+1/+1"
+    },
+    {
+      "card_id": "TLC_232",
+      "name": "飢餓的幼龍",
+      "type": "SPELL",
+      "cost": 2,
+      "text": "在你下回合開始時，召喚三個 2/1幼龍"
+    },
+    {
+      "card_id": "TLC_233",
+      "name": "孵化助手",
+      "type": "MINION",
+      "cost": 3,
+      "text": "戰吼：賦予你其他攻擊力為2以下的手下+1/+2和嘲諷"
+    },
+    {
+      "card_id": "CATA_134",
+      "name": "野木法陣",
+      "type": "SPELL",
+      "cost": 4,
+      "text": "碎裂 召喚兩個2/2樹人。賦予你的手下「死亡之聲：召喚一個2/2樹人」122972召喚兩個2/2樹人"
+    }
+  ],
+  "play_style": "快攻型，前期快速鋪場並強攻英雄血量，通常在 6-8 回合結束遊戲",
+  "win_condition": "清場穩住板面後，對手牌力下降即可反攻",
+  "key_turns": "1-6 回合最關鍵，超過 8 回合通常你佔優",
+  "against_tips": [
+    "前期必須積極清場，不讓對手建立雪球優勢",
+    "優先保留 AoE（全體傷害）法術，開板後使用",
+    "維持自己的血量在 15 以上，不要讓 burst 一次帶走",
+    "對手血量剩餘少時，當心手牌 burn（燃燒傷害）combo"
+  ],
+  "notes": ""
+}

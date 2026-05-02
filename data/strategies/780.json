@@ -1,0 +1,78 @@
+{
+  "archetype_id": 780,
+  "name": "Imbue Mage",
+  "name_zh": "",
+  "class": "MAGE",
+  "class_zh": "法師",
+  "style": "中速",
+  "win_rate": 46.5,
+  "pct_of_total": 0.9,
+  "rank": 37,
+  "core_cards": [
+    {
+      "card_id": "EDR_800",
+      "name": "顫翼蝶守護者",
+      "type": "MINION",
+      "cost": 4,
+      "text": "嘲諷、聖盾術 戰吼：注能你的英雄能力"
+    },
+    {
+      "card_id": "EDR_519",
+      "name": "幽光馭者",
+      "type": "MINION",
+      "cost": 5,
+      "text": "戰吼：注能並觸發你的英雄能力"
+    },
+    {
+      "card_id": "EDR_852",
+      "name": "苦痛之花騎士",
+      "type": "MINION",
+      "cost": 2,
+      "text": "戰吼：注能你的英雄能力"
+    },
+    {
+      "card_id": "EDR_871",
+      "name": "靈魂採集者",
+      "type": "MINION",
+      "cost": 2,
+      "text": "戰吼：獲得一個幽光，並注能你的英雄能力"
+    },
+    {
+      "card_id": "EDR_430",
+      "name": "艾森娜",
+      "type": "MINION",
+      "cost": 8,
+      "text": "戰吼：若本賽局有20個友方手下死亡，造成20點傷害，隨機分給全部敵人@(還差{0}個！)@(準備完成"
+    },
+    {
+      "card_id": "EDR_888",
+      "name": "『守道者』瑪洛尼",
+      "type": "MINION",
+      "cost": 8,
+      "text": "戰吼：發現一個 傳說荒野神靈。 注能你的英雄能力 4次後消耗改為(1)"
+    },
+    {
+      "card_id": "FIR_921",
+      "name": "護花使者",
+      "type": "MINION",
+      "cost": 3,
+      "text": "戰吼：若你已注能兩次英雄能力，抽2張牌"
+    },
+    {
+      "card_id": "EDR_860",
+      "name": "燦麗織夢者",
+      "type": "MINION",
+      "cost": 4,
+      "text": "生命竊取 戰吼：若你已注能兩次英雄能力，對一個手下造成4點傷害"
+    }
+  ],
+  "play_style": "中速型，平衡前後期，有多樣化的應對手段",
+  "win_condition": "耗盡對手資源或建立不可解的板面",
+  "key_turns": "5-8 回合決定走向",
+  "against_tips": [
+    "觀察對手打出的關鍵牌，判斷其 win condition",
+    "小心中期威脅，注意是否有 buff 型隨從雪球",
+    "保留高費法術應對關鍵隨從"
+  ],
+  "notes": ""
+}

@@ -1,0 +1,78 @@
+{
+  "archetype_id": 472,
+  "name": "Quest Demon Hunter",
+  "name_zh": "",
+  "class": "DEMONHUNTER",
+  "class_zh": "惡魔獵人",
+  "style": "任務",
+  "win_rate": 50.5,
+  "pct_of_total": 0.4,
+  "rank": 26,
+  "core_cards": [
+    {
+      "card_id": "TLC_833",
+      "name": "昆蟲之爪",
+      "type": "WEAPON",
+      "cost": 3,
+      "text": "[x]在你的英雄攻擊 後，召喚一個有 衝刺的2/1蛆蟲"
+    },
+    {
+      "card_id": "TLC_631",
+      "name": "釋放巨蟲",
+      "type": "SPELL",
+      "cost": 1,
+      "text": "任務：在你的回合 對一個敵人造成 12次剛好2點的傷害 獎勵：格里什巨蟲"
+    },
+    {
+      "card_id": "DINO_136",
+      "name": "饗宴之角",
+      "type": "SPELL",
+      "cost": 4,
+      "text": "召喚三個有衝刺的2/1迅猛龍 流放：賦予它們本回合攻擊時免疫"
+    },
+    {
+      "card_id": "TLC_630",
+      "name": "格里什黃蜂",
+      "type": "MINION",
+      "cost": 5,
+      "text": "衝刺 每當此手下受到 傷害，獲得一張消耗為1的格里什毒刺蜂"
+    },
+    {
+      "card_id": "TLC_840",
+      "name": "格里什掘洞蠍",
+      "type": "MINION",
+      "cost": 3,
+      "text": "[x]潛行。在此手下攻擊 後，對敵方英雄造成 2點傷害"
+    },
+    {
+      "card_id": "TLC_987",
+      "name": "解任務的助手",
+      "type": "MINION",
+      "cost": 2,
+      "text": "戰吼：若你在本賽局已打出任務，對一個敵方手下造成3點傷害"
+    },
+    {
+      "card_id": "CORE_BT_491",
+      "name": "靈視",
+      "type": "SPELL",
+      "cost": 2,
+      "text": "抽一張牌。 流放：再抽一張牌"
+    },
+    {
+      "card_id": "CORE_BT_187",
+      "name": "凱恩‧日怒",
+      "type": "MINION",
+      "cost": 4,
+      "text": "衝鋒。所有友方攻擊無視嘲諷"
+    }
+  ],
+  "play_style": "任務型，完成特定任務後解鎖強力能力或獎勵",
+  "win_condition": "任務完成前決出勝負，或之後快速答問",
+  "key_turns": "任務完成前（通常 5-8 回合）是最佳攻勢視窗",
+  "against_tips": [
+    "積極施壓，不要給對手安穩完成任務的時間",
+    "注意對手完成任務的時間節點，判斷威脅等級",
+    "任務完成後遊戲通常進入對方優勢，需在此之前分出勝負"
+  ],
+  "notes": ""
+}

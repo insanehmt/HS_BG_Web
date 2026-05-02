@@ -1,0 +1,77 @@
+{
+  "archetype_id": 444,
+  "name": "Heal Priest",
+  "name_zh": "",
+  "class": "PRIEST",
+  "class_zh": "牧師",
+  "style": "",
+  "win_rate": 46.7,
+  "pct_of_total": 0.3,
+  "rank": 36,
+  "core_cards": [
+    {
+      "card_id": "CORE_AT_055",
+      "name": "快速治療",
+      "type": "SPELL",
+      "cost": 1,
+      "text": "恢復#5點生命值"
+    },
+    {
+      "card_id": "END_028",
+      "name": "為所有時間而戰",
+      "type": "SPELL",
+      "cost": 4,
+      "text": "摧毀全部攻擊力4以下的手下 超載：(2)"
+    },
+    {
+      "card_id": "CATA_301",
+      "name": "晶紅聖所",
+      "type": "LOCATION",
+      "cost": 1,
+      "text": "本回合你的下一個治療效果改為造成傷害"
+    },
+    {
+      "card_id": "TIME_890",
+      "name": "『聖者』麥迪文",
+      "type": "MINION",
+      "cost": 10,
+      "text": "顯赫 若你場上有卡拉贊，消耗為(0)。戰吼：沉默並摧毀全部其他手下"
+    },
+    {
+      "card_id": "TIME_890t",
+      "name": "阿泰絲大法杖",
+      "type": "WEAPON",
+      "cost": 10,
+      "text": "若你場上有麥迪文，消耗為(0)。使你的法術造成的傷害和治療效果加倍"
+    },
+    {
+      "card_id": "TIME_890t2",
+      "name": "聖所卡拉贊",
+      "type": "LOCATION",
+      "cost": 10,
+      "text": "若你裝備了阿泰絲，消耗為(0)。召喚兩個消耗為8的隨機手下"
+    },
+    {
+      "card_id": "CATA_302",
+      "name": "治療",
+      "type": "SPELL",
+      "cost": 1,
+      "text": "使一個手下的生命值恢復全滿。抽一張牌"
+    },
+    {
+      "card_id": "CATA_216",
+      "name": "淨化教士",
+      "type": "MINION",
+      "cost": 4,
+      "text": "戰吼：在本賽局中，你的治療效果額外恢復2點生命值"
+    }
+  ],
+  "play_style": "此牌型目前尚無詳細資料，請根據對手打出的牌判斷風格",
+  "win_condition": "根據你的牌組優勢施展",
+  "key_turns": "依對手行動判斷",
+  "against_tips": [
+    "觀察對手的出牌節奏判斷是快攻/中速/控制",
+    "記錄對手核心牌型"
+  ],
+  "notes": ""
+}

@@ -1,0 +1,77 @@
+{
+  "archetype_id": 832,
+  "name": "Rafaam Warlock",
+  "name_zh": "",
+  "class": "WARLOCK",
+  "class_zh": "術士",
+  "style": "",
+  "win_rate": 49.7,
+  "pct_of_total": 1.7,
+  "rank": 27,
+  "core_cards": [
+    {
+      "card_id": "TIME_005",
+      "name": "時光大盜拉法姆",
+      "type": "MINION",
+      "cost": 10,
+      "text": "顯赫+。你的套牌大小改為40，但是有10個拉法姆！ 戰吼：若你打完剩下的拉法姆，摧毀敵方英雄@(還差"
+    },
+    {
+      "card_id": "TIME_005t1",
+      "name": "迷你拉法姆",
+      "type": "MINION",
+      "cost": 1,
+      "text": "戰吼和死亡之聲：抽一個拉法姆"
+    },
+    {
+      "card_id": "TIME_005t2",
+      "name": "綠色拉法姆",
+      "type": "MINION",
+      "cost": 2,
+      "text": "戰吼：賦予你手中和戰場上的其他拉法姆+2/+2"
+    },
+    {
+      "card_id": "TIME_005t3",
+      "name": "探險者拉法姆",
+      "type": "MINION",
+      "cost": 4,
+      "text": "戰吼：從你的牌堆 發現一個拉法姆"
+    },
+    {
+      "card_id": "TIME_005t4",
+      "name": "大酋長拉法姆",
+      "type": "MINION",
+      "cost": 5,
+      "text": "戰吼：獲得5點護甲值。若你手中有另一個拉法姆，再獲得5點"
+    },
+    {
+      "card_id": "TIME_005t5",
+      "name": "笞靈者拉法姆",
+      "type": "MINION",
+      "cost": 7,
+      "text": "嘲諷 戰吼：若你手中有另一個拉法姆，召喚一個此手下的分身"
+    },
+    {
+      "card_id": "TIME_005t6",
+      "name": "災禍拉法姆",
+      "type": "MINION",
+      "cost": 6,
+      "text": "戰吼：對不是拉法姆的全部手下造成6點 傷害"
+    },
+    {
+      "card_id": "TIME_005t7",
+      "name": "巨大拉法姆",
+      "type": "MINION",
+      "cost": 8,
+      "text": "衝刺 你在本賽局中打出的每個拉法姆使消耗 減少(1)"
+    }
+  ],
+  "play_style": "此牌型目前尚無詳細資料，請根據對手打出的牌判斷風格",
+  "win_condition": "根據你的牌組優勢施展",
+  "key_turns": "依對手行動判斷",
+  "against_tips": [
+    "觀察對手的出牌節奏判斷是快攻/中速/控制",
+    "記錄對手核心牌型"
+  ],
+  "notes": ""
+}

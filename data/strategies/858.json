@@ -1,0 +1,78 @@
+{
+  "archetype_id": 858,
+  "name": "Herald Warlock",
+  "name_zh": "",
+  "class": "WARLOCK",
+  "class_zh": "術士",
+  "style": "中速",
+  "win_rate": 45.1,
+  "pct_of_total": 0.7,
+  "rank": 43,
+  "core_cards": [
+    {
+      "card_id": "CATA_722",
+      "name": "終焉使者",
+      "type": "MINION",
+      "cost": 5,
+      "text": "嘲諷 戰吼：預兆{0}"
+    },
+    {
+      "card_id": "CATA_210",
+      "name": "暮光龍蛋",
+      "type": "MINION",
+      "cost": 1,
+      "text": "死亡之聲：召喚一個 2/2幼龍 (在你的回合開始時獲得+1/+1！)"
+    },
+    {
+      "card_id": "CATA_190h",
+      "name": "『碎界者』死亡之翼",
+      "type": "HERO",
+      "cost": 10,
+      "text": "戰吼：選擇釋放 {0}場大災變！ 預兆兩次以升級@戰吼：選擇釋放 {0}場大災變！ 預兆一次以升級@"
+    },
+    {
+      "card_id": "CATA_497",
+      "name": "奧特拉賽恩",
+      "type": "MINION",
+      "cost": 6,
+      "text": "戰吼：預兆{0}。使死亡之翼的消耗降低({1}) (預兆可強化！)"
+    },
+    {
+      "card_id": "CATA_726",
+      "name": "『邪惡首腦』丘加利",
+      "type": "MINION",
+      "cost": 9,
+      "text": "巨型+2 你的手臂和士兵改為摧毀敵方牌堆中的 手下"
+    },
+    {
+      "card_id": "CORE_ULD_723",
+      "name": "木乃魚",
+      "type": "MINION",
+      "cost": 1,
+      "text": "重生"
+    },
+    {
+      "card_id": "CORE_REV_308",
+      "name": "迷宮嚮導",
+      "type": "MINION",
+      "cost": 2,
+      "text": "戰吼：召喚一個法力消耗為2的隨機手下"
+    },
+    {
+      "card_id": "TLC_831",
+      "name": "翼手龍蛋",
+      "type": "MINION",
+      "cost": 3,
+      "text": "死亡之聲：召喚一個偷取所有其他手下1點生命值的3/3翼手龍"
+    }
+  ],
+  "play_style": "中速型，平衡前後期，有多樣化的應對手段",
+  "win_condition": "耗盡對手資源或建立不可解的板面",
+  "key_turns": "5-8 回合決定走向",
+  "against_tips": [
+    "觀察對手打出的關鍵牌，判斷其 win condition",
+    "小心中期威脅，注意是否有 buff 型隨從雪球",
+    "保留高費法術應對關鍵隨從"
+  ],
+  "notes": ""
+}

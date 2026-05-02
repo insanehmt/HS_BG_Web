@@ -1,0 +1,79 @@
+{
+  "archetype_id": 355,
+  "name": "Face Hunter",
+  "name_zh": "",
+  "class": "HUNTER",
+  "class_zh": "獵人",
+  "style": "快攻",
+  "win_rate": 55.6,
+  "pct_of_total": 3.5,
+  "rank": 10,
+  "core_cards": [
+    {
+      "card_id": "TIME_606",
+      "name": "奎爾多雷造箭師",
+      "type": "MINION",
+      "cost": 1,
+      "text": "你的手牌為3張以下時，你的英雄能力消耗為(0)"
+    },
+    {
+      "card_id": "TLC_249",
+      "name": "灼熱火靈",
+      "type": "MINION",
+      "cost": 1,
+      "text": "死亡之聲：造成2點 傷害，隨機分給全部敵人"
+    },
+    {
+      "card_id": "TIME_600",
+      "name": "精準射擊",
+      "type": "SPELL",
+      "cost": 2,
+      "text": "造成$3點傷害。若這張牌位於你手牌正中間，改為造成$5點傷害"
+    },
+    {
+      "card_id": "CATA_557",
+      "name": "希瓦娜斯的凱旋",
+      "type": "SPELL",
+      "cost": 2,
+      "text": "造成3點傷害。若你已經打出另一張此法術，改為攻擊全部敵人"
+    },
+    {
+      "card_id": "DINO_434",
+      "name": "迅猛龍巢保母",
+      "type": "MINION",
+      "cost": 1,
+      "text": "戰吼：獲得一個 消耗為1的隨機手下 死亡之聲：獲得一個 消耗為1的隨機法術"
+    },
+    {
+      "card_id": "CATA_615",
+      "name": "『詛咒之王』吉恩",
+      "type": "MINION",
+      "cost": 4,
+      "text": "此牌在手中時，若你其餘手牌的消耗皆為偶數或奇數，變形為6/5的狼人之王"
+    },
+    {
+      "card_id": "FIR_909",
+      "name": "爆破射擊",
+      "type": "SPELL",
+      "cost": 2,
+      "text": "對三個隨機敵人造成$2點傷害"
+    },
+    {
+      "card_id": "CORE_DS1_185",
+      "name": "秘法射擊",
+      "type": "SPELL",
+      "cost": 1,
+      "text": "造成$2點傷害"
+    }
+  ],
+  "play_style": "快攻型，前期快速鋪場並強攻英雄血量，通常在 6-8 回合結束遊戲",
+  "win_condition": "清場穩住板面後，對手牌力下降即可反攻",
+  "key_turns": "1-6 回合最關鍵，超過 8 回合通常你佔優",
+  "against_tips": [
+    "前期必須積極清場，不讓對手建立雪球優勢",
+    "優先保留 AoE（全體傷害）法術，開板後使用",
+    "維持自己的血量在 15 以上，不要讓 burst 一次帶走",
+    "對手血量剩餘少時，當心手牌 burn（燃燒傷害）combo"
+  ],
+  "notes": ""
+}

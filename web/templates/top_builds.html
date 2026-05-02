@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>強力排組統計｜HS 戰場紀錄器</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<style>
+  [x-cloak]{display:none}
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap');
+
+  body{background:#0e0a08;color:#f0e6d3;font-family:'Segoe UI',sans-serif}
+
+  .panel{background:linear-gradient(135deg,#1c1208,#180e06);border:1px solid #3a2510;border-radius:12px;padding:20px}
+
+  /* 篩選按鈕 */
+  .filter-btn{background:#1e1208;border:1px solid #3a2010;color:#d4a060;padding:5px 14px;border-radius:6px;cursor:pointer;transition:all .15s;font-size:.82rem}
+  .filter-btn:hover,.filter-btn.active{background:#3a1e08;border-color:#c89820;color:#ffd060}
+
+  /* 排行榜列 */
+  .rank-row{
+    display:grid; align-items:center; gap:12px;
+    padding:10px 12px; border-radius:8px;
+    border:1px solid #2a1808; margin-bottom:6px;
+    background:#17100a; transition:background .15s;
+  }
+  .rank-row:hover{background:#221608;border-color:#4a2e10}
+  .rank-row.first{border-color:#c8980040;background:linear-gradient(90deg,#201608,#17100a)}
+
+  /* 名次標誌 */
+  .rank-no{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.8rem;flex-shrink:0}
+  .rk-1{background:linear-gradient(135deg,#c89800,#ffd060);color:#1a0800}
+  .rk-2{background:linear-gradient(135deg,#6a7280,#c8d0d8);color:#1a1a2e}
+  .rk-3{background:linear-gradient(135deg,#8b5520,#d4823a);color:#fff0d8}
+  .rk-n{background:#2a1808;color:#a07850}
+
+  /* 進度條 */
+  .bar-track{background:#2a1808;border-radius:4px;height:6px;overflow:hidden}
+  .bar-fill{height:100%;border-radius:4px;transition:width .6s ease}
+  .bar-win{background:linear-gradient(90deg,#c89800,#ffd060)}
+  .bar-top4{background:linear-gradient(90deg,#1d4ed8,#60a5fa)}
+  .bar-avg{background:linear-gradient(90deg,#047857,#34d399)}
+
+  /* 英雄頭像 */
+  .hero-avatar{width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:center top;border:2px solid #4a2e10;flex-shrink:0}
+  .hero-avatar-placeholder{width:44px;height:44px;border-radius:50%;background:#2a1808;border:2px solid #4a2e10;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+
+  /* 技能/飾品圖示 */
+  .power-avatar{width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid #2563eb;flex-shrink:0}
+  .trinket-avatar{width:40px;height:40px;border-radius:8px;object-fit:cover;border:2px solid #7c3aed;flex-shrink:0}
+  .icon-placeholder{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+
+  /* 隨從圖示 */
+  .minion-icon{width:48px;height:48px;border-radius:8px;overflow:hidden;border:1.5px solid #4a2e10;background:#1a1008;flex-shrink:0}
+  .minion-icon img{width:100%;height:100%;object-fit:cover}
+
+  /* 分頁標題 */
+  .section-title{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#6a4020;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  .section-title::after{content:'';flex:1;height:1px;background:#2a1808}
+
+  /* 數值標籤 */
+  .val{font-weight:700;font-size:.9rem}
+  .val-gold{color:#ffd060}
+  .val-blue{color:#60a5fa}
+  .val-green{color:#34d399}
+  .val-muted{color:#6a4020;font-size:.75rem}
+
+  /* 分頁導覽 */
+  .tab-btn{padding:7px 18px;border-radius:8px;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .15s;border:1px solid transparent;color:#786050}
+  .tab-btn:hover{color:#d4a060;border-color:#3a2010}
+  .tab-btn.active{background:#2a1808;border-color:#c89820;color:#ffd060}
+
+  ::-webkit-scrollbar{width:5px;height:5px}
+  ::-webkit-scrollbar-track{background:#0e0a08}
+  ::-webkit-scrollbar-thumb{background:#3a2010;border-radius:3px}
+</style>
+</head>
+<body x-data="app()" x-init="init()" x-cloak>
+
+<div class="max-w-6xl mx-auto px-4 py-6">
+
+  <!-- ── Header ── -->
+  <header class="flex items-center justify-between mb-7">
+    <div class="flex items-center gap-4">
+      <a href="/" class="text-yellow-800 hover:text-yellow-400 text-sm">← 返回紀錄</a>
+      <h1 class="text-2xl font-black text-yellow-300" style="font-family:'Cinzel',serif;text-shadow:0 0 20px #c8980060">
+        🏆 強力排組統計
+      </h1>
+    </div>
+    <a href="/upload" class="filter-btn px-4 py-2">📤 上傳紀錄</a>
+  </header>
+
+  <!-- ── 模式篩選 ── -->
+  <div class="flex gap-2 mb-6">
+    <button class="filter-btn" :class="{active:mode==='all'}"  @click="mode='all';load()">⚔️ 全部</button>
+    <button class="filter-btn" :class="{active:mode==='solo'}" @click="mode='solo';load()">單打</button>
+    <button class="filter-btn" :class="{active:mode==='duo'}"  @click="mode='duo';load()">🤝 雙打</button>
+    <div class="ml-4 flex items-center gap-1 text-xs text-yellow-800">
+      <span x-text="`共 ${totalGames} 場紀錄`"></span>
+    </div>
+    <div x-show="loading" class="ml-2 text-yellow-700 text-xs flex items-center">載入中…</div>
+  </div>
+
+  <!-- ── 分頁標籤 ── -->
+  <div class="flex gap-1 mb-6 border-b border-yellow-900/30 pb-2">
+    <button class="tab-btn" :class="{active:tab==='heroes'}"  @click="tab='heroes'">🧙 英雄排行</button>
+    <button class="tab-btn" :class="{active:tab==='powers'}"  @click="tab='powers'">⚡ 英雄技能</button>
+    <button class="tab-btn" :class="{active:tab==='trinkets'}" @click="tab='trinkets'">💎 飾品</button>
+    <button class="tab-btn" :class="{active:tab==='minions'}" @click="tab='minions'">🐉 冠軍隨從</button>
+  </div>
+
+  <!-- ═══ 英雄排行 ═══ -->
+  <div x-show="tab==='heroes'">
+    <div class="panel">
+      <div class="section-title">英雄勝率排行（依平均名次排序）</div>
+
+      <!-- 表頭 -->
+      <div class="grid gap-3 px-3 mb-2 text-xs text-yellow-800 font-bold uppercase tracking-wider"
+           style="grid-template-columns:28px 44px 1fr 70px 70px 70px 90px">
+        <div></div><div></div>
+        <div>英雄</div>
+        <div class="text-center">場次</div>
+        <div class="text-center">勝率</div>
+        <div class="text-center">前4率</div>
+        <div class="text-center">平均名次</div>
+      </div>
+
+      <template x-for="(h, i) in heroes" :key="h.name">
+        <div class="rank-row" :class="i===0?'first':''"
+             style="grid-template-columns:28px 44px 1fr 70px 70px 70px 90px">
+          <!-- 序號 -->
+          <div class="rank-no" :class="i===0?'rk-1':i===1?'rk-2':i===2?'rk-3':'rk-n'" x-text="i+1"></div>
+
+          <!-- 英雄頭像 -->
+          <template x-if="h.card_id">
+            <img class="hero-avatar"
+                 :src="`https://art.hearthstonejson.com/v1/256x/${h.card_id}.jpg`"
+                 :alt="h.name"
+                 onerror="this.style.display='none'">
+          </template>
+          <template x-if="!h.card_id">
+            <div class="hero-avatar-placeholder">🧙</div>
+          </template>
+
+          <!-- 英雄名 + 進度條 -->
+          <div class="min-w-0">
+            <div class="font-bold text-yellow-200 text-sm truncate" x-text="h.name"></div>
+            <div class="flex gap-2 mt-1">
+              <div class="flex-1 bar-track" title="勝率">
+                <div class="bar-fill bar-win" :style="`width:${h.win_rate}%`"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 場次 -->
+          <div class="text-center">
+            <div class="val val-muted" x-text="h.games"></div>
+          </div>
+
+          <!-- 勝率 -->
+          <div class="text-center">
+            <div class="val val-gold" x-text="h.win_rate+'%'"></div>
+            <div class="val-muted" x-text="h.wins+'勝'"></div>
+          </div>
+
+          <!-- 前4率 -->
+          <div class="text-center">
+            <div class="val val-blue" x-text="h.top4_rate+'%'"></div>
+            <div class="val-muted" x-text="h.top4+'次'"></div>
+          </div>
+
+          <!-- 平均名次 -->
+          <div class="text-center">
+            <div class="val" :class="h.avg_place<=2?'val-gold':h.avg_place<=4?'val-blue':'val-green'"
+                 x-text="'#'+h.avg_place"></div>
+          </div>
+        </div>
+      </template>
+
+      <div class="text-center text-yellow-800 py-8 text-sm"
+           x-show="heroes.length===0 && !loading">還沒有足夠紀錄</div>
+    </div>
+  </div>
+
+  <!-- ═══ 技能統計 ═══ -->
+  <div x-show="tab==='powers'">
+    <div class="panel">
+      <div class="section-title">英雄技能使用統計（≥2場）</div>
+
+      <div class="grid gap-3 px-3 mb-2 text-xs text-yellow-800 font-bold uppercase tracking-wider"
+           style="grid-template-columns:28px 40px 1fr 60px 70px 70px 90px">
+        <div></div><div></div>
+        <div>技能</div>
+        <div class="text-center">場次</div>
+        <div class="text-center">勝率</div>
+        <div class="text-center">前4率</div>
+        <div class="text-center">平均名次</div>
+      </div>
+
+      <template x-for="(p, i) in powers" :key="p.name">
+        <div class="rank-row" :class="i===0?'first':''"
+             style="grid-template-columns:28px 40px 1fr 60px 70px 70px 90px">
+          <div class="rank-no" :class="i===0?'rk-1':i===1?'rk-2':i===2?'rk-3':'rk-n'" x-text="i+1"></div>
+
+          <template x-if="p.card_id">
+            <img class="power-avatar"
+                 :src="`https://art.hearthstonejson.com/v1/256x/${p.card_id}.jpg`"
+                 :alt="p.name" onerror="this.style.display='none'">
+          </template>
+          <template x-if="!p.card_id">
+            <div class="icon-placeholder bg-blue-950 border-2 border-blue-800">⚡</div>
+          </template>
+
+          <div class="min-w-0">
+            <div class="font-bold text-blue-200 text-sm truncate" x-text="p.name"></div>
+            <div class="bar-track mt-1"><div class="bar-fill bar-win" :style="`width:${p.win_rate}%`"></div></div>
+          </div>
+          <div class="text-center"><div class="val val-muted" x-text="p.games"></div></div>
+          <div class="text-center">
+            <div class="val val-gold" x-text="p.win_rate+'%'"></div>
+            <div class="val-muted" x-text="p.wins+'勝'"></div>
+          </div>
+          <div class="text-center">
+            <div class="val val-blue" x-text="p.top4_rate+'%'"></div>
+          </div>
+          <div class="text-center">
+            <div class="val" :class="p.avg_place<=2?'val-gold':p.avg_place<=4?'val-blue':'val-green'"
+                 x-text="'#'+p.avg_place"></div>
+          </div>
+        </div>
+      </template>
+
+      <div class="text-center text-yellow-800 py-8 text-sm"
+           x-show="powers.length===0 && !loading">還沒有足夠紀錄</div>
+    </div>
+  </div>
+
+  <!-- ═══ 飾品統計 ═══ -->
+  <div x-show="tab==='trinkets'">
+    <div class="panel">
+      <div class="section-title">飾品使用統計（≥2場）</div>
+
+      <div class="grid gap-3 px-3 mb-2 text-xs text-yellow-800 font-bold uppercase tracking-wider"
+           style="grid-template-columns:28px 40px 1fr 60px 70px 70px 90px">
+        <div></div><div></div>
+        <div>飾品</div>
+        <div class="text-center">場次</div>
+        <div class="text-center">勝率</div>
+        <div class="text-center">前4率</div>
+        <div class="text-center">平均名次</div>
+      </div>
+
+      <template x-for="(t, i) in trinkets" :key="t.name">
+        <div class="rank-row" :class="i===0?'first':''"
+             style="grid-template-columns:28px 40px 1fr 60px 70px 70px 90px">
+          <div class="rank-no" :class="i===0?'rk-1':i===1?'rk-2':i===2?'rk-3':'rk-n'" x-text="i+1"></div>
+
+          <template x-if="t.card_id">
+            <img class="trinket-avatar"
+                 :src="`https://art.hearthstonejson.com/v1/256x/${t.card_id}.jpg`"
+                 :alt="t.name" onerror="this.style.display='none'">
+          </template>
+          <template x-if="!t.card_id">
+            <div class="icon-placeholder bg-purple-950 border-2 border-purple-800 rounded-lg">💎</div>
+          </template>
+
+          <div class="min-w-0">
+            <div class="font-bold text-purple-200 text-sm truncate" x-text="t.name"></div>
+            <div class="bar-track mt-1"><div class="bar-fill bar-win" :style="`width:${t.win_rate}%`"></div></div>
+          </div>
+          <div class="text-center"><div class="val val-muted" x-text="t.games"></div></div>
+          <div class="text-center">
+            <div class="val val-gold" x-text="t.win_rate+'%'"></div>
+            <div class="val-muted" x-text="t.wins+'勝'"></div>
+          </div>
+          <div class="text-center">
+            <div class="val val-blue" x-text="t.top4_rate+'%'"></div>
+          </div>
+          <div class="text-center">
+            <div class="val" :class="t.avg_place<=2?'val-gold':t.avg_place<=4?'val-blue':'val-green'"
+                 x-text="'#'+t.avg_place"></div>
+          </div>
+        </div>
+      </template>
+
+      <div class="text-center text-yellow-800 py-8 text-sm"
+           x-show="trinkets.length===0 && !loading">還沒有足夠紀錄</div>
+    </div>
+  </div>
+
+  <!-- ═══ 冠軍隨從 ═══ -->
+  <div x-show="tab==='minions'">
+    <div class="panel">
+      <div class="section-title">🏆 冠軍板面常見隨從 Top 20</div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+        <template x-for="(m, i) in minions" :key="m.name">
+          <div class="flex flex-col items-center gap-2 p-3 rounded-10 border border-yellow-900/30 bg-[#17100a] hover:bg-[#221608] hover:border-yellow-800/50 transition-all">
+            <!-- 序號 -->
+            <div class="self-start">
+              <span class="rank-no text-xs" :class="i===0?'rk-1':i===1?'rk-2':i===2?'rk-3':'rk-n'" x-text="i+1"></span>
+            </div>
+            <!-- 隨從圖示 -->
+            <div class="minion-icon">
+              <img :src="`https://art.hearthstonejson.com/v1/tiles/${m.card_id||''}.jpg`"
+                   :alt="m.name" onerror="this.src=''">
+            </div>
+            <!-- 名稱 -->
+            <div class="text-xs text-yellow-300 font-bold text-center leading-tight" x-text="m.name"></div>
+            <!-- 出現次數 -->
+            <div class="text-xs text-yellow-700">
+              出現 <span class="text-yellow-400 font-bold" x-text="m.count"></span> 次
+            </div>
+          </div>
+        </template>
+      </div>
+
+      <div class="text-center text-yellow-800 py-8 text-sm"
+           x-show="minions.length===0 && !loading">還沒有第一名紀錄</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function app() {
+  return {
+    tab: 'heroes',
+    mode: 'all',
+    loading: false,
+    heroes: [], powers: [], trinkets: [], minions: [],
+    totalGames: 0,
+
+    async init() { await this.load() },
+
+    async load() {
+      this.loading = true
+      const r = await fetch(`/api/top-builds?mode=${this.mode}`)
+      const d = await r.json()
+      this.heroes   = d.heroes   || []
+      this.powers   = d.powers   || []
+      this.trinkets = d.trinkets || []
+      this.minions  = d.minions  || []
+      this.totalGames = this.heroes.reduce((s, h) => s + h.games, 0)
+      this.loading = false
+    }
+  }
+}
+</script>
+<!-- ── Footer ── -->
+<footer class="max-w-6xl mx-auto px-4 py-6 mt-8 border-t border-yellow-900/20 text-center text-xs text-yellow-900 space-y-1">
+  <div>Hearthstone™ is a trademarkof Blizzard Entertainment, Inc. All card data and images are © Blizzard Entertainment.</div>
+  <div>This project is not affiliated with or endorsed by Blizzard. © 2025 HS BG Tracker. All rights reserved.</div>
+</footer>
+
+</body>
+</html>

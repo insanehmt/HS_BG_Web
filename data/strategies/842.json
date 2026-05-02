@@ -1,0 +1,78 @@
+{
+  "archetype_id": 842,
+  "name": "Imbue Rogue",
+  "name_zh": "",
+  "class": "ROGUE",
+  "class_zh": "盜賊",
+  "style": "中速",
+  "win_rate": 54.4,
+  "pct_of_total": 7.4,
+  "rank": 12,
+  "core_cards": [
+    {
+      "card_id": "END_000",
+      "name": "可能性",
+      "type": "SPELL",
+      "cost": 2,
+      "text": "造成$2點傷害。注能你的英雄能力"
+    },
+    {
+      "card_id": "EDR_852",
+      "name": "苦痛之花騎士",
+      "type": "MINION",
+      "cost": 2,
+      "text": "戰吼：注能你的英雄能力"
+    },
+    {
+      "card_id": "EDR_860",
+      "name": "燦麗織夢者",
+      "type": "MINION",
+      "cost": 4,
+      "text": "生命竊取 戰吼：若你已注能兩次英雄能力，對一個手下造成4點傷害"
+    },
+    {
+      "card_id": "EDR_800",
+      "name": "顫翼蝶守護者",
+      "type": "MINION",
+      "cost": 4,
+      "text": "嘲諷、聖盾術 戰吼：注能你的英雄能力"
+    },
+    {
+      "card_id": "END_001",
+      "name": "時光鋸齒利刃",
+      "type": "WEAPON",
+      "cost": 3,
+      "text": "戰吼：注能你的英雄能力"
+    },
+    {
+      "card_id": "CORE_CS2_072",
+      "name": "背刺",
+      "type": "SPELL",
+      "cost": 0,
+      "text": "對一個 未受傷的手下造成 $2點傷害"
+    },
+    {
+      "card_id": "CATA_785",
+      "name": "暮光儀式",
+      "type": "SPELL",
+      "cost": 2,
+      "text": "預兆{0} 連擊：造成$3點 傷害"
+    },
+    {
+      "card_id": "EDR_528",
+      "name": "夢魘燃料",
+      "type": "SPELL",
+      "cost": 1,
+      "text": "發現對手牌堆中的一個手下。 連擊：該手下獲得 黑暗贈禮"
+    }
+  ],
+  "play_style": "中速型，平衡前後期，有多樣化的應對手段",
+  "win_condition": "耗盡對手資源或建立不可解的板面",
+  "key_turns": "5-8 回合決定走向",
+  "against_tips": [
+    "觀察對手打出的關鍵牌，判斷其 win condition",
+    "小心中期威脅，注意是否有 buff 型隨從雪球",
+    "保留高費法術應對關鍵隨從"
+  ],
+  "notes": ""
+}

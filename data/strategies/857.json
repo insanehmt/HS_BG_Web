@@ -1,0 +1,78 @@
+{
+  "archetype_id": 857,
+  "name": "Herald Shaman",
+  "name_zh": "",
+  "class": "SHAMAN",
+  "class_zh": "薩滿",
+  "style": "中速",
+  "win_rate": 59.5,
+  "pct_of_total": 5.5,
+  "rank": 5,
+  "core_cards": [
+    {
+      "card_id": "TIME_209",
+      "name": "『高山之王』穆拉丁",
+      "type": "MINION",
+      "cost": 5,
+      "text": "顯赫、衝刺 戰吼：把高山之王之錘拿給我！死亡之聲： 將它放到你的手中"
+    },
+    {
+      "card_id": "TIME_209t",
+      "name": "高山之王之錘",
+      "type": "WEAPON",
+      "cost": 6,
+      "text": "風怒 死亡之聲：將此武器洗入你的牌堆，其攻擊力永久+2"
+    },
+    {
+      "card_id": "TIME_209t2",
+      "name": "石之聖者形態",
+      "type": "SPELL",
+      "cost": 3,
+      "text": "本回合賦予一個友方角色+2攻擊力和「在此手下攻擊後，對全部敵人造成2點傷害」"
+    },
+    {
+      "card_id": "CATA_210",
+      "name": "暮光龍蛋",
+      "type": "MINION",
+      "cost": 1,
+      "text": "死亡之聲：召喚一個 2/2幼龍 (在你的回合開始時獲得+1/+1！)"
+    },
+    {
+      "card_id": "TIME_213",
+      "name": "原始監督者",
+      "type": "MINION",
+      "cost": 2,
+      "text": "戰吼：若你於此牌在手中時施放了自然法術，獲得+1/+1並抽一張牌"
+    },
+    {
+      "card_id": "CORE_WC_042",
+      "name": "哀嚎水氣",
+      "type": "MINION",
+      "cost": 1,
+      "text": "在你打出元素後，獲得+1攻擊力"
+    },
+    {
+      "card_id": "CORE_EX1_259",
+      "name": "閃電風暴",
+      "type": "SPELL",
+      "cost": 3,
+      "text": "對全部敵方手下造成$3點傷害。超載：(1)"
+    },
+    {
+      "card_id": "CATA_722",
+      "name": "終焉使者",
+      "type": "MINION",
+      "cost": 5,
+      "text": "嘲諷 戰吼：預兆{0}"
+    }
+  ],
+  "play_style": "中速型，平衡前後期，有多樣化的應對手段",
+  "win_condition": "耗盡對手資源或建立不可解的板面",
+  "key_turns": "5-8 回合決定走向",
+  "against_tips": [
+    "觀察對手打出的關鍵牌，判斷其 win condition",
+    "小心中期威脅，注意是否有 buff 型隨從雪球",
+    "保留高費法術應對關鍵隨從"
+  ],
+  "notes": ""
+}

@@ -1,0 +1,78 @@
+{
+  "archetype_id": 569,
+  "name": "Spell Demon Hunter",
+  "name_zh": "",
+  "class": "DEMONHUNTER",
+  "class_zh": "惡魔獵人",
+  "style": "法術",
+  "win_rate": 59.4,
+  "pct_of_total": 4.4,
+  "rank": 6,
+  "core_cards": [
+    {
+      "card_id": "TIME_443",
+      "name": "憤怒獵犬",
+      "type": "SPELL",
+      "cost": 4,
+      "text": "召喚兩個3/3惡魔。若你牌堆中沒有手下，它們會攻擊生命值最低的敵人"
+    },
+    {
+      "card_id": "TIME_444",
+      "name": "時佚戰刃",
+      "type": "WEAPON",
+      "cost": 1,
+      "text": "死亡之聲：獲得一個來自過去的隨機惡魔"
+    },
+    {
+      "card_id": "TIME_446",
+      "name": "永恆牢獄",
+      "type": "LOCATION",
+      "cost": 6,
+      "text": "發現消耗(5)以上的任意惡魔。若你牌堆中沒有手下，你下一個手下的消耗改為(0)"
+    },
+    {
+      "card_id": "TIME_448",
+      "name": "孤軍奮戰",
+      "type": "SPELL",
+      "cost": 3,
+      "text": "發現2個手下。若你牌堆中沒有手下，使你手中任何手下的消耗減少(2)"
+    },
+    {
+      "card_id": "END_007",
+      "name": "發揮優勢",
+      "type": "SPELL",
+      "cost": 2,
+      "text": "造成$1點傷害。本回合賦予你的英雄+1攻擊力。抽1張牌。獲得1點護甲值"
+    },
+    {
+      "card_id": "TIME_449",
+      "name": "薪火相傳",
+      "type": "SPELL",
+      "cost": 3,
+      "text": "本回合賦予你的英雄+4攻擊力。若你牌堆中沒有手下，賦予你手中任何手下+4攻擊力"
+    },
+    {
+      "card_id": "EDR_820",
+      "name": "沉眠的蠍尾獅",
+      "type": "SPELL",
+      "cost": 3,
+      "text": "二選一：召喚兩個休眠懼靈之種，或是對全部手下造成$2點傷害"
+    },
+    {
+      "card_id": "TIME_020",
+      "name": "布洛克斯",
+      "type": "MINION",
+      "cost": 2,
+      "text": "顯赫、衝鋒 對戰開始：消失。殺死 全部4個來自阿古斯的惡魔以重新出現在手上"
+    }
+  ],
+  "play_style": "法術型，依靠施放法術觸發效果，多有 synergy 鏈",
+  "win_condition": "法術 synergy 連發清場或直傷斃命",
+  "key_turns": "法術累積到 5-8 回合爆發",
+  "against_tips": [
+    "施壓對手英雄或板面，讓對手無法純打法術",
+    "注意對手手牌增厚時可能有大量法術 combo",
+    "快攻型對其有一定優勢（打臉比清場快）"
+  ],
+  "notes": ""
+}

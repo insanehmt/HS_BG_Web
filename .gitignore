@@ -1,0 +1,22 @@
+# 私人設定（勿提交）
+.push_config
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 資料庫（個人紀錄）
+data/records.db
+data/games.db
+
+# 大型靜態資料（改用 Docker image 包入，不需 git 追蹤）
+data/hs_cards_full.json
+data/cards_cache.json
+
+# 上傳暫存
+web/uploads/*
+
+# 輸出
+output/

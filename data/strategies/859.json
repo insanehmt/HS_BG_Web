@@ -1,0 +1,78 @@
+{
+  "archetype_id": 859,
+  "name": "Merithra Druid",
+  "name_zh": "",
+  "class": "DRUID",
+  "class_zh": "德魯伊",
+  "style": "大型威脅",
+  "win_rate": 53.6,
+  "pct_of_total": 3.1,
+  "rank": 15,
+  "core_cards": [
+    {
+      "card_id": "EDR_000",
+      "name": "『翡翠守護巨龍』伊瑟拉",
+      "type": "MINION",
+      "cost": 9,
+      "text": "對戰開始：雙方 法力上限提高5 戰吼：獲得3顆 法力水晶"
+    },
+    {
+      "card_id": "END_011",
+      "name": "加速光環",
+      "type": "SPELL",
+      "cost": 2,
+      "text": "在你的回合開始時，獲得一顆暫時存在的法力水晶，持續 3回合"
+    },
+    {
+      "card_id": "CATA_140",
+      "name": "『夢境之龍』麥琳瑟拉",
+      "type": "MINION",
+      "cost": 8,
+      "text": "戰吼：以隨機龍類塞滿你的手牌。若你於此牌在手中時花費25點法力，它們的消耗為(1)(還差{0}點！)"
+    },
+    {
+      "card_id": "CORE_RLK_657",
+      "name": "地底王者",
+      "type": "MINION",
+      "cost": 7,
+      "text": "衝刺 戰吼和死亡之聲：獲得6點護甲值"
+    },
+    {
+      "card_id": "EDR_856",
+      "name": "夢魘之王薩維斯",
+      "type": "MINION",
+      "cost": 4,
+      "text": "戰吼：從你的牌堆 發現一個手下，並賦予它黑暗贈禮"
+    },
+    {
+      "card_id": "TLC_100",
+      "name": "領路者伊莉絲",
+      "type": "MINION",
+      "cost": 4,
+      "text": "戰吼：如果你的牌堆開始時有10張不同消耗的卡牌，製造一張自訂地點"
+    },
+    {
+      "card_id": "EDR_844",
+      "name": "『巨龍使者』納拉雷克斯",
+      "type": "MINION",
+      "cost": 7,
+      "text": "你每回合的第一個 龍類消耗為(1)"
+    },
+    {
+      "card_id": "FIR_959",
+      "name": "『熾炎者』菲拉卡",
+      "type": "MINION",
+      "cost": 10,
+      "text": "免疫火焰法術 戰吼：對隨機敵人施放共計15點法力的 火焰法術"
+    }
+  ],
+  "play_style": "大隨從型，後期投放大型威脅取勝",
+  "win_condition": "在大牌出場前造成足夠傷害，或準備好應對方案",
+  "key_turns": "7-9 回合大牌上場是轉折點",
+  "against_tips": [
+    "快攻或組合技在大牌出來前結束遊戲",
+    "若拖入後期，保留點殺/變形應對大型隨從",
+    "早期對手牌力較弱，需積極利用"
+  ],
+  "notes": ""
+}

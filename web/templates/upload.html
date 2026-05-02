@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>上傳 Excel｜HS 戰場紀錄器</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body{background:#1a1210;color:#f0e6d3;font-family:'Segoe UI',sans-serif}
+  .card{background:#2a1f1a;border:1px solid #4a3020;border-radius:10px;padding:24px}
+  .btn{background:#5a3020;border:1px solid #d4a030;color:#ffd060;padding:8px 20px;border-radius:6px;cursor:pointer;transition:all .15s;font-weight:bold}
+  .btn:hover{background:#7a4030;border-color:#f0c040}
+  .drop-zone{border:2px dashed #5a3020;border-radius:10px;padding:48px;text-align:center;transition:all .2s;cursor:pointer}
+  .drop-zone.drag{border-color:#d4a030;background:#3a2010}
+</style>
+</head>
+<body>
+<div class="max-w-2xl mx-auto px-4 py-10">
+  <div class="flex items-center gap-3 mb-8">
+    <a href="/" class="text-yellow-600 hover:text-yellow-300">← 返回</a>
+    <h1 class="text-2xl font-bold text-yellow-300">📤 上傳 Excel 紀錄</h1>
+  </div>
+
+  {% if success %}
+  <div class="bg-green-900 border border-green-600 text-green-200 rounded-lg p-4 mb-6">
+    ✅ {{ success }}　<a href="/" class="underline">查看紀錄 →</a>
+  </div>
+  {% endif %}
+
+  {% if error %}
+  <div class="bg-red-900 border border-red-600 text-red-200 rounded-lg p-4 mb-6">
+    ❌ {{ error }}
+  </div>
+  {% endif %}
+
+  <div class="card mb-6">
+    <h2 class="text-lg font-bold text-yellow-200 mb-2">支援格式</h2>
+    <p class="text-sm text-yellow-600 mb-4">上傳由紀錄器產生的 <code class="bg-[#3a2010] px-1 rounded">hs_bg_records.xlsx</code>，系統會自動匯入「單打紀錄」和「雙打紀錄」兩個分頁的資料。</p>
+
+    <form action="/upload" method="post" enctype="multipart/form-data" id="uploadForm">
+      <div class="drop-zone" id="dropZone"
+           ondragover="event.preventDefault();this.classList.add('drag')"
+           ondragleave="this.classList.remove('drag')"
+           ondrop="handleDrop(event)"
+           onclick="document.getElementById('fileInput').click()">
+        <div class="text-4xl mb-2">📁</div>
+        <div class="text-yellow-400 font-bold mb-1">點擊或拖曳 Excel 檔案到這裡</div>
+        <div class="text-yellow-700 text-sm">.xlsx / .xls</div>
+        <div class="mt-3 text-yellow-300 text-sm" id="fileName"></div>
+      </div>
+      <input type="file" id="fileInput" name="excel" accept=".xlsx,.xls" class="hidden"
+             onchange="document.getElementById('fileName').textContent = this.files[0]?.name || ''">
+      <button type="submit" class="btn w-full mt-4 text-center">匯入資料</button>
+    </form>
+  </div>
+
+  <div class="card text-sm text-yellow-700">
+    <p class="font-bold text-yellow-500 mb-1">說明</p>
+    <ul class="list-disc list-inside space-y-1">
+      <li>重複的對局會自動略過（依日期時間+英雄名判斷）</li>
+      <li>匯入後立即在首頁可以查看</li>
+      <li>建議在紀錄器仍在運行時上傳，避免資料衝突</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+function handleDrop(e) {
+  e.preventDefault()
+  document.getElementById('dropZone').classList.remove('drag')
+  const f = e.dataTransfer.files[0]
+  if (!f) return
+  document.getElementById('fileName').textContent = f.name
+  const dt = new DataTransfer()
+  dt.items.add(f)
+  document.getElementById('fileInput').files = dt.files
+}
+</script>
+<!-- ── Footer ── -->
+<footer class="max-w-2xl mx-auto px-4 py-6 mt-8 border-t border-yellow-900/20 text-center text-xs text-yellow-900 space-y-1">
+  <div>Hearthstone™ is a trademark of Blizzard Entertainment, Inc. All card data and images are © Blizzard Entertainment.</div>
+  <div>This project is not affiliated with or endorsed by Blizzard. © 2025 HS BG Tracker. All rights reserved.</div>
+</footer>
+
+</body>
+</html>

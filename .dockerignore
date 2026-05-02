@@ -1,0 +1,11 @@
+__pycache__
+*.pyc
+*.pyo
+*.db
+web/uploads/*
+scripts/
+output/
+hs_advisor/
+.push_config
+data/records.db
+data/games.db

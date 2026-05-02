@@ -1,0 +1,2284 @@
+[
+  {
+    "id": "BG30_MagicItem_301",
+    "name": "永恆頭像",
+    "text": "獲得一個永恆騎士。<b>戰鬥開始：</b>賦予你的永恆騎士<b>嘲諷</b>和<b>重生</b>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_303",
+    "name": "自動機頭像",
+    "text": "<b>戰鬥開始：</b>當你的場上有空間時，召喚一個遠古自動機",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_310",
+    "name": "瑞文戴爾頭像",
+    "text": "獲得一個提圖斯‧瑞文戴爾。<b>戰鬥開始：</b>使你的提圖斯‧瑞文戴爾生命值加倍",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_402",
+    "name": "列車長頭像",
+    "text": "獲得一個咆哮列車長。每當你捨棄一張牌，此卡對你全部手下打出一顆<b>鮮血寶石</b>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_403",
+    "name": "鐵爐堡鐵砧",
+    "text": "<b>戰鬥開始：</b>你沒有類型的手下體質 變成三倍",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_406",
+    "name": "屠夫鐮刀",
+    "text": "獲得一個屠殺。在每個回合開始時，再獲得一個",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_407",
+    "name": "瓶中船",
+    "text": "<b>戰鬥開始：</b>召喚並獲得一個隨機海盜。它會立刻攻擊",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_410",
+    "name": "書寫套組",
+    "text": "<b>報復(4)：</b>在本賽局中，你的<b>鮮血寶石</b>額外賦予+1生命值",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_410t2",
+    "name": "書寫套組",
+    "text": "<b>報復(4)：</b>在本賽局中，你的<b>鮮血寶石</b>額外賦予+1/+1",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_411",
+    "name": "豬豬撲滿",
+    "text": "<b>戰鬥開始：</b>賦予你的野豬人「<b>死亡之聲：</b>獲得2顆<b>鮮血寶石</b>」",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_414",
+    "name": "科多獸皮包",
+    "text": "在你購買卡牌後，賦予兩個隨機友方手下+2/+1",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_414t",
+    "name": "科多獸皮包",
+    "text": "在你購買卡牌後，賦予兩個隨機友方手下+4/+4",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_416",
+    "name": "古神的印記",
+    "text": "<b>造法：</b>選擇一個手下。然後將它變形為你選擇的旅店等級高一級手下",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_418",
+    "name": "銅鬚頭像",
+    "text": "獲得一個布萊恩‧銅鬚和一個隨機<b>戰吼</b>手下。你的布萊恩‧銅鬚是魚人也是龍類",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_419",
+    "name": "絕美餐具",
+    "text": "在每個回合結束時，獲得你場上每種不同類型的一個隨機手下",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_420",
+    "name": "麥迪文之書",
+    "text": "<b>發現</b>1個旅店法術。在每個回合開始時，再<b>發現</b>1個",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_420t",
+    "name": "麥迪文之書",
+    "text": "<b>發現</b>2個旅店法術。在每個回合開始時，再<b>發現</b>2個",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_422",
+    "name": "博學行者卷軸",
+    "text": "每當你對一個手下施放法術，賦予其+2/+2",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_422t",
+    "name": "博學行者卷軸",
+    "text": "每當你對一個手下施放法術，賦予其+8/+8",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_423",
+    "name": "旅店老闆的酒杯",
+    "text": "每當旅店<b>重置</b>時， 都會提供一個旅店等級高一級的額外手下",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_425",
+    "name": "艾澤拉斯模型球",
+    "text": "[x]每兩個回合開始時， 獲得2枚金幣並<b>發現</b> 一個旅店等級6的手下 <i>(還剩2回合！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_426",
+    "name": "多彩羅盤",
+    "text": "獲得一個隨機92。在每個回合開始時，再獲得另一個",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_426t",
+    "name": "多彩羅盤",
+    "text": "獲得2個92。在每個回合開始時，再獲得另2個",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_427",
+    "name": "猛虎雕刻",
+    "text": "每當一個友方手下受到傷害，永久賦予一個隨機友方手下+2攻擊力",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_427t",
+    "name": "猛虎雕刻",
+    "text": "每當一個友方手下受到傷害，永久賦予一個隨機友方手下+4攻擊力",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_429",
+    "name": "魔血葫蘆",
+    "text": "<b>造法：</b>選擇一個友方手下。該手下會吞噬旅店的一個隨機手下，以獲得其體質",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_430",
+    "name": "搖滾音樂盒",
+    "text": "獲得一個隨機<b>戰吼</b> 手下。在每個回合開始時，再獲得另一個",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_431",
+    "name": "艾澤萊晶岩頭像",
+    "text": "獲得一個活化的艾澤萊晶岩。你的活化的艾澤萊晶岩也會賦予友方元素體質",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_432",
+    "name": "噴吐者頭像",
+    "text": "獲得一個歌劇噴吐者。每當一個友方手下失去<b>毒素</b>時，其永久獲得+4/+4",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_432t",
+    "name": "噴吐者頭像",
+    "text": "獲得一個歌劇噴吐者。每當一個友方手下失去<b>毒素</b>時，其永久獲得+14/+14",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_433",
+    "name": "聯盟鑰匙圈",
+    "text": "每場戰鬥中第一個友方手下死亡時，將此手下的體質上限賦予一個隨機友方手下",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_433t",
+    "name": "聯盟鑰匙圈",
+    "text": "每場戰鬥中第一個友方手下死亡時，將此手下的體質上限賦予2個隨機友方手下",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_434",
+    "name": "複製大教堂",
+    "text": "你每回合施放的第一個法術會額外施放一次",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_435",
+    "name": "金卡轉化術補給",
+    "text": "每第3個回合結束時，獲得一個金卡轉化術<i>(還剩3回合！)</i>3每第3個回合結束時，獲得一個金卡轉化術<i>(本回合結束觸發！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_437",
+    "name": "天譴軍團法杖",
+    "text": "<b>報復(5)：</b>賦予一個隨機友方不死族 <b>重生</b>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_438t",
+    "name": "王之杯",
+    "text": "每當你要召喚塞不進你陣容的手下時，賦予你的手下+5攻擊力",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_439",
+    "name": "設計師眼罩",
+    "text": "你只需要2個海盜，就能合成它的金卡",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_440",
+    "name": "爆爆控制器",
+    "text": "當你的場上有空間時，召喚和你每場戰鬥中第一個死亡的機械相同的複製品",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_441",
+    "name": "小鰭連身衣",
+    "text": "[x]<b>戰鬥開始：</b>你最左邊的 手下獲得你手中 生命值最高手下的體質",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_442",
+    "name": "鮮血魔像貼紙",
+    "text": "[x]每當友方野豬人死亡 時，召喚一個體質等 同其<b>鮮血寶石</b>的魔像 <i>(每場戰鬥3次)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_540",
+    "name": "蕉流猩貼紙",
+    "text": "你在戰鬥中召喚野獸後，使其攻擊力改為雙倍",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_541",
+    "name": "虛空墜飾",
+    "text": "旅店的手下擁有+2/+2。 你的英雄在非戰鬥時每受到3次傷害後強化 <i>（還差3次！）</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_542",
+    "name": "翡翠攝夢符",
+    "text": "<b>戰鬥開始：</b>將你的龍類攻擊力改為你陣容中的最高值",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_543",
+    "name": "吞噬者貼紙",
+    "text": "獲得一個 引導吞噬者。在每個回合開始時，再獲得另一個",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_544",
+    "name": "糯米貼紙",
+    "text": "在你打出元素後，在本賽局中賦予旅店的元素+2/+1",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_544t",
+    "name": "糯米貼紙",
+    "text": "在你打出元素後，在本賽局中賦予旅店的元素+4/+4",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_545",
+    "name": "冰箱磁鐵",
+    "text": "<b>報復(3)：</b>獲得一個隨機<b>合體</b>手下",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_546",
+    "name": "一罐寶石",
+    "text": "每場戰鬥在2個友方 手下攻擊後，此能力對 你的全部野豬人打出 一個<b>鮮血寶石</b> <i>(還差2個！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_547",
+    "name": "舒適棺材",
+    "text": "在你施放一個旅店法術後，在本賽局中你的不死族擁有+1攻擊力<i>(無論其位於何處)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_547t",
+    "name": "舒適棺材",
+    "text": "在你施放一個旅店法術後，在本賽局中你的不死族擁有+2攻擊力<i>(無論其位於何處)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_548",
+    "name": "亮鱗頭像",
+    "text": "[x]獲得一個時光扭曲 亮鱗。在你施放<b>造法</b> 法術後，賦予你的 <b>聖盾術</b>手下+3/+3",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_555",
+    "name": "驚喜頭像",
+    "text": "獲得一個驚喜元素 <i>(總是在你意想不到的時候出現…)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_700",
+    "name": "死亡骨匣",
+    "text": "<b>發現</b>一個有<b>死亡之聲</b>的手下。每場戰鬥中你第一個 <b>死亡之聲</b>額外觸發一次",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_701",
+    "name": "薩格拉斯之眼",
+    "text": "你購買的每第四張卡牌會花費生命值而非金幣。<i>(還有3張！)</i>3你購買的每第四張卡牌會花費生命值而非金幣。<i>(準備完成！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_702",
+    "name": "原始魚人頭像",
+    "text": "獲得一個原魚偵查兵。在你<b>發現</b>一個手下後，獲得一個隨機旅店法術",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_703",
+    "name": "神秘立方體",
+    "text": "從2個新的次級<b><b>飾品</b></b>中選擇一個免費取代此牌 在每個回合開始時，重複此效果",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_705",
+    "name": "酒保機器人的油罐",
+    "text": "旅店的升級費用 減少(3)。在每個回合開始時，重複此效果",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_706",
+    "name": "反光墜飾",
+    "text": "獲得一個隨機友方手下的未加成分身。在每個回合開始時，重複此效果",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_707",
+    "name": "提卡特斯貼紙",
+    "text": "<b>發現</b>一個旅店等級3暗月獎品。每第三個回合開始時，重複此效果<i>(還剩3回合！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_709",
+    "name": "電磁裝置",
+    "text": "<b>發現</b>一個<b>合體</b>機械。每當友方手下<b>合體</b>，賦予它+3/+3",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_709t",
+    "name": "電磁裝置",
+    "text": "<b>發現</b>2個<b>合體</b>機械。每當友方手下<b>合體</b>，賦予它+4/+4",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_710",
+    "name": "真菌術師貼紙",
+    "text": "在你出售5個手下後，獲得一個隨機魚人<i>(還差5個！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_711",
+    "name": "水兵璽戒",
+    "text": "在你打出4個手下後，獲得一個隨機旅店等級1的旅店法術並強化此旅店法術<i>（還剩4個！）</i>4在你打出4個手下後，獲得一個隨機旅店等級1的旅店法術",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_713",
+    "name": "淌血之心",
+    "text": "[x]在9個友方手下死亡 後，獲得一個隨機不 死族<i>(還差9個！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_714",
+    "name": "寶貴珍珠",
+    "text": "<b>造法：</b>賦予一個手下+30/+30，直到下一回合",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_777",
+    "name": "鵝頭像",
+    "text": "獲得一個銀羽鵝。在你召喚3個銀羽幼雛後，獲得一個幸運蛋 <i>(還差3個！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_803",
+    "name": "炸炸機器人頭像",
+    "text": "獲得一個炸炸機器人。你的炸炸機器人<b>死亡之聲</b>造成額外10點傷害",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_804",
+    "name": "遠古許願骨",
+    "text": "你的英雄能力觸發 兩次",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_821",
+    "name": "恩若司之魚頭像",
+    "text": "獲得一個恩若司之魚",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_821t2",
+    "name": "小魚貼紙",
+    "text": "<b>戰鬥開始：</b>召喚一個複製<b>死亡之聲</b>的金卡恩若司之魚",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_822",
+    "name": "雙子天燈",
+    "text": "當你的場上有空間時，每場戰鬥召喚一個你第一個召喚的手下的複製品",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_822t2",
+    "name": "雙子天燈",
+    "text": "當你的場上有空間時，每場戰鬥召喚2個你第一個召喚的手下的複製品",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_825",
+    "name": "走私者頭像",
+    "text": "[x]獲得一個幼龍走私者 將其體質改為12/12 你的幼龍走私者是龍類",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_828",
+    "name": "沙鈴手頭像",
+    "text": "獲得一個熱情沙鈴手。你的熱情沙鈴手會賦予法術一個額外的複製品",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_841",
+    "name": "發光護手",
+    "text": "旅店的手下擁有+3/+3。旅店中永遠有7張卡牌",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_843t",
+    "name": "部落鑰匙圈",
+    "text": "你旅店等級3以下的手下+7/+5",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_847",
+    "name": "哥布林錢包",
+    "text": "在每個回合結束時，你的金幣上限提高1枚",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_864",
+    "name": "吉爾尼斯荊棘玫瑰",
+    "text": "<b>報復(3)：</b>永久賦予你的手下+3/+3，並對其造成1點傷害",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_868",
+    "name": "倒帶手頭像",
+    "text": "獲得一個靈魂倒帶手和一個織怒者。你的靈魂倒帶手還會獲得攻擊力",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_869",
+    "name": "魔血頭像",
+    "text": "獲得一個黏滑魔化之血。你的熾烈和黏滑魔化之血賦予攻擊力<i>和</i>生命值",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_876",
+    "name": "操縱者頭像",
+    "text": "獲得一個無面操縱者",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_879",
+    "name": "達拉然乳酪輪",
+    "text": "旅店的手下擁有+1/+1。 你每4次<b>重置</b>後強化<i> （還剩4次！）</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_879t",
+    "name": "達拉然乳酪輪",
+    "text": "旅店的手下擁有+2/+2。 你每4次<b>重置</b>後強化<i> （還剩4次！）</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_880",
+    "name": "野性咒符",
+    "text": "你的手下獲得+2/+1",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_880t",
+    "name": "野性咒符",
+    "text": "你的手下獲得+8/+5",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_886",
+    "name": "強化護盾",
+    "text": "[x]每當你召喚一個手 下，賦予它<b>聖盾術</b> <i>(每場戰鬥5次)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_888",
+    "name": "紀念品支架",
+    "text": "當你購買強效<b>飾品</b>，它會變形為該飾品的複製品",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_891",
+    "name": "旅遊兌換券",
+    "text": "在2回合後，選擇一個要購買的強效<b>飾品</b>並替換這張牌。<i>(還剩2回合！)</i>2在2回合後，選擇一個要購買的強效<b>飾品</b>並替換這張牌。<i>(下回合！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_900",
+    "name": "滑翔龍翼",
+    "text": "每當你打出卡牌，賦予一個友方龍類+3/+1",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_900t",
+    "name": "滑翔龍翼",
+    "text": "每當你打出卡牌，賦予一個友方龍類+6/+4",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_902",
+    "name": "神聖大槌",
+    "text": "<b>戰鬥開始：</b>賦予你最左邊和最右邊的手下<b>聖盾術</b>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_910",
+    "name": "機械岡配接器",
+    "text": "在友方機械失去<b>聖盾術</b>後，賦予其<b>聖盾術</b>。<i>(每場戰鬥3次)</i>3在友方機械失去<b>聖盾術</b>後，賦予其<b>聖盾術</b><i>(還剩3次！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_914",
+    "name": "魚人語片語手冊",
+    "text": "[x]在你打出手下後， 賦予你手中最左邊的 手下+3/+2",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_914t",
+    "name": "魚人語片語手冊",
+    "text": "在你打出手下後，賦予你手中最左邊的手下+6/+6",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_916",
+    "name": "夢之精華",
+    "text": "獲得2個夢旅者之擁。在每個回合開始時，再額外獲得1個",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_917",
+    "name": "生鏽三叉戟",
+    "text": "<b>戰鬥開始：</b>賦予你的納迦<i><b>死亡之聲：</b> 獲得一個隨機<b>造法</b>法術</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_918",
+    "name": "晉升頭像",
+    "text": "獲得一個珍貴的晉升龍。每場戰鬥你的第一個<b>戰鬥開始</b>效果會額外觸發一次",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_919",
+    "name": "納沙塔爾明信片",
+    "text": "在你打出納迦後，獲得一個隨機<b>造法</b>法術",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_920",
+    "name": "惡鱗壽司卷",
+    "text": "獲得一個惡鱗特餐。你每回合的前兩個<b>造法</b>法術會額外施放一次<i>(還剩2次！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_921",
+    "name": "掌旗手頭像",
+    "text": "獲得一個飛天海盜掌旗手。你的飛天海盜獲得+6攻擊力",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_923",
+    "name": "源質寶箱",
+    "text": "每場戰鬥在2個友方海盜攻擊後，下回合獲得1枚金幣 <i>(還差2個！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_924",
+    "name": "藏寶海灣精釀",
+    "text": "[x]每當你花費 金幣，賦予一個 友方海盜+3/+2",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_924t",
+    "name": "藏寶海灣精釀",
+    "text": "[x]每當你花費 金幣，賦予一個 友方海盜+5/+6",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_925",
+    "name": "儀式之劍",
+    "text": "每當一個友方手下攻擊，賦予它+4 攻擊力",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_930",
+    "name": "竊取之爪",
+    "text": "在每個回合開始時，獲得你上個對手陣容中最高旅店等級手下的一個未加成分身",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_931",
+    "name": "幸運虎斑貓",
+    "text": "在6個友方手下死亡後，獲得一個隨機野獸<i>(還差6個！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_942",
+    "name": "機甲拉克瑟斯貼紙",
+    "text": "獲得2個隨機<b>合體</b>機械惡魔。在每個回合開始時，再獲得另2個",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_943",
+    "name": "勘測員頭像",
+    "text": "獲得一個熱氣勘測員。你從手中打出的<b>鮮血寶石</b>額外賦予+4/+4",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_944",
+    "name": "救贖者頭像",
+    "text": "獲得一個『救贖者』娜拉。你的 『救贖者』娜拉額外賦予+2/+2",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_951",
+    "name": "熔岩燈",
+    "text": "在你出售5個手下後，獲得一個隨機元素<i>(還差5個！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_952",
+    "name": "罐裝小霜冰",
+    "text": "<b>戰鬥開始：</b>賦予你2個友方元素<i><b>死亡之聲：</b>召喚一個培植小霜冰</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_962",
+    "name": "訓練證書",
+    "text": "<b>戰鬥開始：</b>使你兩個攻擊力最低的手下體質加倍",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_970",
+    "name": "英勇勳章",
+    "text": "<b>戰鬥開始：</b>賦予你的手下+2/+2",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_970t",
+    "name": "英勇勳章",
+    "text": "<b>戰鬥開始：</b>賦予你的手下+6/+6",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_971",
+    "name": "執法者頭像",
+    "text": "獲得一個光牙執法者。你的光牙執法者擁有所有手下 類型",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_972",
+    "name": "卡拉贊西洋棋組",
+    "text": "<b>戰鬥開始：</b>召喚你最左邊手下的一個分身",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_978",
+    "name": "布靈登的墨鏡",
+    "text": "你在戰鬥中召喚機械後，賦予一個友方機械<b>聖盾術</b>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_979",
+    "name": "原始飼養箱",
+    "text": "在你打出元素後，你的下一個旅店法術消耗減少(1)",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_981",
+    "name": "達拉然之眼",
+    "text": "每當一個沒有類型的友方手下死亡， 獲得一個隨機旅店法術",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_982",
+    "name": "薩滿念珠",
+    "text": "在你購買2個<b>戰吼</b>手下後，獲得一個隨機<b>戰吼</b>手下 <i>(還差2個！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_984",
+    "name": "充能法杖",
+    "text": "在每個回合結束時，賦予你有<b>聖盾術</b>的手下+3攻擊力",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_984t",
+    "name": "充能法杖",
+    "text": "在每個回合結束時，賦予你有<b>聖盾術</b>的手下+7攻擊力",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_986",
+    "name": "寧神花蠟燭",
+    "text": "每回合你購買的前 3個旅店法術免費 <i>(還剩3個！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_987",
+    "name": "情歌手頭像",
+    "text": "獲得一個芭樂情歌手。在每個回合開始時，再獲得另一個。你的芭樂情歌手也會賦予攻擊力",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_988",
+    "name": "巨豬貼紙",
+    "text": "你的<b>鮮血寶石</b>額外 賦予+4攻擊力",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_988t",
+    "name": "巨豬貼紙",
+    "text": "你的<b>鮮血寶石</b>額外 賦予+3/+3",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_989",
+    "name": "匠心之甕",
+    "text": "你的不死族擁有+3攻擊力",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_989t",
+    "name": "匠心之甕",
+    "text": "你的不死族擁有 +10攻擊力",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_991",
+    "name": "魔化蝙蝠頭像",
+    "text": "[x]獲得一個超餓的 魔蝠。旅店中永遠 有7張卡牌",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_992",
+    "name": "達納蘇斯派",
+    "text": "本回合你每賣出一個手下，旅店的手下獲得+1/+1",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_992t",
+    "name": "達納蘇斯派",
+    "text": "本回合你每賣出一個手下，旅店的手下獲得+2/+2",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_993",
+    "name": "帕格的釣竿",
+    "text": "獲得一個隨機旅店等級7手下。在每個回合開始時，再獲得另一個",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_994",
+    "name": "超尤味點心",
+    "text": "轉動尤格薩輪。在每個回合開始時，再次轉動",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_995",
+    "name": "青銅計時器",
+    "text": "<b>戰鬥開始：</b>賦予你每個手下等同其攻擊力一半的生命值",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_996",
+    "name": "鮑伯的小費罐",
+    "text": "獲得4枚金幣。你的金幣上限提高4枚",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_998",
+    "name": "鮑伯搖頭娃娃",
+    "text": "獲得2枚金幣。旅店不再提供旅店等級1或2的卡牌",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_MagicItem_999",
+    "name": "花俏法術書",
+    "text": "在你花費7枚金幣後，施放刺眼戒指<i>(還差7枚金幣！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG30_Trinket_1st",
+    "name": "次級飾品",
+    "text": "次級<b>飾品</b>商店將在5回合後開張！5次級<b>飾品</b>商店將在下個回合開張！",
+    "tech_level": 4,
+    "tier": ""
+  },
+  {
+    "id": "BG30_Trinket_2nd",
+    "name": "強效飾品",
+    "text": "強效<b>飾品</b>商店將在8回合後開張！8<b>飾品</b>商店將在下個回合開張！",
+    "tech_level": 6,
+    "tier": ""
+  },
+  {
+    "id": "BG31_MagicItem_903",
+    "name": "智慧球補給",
+    "text": "獲得一個冒牌智慧球。在每個回合開始時，重複此效果",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_111",
+    "name": "毒性刺針",
+    "text": "[x]在每個回合結束時 賦予一個隨機友方 魚人+8/+8與<b>毒素</b>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_170",
+    "name": "法術扳手",
+    "text": "在你打出一個<b>合體</b>手下後，獲得一個隨機旅店法術",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_171",
+    "name": "神聖徽記",
+    "text": "[x]在友方手下失去 <b>聖盾術</b>後，獲得一個 隨機旅店法術 <i>(每場戰鬥4次)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_172",
+    "name": "爆爆怪物頭像",
+    "text": "獲得一個爆爆博士的怪物。在每個回合開始時，再獲得另一個",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_179",
+    "name": "德拉克瑞頭像",
+    "text": "獲得一個德拉克瑞附魔師。你的德拉克瑞附魔師同時為 機械與元素",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_200",
+    "name": "萬用飼料",
+    "text": "每當一個友方野獸攻擊，賦予它+2攻擊力，並永久強化此效果",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_204",
+    "name": "科爾蘇加德頭像",
+    "text": "獲得一個大巫妖科爾蘇加德。你在非戰鬥時摧毀一名手下後，賦予你的手下+2/+2",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_205",
+    "name": "淵喉施法者頭像",
+    "text": "獲得一個淵喉施法者。 每當你在非戰鬥時摧毀一名手下，獲得一個內含3枚金幣的金幣袋",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_230",
+    "name": "華貴天秤",
+    "text": "每當你花費20枚金幣，使你的手下 攻擊力加倍<i>(每賽局僅限兩次)</i>20每當你花費20枚金幣，使你的手下 攻擊力加倍 <i>(還差20枚！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_231",
+    "name": "鑲金錨",
+    "text": "在每個回合結束時 賦予你的金卡 手下+3/+3",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_231t",
+    "name": "鑲金錨",
+    "text": "在每個回合結束時 賦予你的金卡 手下+10/+10",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_232",
+    "name": "鯊魚砲",
+    "text": "花費10枚金幣後，賦予你的海盜+1/+1並強化此效果<i>(還差10枚金幣！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_270",
+    "name": "惡毒秘典",
+    "text": "<b>報復(3)：</b>在本賽局中，你的旅店法術額外賦予+1攻擊力",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_270t",
+    "name": "惡毒秘典",
+    "text": "<b>報復(4)：</b>在本賽局中，你的旅店法術額外賦予+1/+1",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_271",
+    "name": "華麗的時鐘",
+    "text": "獲得3枚金幣。下回合購買強效<b>飾品</b>，而非等到第9回合",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_274",
+    "name": "剛鬃作曲家頭像",
+    "text": "獲得一個剛鬃作曲家。你的剛鬃作曲家會對所有友方手下打出<b>鮮血寶石</b>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_276",
+    "name": "謎團墓碑",
+    "text": "在每個回合結束時，在本賽局中你的不死族獲得+2攻擊力 <i>(無論其位於何處)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_278",
+    "name": "可重複利用電池",
+    "text": "你每回合第一次購買手下時，會獲得一張擁有其體質的 <b>合體</b>衛星",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_279",
+    "name": "硬牙豬貼紙",
+    "text": "從你的手牌中打出的<b>鮮血寶石</b>會賦予手下<b>聖盾術</b>，直到下一回合",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_280",
+    "name": "萬象聖壇",
+    "text": "<b>戰鬥開始：</b>賦予每個不同類型的一個友方手下+3/+2，並獲得永久強化",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_281",
+    "name": "巫師菸斗",
+    "text": "每當你施放旅店法術，賦予你不具有類型的手下+4/+4",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_282",
+    "name": "渦輪增壓鑽",
+    "text": "獲得5個任意旅店等級的不同<b>合體</b>機械",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_283",
+    "name": "女皇頭像",
+    "text": "獲得一個充能女皇。你的充能女皇同時也會賦予生命值",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_284",
+    "name": "阿葛金貼紙",
+    "text": "在你的回合結束時，對每個類型的一個友方手下打出5顆<b>鮮血寶石</b>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_286",
+    "name": "奢華斗篷",
+    "text": "為每種不同類型的友方手下施放一個隨機旅店法術。在每個回合開始時，重複此效果",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_300",
+    "name": "普崔希德貼紙",
+    "text": "合成一個自訂的不死族。在每2個回合開始時，重複此效果 <i>(還剩2回合！)</i>2合成一個自訂的不死族。在每2個回合開始時，重複此效果 <i>(下回合生效！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_301",
+    "name": "貝斯魚人頭像",
+    "text": "[x]獲得一個貝斯魚人。 你在戰鬥中召喚魚人 後，賦予它<b>聖盾術</b>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_304",
+    "name": "召喚號角",
+    "text": "獲得六個不同的旅店等級1手下",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_306",
+    "name": "先驅貼紙",
+    "text": "<b>戰鬥開始：</b>觸發全部友方<b>死亡之聲</b>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_350",
+    "name": "奧盧姆的碎片",
+    "text": "當你擁有15枚金幣時，獲得一個隨機的旅店等級5金卡手下<i>(每賽局僅限一次)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_360",
+    "name": "怨惡薰香",
+    "text": "<b>戰鬥開始：</b>賦予你最左邊和最右邊的 不死族<b>重生</b>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_361",
+    "name": "可攜式工廠",
+    "text": "<b>發現</b>一個有類型的旅店等級4手下。在每個回合開始時，獲得該手下的複製品",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_361t",
+    "name": "可攜式工廠",
+    "text": "[x]<b>發現</b>一個有類型的旅店 等級5手下。在每個 回合開始時，獲得 該手下的複製品",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_362",
+    "name": "旅店老闆的爐火",
+    "text": "<b>發現</b>一個你旅店等級的手下，並將其體質改為12/12",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_362t",
+    "name": "旅店老闆的爐火",
+    "text": "[x]<b>發現</b>兩個旅店 等級6手下，並將其 體質改為20/20",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_363",
+    "name": "精靈龍鱗片",
+    "text": "每當一個友方龍類攻擊，賦予它<b>聖盾術</b> <i>(每場戰鬥3次)</i>3每當一個友方龍類攻擊，賦予它<b>聖盾術</b> <i>(還剩3次！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_364",
+    "name": "詩人頭像",
+    "text": "獲得一張時光扭曲吟詩龍",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_365",
+    "name": "沃卓肯風鈴",
+    "text": "你的<b>戰鬥開始</b>效果會額外觸發一次",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_366",
+    "name": "引路蠟燭",
+    "text": "你每個回合前兩次 <b>重置</b>時，只會出現旅店等級6的卡牌 <i>(還剩2次！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_367",
+    "name": "恐怖貼紙",
+    "text": "你在回合結束時 觸發的效果會 額外生效一次",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_400",
+    "name": "進化聖壇",
+    "text": "[x]將你的所有手下變 形成隨機的旅店 等級4手下",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_415",
+    "name": "戰鬥號角",
+    "text": "<b>發現</b>一個有<b>戰吼</b>的手下。<b>報復(2)：</b>觸發一個友方的<b>戰吼</b>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_416",
+    "name": "戰鼓",
+    "text": "每回合的一個<b>戰吼</b>會額外觸發兩次 <i>(還剩1次！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_417",
+    "name": "塔瑞克苟莎貼紙",
+    "text": "你最左邊和最右邊的龍類永久保留 <b>額外關鍵字</b>及戰鬥中獲得的體質",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_419",
+    "name": "玉龍貼紙",
+    "text": "<b>戰鬥開始：</b>使你旅店等級最高的龍類變為金卡",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_428",
+    "name": "磨損的藏寶圖",
+    "text": "[x]兩回合後，獲得10枚 金幣<i>(每賽局僅限一次)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_700",
+    "name": "奇妙蘑菇",
+    "text": "你的旅店法術額外賦予+1/+1。在每個回合開始時， 強化此效果",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_801",
+    "name": "森林之心",
+    "text": "你的旅店法術額外賦予+1/+1。在你施放5個旅店法術後，強化此效果<i>(還差5個！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_801t",
+    "name": "森林之心",
+    "text": "你的旅店法術額外賦予+1/+1。在你從手中施放 5個旅店法術後，強化此效果<i>(還差5個！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_802",
+    "name": "泉湧之筆",
+    "text": "你的元素在賦予體質時會額外賦予+2/+1",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_802t",
+    "name": "泉湧之筆",
+    "text": "你的元素在賦予體質時會額外賦予+4/+2",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_803",
+    "name": "鸚鵡頭像",
+    "text": "獲得一張恐怖的鸚鵡。你的恐怖的鸚鵡也會觸發你最左邊的<b>戰吼</b>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_804",
+    "name": "無私頭像",
+    "text": "獲得一個無私的英雄。你的無私的英雄也會觸發<b>戰吼</b>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_806",
+    "name": "戰巡艦頭像",
+    "text": "獲得一張12/12戰巡艦 每當<b>重置</b>旅店時都會獲得一個戰巡艦升級",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_807",
+    "name": "館長貼紙",
+    "text": "獲得一個混聚體金卡與一個有<b>毒素</b>的10/10聚合體",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_808",
+    "name": "血縛耳環",
+    "text": "在你施放5個法術後，此能力對你全部手下打出一顆<b>鮮血寶石</b> <i>(還差5個！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_808t",
+    "name": "血縛耳環",
+    "text": "在你施放5個法術後，此能力對你全部手下打出兩顆<b>鮮血寶石</b> <i>(還差5個！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_809",
+    "name": "寶石樂捐",
+    "text": "你每個回合出售的第一個手下，會對旅店中等級最高的3個手下打出其<b>鮮血寶石</b>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_817",
+    "name": "倫德貼紙",
+    "text": "從旅店偷取一張等級最高的卡牌。在每個回合結束時，重複此效果",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_820",
+    "name": "浮躁頭像",
+    "text": "[x]獲得一個6/6浮躁的欺詐者 你的浮躁的欺詐者的 <b>死亡之聲</b>會以兩側的 手下為目標",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_821",
+    "name": "朝聖小鬼貼紙",
+    "text": "每回合有一個需花費生命值，而非金幣購買的惡魔 <i>(還剩1個！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_822",
+    "name": "市集貼紙",
+    "text": "每回合有一個需花費生命值，而非金幣購買的旅店法術 <i>(還剩1個！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_823",
+    "name": "蠟印刻者",
+    "text": "[x]獲得2枚金幣並受到 2點傷害。在每個回 合開始時，重複此 效果<i>(如果可行)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_824",
+    "name": "涉嫌小鬼頭像",
+    "text": "[x]獲得2張虛假的涉嫌 小鬼。你的惡魔一律 會吞噬旅店中生命值 最高的手下",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_830",
+    "name": "魔化元素頭像",
+    "text": "獲得一個魔化元素。你的魔化元素額外賦予+2/+2",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_831",
+    "name": "資本元素頭像",
+    "text": "獲得一個資本元素。在每個回合開始時，再獲得另一個",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_832",
+    "name": "風落頭像",
+    "text": "[x]在每個回合結束時，獲得一 個風落龍捲怪並賦予該手 下+1/+1<i>(依你本回合售 出的手下數量強化！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_832t",
+    "name": "風落頭像",
+    "text": "[x]在每個回合結束時，獲得一 個風落龍捲怪並賦予該手 下+2/+2<i>(依你本回合售 出的手下數量強化！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_844",
+    "name": "獻祭祭壇",
+    "text": "移除你的所有手下，每移除一個手下獲得3枚金幣",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_858",
+    "name": "探險者望遠鏡",
+    "text": "獲得三個隨機旅店 等級4手下",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_860",
+    "name": "甲蟲樂團",
+    "text": "<b>報復(5)：</b>召喚一個2/2甲蟲，並賦予它<b>嘲諷</b>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_860t",
+    "name": "甲蟲樂團",
+    "text": "<b>報復(6)：</b>召喚兩個2/2甲蟲，並賦予它們<b>嘲諷</b>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_862",
+    "name": "穢邪聖所",
+    "text": "在你觸發<b>死亡之聲</b>後，永久賦予你最右邊的手下+2/+2",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_862t",
+    "name": "穢邪聖所",
+    "text": "在你觸發<b>死亡之聲</b>後，永久賦予你最右邊的手下+6/+4",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_864",
+    "name": "雀鳥餵食者",
+    "text": "<b>報復(2)：</b>賦予你的手下+1/+1",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_864t",
+    "name": "雀鳥餵食者",
+    "text": "<b>報復(2)：</b>賦予你的手下+4/+4",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_887",
+    "name": "暗影藥劑",
+    "text": "獲得5點護甲值。 在你打出惡魔後， 對你的英雄造成1點傷害",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_888",
+    "name": "回收貼紙",
+    "text": "在你打出元素後，獲得一次免費<b>重置</b>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_890",
+    "name": "跳崖者貼紙",
+    "text": "在每個回合結束時，賦予你最左邊的手下+3/+2 <i>(依你本回合觸發的<b>戰吼</b>數量強化！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_891",
+    "name": "芬利的頭盔",
+    "text": "[x]在旅店<b>重置</b>後， 賦予旅店的魚人 +5/+5和一個隨機 <b>額外關鍵字</b>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_892",
+    "name": "鮮豔泡泡",
+    "text": "[x]<b>造法：</b>賦予一個 魚人一個隨機 <b>額外關鍵字</b>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_893",
+    "name": "藍鰓腳蹼",
+    "text": "在你施放旅店法術後，賦予你手中最左邊的手下+4/+4",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_894",
+    "name": "祝福頭像",
+    "text": "獲得一個自然祝福。在每個回合開始時，再獲得另一個。你的自然祝福也會影響手中的手下",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_901",
+    "name": "鍍金羅盤",
+    "text": "使你購買的下一個92變為金卡。獲得 5次免費<b>重置</b>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_902",
+    "name": "希爾雷克雕像",
+    "text": "吞噬了2個旅店的手下後，獲得一個隨機旅店法術 <i>(還差2個！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_904",
+    "name": "野豬澡盆",
+    "text": "[x]<b>戰鬥開始：</b>對你的全部 手下打出3顆<b>鮮血寶石</b>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_906",
+    "name": "亞坦尼斯貼紙",
+    "text": "獲得「0」的一個分身",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_907",
+    "name": "絲瑟拉貼紙",
+    "text": "當你的最後一名手下在戰鬥中死亡後，召喚你死亡的第一個惡魔，且擁有其體質最大值",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_920",
+    "name": "奇術師頭像",
+    "text": "獲得一個奇術師。你的奇術師的<b>造法</b>附魔永久有效",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_922",
+    "name": "魅惑牧笛",
+    "text": "在每個回合結束時，賦予你最左邊的手下+2/+2。在你施放法術後，加強此效果",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_925",
+    "name": "駭客魚人頭像",
+    "text": "獲得一個駭客魚人 在每個回合結束時，觸發你的駭客 魚人的<b>戰吼</b>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_926",
+    "name": "莫哥頭像",
+    "text": "獲得一個潮汐神諭者莫哥",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_930",
+    "name": "遠古卷軸",
+    "text": "在你施放6個法術後，獲得一個隨機納迦<i>(還差6個！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_931",
+    "name": "艾薩拉雕像",
+    "text": "[x]獲得3個隨機<b>造法</b>法 術。在每個回合開始 時，再額外獲得3個",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_932",
+    "name": "瓦許伊爾海葵",
+    "text": "<b>戰鬥開始：</b>賦予你的納迦+1生命值<i>(你在本賽局中每施放4個法術後提升！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_933",
+    "name": "疲憊頭像",
+    "text": "獲得一個疲憊法師 你的疲憊法師的<b>造法</b>附魔永久有效",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_934",
+    "name": "炫目匕首",
+    "text": "你的手下獲得+1攻擊力 <i>(你在本賽局中每施放 4個法術後提升！)</i>4你的手下獲得+1攻擊力<i>(施放0/4個法術以提升！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_935",
+    "name": "旱地水手貼紙",
+    "text": "每當旅店<b>重置</b>時，旅店都會提供一個額外的旅店法術。你每回合第一次購買的旅店法術消耗減少(1)",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_944",
+    "name": "強化頭像",
+    "text": "獲得一個艾澤萊晶岩強化。在每個回合開始時，再獲得另一個",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_950",
+    "name": "堅毅頭像",
+    "text": "獲得一個會賦予掠奪者契約的堅毅獵頭者。 在每個回合開始時，重複此效果",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_951",
+    "name": "黃金墜飾",
+    "text": "[x]使一個旅店等級3以下的 隨機友方手下變成金卡 在每個回合開始時 重複此效果",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_953",
+    "name": "掘金工頭像",
+    "text": "獲得一個掘金工和 一個金燦桂冠詩人",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_954",
+    "name": "黃金祭品",
+    "text": "在每個回合結束時，賦予你最左邊的手下+4/+3，然後再依友方金卡手下的數量重複施放",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_957",
+    "name": "騙徒頭像",
+    "text": "獲得一個古金幣騙徒。每個回合你 購買的第一個海盜免費",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_960",
+    "name": "編織陽鰓魚人",
+    "text": "<b>戰鬥開始：</b>賦予你手中生命值最高的手下+4/+4。當你的場上有空間時，僅限這場戰鬥召喚它",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG32_MagicItem_998",
+    "name": "巨獸頭像",
+    "text": "獲得一個秘法巨獸",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_150",
+    "name": "詛咒水晶",
+    "text": "在旅店<b>重置</b>後，本回合賦予旅店的手下+2/+2",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_151",
+    "name": "褻瀆者頭像",
+    "text": "獲得一個林地褻瀆者。旅店的<b>食料</b>擁有+2/+2",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_151t",
+    "name": "褻瀆者頭像",
+    "text": "獲得一個林地褻瀆者。旅店的<b>食料</b>擁有+5/+5",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_152",
+    "name": "惡魔掛毯",
+    "text": "在你<b>重置</b>3次後，旅店中最高等級的手下改為消耗生命值而非金幣購買<i>(還差3次！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_154",
+    "name": "厄祖獸貼紙",
+    "text": "在你打出惡魔後，另一個友方惡魔會吞噬旅店的一個手下以獲得其體質",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_155",
+    "name": "魔灼帳本",
+    "text": "在你的英雄受到傷害後，本回合你的 旅店法術額外 賦予+1/+1",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_156",
+    "name": "燃焰頭像",
+    "text": "獲得一個燃焰執行者。每當你的燃焰執行者觸發時，同時賦予其兩側手下體質",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_300",
+    "name": "銅線圈",
+    "text": "每當你<b>合體</b>一個手下，賦予它+1/+1並強化此效果",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_300t",
+    "name": "銅線圈",
+    "text": "每當你<b>合體</b>一個手下，賦予它+3/+3並強化此效果",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_301",
+    "name": "搜刮者貼紙",
+    "text": "獲得一個隨機<b>合體</b>機械。在每個回合開始時，再獲得 另一個",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_302",
+    "name": "風暴線圈貼紙",
+    "text": "在7個友方手下死亡後，獲得一個隨機機械<i>(還差7個！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_303",
+    "name": "跳越者頭像",
+    "text": "獲得一個時光扭曲跳越者",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_305",
+    "name": "海螺頭像",
+    "text": "獲得一個複製海螺。每第2個回合開始時，重複此效果 <i>(還剩2回合！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_306",
+    "name": "閻獄之主貼紙",
+    "text": "<b>造法：</b>摧毀一個友方不死族以獲得一個隨機不死族",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_309",
+    "name": "厄格貼紙",
+    "text": "獲得一個莫戈頓媽媽或莫戈頓爸爸。在每個回合開始時，重複此效果",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_310",
+    "name": "電台明星頭像",
+    "text": "獲得一個時光扭曲電台明星，賦予其<b>重生</b>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_430",
+    "name": "廢料鐵匠頭像",
+    "text": "獲得一個剛鬃廢料鐵匠。在友方<b>嘲諷</b>手下死亡後，對你的廢料鐵匠打出一顆永久 <b>鮮血寶石</b>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_431t",
+    "name": "棘刺肩鎧",
+    "text": "在你觸發<b>死亡之聲</b>後，你的<b>鮮血寶石</b>額外賦予+2/+1，直到下一場戰鬥",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_432",
+    "name": "鮮血護符",
+    "text": "在你觸發<b>死亡之聲</b>後，此能力對3個隨機友方手下打出一顆永久<b>鮮血寶石</b>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_434",
+    "name": "珠寶盒",
+    "text": "獲得2個會賦予野豬人 <b>嘲諷</b>、<b>聖盾術</b>或<b>重生</b>的 <b>鮮血寶石</b>。在每個回合 開始時，重複此效果",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_700",
+    "name": "野羽撣子",
+    "text": "在你召喚6個野獸後，獲得一個隨機野獸<i>(還差6個！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_701",
+    "name": "尖牙足環",
+    "text": "<b>戰鬥開始：</b>在本次戰鬥中，你的野獸獲得+1/+1。在你召喚野獸後，永久強化此效果",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_702",
+    "name": "劍龍頭像",
+    "text": "獲得一個重踏劍龍。<b>戰鬥開始：</b>賦予你最左邊的兩個野獸<b>聖盾術</b>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_710",
+    "name": "微縮船隻",
+    "text": "在你施放旅店法術後，賦予你的海盜+2/+2",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_711",
+    "name": "防護戒指",
+    "text": "<b>戰鬥開始：</b>賦予4個隨機友方海盜<b>聖盾術</b>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_712",
+    "name": "私掠者頭像",
+    "text": "獲得一個傲氣私掠者和 2個隨機<b>賞金</b>。在每個回合開始時，再獲得另外2個<b>賞金</b>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_713",
+    "name": "可靠的鐵撬",
+    "text": "每當你獲得海盜，賦予你最左邊的手下+12/+12",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_714",
+    "name": "火藥桶",
+    "text": "<b>戰鬥開始：</b>賦予2個友方海盜「<b>死亡之聲：</b>召喚一個1/1飛天海盜並賦予它此手下的攻擊力。它會立刻攻擊」",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_733",
+    "name": "閻獄之主貼紙",
+    "text": "<b>造法：</b>摧毀一個友方不死族以獲得2個隨機不死族",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_741",
+    "name": "節奏口技手頭像",
+    "text": "獲得一個電磁節奏口技手和1個隨機<b>合體</b>機械",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_742",
+    "name": "手風琴機器人頭像",
+    "text": "在每個回合結束時，將手風琴機器人與你最左邊和最右邊的機械<b>合體</b>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_743",
+    "name": "電極吸引器",
+    "text": "<b>合體</b>機械的消耗改為(2)。每當旅店<b>重置</b>時，旅店會提供一個額外的機械",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_750",
+    "name": "魔術魚貼紙",
+    "text": "在你購買一個旅店法術後，獲得一個1/1魚人並教它該法術<i>(每回合2次)</i>2在你購買一個旅店法術後，獲得一個1/1魚人並教它該法術<i>(還剩2次！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_752",
+    "name": "小瞎眼貼紙",
+    "text": "在每個回合結束時，觸發所有友方的<b>戰吼</b>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_753",
+    "name": "莫奇貼紙",
+    "text": "在每個回合結束時，賦予你最左邊的兩個手下+1/+1 <i>(依你本賽局觸發的<b>戰吼</b>數量強化！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_754",
+    "name": "戲魚人貼紙",
+    "text": "<b>戰鬥開始：</b>賦予你的魚人你手中攻擊力最高手下的攻擊力",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_801",
+    "name": "副主廚貼紙",
+    "text": "你每回合可以額外使用一次英雄能力。在你使用英雄能力後，獲得(1)枚金幣",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_812",
+    "name": "腐化秘典",
+    "text": "獲得一個三合一獎賞。每當你原本會獲得三合一獎勵時，改為獲得三合一獎賞",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_815",
+    "name": "魔法師的禮帽",
+    "text": "獲得旅店 等級1、2和3的 手下各兩個",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_816",
+    "name": "未知寶珠",
+    "text": "獲得一個隨機 次級<b>飾品</b>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_817",
+    "name": "鏡片盒",
+    "text": "獲得一個複製鏡片。每第2個回合開始時，重複此效果 <i>(還剩2回合！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_820",
+    "name": "安全補丁",
+    "text": "施放寒冰屏障。獲得5枚金幣",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_821",
+    "name": "萬花筒",
+    "text": "<b>發現</b>一個旅店 等級7手下。 將其鎖定在你的手中2回合",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_821t",
+    "name": "萬花筒",
+    "text": "<b>發現</b>一個旅店等級 7金卡手下。將其鎖定在你的手中 2回合",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_840",
+    "name": "炫彩之淚",
+    "text": "獲得全部5種<b>炫彩龍</b>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_840t",
+    "name": "炫彩之淚",
+    "text": "獲得2個隨機<b>炫彩龍</b>。在你打出7個<b>戰吼</b>手下後，重複此效果<i>(還差7個！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_842",
+    "name": "終焉時刻之蛋頭像",
+    "text": "獲得2個終焉時刻 之蛋",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_848t",
+    "name": "終焉時刻之蛋頭像",
+    "text": "獲得一個終焉時刻之蛋金卡。它會在下回合孵化",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_849",
+    "name": "雲蛟犄角",
+    "text": "<b>報復(3)：</b>將你最右邊手下的攻擊力賦予另一個友方龍類",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_850",
+    "name": "口袋颶風",
+    "text": "施放東來之風兩次。在每個回合開始時，再次施放",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_850t",
+    "name": "口袋颶風",
+    "text": "施放東來之風四次。在每個回合開始時，再施放兩次",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_851",
+    "name": "水車",
+    "text": "在你打出元素後，獲得一個隨機旅店法術<i>(每回合兩次)</i>2在你打出元素後，獲得一個隨機旅店法術<i>(還剩2次！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_852",
+    "name": "瓶中閃電",
+    "text": "在旅店<b>重置</b>後，將旅店攻擊力最高手下的體質賦予攻擊力最低的手下",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_861",
+    "name": "球手頭像",
+    "text": "獲得一個溫度轉變。在你打出8個元素後，重複此效果<i>(還差8個！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_862",
+    "name": "猛燃餘燼",
+    "text": "在旅店<b>重置</b>後，使旅店生命值最高的手下體質加倍",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_863",
+    "name": "雪崩貼紙",
+    "text": "獲得一個劇烈雪崩。在你出售5個手下後，重複此效果<i>(還差5個！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_870",
+    "name": "跳躍蛙頭像",
+    "text": "獲得一個時光扭曲跳躍蛙",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_871",
+    "name": "熊媽媽貼紙",
+    "text": "每當你召喚野獸，賦予該野獸+4/+4",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_872",
+    "name": "爬蛇法杖",
+    "text": "<b>造法：</b>賦予一個野獸+2/+2和<b>重生</b>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_890",
+    "name": "沉船的船錨",
+    "text": "獲得2個隨機<b>賞金</b>。在每個回合開始時，重複此效果",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_920",
+    "name": "泡泡皇冠",
+    "text": "在你施放10個法術後，你的旅店法術額外賦予+5/+5 <i>(還差10個！)</i>10在你施放10個法術後，你的旅店法術額外賦予+5/+5 <i>(完成！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_921",
+    "name": "寶螺項鍊",
+    "text": "賦予體質的旅店法術消耗減少(2)",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_922",
+    "name": "潮汐呼喚者頭像",
+    "text": "獲得一個潮汐呼喚者。在戰鬥中施放法術後，獲得該法術的複製品 <i>(每場戰鬥3次)</i>3獲得一個潮汐呼喚者。在戰鬥中施放法術後，獲得該法術的複製品<i>(還剩3次！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_923",
+    "name": "魔咒彩帶",
+    "text": "每當你施放法術，永久賦予你的手下+1/+1<i>(在戰鬥中為+3/+2！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_924",
+    "name": "破土者頭像",
+    "text": "獲得一個破土者。你的破土者也會賦予其左側手下體質",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_925",
+    "name": "珊瑚長矛",
+    "text": "每當你施放<b>造法</b>法術，施放暴風城之力",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_930",
+    "name": "陣容哨子",
+    "text": "獲得一次免費<b>重置</b>，其中包含你陣容中手下的未加成分身",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_931",
+    "name": "抄錄打字機",
+    "text": "獲得你下2個購買的手下的一個額外分身<i>(還剩2個！)</i>2獲得你下2個購買的手下的一個額外分身<i>(完成！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BG35_MagicItem_931t",
+    "name": "抄錄打字機",
+    "text": "獲得你下4個購買的手下的一個額外分身<i>(還剩4個！)</i>4獲得你下4個購買的手下的一個額外分身<i>(完成！)</i>",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BGDUO_MagicItem_001",
+    "name": "普通絲線",
+    "text": "<b>傳遞</b>你每回合購買第一張牌的複製品",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BGDUO_MagicItem_002",
+    "name": "丘加利貼紙",
+    "text": "每當你的隊伍打出金卡手下，你 和隊友都會獲得三合一獎勵",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BGDUO_MagicItem_003",
+    "name": "召喚球體",
+    "text": "[x]<b>戰鬥開始：</b>召喚一個 你隊友生命值最高 手下的分身",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BGDUO_MagicItem_004",
+    "name": "慷慨符咒",
+    "text": "在你的隊伍<b>傳遞</b>後，賦予你的手下+2攻擊力",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BGDUO_MagicItem_005",
+    "name": "瓶子貼紙",
+    "text": "獲得一個瓶中傳送門。 在每個回合開始時，再獲得另一個",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BGDUO_MagicItem_006",
+    "name": "魔法路標",
+    "text": "你每回合出售第一個手下後，<b>傳遞</b>它",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BGDUO_MagicItem_007",
+    "name": "獸人樂團頭像",
+    "text": "獲得一個獸人樂團指揮家。在每個回合開始時，再獲得另一個",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BGDUO_MagicItem_008",
+    "name": "搬家用箱",
+    "text": "跳過本回合。在該回合結束時，以你隊友陣容的複製品取代你的陣容",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BGDUO_MagicItem_009",
+    "name": "投資契約",
+    "text": "在你<b>傳遞</b>後，旅店的升級費用降低(1)",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BGDUO_MagicItem_010",
+    "name": "強化之鏡",
+    "text": "成為你隊友次級<b>飾品</b>的複製品",
+    "tech_level": 0,
+    "tier": ""
+  },
+  {
+    "id": "BGDUO_MagicItem_010t",
+    "name": "強化之鏡",
+    "text": "成為你隊友強效<b>飾品</b>的複製品",
+    "tech_level": 0,
+    "tier": ""
+  }
+]

@@ -1,0 +1,78 @@
+{
+  "archetype_id": 850,
+  "name": "Herald Warrior",
+  "name_zh": "",
+  "class": "WARRIOR",
+  "class_zh": "戰士",
+  "style": "中速",
+  "win_rate": 56.8,
+  "pct_of_total": 9.1,
+  "rank": 9,
+  "core_cards": [
+    {
+      "card_id": "CATA_580",
+      "name": "浩劫戰斧",
+      "type": "WEAPON",
+      "cost": 3,
+      "text": "戰吼：預兆{0}"
+    },
+    {
+      "card_id": "CATA_160",
+      "name": "灼燒劫毀者",
+      "type": "MINION",
+      "cost": 4,
+      "text": "戰吼：預兆{0}。賦予士兵衝刺"
+    },
+    {
+      "card_id": "CATA_150",
+      "name": "『滅世烈火』拉格納羅斯",
+      "type": "MINION",
+      "cost": 8,
+      "text": "巨型+2 在你的回合結束時， 觸發你手下的 死亡之聲"
+    },
+    {
+      "card_id": "CATA_190h",
+      "name": "『碎界者』死亡之翼",
+      "type": "HERO",
+      "cost": 10,
+      "text": "戰吼：選擇釋放 {0}場大災變！ 預兆兩次以升級@戰吼：選擇釋放 {0}場大災變！ 預兆一次以升級@"
+    },
+    {
+      "card_id": "CATA_722",
+      "name": "終焉使者",
+      "type": "MINION",
+      "cost": 5,
+      "text": "嘲諷 戰吼：預兆{0}"
+    },
+    {
+      "card_id": "CATA_497",
+      "name": "奧特拉賽恩",
+      "type": "MINION",
+      "cost": 6,
+      "text": "戰吼：預兆{0}。使死亡之翼的消耗降低({1}) (預兆可強化！)"
+    },
+    {
+      "card_id": "EDR_572",
+      "name": "磨難懼翼",
+      "type": "MINION",
+      "cost": 5,
+      "text": "死亡之聲：抽2個龍類，使其消耗降低(1)"
+    },
+    {
+      "card_id": "EDR_456",
+      "name": "黑暗騎兵",
+      "type": "MINION",
+      "cost": 1,
+      "text": "戰吼：若你手中有龍類，發現一個有 黑暗贈禮的龍類"
+    }
+  ],
+  "play_style": "中速型，平衡前後期，有多樣化的應對手段",
+  "win_condition": "耗盡對手資源或建立不可解的板面",
+  "key_turns": "5-8 回合決定走向",
+  "against_tips": [
+    "觀察對手打出的關鍵牌，判斷其 win condition",
+    "小心中期威脅，注意是否有 buff 型隨從雪球",
+    "保留高費法術應對關鍵隨從"
+  ],
+  "notes": ""
+}

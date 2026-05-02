@@ -1,0 +1,78 @@
+{
+  "archetype_id": 384,
+  "name": "Egg Warrior",
+  "name_zh": "",
+  "class": "WARRIOR",
+  "class_zh": "戰士",
+  "style": "中速",
+  "win_rate": 54.3,
+  "pct_of_total": 0.9,
+  "rank": 13,
+  "core_cards": [
+    {
+      "card_id": "TLC_106",
+      "name": "終結者昂布拉",
+      "type": "MINION",
+      "cost": 7,
+      "text": "戰吼：觸發本賽局中死亡的5個友方手下的死亡之聲效果"
+    },
+    {
+      "card_id": "DINO_410",
+      "name": "凱洛斯的蛋",
+      "type": "MINION",
+      "cost": 3,
+      "text": "死亡之聲：召喚一顆 稍微裂開的蛋 (打破5次以孵化出一個 有嘲諷的20/20野獸！)"
+    },
+    {
+      "card_id": "DINO_411",
+      "name": "神聖護蛋者",
+      "type": "MINION",
+      "cost": 2,
+      "text": "戰吼：抽出一個攻擊力為0的手下"
+    },
+    {
+      "card_id": "EDR_531",
+      "name": "虹吸生長",
+      "type": "SPELL",
+      "cost": 1,
+      "text": "摧毀一個友方手下並獲得8點護甲值"
+    },
+    {
+      "card_id": "CATA_581",
+      "name": "屠戮",
+      "type": "SPELL",
+      "cost": 6,
+      "text": "對全部手下造成$1點傷害(隨戰場上的每個手下提升)"
+    },
+    {
+      "card_id": "EDR_856",
+      "name": "夢魘之王薩維斯",
+      "type": "MINION",
+      "cost": 4,
+      "text": "戰吼：從你的牌堆 發現一個手下，並賦予它黑暗贈禮"
+    },
+    {
+      "card_id": "TIME_873",
+      "name": "釋放鱷魚",
+      "type": "SPELL",
+      "cost": 2,
+      "text": "獲得10點護甲值。為你的對手召喚兩個2/3野獸"
+    },
+    {
+      "card_id": "TIME_715",
+      "name": "為了榮耀！",
+      "type": "SPELL",
+      "cost": 5,
+      "text": "抽2張牌。對手場上每個手下使其消耗減少(1)"
+    }
+  ],
+  "play_style": "中速型，平衡前後期，有多樣化的應對手段",
+  "win_condition": "耗盡對手資源或建立不可解的板面",
+  "key_turns": "5-8 回合決定走向",
+  "against_tips": [
+    "觀察對手打出的關鍵牌，判斷其 win condition",
+    "小心中期威脅，注意是否有 buff 型隨從雪球",
+    "保留高費法術應對關鍵隨從"
+  ],
+  "notes": ""
+}

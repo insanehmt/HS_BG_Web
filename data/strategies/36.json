@@ -1,0 +1,78 @@
+{
+  "archetype_id": 36,
+  "name": "Control Priest",
+  "name_zh": "",
+  "class": "PRIEST",
+  "class_zh": "牧師",
+  "style": "控制",
+  "win_rate": 52.0,
+  "pct_of_total": 3.1,
+  "rank": 19,
+  "core_cards": [
+    {
+      "card_id": "TIME_433",
+      "name": "抹除存在",
+      "type": "SPELL",
+      "cost": 3,
+      "text": "倒轉 沉默並摧毀一個隨機敵方手下"
+    },
+    {
+      "card_id": "EDR_464",
+      "name": "泰蘭妲",
+      "type": "MINION",
+      "cost": 7,
+      "text": "戰吼：你打出的下3張法術會施放兩次"
+    },
+    {
+      "card_id": "CORE_CFM_604",
+      "name": "強效治療藥水",
+      "type": "SPELL",
+      "cost": 4,
+      "text": "使一個友方角色恢復#12點生命值 抽一張牌"
+    },
+    {
+      "card_id": "TLC_835",
+      "name": "阿瑪拉的故事",
+      "type": "SPELL",
+      "cost": 10,
+      "text": "[x]將你英雄的生命值 改為40"
+    },
+    {
+      "card_id": "CORE_NEW1_021",
+      "name": "末日預言者",
+      "type": "MINION",
+      "cost": 2,
+      "text": "在你的回合開始時，摧毀全部手下"
+    },
+    {
+      "card_id": "CORE_CS1_112",
+      "name": "神聖新星",
+      "type": "SPELL",
+      "cost": 3,
+      "text": "對全部敵方手下造成$2點傷害。恢復全部友方角色#2點生命值"
+    },
+    {
+      "card_id": "EDR_476",
+      "name": "月井",
+      "type": "SPELL",
+      "cost": 6,
+      "text": "對全部敵方角色造成$4點傷害。恢復全部友方角色#4點生命值"
+    },
+    {
+      "card_id": "EDR_800",
+      "name": "顫翼蝶守護者",
+      "type": "MINION",
+      "cost": 4,
+      "text": "嘲諷、聖盾術 戰吼：注能你的英雄能力"
+    }
+  ],
+  "play_style": "控制型，大量去除和回血，拖到後期以大牌取勝",
+  "win_condition": "在對手穩定下來前造成足夠傷害，或資源戰佔優",
+  "key_turns": "前中期是你的機會，後期會越來越難",
+  "against_tips": [
+    "節奏快攻，讓對手的去除疲於奔命",
+    "盡量逼對手在次優時機使用全體清場",
+    "小心後期大威脅（通常在 7-10 費），提前算好致命"
+  ],
+  "notes": ""
+}

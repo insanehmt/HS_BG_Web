@@ -1,0 +1,77 @@
+{
+  "archetype_id": 786,
+  "name": "Wallow Warlock",
+  "name_zh": "",
+  "class": "WARLOCK",
+  "class_zh": "術士",
+  "style": "",
+  "win_rate": 45.3,
+  "pct_of_total": 0.3,
+  "rank": 42,
+  "core_cards": [
+    {
+      "card_id": "EDR_487",
+      "name": "『惡樹』瓦洛",
+      "type": "MINION",
+      "cost": 7,
+      "text": "若這張牌在你手中或牌堆中，每當你賦予友方手下黑暗贈禮，它也會獲得相同效果"
+    },
+    {
+      "card_id": "EDR_856",
+      "name": "夢魘之王薩維斯",
+      "type": "MINION",
+      "cost": 4,
+      "text": "戰吼：從你的牌堆 發現一個手下，並賦予它黑暗贈禮"
+    },
+    {
+      "card_id": "FIR_924",
+      "name": "暗影之焰潛獵者",
+      "type": "MINION",
+      "cost": 4,
+      "text": "戰吼：發現一個擁有 黑暗贈禮的惡魔。獲得一張它的分身"
+    },
+    {
+      "card_id": "EDR_105",
+      "name": "瘋狂駭物",
+      "type": "MINION",
+      "cost": 2,
+      "text": "戰吼：發現一個消耗為3，且有黑暗贈禮的手下"
+    },
+    {
+      "card_id": "EDR_654",
+      "name": "蔓生恐懼",
+      "type": "MINION",
+      "cost": 4,
+      "text": "嘲諷。戰吼：使你手中擁有黑暗贈禮的手下消耗減少(2)"
+    },
+    {
+      "card_id": "EDR_102",
+      "name": "狡詐折磨者",
+      "type": "MINION",
+      "cost": 4,
+      "text": "戰吼：發現一個有 黑暗贈禮的傳說手下"
+    },
+    {
+      "card_id": "EDR_488",
+      "name": "前衛園藝術",
+      "type": "SPELL",
+      "cost": 2,
+      "text": "發現一個擁有死亡之聲與 黑暗贈禮的手下"
+    },
+    {
+      "card_id": "EDR_001",
+      "name": "滿懷希望的林精",
+      "type": "MINION",
+      "cost": 3,
+      "text": "戰吼：獲得一張隨機夢境牌"
+    }
+  ],
+  "play_style": "此牌型目前尚無詳細資料，請根據對手打出的牌判斷風格",
+  "win_condition": "根據你的牌組優勢施展",
+  "key_turns": "依對手行動判斷",
+  "against_tips": [
+    "觀察對手的出牌節奏判斷是快攻/中速/控制",
+    "記錄對手核心牌型"
+  ],
+  "notes": ""
+}

@@ -1,0 +1,78 @@
+{
+  "archetype_id": 817,
+  "name": "Egg Warlock",
+  "name_zh": "",
+  "class": "WARLOCK",
+  "class_zh": "術士",
+  "style": "中速",
+  "win_rate": 51.3,
+  "pct_of_total": 2.1,
+  "rank": 25,
+  "core_cards": [
+    {
+      "card_id": "TLC_106",
+      "name": "終結者昂布拉",
+      "type": "MINION",
+      "cost": 7,
+      "text": "戰吼：觸發本賽局中死亡的5個友方手下的死亡之聲效果"
+    },
+    {
+      "card_id": "DINO_411",
+      "name": "神聖護蛋者",
+      "type": "MINION",
+      "cost": 2,
+      "text": "戰吼：抽出一個攻擊力為0的手下"
+    },
+    {
+      "card_id": "EDR_491",
+      "name": "刺棘大德魯伊",
+      "type": "MINION",
+      "cost": 2,
+      "text": "戰吼：獲得本回合死亡的友方手下的 死亡之聲效果"
+    },
+    {
+      "card_id": "CORE_CS2_188",
+      "name": "嚴厲的士官",
+      "type": "MINION",
+      "cost": 1,
+      "text": "戰吼：本回合賦予一個手下+2攻擊力"
+    },
+    {
+      "card_id": "TLC_252",
+      "name": "溶蝕汙泥怪",
+      "type": "MINION",
+      "cost": 3,
+      "text": "[x]戰吼：摧毀一個友方 手下。吐出可賦予其 攻擊力和生命值的 骸骨到你手中"
+    },
+    {
+      "card_id": "EDR_482",
+      "name": "腐爛的蘋果",
+      "type": "SPELL",
+      "cost": 2,
+      "text": "使你的英雄恢復#12點生命值。在接下來2回合，對你的英雄造成$3點傷害"
+    },
+    {
+      "card_id": "CORE_BOT_222",
+      "name": "靈魂炸彈",
+      "type": "SPELL",
+      "cost": 1,
+      "text": "對一個手下 和你的英雄造成 $4點傷害"
+    },
+    {
+      "card_id": "FIR_954",
+      "name": "焚燒",
+      "type": "SPELL",
+      "cost": 1,
+      "text": "對一個手下造成$5點傷害。其擁有者抽一張牌"
+    }
+  ],
+  "play_style": "中速型，平衡前後期，有多樣化的應對手段",
+  "win_condition": "耗盡對手資源或建立不可解的板面",
+  "key_turns": "5-8 回合決定走向",
+  "against_tips": [
+    "觀察對手打出的關鍵牌，判斷其 win condition",
+    "小心中期威脅，注意是否有 buff 型隨從雪球",
+    "保留高費法術應對關鍵隨從"
+  ],
+  "notes": ""
+}

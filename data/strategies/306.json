@@ -1,0 +1,78 @@
+{
+  "archetype_id": 306,
+  "name": "Quest Shaman",
+  "name_zh": "",
+  "class": "SHAMAN",
+  "class_zh": "薩滿",
+  "style": "任務",
+  "win_rate": 41.1,
+  "pct_of_total": 0.1,
+  "rank": 47,
+  "core_cards": [
+    {
+      "card_id": "CORE_GVG_085",
+      "name": "煩人機器人",
+      "type": "MINION",
+      "cost": 2,
+      "text": "嘲諷 聖盾術"
+    },
+    {
+      "card_id": "CORE_ULD_723",
+      "name": "木乃魚",
+      "type": "MINION",
+      "cost": 1,
+      "text": "重生"
+    },
+    {
+      "card_id": "TLC_229",
+      "name": "火山之靈",
+      "type": "SPELL",
+      "cost": 1,
+      "text": "任務：打出 6個不同類型的手下 獎勵：埃沙隆"
+    },
+    {
+      "card_id": "DINO_412",
+      "name": "托爾托圖騰",
+      "type": "MINION",
+      "cost": 1,
+      "text": "在你的回合結束時，獲得一個有多種手下類型的隨機手下"
+    },
+    {
+      "card_id": "TIME_045",
+      "name": "恆龍幼龍",
+      "type": "MINION",
+      "cost": 3,
+      "text": "致命劇毒 重生"
+    },
+    {
+      "card_id": "CATA_614",
+      "name": "暗影告密者",
+      "type": "MINION",
+      "cost": 2,
+      "text": "戰吼：發現一個你職業的法術(每回合變換職業！)"
+    },
+    {
+      "card_id": "EDR_856",
+      "name": "夢魘之王薩維斯",
+      "type": "MINION",
+      "cost": 4,
+      "text": "戰吼：從你的牌堆 發現一個手下，並賦予它黑暗贈禮"
+    },
+    {
+      "card_id": "TIME_218",
+      "name": "靜電震擊",
+      "type": "SPELL",
+      "cost": 0,
+      "text": "對一個手下造成$1點傷害。本回合賦予你的英雄+1攻擊力"
+    }
+  ],
+  "play_style": "任務型，完成特定任務後解鎖強力能力或獎勵",
+  "win_condition": "任務完成前決出勝負，或之後快速答問",
+  "key_turns": "任務完成前（通常 5-8 回合）是最佳攻勢視窗",
+  "against_tips": [
+    "積極施壓，不要給對手安穩完成任務的時間",
+    "注意對手完成任務的時間節點，判斷威脅等級",
+    "任務完成後遊戲通常進入對方優勢，需在此之前分出勝負"
+  ],
+  "notes": ""
+}

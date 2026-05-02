@@ -1,0 +1,78 @@
+{
+  "archetype_id": 79,
+  "name": "Quest Paladin",
+  "name_zh": "",
+  "class": "PALADIN",
+  "class_zh": "聖騎士",
+  "style": "任務",
+  "win_rate": 53.6,
+  "pct_of_total": 0.2,
+  "rank": 16,
+  "core_cards": [
+    {
+      "card_id": "TLC_426",
+      "name": "潛入葛拉卡深淵",
+      "type": "SPELL",
+      "cost": 1,
+      "text": "[x]可重複任務：召喚 6個魚人 獎勵：你召喚的魚人 獲得+1/+1"
+    },
+    {
+      "card_id": "TLC_429",
+      "name": "蒸鰭小偷",
+      "type": "MINION",
+      "cost": 4,
+      "text": "同類：召喚兩個有 衝刺的1/1魚人"
+    },
+    {
+      "card_id": "EDR_999",
+      "name": "綠鰭咬咬者",
+      "type": "MINION",
+      "cost": 1,
+      "text": "戰吼：獲得一個隨機魚人"
+    },
+    {
+      "card_id": "TLC_442",
+      "name": "沉沒地圖",
+      "type": "SPELL",
+      "cost": 1,
+      "text": "發現一個魚人 若你本回合打出它，可再選擇其中一張"
+    },
+    {
+      "card_id": "CORE_EX1_506",
+      "name": "獵潮魚人",
+      "type": "MINION",
+      "cost": 2,
+      "text": "戰吼：召喚一個 1/1魚人斥候"
+    },
+    {
+      "card_id": "TLC_240",
+      "name": "假暴龍",
+      "type": "MINION",
+      "cost": 6,
+      "text": "衝刺。死亡之聲：召喚 三個2/1魚人。賦予它們各自一個隨機的 加成效果"
+    },
+    {
+      "card_id": "TLC_428",
+      "name": "溫泉戲水者",
+      "type": "MINION",
+      "cost": 3,
+      "text": "戰吼：你的下一個魚人消耗減少(1) 同類：且獲得 聖盾術"
+    },
+    {
+      "card_id": "CORE_EX1_507",
+      "name": "魚人隊長",
+      "type": "MINION",
+      "cost": 3,
+      "text": "你的其他魚人獲得 +2攻擊力"
+    }
+  ],
+  "play_style": "任務型，完成特定任務後解鎖強力能力或獎勵",
+  "win_condition": "任務完成前決出勝負，或之後快速答問",
+  "key_turns": "任務完成前（通常 5-8 回合）是最佳攻勢視窗",
+  "against_tips": [
+    "積極施壓，不要給對手安穩完成任務的時間",
+    "注意對手完成任務的時間節點，判斷威脅等級",
+    "任務完成後遊戲通常進入對方優勢，需在此之前分出勝負"
+  ],
+  "notes": ""
+}

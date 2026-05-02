@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>英雄勝率排名 — HS BG Tracker</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  [x-cloak]{display:none}
+  body{background:#0d0718;color:#d4c4a8;font-family:'Segoe UI',sans-serif;min-height:100vh}
+  ::-webkit-scrollbar{width:5px;height:5px}
+  ::-webkit-scrollbar-track{background:#0d0718}
+  ::-webkit-scrollbar-thumb{background:#3a1a50;border-radius:3px}
+
+  .page-title{font-family:'Cinzel',serif;font-size:1.6rem;font-weight:900;color:#d0a0f0;text-shadow:0 0 30px #9060c080}
+  .nav-link{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:8px;
+    border:1px solid #3a1a50;color:#8060a0;font-size:.82rem;transition:all .15s;text-decoration:none}
+  .nav-link:hover,.nav-link.active{border-color:#9060c0;color:#d0a0f0;background:#1a0a28}
+
+  /* toolbar */
+  .toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+    background:#120820;border:1px solid #2a1040;border-radius:10px;padding:10px 14px}
+  .fbtn{padding:4px 13px;border-radius:6px;border:1px solid #3a1a50;
+    color:#8060a0;font-size:.78rem;cursor:pointer;transition:all .15s;background:transparent;white-space:nowrap}
+  .fbtn.on,.fbtn:hover{background:#2a0a40;border-color:#9060c0;color:#d0a0ff}
+  .search-box{flex:1;min-width:140px;max-width:240px;
+    background:#0d0718;border:1px solid #3a1a50;border-radius:6px;
+    color:#d4c4a8;font-size:.8rem;padding:5px 10px;outline:none}
+  .search-box:focus{border-color:#7040b0}
+  .sort-sel{background:#0d0718;border:1px solid #3a1a50;border-radius:6px;
+    color:#a070c0;font-size:.78rem;padding:4px 8px;outline:none;cursor:pointer}
+
+  /* hero portrait oval */
+  .hero-oval{
+    width:88px;height:88px;border-radius:50% 50% 44% 44% / 46% 46% 54% 54%;
+    overflow:hidden;border:2px solid #5030a0;background:#1a0a28;
+    flex-shrink:0;
+  }
+  .hero-oval img{width:100%;height:100%;object-fit:cover;object-position:center 15%}
+
+  /* rank badge */
+  .rank-badge{
+    width:28px;height:28px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:.75rem;font-weight:700;flex-shrink:0;
+  }
+  .rank-1{background:linear-gradient(135deg,#ffd700,#b8860b);color:#000;box-shadow:0 0 10px #ffd70080}
+  .rank-2{background:linear-gradient(135deg,#c0c0c0,#808080);color:#000}
+  .rank-3{background:linear-gradient(135deg,#cd7f32,#8b4513);color:#fff}
+  .rank-n{background:#1a0a28;border:1px solid #3a1a50;color:#a080c0}
+
+  /* hero row card */
+  .hero-row{
+    background:linear-gradient(160deg,#120820,#180a26);
+    border:1px solid #2a1040;border-radius:14px;
+    padding:14px 16px;
+    display:flex;align-items:center;gap:14px;
+    transition:border-color .15s,transform .12s,box-shadow .15s;
+  }
+  .hero-row:hover{border-color:#6030a0;transform:translateX(3px);box-shadow:4px 0 20px #00000060}
+  .hero-row.gold-row{border-color:#3a2800;background:linear-gradient(160deg,#1a1000,#200a00)}
+  .hero-row.gold-row:hover{border-color:#806000}
+
+  /* stat chip */
+  .stat-chip{
+    display:flex;flex-direction:column;align-items:center;
+    background:#0d0718;border:1px solid #2a1040;border-radius:8px;
+    padding:6px 12px;min-width:60px;
+  }
+  .stat-chip .val{font-size:1.1rem;font-weight:700;line-height:1.2}
+  .stat-chip .lbl{font-size:.6rem;color:#6a5a7a;margin-top:1px;white-space:nowrap}
+
+  .place-good{color:#50e880}
+  .place-mid {color:#f0c050}
+  .place-bad {color:#f05060}
+
+  /* progress bar for win rate */
+  .bar-wrap{flex:1;min-width:80px;background:#1a0a28;border-radius:4px;height:8px;overflow:hidden}
+  .bar-fill{height:100%;border-radius:4px;transition:width .4s}
+  .bar-wr{background:linear-gradient(90deg,#ffd700,#b8860b)}
+  .bar-t4{background:linear-gradient(90deg,#4080ff,#2050c0)}
+
+  /* table view */
+  .tbl-wrap{overflow-x:auto;border-radius:12px;border:1px solid #2a1040}
+  table{width:100%;border-collapse:collapse}
+  th{background:#120820;padding:9px 12px;text-align:left;font-size:.72rem;color:#7050a0;
+     font-weight:600;border-bottom:1px solid #2a1040;white-space:nowrap}
+  td{padding:9px 12px;font-size:.82rem;border-bottom:1px solid #1a0a28;white-space:nowrap;vertical-align:middle}
+  tr:hover td{background:#1a0a28}
+  tr:last-child td{border-bottom:none}
+</style>
+</head>
+<body x-data="heroApp()" x-init="init()" x-cloak>
+
+<!-- nav -->
+<header class="sticky top-0 z-40" style="background:#0a0514;border-bottom:1px solid #1a0a28">
+  <div class="max-w-7xl mx-auto px-4 py-3 flex items-center gap-3 flex-wrap">
+    <span class="page-title">🏆 英雄勝率排名</span>
+    <div class="flex items-center gap-2 ml-auto flex-wrap">
+      {% if not public_mode %}<a href="/"           class="nav-link">🎮 對局紀錄</a>{% endif %}
+      {% if not public_mode %}<a href="/heroes"     class="nav-link active">🏆 英雄排名</a>{% endif %}
+      <a href="/hero-guide" class="nav-link">🦸 英雄圖鑑</a>
+      <a href="/tier-list"  class="nav-link">⚔️ 當季最強</a>
+      {% if not public_mode %}<a href="/comps"      class="nav-link">🎯 組合排名</a>{% endif %}
+      <a href="/minions"    class="nav-link">🐾 手下圖鑑</a>
+      <a href="/spells"     class="nav-link">✨ 法術圖鑑</a>
+      <a href="/trinkets"   class="nav-link">💎 飾品圖鑑</a>
+    </div>
+  </div>
+</header>
+
+<div class="max-w-6xl mx-auto px-4 py-6">
+
+  <!-- toolbar -->
+  <div class="toolbar mb-5">
+    <!-- mode -->
+    <template x-for="m in [{k:'all',l:'全部'},{k:'solo',l:'🧍 單打'},{k:'duo',l:'👥 雙打'}]">
+      <button class="fbtn" :class="{on: mode===m.k}" @click="mode=m.k;load()">
+        <span x-text="m.l"></span>
+      </button>
+    </template>
+    <div style="width:1px;height:20px;background:#2a1040"></div>
+    <!-- sort -->
+    <span style="font-size:.75rem;color:#6a5a7a">排序</span>
+    <select class="sort-sel" x-model="sortBy" @change="load()">
+      <option value="avg_place">均名次</option>
+      <option value="win_rate">勝率</option>
+      <option value="top4_rate">Top4率</option>
+      <option value="games">場次</option>
+    </select>
+    <div style="width:1px;height:20px;background:#2a1040"></div>
+    <!-- view -->
+    <template x-for="v in [{k:'grid',l:'🃏 卡片'},{k:'table',l:'📊 表格'}]">
+      <button class="fbtn" :class="{on: viewMode===v.k}" @click="viewMode=v.k">
+        <span x-text="v.l"></span>
+      </button>
+    </template>
+    <div style="width:1px;height:20px;background:#2a1040"></div>
+    <!-- search -->
+    <input class="search-box" placeholder="搜尋英雄名…" x-model="search" @input="filterHeroes()">
+    <span style="font-size:.75rem;color:#6a5a7a;margin-left:auto" x-text="filtered.length + ' 位英雄'"></span>
+  </div>
+
+  <!-- summary stats -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+    <div class="stat-chip" style="flex-direction:row;justify-content:space-between;min-width:unset;padding:10px 16px">
+      <div>
+        <div class="val" style="color:#d0a0f0" x-text="heroes.length"></div>
+        <div class="lbl">使用英雄數</div>
+      </div>
+      <div style="font-size:2rem">🦸</div>
+    </div>
+    <div class="stat-chip" style="flex-direction:row;justify-content:space-between;min-width:unset;padding:10px 16px">
+      <div>
+        <div class="val" style="color:#ffd700" x-text="totalGames"></div>
+        <div class="lbl">總場次</div>
+      </div>
+      <div style="font-size:2rem">🎮</div>
+    </div>
+    <div class="stat-chip" style="flex-direction:row;justify-content:space-between;min-width:unset;padding:10px 16px">
+      <div>
+        <div class="val" style="color:#50e880" x-text="overallWinRate + '%'"></div>
+        <div class="lbl">整體勝率</div>
+      </div>
+      <div style="font-size:2rem">🥇</div>
+    </div>
+    <div class="stat-chip" style="flex-direction:row;justify-content:space-between;min-width:unset;padding:10px 16px">
+      <div>
+        <div class="val" style="color:#4080ff" x-text="overallTop4 + '%'"></div>
+        <div class="lbl">整體Top4率</div>
+      </div>
+      <div style="font-size:2rem">🏅</div>
+    </div>
+  </div>
+
+  <!-- loading -->
+  <div x-show="loading" class="text-center py-16" style="color:#6a5a7a">載入中…</div>
+
+  <!-- GRID VIEW -->
+  <div x-show="!loading && viewMode==='grid'">
+    <template x-if="filtered.length === 0">
+      <div class="text-center py-16" style="color:#6a5a7a">沒有符合條件的英雄</div>
+    </template>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <template x-for="(h, idx) in filtered" :key="h.name">
+        <div class="hero-row" :class="{'gold-row': idx===0}">
+          <!-- rank -->
+          <div class="rank-badge"
+               :class="idx===0?'rank-1':idx===1?'rank-2':idx===2?'rank-3':'rank-n'"
+               x-text="idx+1"></div>
+
+          <!-- portrait -->
+          <div class="hero-oval">
+            <img :src="h.card_id ? 'https://art.hearthstonejson.com/v1/256x/'+h.card_id+'.jpg' : ''"
+                 :alt="h.name"
+                 onerror="this.style.display='none'">
+          </div>
+
+          <!-- name + bars -->
+          <div style="flex:1;min-width:0">
+            <div style="font-size:.95rem;font-weight:700;color:#d4c4a8;margin-bottom:4px" x-text="h.name"></div>
+            <div style="font-size:.72rem;color:#7050a0;margin-bottom:6px">
+              <span x-text="h.games"></span> 場 ·
+              <span x-text="'最佳 #' + h.best"></span>
+            </div>
+            <!-- win rate bar -->
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
+              <span style="font-size:.65rem;color:#b8860b;width:32px">勝率</span>
+              <div class="bar-wrap">
+                <div class="bar-fill bar-wr" :style="'width:'+h.win_rate+'%'"></div>
+              </div>
+              <span style="font-size:.7rem;color:#ffd700;width:38px;text-align:right" x-text="h.win_rate+'%'"></span>
+            </div>
+            <!-- top4 bar -->
+            <div style="display:flex;align-items:center;gap:6px">
+              <span style="font-size:.65rem;color:#4060b0;width:32px">Top4</span>
+              <div class="bar-wrap">
+                <div class="bar-fill bar-t4" :style="'width:'+h.top4_rate+'%'"></div>
+              </div>
+              <span style="font-size:.7rem;color:#4080ff;width:38px;text-align:right" x-text="h.top4_rate+'%'"></span>
+            </div>
+          </div>
+
+          <!-- stat chips -->
+          <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end">
+            <div class="stat-chip">
+              <div class="val"
+                   :class="h.avg_place<=2.5?'place-good':h.avg_place<=4.5?'place-mid':'place-bad'"
+                   x-text="h.avg_place"></div>
+              <div class="lbl">均名次</div>
+            </div>
+            <div class="stat-chip">
+              <div class="val" style="color:#ffd700" x-text="h.wins"></div>
+              <div class="lbl">冠軍</div>
+            </div>
+            <div class="stat-chip">
+              <div class="val" style="color:#4080ff" x-text="h.top4 + '/' + h.games"></div>
+              <div class="lbl">Top4場次</div>
+            </div>
+          </div>
+        </div>
+      </template>
+    </div>
+  </div>
+
+  <!-- TABLE VIEW -->
+  <div x-show="!loading && viewMode==='table'">
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>英雄</th>
+            <th>場次</th>
+            <th>均名次</th>
+            <th>冠軍</th>
+            <th>勝率</th>
+            <th>Top4</th>
+            <th>Top4率</th>
+            <th>最佳</th>
+            <th>最差</th>
+          </tr>
+        </thead>
+        <tbody>
+          <template x-for="(h, idx) in filtered" :key="h.name">
+            <tr>
+              <td>
+                <span class="rank-badge"
+                      :class="idx===0?'rank-1':idx===1?'rank-2':idx===2?'rank-3':'rank-n'"
+                      x-text="idx+1"></span>
+              </td>
+              <td>
+                <div style="display:flex;align-items:center;gap:8px">
+                  <img :src="h.card_id ? 'https://art.hearthstonejson.com/v1/256x/'+h.card_id+'.jpg' : ''"
+                       style="width:32px;height:32px;border-radius:50%;object-fit:cover;object-position:center 15%"
+                       onerror="this.style.display='none'">
+                  <span style="font-weight:600" x-text="h.name"></span>
+                </div>
+              </td>
+              <td x-text="h.games" style="color:#a080c0"></td>
+              <td>
+                <span :class="h.avg_place<=2.5?'place-good':h.avg_place<=4.5?'place-mid':'place-bad'"
+                      style="font-weight:700" x-text="h.avg_place"></span>
+              </td>
+              <td style="color:#ffd700;font-weight:700" x-text="h.wins"></td>
+              <td>
+                <div style="display:flex;align-items:center;gap:6px">
+                  <div class="bar-wrap" style="max-width:60px">
+                    <div class="bar-fill bar-wr" :style="'width:'+h.win_rate+'%'"></div>
+                  </div>
+                  <span style="color:#ffd700" x-text="h.win_rate+'%'"></span>
+                </div>
+              </td>
+              <td style="color:#4080ff" x-text="h.top4"></td>
+              <td>
+                <div style="display:flex;align-items:center;gap:6px">
+                  <div class="bar-wrap" style="max-width:60px">
+                    <div class="bar-fill bar-t4" :style="'width:'+h.top4_rate+'%'"></div>
+                  </div>
+                  <span style="color:#4080ff" x-text="h.top4_rate+'%'"></span>
+                </div>
+              </td>
+              <td style="color:#50e880" x-text="'#'+h.best"></td>
+              <td style="color:#f05060" x-text="'#'+h.worst"></td>
+            </tr>
+          </template>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function heroApp() {
+  return {
+    heroes: [],
+    filtered: [],
+    loading: true,
+    mode: 'all',
+    sortBy: 'avg_place',
+    viewMode: 'grid',
+    search: '',
+    totalGames: 0,
+    overallWinRate: 0,
+    overallTop4: 0,
+
+    async init() { await this.load() },
+
+    async load() {
+      this.loading = true
+      const r = await fetch(`/api/heroes?mode=${this.mode}&sort=${this.sortBy}`)
+      const d = await r.json()
+      this.heroes = d.heroes || []
+      this.totalGames = this.heroes.reduce((s, h) => s + h.games, 0)
+      const totalWins = this.heroes.reduce((s, h) => s + h.wins, 0)
+      const totalTop4 = this.heroes.reduce((s, h) => s + h.top4, 0)
+      this.overallWinRate = this.totalGames ? +(totalWins / this.totalGames * 100).toFixed(1) : 0
+      this.overallTop4   = this.totalGames ? +(totalTop4 / this.totalGames * 100).toFixed(1) : 0
+      this.loading = false
+      this.filterHeroes()
+    },
+
+    filterHeroes() {
+      const q = this.search.trim().toLowerCase()
+      this.filtered = q
+        ? this.heroes.filter(h => h.name.toLowerCase().includes(q))
+        : [...this.heroes]
+    },
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+{
+  "archetype_id": 654,
+  "name": "Aura Paladin",
+  "name_zh": "",
+  "class": "PALADIN",
+  "class_zh": "聖騎士",
+  "style": "光環",
+  "win_rate": 59.6,
+  "pct_of_total": 0.8,
+  "rank": 4,
+  "core_cards": [
+    {
+      "card_id": "TIME_015",
+      "name": "硬光保衛者",
+      "type": "MINION",
+      "cost": 2,
+      "text": "聖盾術 戰吼：使你的英雄 恢復#3點生命值並賦予其聖盾術"
+    },
+    {
+      "card_id": "CORE_KAR_061",
+      "name": "館長",
+      "type": "MINION",
+      "cost": 5,
+      "text": "嘲諷 戰吼：抽出一張野獸、龍類和魚人牌"
+    },
+    {
+      "card_id": "EDR_259",
+      "name": "厄索爾",
+      "type": "MINION",
+      "cost": 8,
+      "text": "戰吼：將你手中消耗最高的法術作為光環施放，持續3回合"
+    },
+    {
+      "card_id": "TIME_019",
+      "name": "時間之道化身",
+      "type": "MINION",
+      "cost": 4,
+      "text": "戰吼：若你場上有光環，對全部敵人造成 3點傷害"
+    },
+    {
+      "card_id": "TIME_700",
+      "name": "時空光環",
+      "type": "SPELL",
+      "cost": 5,
+      "text": "在你的回合結束時，召喚一個有 嘲諷的3/5龍類。持續3回合"
+    },
+    {
+      "card_id": "END_011",
+      "name": "加速光環",
+      "type": "SPELL",
+      "cost": 2,
+      "text": "在你的回合開始時，獲得一顆暫時存在的法力水晶，持續 3回合"
+    },
+    {
+      "card_id": "EDR_255",
+      "name": "回生烈焰",
+      "type": "SPELL",
+      "cost": 7,
+      "text": "生命竊取 對生命值最低的敵人造成$5點傷害兩次"
+    },
+    {
+      "card_id": "TIME_009",
+      "name": "明日之傑爾賓",
+      "type": "MINION",
+      "cost": 8,
+      "text": "顯赫 戰吼：取出你牌堆中的每一種光環並放到戰場"
+    }
+  ],
+  "play_style": "光環型，依靠持續光環效果增強所有隨從",
+  "win_condition": "殺掉光環來源，維持板面對等",
+  "key_turns": "光環隨從一出場就需立刻處理",
+  "against_tips": [
+    "立即消滅光環來源（通常是特定隨從或法術），否則會雪球",
+    "保留點殺給光環隨從，不要等它累積太多效果"
+  ],
+  "notes": ""
+}

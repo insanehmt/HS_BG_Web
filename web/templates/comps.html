@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>強力組合排名 — HS BG Tracker</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  [x-cloak]{display:none}
+  body{background:#0d0718;color:#d4c4a8;font-family:'Segoe UI',sans-serif;min-height:100vh}
+
+  ::-webkit-scrollbar{width:5px;height:5px}
+  ::-webkit-scrollbar-track{background:#0d0718}
+  ::-webkit-scrollbar-thumb{background:#3a1a50;border-radius:3px}
+
+  /* ── nav & header ── */
+  .nav-link{
+    display:inline-flex;align-items:center;gap:6px;
+    padding:6px 14px;border-radius:8px;
+    border:1px solid #3a1a50;color:#8060a0;
+    font-size:.82rem;transition:all .15s;text-decoration:none;
+  }
+  .nav-link:hover,.nav-link.active{border-color:#9060c0;color:#d0a0f0;background:#1a0a28}
+  .page-title{
+    font-family:'Cinzel',serif;font-size:1.6rem;font-weight:900;
+    color:#d0a0f0;text-shadow:0 0 30px #9060c080;
+  }
+
+  /* ── filter bar ── */
+  .filter-bar{
+    display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+    background:#120820;border:1px solid #2a1040;
+    border-radius:10px;padding:10px 14px;
+  }
+  .fbtn{
+    padding:4px 13px;border-radius:6px;border:1px solid #3a1a50;
+    color:#8060a0;font-size:.78rem;cursor:pointer;transition:all .15s;background:transparent;
+  }
+  .fbtn.on,.fbtn:hover{background:#2a0a40;border-color:#9060c0;color:#d0a0ff}
+
+  /* ── tab ── */
+  .tab-bar{display:flex;gap:2px;border-bottom:2px solid #2a1040;margin-bottom:18px}
+  .tab-btn{
+    padding:8px 20px;font-size:.88rem;font-weight:700;
+    border:none;background:transparent;cursor:pointer;
+    color:#7050a0;border-bottom:3px solid transparent;margin-bottom:-2px;
+    transition:all .15s;border-radius:6px 6px 0 0;
+  }
+  .tab-btn.on{color:#d0a0ff;border-bottom-color:#9060c0;background:#1a0a2810}
+  .tab-btn:hover:not(.on){color:#b080e0;background:#1a0a2820}
+
+  /* ── board row ── */
+  .board-row{
+    background:linear-gradient(90deg,#130820,#1a0a28,#130820);
+    border:1px solid #2a1040;border-radius:12px;
+    display:flex;align-items:center;gap:12px;
+    padding:10px 14px;margin-bottom:8px;
+    transition:border-color .15s;cursor:default;
+    overflow-x:auto;
+  }
+  .board-row:hover{border-color:#5a2080}
+  .board-row::-webkit-scrollbar{height:3px}
+
+  /* ── placement badge ── */
+  .pbadge{
+    font-family:'Cinzel',serif;font-weight:900;font-size:1.1rem;
+    width:36px;height:36px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .p1{background:linear-gradient(135deg,#c89800,#f0d060);color:#3a2000;box-shadow:0 0 12px #c8980060}
+  .p2{background:linear-gradient(135deg,#607080,#a0b8c8);color:#1a2030}
+  .p3{background:linear-gradient(135deg,#a05020,#e07830);color:#fff}
+  .p4{background:linear-gradient(135deg,#1a1a2a,#2a2a3a);color:#8090a8;border:1px solid #3a4050}
+  .pbig{background:linear-gradient(135deg,#2a0a0a,#3a1010);color:#ff6060;border:1px solid #5a1010}
+
+  /* ── hero oval (mini) ── */
+  .hero-sm{
+    width:52px;height:70px;flex-shrink:0;
+    border-radius:50% 50% 44% 44% / 46% 46% 54% 54%;
+    overflow:hidden;border:2px solid #7a5030;background:#1a0e06;
+  }
+  .hero-sm.gold{border-color:#c89800;box-shadow:0 0 10px #c8980050}
+  .hero-sm img{width:100%;height:100%;object-fit:cover;object-position:center 15%}
+
+  /* ── minion oval ── */
+  .mc-wrap{display:flex;flex-direction:column;align-items:center;flex-shrink:0;position:relative}
+  .mc-oval{
+    width:50px;height:68px;
+    border-radius:50% 50% 44% 44% / 46% 46% 54% 54%;
+    overflow:hidden;border:2px solid #5a3520;background:#140a04;
+    transition:transform .12s;
+  }
+  .mc-oval:hover{transform:translateY(-3px) scale(1.08);z-index:5}
+  .mc-oval.golden{border-color:#c89800;box-shadow:0 0 8px #c8980060}
+  .mc-oval.golden::after{
+    content:'★';position:absolute;top:2px;left:50%;transform:translateX(-50%);
+    font-size:.65rem;color:#ffd060;
+  }
+  .mc-oval img{width:100%;height:100%;object-fit:cover;object-position:center 15%}
+  .mc-stat{
+    display:flex;gap:1px;font-size:.58rem;font-weight:900;margin-top:2px;
+    text-shadow:0 1px 3px #000;
+  }
+  .mc-atk{color:#f0c040}.mc-hp{color:#ff6060}.mc-sep{color:#7a5030}
+  .mc-tip{
+    display:none;position:absolute;bottom:calc(100% + 4px);left:50%;
+    transform:translateX(-50%);
+    background:#000000d0;color:#ffd080;font-size:.6rem;font-weight:700;
+    padding:2px 6px;border-radius:4px;white-space:nowrap;
+    border:1px solid #7a5030;pointer-events:none;z-index:20;
+  }
+  .mc-wrap:hover .mc-tip{display:block}
+
+  /* ── game meta ── */
+  .game-meta{
+    font-size:.72rem;color:#6a4a80;display:flex;flex-direction:column;gap:2px;
+    flex-shrink:0;min-width:70px;
+  }
+  .game-meta b{color:#9060b0}
+
+  /* ── minion stat table ── */
+  .stat-table{width:100%;border-collapse:collapse;font-size:.82rem}
+  .stat-table th{
+    text-align:left;padding:8px 12px;border-bottom:1px solid #2a1040;
+    color:#7050a0;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;
+  }
+  .stat-table td{padding:8px 12px;border-bottom:1px solid #1a0a2840;vertical-align:middle}
+  .stat-table tr:hover td{background:#1a0a2840}
+
+  /* avg placement colour */
+  .avg-good{color:#48e080;font-weight:900}
+  .avg-mid {color:#f0c040;font-weight:900}
+  .avg-bad {color:#ff6060;font-weight:900}
+
+  /* ── hero rank cards ── */
+  .hero-rank-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+  .hero-rank-card{
+    background:#120820;border:1px solid #2a1040;border-radius:12px;
+    padding:14px;display:flex;align-items:center;gap:12px;
+    transition:border-color .15s;
+  }
+  .hero-rank-card:hover{border-color:#5a2080}
+  .hero-rank-oval{
+    width:60px;height:80px;flex-shrink:0;
+    border-radius:50% 50% 44% 44% / 46% 46% 54% 54%;
+    overflow:hidden;border:2px solid #7a5030;background:#1a0e06;
+  }
+  .hero-rank-oval img{width:100%;height:100%;object-fit:cover;object-position:center 15%}
+
+  /* ── empty state ── */
+  .empty{text-align:center;padding:48px;color:#4a3060;font-size:.9rem}
+</style>
+</head>
+<body x-data="app()" x-init="init()" x-cloak>
+<div class="max-w-7xl mx-auto px-4 py-6">
+
+  <!-- ── Header ── -->
+  <header class="flex items-center justify-between mb-6 flex-wrap gap-3">
+    <div>
+      <h1 class="page-title">⚔️ 強力組合排名</h1>
+      <p class="text-xs mt-1" style="color:#5a3a70">Strong Compositions · Personal Record</p>
+    </div>
+    <div class="flex gap-2 flex-wrap">
+      {% if not public_mode %}<a href="/" class="nav-link">📋 紀錄總覽</a>{% endif %}
+      {% if not public_mode %}<a href="/top-builds" class="nav-link">🏆 強力排組</a>{% endif %}
+      {% if not public_mode %}<a href="/heroes" class="nav-link">🏆 英雄排名</a>{% endif %}
+      <a href="/tier-list" class="nav-link">⚔️ 當季最強</a>
+      {% if not public_mode %}<a href="/comps" class="nav-link active">🎯 組合排名</a>{% endif %}
+    </div>
+  </header>
+
+  <!-- ── Filter bar ── -->
+  <div class="filter-bar mb-6">
+    <span style="font-size:.78rem;color:#6a4a80;font-weight:700">模式</span>
+    <template x-for="m in [{v:'all',l:'全部'},{v:'duo',l:'🤝 雙打'},{v:'solo',l:'⚔️ 單打'}]">
+      <button class="fbtn" :class="mode===m.v?'on':''" @click="mode=m.v;load()" x-text="m.l"></button>
+    </template>
+    <span class="ml-auto text-xs" style="color:#4a3060">
+      共 <b x-text="total" style="color:#9060b0"></b> 場紀錄
+    </span>
+  </div>
+
+  <!-- ── Tabs ── -->
+  <div class="tab-bar">
+    <button class="tab-btn" :class="tab==='boards'?'on':''" @click="tab='boards'">🃏 最佳板面</button>
+    <button class="tab-btn" :class="tab==='minions'?'on':''" @click="tab='minions'">🐾 強力隨從</button>
+    <button class="tab-btn" :class="tab==='heroes'?'on':''" @click="tab='heroes'">🦸 英雄排名</button>
+  </div>
+
+  <!-- loading -->
+  <div x-show="loading" class="empty">⏳ 載入中…</div>
+
+  <!-- ══════════════════════════════
+       TAB 1: 最佳板面
+       ══════════════════════════════ -->
+  <div x-show="!loading && tab==='boards'">
+    <template x-if="boards.length === 0">
+      <div class="empty">尚無紀錄。多打幾場吧！</div>
+    </template>
+
+    <template x-for="g in boards" :key="g.game_id">
+      <div class="board-row">
+
+        <!-- 名次徽章 -->
+        <div class="pbadge"
+             :class="g.placement===1?'p1':g.placement===2?'p2':g.placement===3?'p3':g.placement<=4?'p4':'pbig'"
+             x-text="'#'+g.placement"></div>
+
+        <!-- 英雄橢圓 -->
+        <div class="hero-sm" :class="g.placement===1?'gold':''">
+          <img :src="g.hero_card_id ? `https://art.hearthstonejson.com/v1/256x/${g.hero_card_id}.jpg` : ''"
+               :alt="g.hero_name" onerror="this.style.opacity='.2'">
+        </div>
+
+        <!-- 英雄名 + 模式 + 日期 -->
+        <div class="game-meta">
+          <b x-text="g.hero_name||'?'"></b>
+          <span x-text="g.game_mode==='duo'?'🤝 雙打':'⚔️ 單打'"></span>
+          <span x-text="(g.start_time||'').slice(0,10)"></span>
+          <span>⚔️ <b x-text="g.turn_count||'?'"></b>回 💰<b x-text="g.max_gold||'?'"></b></span>
+        </div>
+
+        <!-- 隨從橢圓列 -->
+        <div style="display:flex;gap:6px;align-items:flex-start;overflow-x:auto">
+          <template x-for="m in (g.board||[])">
+            <div class="mc-wrap">
+              <span class="mc-tip" x-text="m.name||''"></span>
+              <div class="mc-oval" :class="m.golden?'golden':''">
+                <img :src="`https://art.hearthstonejson.com/v1/256x/${m.card_id||''}.jpg`"
+                     :alt="m.name" onerror="this.style.opacity='.15'">
+              </div>
+              <div class="mc-stat">
+                <span class="mc-atk" x-text="atk(m)"></span>
+                <span class="mc-sep">/</span>
+                <span class="mc-hp" x-text="hp(m)"></span>
+              </div>
+            </div>
+          </template>
+        </div>
+
+      </div>
+    </template>
+  </div>
+
+  <!-- ══════════════════════════════
+       TAB 2: 強力隨從
+       ══════════════════════════════ -->
+  <div x-show="!loading && tab==='minions'">
+    <template x-if="top_minions.length === 0">
+      <div class="empty">尚無隨從資料。</div>
+    </template>
+
+    <div style="overflow-x:auto">
+      <table class="stat-table" x-show="top_minions.length > 0">
+        <thead>
+          <tr>
+            <th style="width:40px">#</th>
+            <th>隨從</th>
+            <th>出現次數</th>
+            <th>平均名次</th>
+            <th>Top 4 率</th>
+            <th>閃光次數</th>
+          </tr>
+        </thead>
+        <tbody>
+          <template x-for="(m, i) in top_minions" :key="m.card_id">
+            <tr>
+              <td class="text-center" style="color:#5a3a70" x-text="i+1"></td>
+              <td>
+                <div style="display:flex;align-items:center;gap:10px">
+                  <!-- mini oval -->
+                  <div style="width:38px;height:52px;border-radius:50% 50% 44% 44% / 46% 46% 54% 54%;
+                               overflow:hidden;border:2px solid #5a3520;background:#140a04;flex-shrink:0">
+                    <img :src="`https://art.hearthstonejson.com/v1/256x/${m.card_id}.jpg`"
+                         :alt="m.name" onerror="this.style.opacity='.15'"
+                         style="width:100%;height:100%;object-fit:cover;object-position:center 15%">
+                  </div>
+                  <span style="font-weight:700;color:#c0a080" x-text="m.name"></span>
+                </div>
+              </td>
+              <td class="text-center" style="color:#d0a0f0;font-weight:900" x-text="m.count"></td>
+              <td class="text-center">
+                <span :class="m.avg_placement<=2?'avg-good':m.avg_placement<=4?'avg-mid':'avg-bad'"
+                      x-text="m.avg_placement.toFixed(1)"></span>
+              </td>
+              <td class="text-center">
+                <span :class="m.top4_rate>=70?'avg-good':m.top4_rate>=40?'avg-mid':'avg-bad'"
+                      x-text="m.top4_rate+'%'"></span>
+              </td>
+              <td class="text-center" style="color:#d4af37" x-text="m.golden_count > 0 ? '★×'+m.golden_count : '—'"></td>
+            </tr>
+          </template>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       TAB 3: 英雄排名
+       ══════════════════════════════ -->
+  <div x-show="!loading && tab==='heroes'">
+    <template x-if="heroes.length === 0">
+      <div class="empty">尚無英雄資料。</div>
+    </template>
+
+    <div class="hero-rank-grid">
+      <template x-for="(h, i) in heroes" :key="h.name">
+        <div class="hero-rank-card">
+          <!-- rank number -->
+          <div style="font-family:'Cinzel',serif;font-size:1.2rem;font-weight:900;
+                      color:#5a3a70;min-width:24px;text-align:center" x-text="i+1"></div>
+          <!-- hero oval -->
+          <div class="hero-rank-oval">
+            <img :src="h.card_id ? `https://art.hearthstonejson.com/v1/256x/${h.card_id}.jpg` : ''"
+                 :alt="h.name" onerror="this.style.opacity='.2'">
+          </div>
+          <!-- stats -->
+          <div style="flex:1;min-width:0">
+            <div style="font-weight:700;color:#c0a0e0;font-size:.88rem;margin-bottom:4px"
+                 x-text="h.name"></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px 8px;font-size:.72rem">
+              <span style="color:#6a4a80">場次</span>
+              <b style="color:#d0a0f0" x-text="h.count"></b>
+              <span style="color:#6a4a80">均名次</span>
+              <b :class="h.avg_placement<=2?'avg-good':h.avg_placement<=4?'avg-mid':'avg-bad'"
+                 x-text="h.avg_placement.toFixed(1)"></b>
+              <span style="color:#6a4a80">Top4</span>
+              <b :class="h.top4_rate>=50?'avg-good':h.top4_rate>=25?'avg-mid':'avg-bad'"
+                 x-text="h.top4_rate+'%'"></b>
+              <span style="color:#6a4a80">冠軍</span>
+              <b style="color:#d4af37" x-text="h.wins > 0 ? '🏆×'+h.wins : '—'"></b>
+            </div>
+          </div>
+        </div>
+      </template>
+    </div>
+  </div>
+
+</div><!-- /max-w container -->
+
+<!-- ── Footer ── -->
+<footer class="max-w-7xl mx-auto px-4 py-6 mt-8 border-t text-center text-xs space-y-1"
+        style="border-color:#2a1040;color:#3a2050">
+  <div>Hearthstone™ is a trademark of Blizzard Entertainment, Inc. All card data and images are © Blizzard Entertainment.</div>
+  <div>This project is not affiliated with or endorsed by Blizzard. © 2025 HS BG Tracker. All rights reserved.</div>
+</footer>
+
+<script>
+function app() {
+  return {
+    loading: true,
+    tab:  'boards',
+    mode: 'all',
+    boards: [], top_minions: [], heroes: [], total: 0,
+
+    async init() { await this.load() },
+
+    async load() {
+      this.loading = true
+      const r = await fetch(`/api/comps?mode=${this.mode}`)
+      const d = await r.json()
+      this.boards      = d.boards      || []
+      this.top_minions = d.top_minions || []
+      this.heroes      = d.heroes      || []
+      this.total       = d.total       || 0
+      this.loading = false
+    },
+
+    atk(m) {
+      const match = (m.stats || m.name || '').match(/\[(\d+)\//)
+      return match ? match[1] : '?'
+    },
+    hp(m) {
+      const match = (m.stats || m.name || '').match(/\/(\d+)[\]+]/)
+      return match ? match[1] : '?'
+    }
+  }
+}
+</script>
+</body>
+</html>

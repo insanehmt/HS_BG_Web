@@ -1,0 +1,78 @@
+{
+  "archetype_id": 213,
+  "name": "Dragon Hunter",
+  "name_zh": "",
+  "class": "HUNTER",
+  "class_zh": "獵人",
+  "style": "中速",
+  "win_rate": 51.3,
+  "pct_of_total": 0.6,
+  "rank": 24,
+  "core_cards": [
+    {
+      "card_id": "CATA_551",
+      "name": "石爪打擊者",
+      "type": "MINION",
+      "cost": 3,
+      "text": "嘲諷 (在手中時，打出龍類以成為6/6的龍類！)"
+    },
+    {
+      "card_id": "CATA_556",
+      "name": "運送幼龍",
+      "type": "MINION",
+      "cost": 1,
+      "text": "戰吼：獲得一個消耗為(3)以下的隨機龍類"
+    },
+    {
+      "card_id": "END_033",
+      "name": "預知滑龍",
+      "type": "MINION",
+      "cost": 7,
+      "text": "飄渺 若你手中有其他龍類，消耗減少(3)"
+    },
+    {
+      "card_id": "CATA_111",
+      "name": "暗鱗育母",
+      "type": "MINION",
+      "cost": 3,
+      "text": "戰吼：若你手中有龍類，回復2顆法力水晶"
+    },
+    {
+      "card_id": "CATA_552",
+      "name": "黯鱗斥候",
+      "type": "MINION",
+      "cost": 6,
+      "text": "戰吼：造成等同此手下攻擊力的傷害(在手中時，打出龍類以成為8/8的龍類！)"
+    },
+    {
+      "card_id": "CATA_553",
+      "name": "厄比西昂",
+      "type": "MINION",
+      "cost": 7,
+      "text": "戰吼：在本賽局中，你的龍類獲得衝刺(在手中時，打出龍類以成為12/12的龍類！)"
+    },
+    {
+      "card_id": "TIME_045",
+      "name": "恆龍幼龍",
+      "type": "MINION",
+      "cost": 3,
+      "text": "致命劇毒 重生"
+    },
+    {
+      "card_id": "EDR_889",
+      "name": "花卉小販",
+      "type": "MINION",
+      "cost": 2,
+      "text": "在你的回合結束時，賦予另一個隨機友方龍類+1/+1"
+    }
+  ],
+  "play_style": "中速型，平衡前後期，有多樣化的應對手段",
+  "win_condition": "耗盡對手資源或建立不可解的板面",
+  "key_turns": "5-8 回合決定走向",
+  "against_tips": [
+    "觀察對手打出的關鍵牌，判斷其 win condition",
+    "小心中期威脅，注意是否有 buff 型隨從雪球",
+    "保留高費法術應對關鍵隨從"
+  ],
+  "notes": ""
+}

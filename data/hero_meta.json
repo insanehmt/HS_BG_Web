@@ -1,0 +1,261 @@
+{
+  "BG20_HERO_100": {
+    "suitable_races": [
+      "BEAST"
+    ]
+  },
+  "BG20_HERO_101": {
+    "suitable_races": [
+      "BEAST"
+    ]
+  },
+  "BG20_HERO_102": {
+    "suitable_races": []
+  },
+  "BG20_HERO_103": {
+    "suitable_races": [
+      "QUILBOAR"
+    ]
+  },
+  "BG20_HERO_201": {
+    "suitable_races": []
+  },
+  "BG20_HERO_202": {
+    "suitable_races": []
+  },
+  "BG20_HERO_242": {
+    "suitable_races": [
+      "BEAST"
+    ]
+  },
+  "BG20_HERO_280": {
+    "suitable_races": [
+      "UNDEAD"
+    ]
+  },
+  "BG20_HERO_282": {
+    "suitable_races": [
+      "UNDEAD"
+    ]
+  },
+  "BG20_HERO_283": {
+    "suitable_races": []
+  },
+  "BG20_HERO_301": {
+    "suitable_races": []
+  },
+  "BG21_HERO_000": {
+    "suitable_races": []
+  },
+  "BG21_HERO_010": {
+    "suitable_races": []
+  },
+  "BG21_HERO_020": {
+    "suitable_races": [
+      "MURLOC"
+    ]
+  },
+  "BG21_HERO_030": {
+    "suitable_races": [
+      "MECHANICAL"
+    ]
+  },
+  "BG22_HERO_000": {
+    "suitable_races": [
+      "BEAST"
+    ]
+  },
+  "BG22_HERO_001": {
+    "suitable_races": [
+      "ELEMENTAL",
+      "UNDEAD"
+    ]
+  },
+  "BG22_HERO_002": {
+    "suitable_races": []
+  },
+  "BG22_HERO_003": {
+    "suitable_races": []
+  },
+  "BG22_HERO_004": {
+    "suitable_races": [
+      "ELEMENTAL"
+    ]
+  },
+  "BG22_HERO_007": {
+    "suitable_races": [
+      "NAGA"
+    ]
+  },
+  "BG22_HERO_007t": {
+    "suitable_races": []
+  },
+  "BG22_HERO_200": {
+    "suitable_races": [
+      "MECHANICAL"
+    ]
+  },
+  "BG22_HERO_201": {
+    "suitable_races": []
+  },
+  "BG22_HERO_305": {
+    "suitable_races": [
+      "DRAGON"
+    ]
+  },
+  "BG23_HERO_201": {
+    "suitable_races": [
+      "BEAST"
+    ]
+  },
+  "BG23_HERO_303": {
+    "suitable_races": [
+      "BEAST"
+    ]
+  },
+  "BG23_HERO_304": {
+    "suitable_races": [
+      "NAGA"
+    ]
+  },
+  "BG23_HERO_305": {
+    "suitable_races": [
+      "DRAGON"
+    ]
+  },
+  "BG23_HERO_306": {
+    "suitable_races": [
+      "UNDEAD"
+    ]
+  },
+  "BG24_HERO_100": {
+    "suitable_races": []
+  },
+  "BG24_HERO_204": {
+    "suitable_races": [
+      "MECHANICAL"
+    ]
+  },
+  "BG25_HERO_100": {
+    "suitable_races": [
+      "UNDEAD"
+    ]
+  },
+  "BG25_HERO_103": {
+    "suitable_races": [
+      "UNDEAD"
+    ]
+  },
+  "BG25_HERO_105": {
+    "suitable_races": []
+  },
+  "BG26_HERO_101": {
+    "suitable_races": [
+      "PIRATE"
+    ]
+  },
+  "BG26_HERO_102": {
+    "suitable_races": [
+      "UNDEAD"
+    ]
+  },
+  "BG26_HERO_104": {
+    "suitable_races": [
+      "BEAST"
+    ]
+  },
+  "BG27_HERO_801": {
+    "suitable_races": [
+      "DRAGON"
+    ]
+  },
+  "BG28_HERO_400": {
+    "suitable_races": [
+      "MECHANICAL"
+    ]
+  },
+  "BG28_HERO_800": {
+    "suitable_races": [
+      "ELEMENTAL"
+    ]
+  },
+  "BG28_HERO_801": {
+    "suitable_races": [
+      "BEAST"
+    ]
+  },
+  "BG30_HERO_304": {
+    "suitable_races": [
+      "PIRATE"
+    ]
+  },
+  "BG31_HERO_003": {
+    "suitable_races": [
+      "ELEMENTAL"
+    ]
+  },
+  "BG31_HERO_005": {
+    "suitable_races": []
+  },
+  "BG31_HERO_006": {
+    "suitable_races": [
+      "MECHANICAL"
+    ]
+  },
+  "BG31_HERO_801": {
+    "suitable_races": []
+  },
+  "BG31_HERO_802": {
+    "suitable_races": [
+      "MECHANICAL"
+    ]
+  },
+  "BG31_HERO_811": {
+    "suitable_races": [
+      "BEAST"
+    ]
+  },
+  "BG32_HERO_001": {
+    "suitable_races": [
+      "BEAST"
+    ]
+  },
+  "BG32_HERO_002": {
+    "suitable_races": [
+      "UNDEAD"
+    ]
+  },
+  "BG33_HERO_001": {
+    "suitable_races": []
+  },
+  "BG34_HERO_000": {
+    "suitable_races": []
+  },
+  "BG34_HERO_001": {
+    "suitable_races": []
+  },
+  "BG34_HERO_002": {
+    "suitable_races": []
+  },
+  "BG34_HERO_004": {
+    "suitable_races": []
+  },
+  "BG35_HERO_001": {
+    "suitable_races": []
+  },
+  "BGDUO_HERO_100": {
+    "suitable_races": []
+  },
+  "BGDUO_HERO_101": {
+    "suitable_races": []
+  },
+  "BGDUO_HERO_104": {
+    "suitable_races": []
+  },
+  "BGDUO_HERO_222": {
+    "suitable_races": []
+  },
+  "BGDUO_HERO_223": {
+    "suitable_races": []
+  }
+}

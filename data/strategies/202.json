@@ -1,0 +1,77 @@
+{
+  "archetype_id": 202,
+  "name": "Evolve Shaman",
+  "name_zh": "",
+  "class": "SHAMAN",
+  "class_zh": "薩滿",
+  "style": "",
+  "win_rate": 42.5,
+  "pct_of_total": 0.4,
+  "rank": 46,
+  "core_cards": [
+    {
+      "card_id": "EDR_800",
+      "name": "顫翼蝶守護者",
+      "type": "MINION",
+      "cost": 4,
+      "text": "嘲諷、聖盾術 戰吼：注能你的英雄能力"
+    },
+    {
+      "card_id": "EDR_238",
+      "name": "麥琳瑟拉",
+      "type": "MINION",
+      "cost": 6,
+      "text": "戰吼：復活全部消耗(8)以上的不同友方手下"
+    },
+    {
+      "card_id": "EDR_518",
+      "name": "活體花園",
+      "type": "MINION",
+      "cost": 3,
+      "text": "戰吼：注能你的英雄能力。使你手中的一個手下消耗降低(1)"
+    },
+    {
+      "card_id": "EDR_231",
+      "name": "守護巨龍之擁",
+      "type": "SPELL",
+      "cost": 2,
+      "text": "恢復#4點生命值 抽一張牌 注能你的英雄能力"
+    },
+    {
+      "card_id": "EDR_852",
+      "name": "苦痛之花騎士",
+      "type": "MINION",
+      "cost": 2,
+      "text": "戰吼：注能你的英雄能力"
+    },
+    {
+      "card_id": "EDR_888",
+      "name": "『守道者』瑪洛尼",
+      "type": "MINION",
+      "cost": 8,
+      "text": "戰吼：發現一個 傳說荒野神靈。 注能你的英雄能力 4次後消耗改為(1)"
+    },
+    {
+      "card_id": "EDR_529",
+      "name": "大膽的魔花人",
+      "type": "MINION",
+      "cost": 1,
+      "text": "若將此手下變形為另一個手下，該手下會變形成消耗增加(2)的手下"
+    },
+    {
+      "card_id": "EDR_860",
+      "name": "燦麗織夢者",
+      "type": "MINION",
+      "cost": 4,
+      "text": "生命竊取 戰吼：若你已注能兩次英雄能力，對一個手下造成4點傷害"
+    }
+  ],
+  "play_style": "此牌型目前尚無詳細資料，請根據對手打出的牌判斷風格",
+  "win_condition": "根據你的牌組優勢施展",
+  "key_turns": "依對手行動判斷",
+  "against_tips": [
+    "觀察對手的出牌節奏判斷是快攻/中速/控制",
+    "記錄對手核心牌型"
+  ],
+  "notes": ""
+}

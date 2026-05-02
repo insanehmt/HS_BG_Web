@@ -1,0 +1,78 @@
+{
+  "archetype_id": 211,
+  "name": "Quest Hunter",
+  "name_zh": "",
+  "class": "HUNTER",
+  "class_zh": "獵人",
+  "style": "任務",
+  "win_rate": 51.9,
+  "pct_of_total": 0.9,
+  "rank": 20,
+  "core_cards": [
+    {
+      "card_id": "TLC_830",
+      "name": "食物鏈",
+      "type": "SPELL",
+      "cost": 1,
+      "text": "任務：打出攻擊力為1、3、5和7的野獸 各一張 獎勵：沙克"
+    },
+    {
+      "card_id": "CORE_UNG_912",
+      "name": "寶光鸚鵡",
+      "type": "MINION",
+      "cost": 1,
+      "text": "戰吼：放一張隨機野獸牌到你的手中"
+    },
+    {
+      "card_id": "TLC_825",
+      "name": "暴掠龍族母",
+      "type": "MINION",
+      "cost": 4,
+      "text": "同類：對一個敵方 手下造成等同此手下攻擊力的傷害"
+    },
+    {
+      "card_id": "TLC_366",
+      "name": "翼手劫毀龍",
+      "type": "MINION",
+      "cost": 6,
+      "text": "衝刺 同類：消耗減少(2)"
+    },
+    {
+      "card_id": "TLC_824",
+      "name": "詭異地圖",
+      "type": "SPELL",
+      "cost": 1,
+      "text": "發現一個奇數攻擊力的野獸。若你本回合打出它，可再選擇其中一張"
+    },
+    {
+      "card_id": "CORE_EX1_014",
+      "name": "穆克拉",
+      "type": "MINION",
+      "cost": 3,
+      "text": "戰吼：給對手2根香蕉"
+    },
+    {
+      "card_id": "TIME_053",
+      "name": "黃沙之喉",
+      "type": "MINION",
+      "cost": 3,
+      "text": ""
+    },
+    {
+      "card_id": "TLC_603",
+      "name": "鴨嘴龍",
+      "type": "MINION",
+      "cost": 1,
+      "text": "[x]戰吼：抽一張牌 死亡之聲：捨棄 那張牌"
+    }
+  ],
+  "play_style": "任務型，完成特定任務後解鎖強力能力或獎勵",
+  "win_condition": "任務完成前決出勝負，或之後快速答問",
+  "key_turns": "任務完成前（通常 5-8 回合）是最佳攻勢視窗",
+  "against_tips": [
+    "積極施壓，不要給對手安穩完成任務的時間",
+    "注意對手完成任務的時間節點，判斷威脅等級",
+    "任務完成後遊戲通常進入對方優勢，需在此之前分出勝負"
+  ],
+  "notes": ""
+}

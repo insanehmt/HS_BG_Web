@@ -1,0 +1,77 @@
+{
+  "archetype_id": 555,
+  "name": "Blood Death Knight",
+  "name_zh": "",
+  "class": "DEATHKNIGHT",
+  "class_zh": "死亡騎士",
+  "style": "",
+  "win_rate": 45.7,
+  "pct_of_total": 0.4,
+  "rank": 40,
+  "core_cards": [
+    {
+      "card_id": "CORE_RLK_087",
+      "name": "窒息術",
+      "type": "SPELL",
+      "cost": 3,
+      "text": "摧毀攻擊力 最高的敵方手下"
+    },
+    {
+      "card_id": "CORE_RLK_066",
+      "name": "嗜血之徒",
+      "type": "MINION",
+      "cost": 2,
+      "text": "戰吼：消耗一個屍體以發現一張血魄 符文牌"
+    },
+    {
+      "card_id": "EDR_000",
+      "name": "『翡翠守護巨龍』伊瑟拉",
+      "type": "MINION",
+      "cost": 9,
+      "text": "對戰開始：雙方 法力上限提高5 戰吼：獲得3顆 法力水晶"
+    },
+    {
+      "card_id": "FIR_959",
+      "name": "『熾炎者』菲拉卡",
+      "type": "MINION",
+      "cost": 10,
+      "text": "免疫火焰法術 戰吼：對隨機敵人施放共計15點法力的 火焰法術"
+    },
+    {
+      "card_id": "CORE_RLK_706",
+      "name": "亞歷山卓斯‧莫格萊尼",
+      "type": "MINION",
+      "cost": 7,
+      "text": "戰吼：在本賽局中，在你的回合結束時，對你的對手造成3點 傷害"
+    },
+    {
+      "card_id": "EDR_819",
+      "name": "厄索克",
+      "type": "MINION",
+      "cost": 9,
+      "text": "戰吼：攻擊全部 其他手下。 死亡之聲：復活它殺死的任何手下"
+    },
+    {
+      "card_id": "RLK_024",
+      "name": "死亡打擊",
+      "type": "SPELL",
+      "cost": 4,
+      "text": "生命竊取 對一個手下造成$6點傷害"
+    },
+    {
+      "card_id": "CORE_CATA_007",
+      "name": "吞噬",
+      "type": "SPELL",
+      "cost": 4,
+      "text": "對兩個隨機敵方手下造成$3點傷害。每有一個手下死亡便抽一張牌"
+    }
+  ],
+  "play_style": "此牌型目前尚無詳細資料，請根據對手打出的牌判斷風格",
+  "win_condition": "根據你的牌組優勢施展",
+  "key_turns": "依對手行動判斷",
+  "against_tips": [
+    "觀察對手的出牌節奏判斷是快攻/中速/控制",
+    "記錄對手核心牌型"
+  ],
+  "notes": ""
+}

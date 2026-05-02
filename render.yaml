@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: hs-battlegrounds
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    envVars:
+      - key: PUBLIC_MODE
+        value: "1"
+      - key: SYNC_TOKEN
+        generateValue: true    # Render 自動產生隨機 token（部署後到 Dashboard 查看）

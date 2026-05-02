@@ -1,0 +1,20 @@
+{
+  "archetype_id": -14,
+  "name": "-14",
+  "name_zh": "",
+  "class": "DEMONHUNTER",
+  "class_zh": "惡魔獵人",
+  "style": "",
+  "win_rate": 40.5,
+  "pct_of_total": 0.2,
+  "rank": 48,
+  "core_cards": [],
+  "play_style": "此牌型目前尚無詳細資料，請根據對手打出的牌判斷風格",
+  "win_condition": "根據你的牌組優勢施展",
+  "key_turns": "依對手行動判斷",
+  "against_tips": [
+    "觀察對手的出牌節奏判斷是快攻/中速/控制",
+    "記錄對手核心牌型"
+  ],
+  "notes": ""
+}

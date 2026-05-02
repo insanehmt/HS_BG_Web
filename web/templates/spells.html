@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>法術圖鑑 — HS BG Tracker</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  [x-cloak]{display:none}
+  body{background:#0d0718;color:#d4c4a8;font-family:'Segoe UI',sans-serif;min-height:100vh}
+  ::-webkit-scrollbar{width:5px;height:5px}
+  ::-webkit-scrollbar-track{background:#0d0718}
+  ::-webkit-scrollbar-thumb{background:#3a1a50;border-radius:3px}
+
+  .page-title{font-family:'Cinzel',serif;font-size:1.6rem;font-weight:900;color:#d0a0f0;text-shadow:0 0 30px #9060c080}
+  .nav-link{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:8px;
+    border:1px solid #3a1a50;color:#8060a0;font-size:.82rem;transition:all .15s;text-decoration:none}
+  .nav-link:hover,.nav-link.active{border-color:#9060c0;color:#d0a0f0;background:#1a0a28}
+
+  .toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+    background:#120820;border:1px solid #2a1040;border-radius:10px;padding:10px 14px}
+  .fbtn{padding:4px 11px;border-radius:6px;border:1px solid #3a1a50;
+    color:#8060a0;font-size:.75rem;cursor:pointer;transition:all .15s;background:transparent;white-space:nowrap}
+  .fbtn.on,.fbtn:hover{background:#2a0a40;border-color:#9060c0;color:#d0a0ff}
+  .search-box{flex:1;min-width:140px;max-width:240px;
+    background:#0d0718;border:1px solid #3a1a50;border-radius:6px;
+    color:#d4c4a8;font-size:.8rem;padding:5px 10px;outline:none}
+  .search-box:focus{border-color:#7040b0}
+  .sep{color:#2a1040;font-size:1.2rem;padding:0 2px}
+  .count-bar{font-size:.75rem;color:#7050a0}
+  .empty{text-align:center;padding:60px;color:#4a3060}
+
+  /* tier badge */
+  .tier-badge{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:18px;height:18px;border-radius:4px;font-size:.62rem;font-weight:900;flex-shrink:0;
+  }
+  .t1{background:#5a8a30;color:#fff}
+  .t2{background:#2070c0;color:#fff}
+  .t3{background:#8030a0;color:#fff}
+  .t4{background:#c07020;color:#fff}
+  .t5{background:#c02020;color:#fff}
+  .t6{background:#202060;color:#c0c0ff;border:1px solid #6060c0}
+
+  /* Spell grid */
+  .spell-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:12px}
+
+  /* Spell card */
+  .s-card{
+    background:linear-gradient(160deg,#0e1022,#121830);
+    border:1px solid #1a2050;border-radius:12px;
+    padding:10px 7px 9px;
+    display:flex;flex-direction:column;align-items:center;gap:5px;
+    transition:border-color .15s,transform .12s,box-shadow .15s;
+    cursor:default;position:relative;
+  }
+  .s-card:hover{border-color:#3050a0;transform:translateY(-3px);box-shadow:0 8px 24px #00000070}
+
+  .s-oval{
+    width:68px;height:90px;
+    border-radius:50% 50% 44% 44% / 46% 46% 54% 54%;
+    overflow:hidden;border:2px solid #2040a0;background:#080c20;flex-shrink:0;
+  }
+  .s-oval img{width:100%;height:100%;object-fit:cover;object-position:center 15%}
+
+  .s-header{display:flex;align-items:center;justify-content:space-between;width:100%;padding:0 1px}
+  .s-cost{font-size:.62rem;color:#80c0ff;font-weight:900;background:#0a1040;border:1px solid #2040a0;
+    border-radius:4px;padding:0 4px;min-width:16px;text-align:center}
+
+  .s-name{font-size:.7rem;font-weight:700;color:#9090e0;text-align:center;
+    line-height:1.3;max-width:110px;word-break:break-all}
+
+  /* tooltip */
+  .card-text-tip{
+    display:none;position:absolute;bottom:calc(100% + 6px);left:50%;
+    transform:translateX(-50%);z-index:30;
+    background:#080c20;border:1px solid #3050a0;border-radius:8px;
+    padding:8px 10px;min-width:150px;max-width:210px;
+    font-size:.67rem;color:#9090d0;line-height:1.5;
+    pointer-events:none;box-shadow:0 4px 20px #00000090;white-space:pre-line;
+  }
+  .s-card:hover .card-text-tip{display:block}
+</style>
+</head>
+<body x-data="spellApp()" x-init="init()" x-cloak>
+<div class="max-w-7xl mx-auto px-4 py-6">
+
+  <!-- Header -->
+  <header class="flex items-center justify-between mb-6 flex-wrap gap-3">
+    <div>
+      <h1 class="page-title">✨ 法術圖鑑</h1>
+      <p class="text-xs mt-1" style="color:#5a3a70">
+        BG Spell Database · <span x-text="total"></span> 張法術
+      </p>
+    </div>
+    <div class="flex gap-2 flex-wrap">
+      {% if not public_mode %}<a href="/"           class="nav-link">📋 紀錄總覽</a>{% endif %}
+      {% if not public_mode %}<a href="/heroes"     class="nav-link">🏆 英雄排名</a>{% endif %}
+      <a href="/hero-guide" class="nav-link">🦸 英雄圖鑑</a>
+      <a href="/tier-list"  class="nav-link">⚔️ 當季最強</a>
+      {% if not public_mode %}<a href="/comps"      class="nav-link">🎯 組合排名</a>{% endif %}
+      <a href="/minions"    class="nav-link">🐾 手下圖鑑</a>
+      <a href="/spells"     class="nav-link active">✨ 法術圖鑑</a>
+      <a href="/trinkets"   class="nav-link">💎 飾品圖鑑</a>
+    </div>
+  </header>
+
+  <!-- Toolbar -->
+  <div class="toolbar mb-4">
+    <!-- Category filter -->
+    <span style="font-size:.75rem;color:#6a4a80;font-weight:700">分類</span>
+    <template x-for="cat in categories">
+      <button class="fbtn" :class="catFilter===cat.key?'on':''"
+              @click="catFilter=cat.key;applyFilter()"
+              x-text="cat.label"></button>
+    </template>
+
+    <span class="sep">|</span>
+
+    <!-- Tier filter -->
+    <span style="font-size:.75rem;color:#6a4a80;font-weight:700">酒館</span>
+    <template x-for="t in [0,1,2,3,4,5,6]">
+      <button class="fbtn" :class="tierFilter===t?'on':''"
+              @click="tierFilter=t;applyFilter()"
+              x-text="t===0?'全部':'★'+t"></button>
+    </template>
+
+    <span class="sep">|</span>
+
+    <input class="search-box" type="text" placeholder="搜尋法術名稱…"
+           x-model="q" @input.debounce.300ms="applyFilter()">
+    <span class="count-bar" x-text="filtered.length + ' / ' + total + ' 張法術'"></span>
+  </div>
+
+  <!-- Grid -->
+  <div class="spell-grid" x-show="filtered.length > 0">
+    <template x-for="s in filtered" :key="s.id">
+      <div class="s-card">
+        <!-- tooltip -->
+        <div class="card-text-tip" x-html="s.text || s.name"></div>
+        <!-- top row: tier + cost -->
+        <div class="s-header">
+          <span class="tier-badge" :class="'t'+s.tech_level" x-text="'★'+s.tech_level"></span>
+          <span class="s-cost" x-text="s.cost ?? '?'"></span>
+        </div>
+        <!-- art -->
+        <div class="s-oval">
+          <img :src="'https://art.hearthstonejson.com/v1/256x/'+s.id+'.jpg'"
+               onerror="this.style.display='none'" :alt="s.name">
+        </div>
+        <!-- name -->
+        <div class="s-name" x-text="s.name"></div>
+      </div>
+    </template>
+  </div>
+  <div class="empty" x-show="filtered.length === 0">找不到相符的法術</div>
+
+</div>
+<script>
+function spellApp() {
+  return {
+    all: [], filtered: [], total: 0,
+    q: '', tierFilter: 0, catFilter: '',
+    categories: [
+      {key:'',     label:'全部'},
+      {key:'一般', label:'⚡ 一般'},
+      {key:'暗月獎品', label:'🌙 暗月獎品'},
+      {key:'戰巡艦',   label:'🚀 戰巡艦'},
+      {key:'時光扭曲', label:'⏳ 時光扭曲'},
+      {key:'雙人模式', label:'👥 雙人模式'},
+      {key:'手下產生', label:'🃏 手下產生'},
+      {key:'已移除',   label:'🚫 已移除'},
+    ],
+
+    async init() {
+      const r = await fetch('/api/spells')
+      const d = await r.json()
+      this.all = d.spells || []
+      this.total = d.total || 0
+      this.applyFilter()
+    },
+
+    applyFilter() {
+      const q = this.q.trim().toLowerCase()
+      const t = this.tierFilter
+      const cat = this.catFilter
+      this.filtered = this.all.filter(s => {
+        if (cat && s.category !== cat) return false
+        if (t && s.tech_level !== t) return false
+        if (q && !s.name.toLowerCase().includes(q) && !(s.text||'').toLowerCase().includes(q)) return false
+        return true
+      })
+    },
+  }
+}
+</script>
+</body>
+</html>

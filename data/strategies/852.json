@@ -1,0 +1,78 @@
+{
+  "archetype_id": 852,
+  "name": "Herald Demon Hunter",
+  "name_zh": "",
+  "class": "DEMONHUNTER",
+  "class_zh": "惡魔獵人",
+  "style": "中速",
+  "win_rate": 52.0,
+  "pct_of_total": 0.7,
+  "rank": 18,
+  "core_cards": [
+    {
+      "card_id": "CATA_525",
+      "name": "重甲放血者",
+      "type": "MINION",
+      "cost": 3,
+      "text": "衝刺 戰吼：預兆{0}"
+    },
+    {
+      "card_id": "CATA_530",
+      "name": "魔化注能",
+      "type": "SPELL",
+      "cost": 2,
+      "text": "預兆{0} 本回合你的英雄擁有生命竊取"
+    },
+    {
+      "card_id": "CATA_151",
+      "name": "『海洋之王』艾薩拉",
+      "type": "MINION",
+      "cost": 8,
+      "text": "巨型+2 你的英雄擁有風怒"
+    },
+    {
+      "card_id": "CATA_190h",
+      "name": "『碎界者』死亡之翼",
+      "type": "HERO",
+      "cost": 10,
+      "text": "戰吼：選擇釋放 {0}場大災變！ 預兆兩次以升級@戰吼：選擇釋放 {0}場大災變！ 預兆一次以升級@"
+    },
+    {
+      "card_id": "CATA_497",
+      "name": "奧特拉賽恩",
+      "type": "MINION",
+      "cost": 6,
+      "text": "戰吼：預兆{0}。使死亡之翼的消耗降低({1}) (預兆可強化！)"
+    },
+    {
+      "card_id": "FIR_952",
+      "name": "灼燒劫奪者",
+      "type": "MINION",
+      "cost": 4,
+      "text": "戰吼：發現一個魔化法術，使你手中的魔化法術消耗減少(1)"
+    },
+    {
+      "card_id": "CATA_529",
+      "name": "飢餓的魔化漁夫",
+      "type": "MINION",
+      "cost": 6,
+      "text": "你在本賽局施放的每個魔化法術使消耗 減少(1)"
+    },
+    {
+      "card_id": "CATA_722",
+      "name": "終焉使者",
+      "type": "MINION",
+      "cost": 5,
+      "text": "嘲諷 戰吼：預兆{0}"
+    }
+  ],
+  "play_style": "中速型，平衡前後期，有多樣化的應對手段",
+  "win_condition": "耗盡對手資源或建立不可解的板面",
+  "key_turns": "5-8 回合決定走向",
+  "against_tips": [
+    "觀察對手打出的關鍵牌，判斷其 win condition",
+    "小心中期威脅，注意是否有 buff 型隨從雪球",
+    "保留高費法術應對關鍵隨從"
+  ],
+  "notes": ""
+}

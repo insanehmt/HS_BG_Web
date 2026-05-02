@@ -1,0 +1,78 @@
+{
+  "archetype_id": 851,
+  "name": "Herald Death Knight",
+  "name_zh": "",
+  "class": "DEATHKNIGHT",
+  "class_zh": "死亡騎士",
+  "style": "中速",
+  "win_rate": 53.8,
+  "pct_of_total": 5.0,
+  "rank": 14,
+  "core_cards": [
+    {
+      "card_id": "CATA_156",
+      "name": "實驗性活化",
+      "type": "SPELL",
+      "cost": 6,
+      "text": "預兆{0} 對全部敵方手下造成 $4點傷害"
+    },
+    {
+      "card_id": "CATA_780",
+      "name": "癡迷技師",
+      "type": "MINION",
+      "cost": 4,
+      "text": "生命竊取 戰吼：預兆 {0}"
+    },
+    {
+      "card_id": "CATA_155",
+      "name": "復生的奧妮克希亞",
+      "type": "MINION",
+      "cost": 9,
+      "text": "巨型+2 當你的英雄在你的回合失去生命值時，改為獲得等量的生命值上限"
+    },
+    {
+      "card_id": "CATA_190h",
+      "name": "『碎界者』死亡之翼",
+      "type": "HERO",
+      "cost": 10,
+      "text": "戰吼：選擇釋放 {0}場大災變！ 預兆兩次以升級@戰吼：選擇釋放 {0}場大災變！ 預兆一次以升級@"
+    },
+    {
+      "card_id": "CATA_722",
+      "name": "終焉使者",
+      "type": "MINION",
+      "cost": 5,
+      "text": "嘲諷 戰吼：預兆{0}"
+    },
+    {
+      "card_id": "CATA_497",
+      "name": "奧特拉賽恩",
+      "type": "MINION",
+      "cost": 6,
+      "text": "戰吼：預兆{0}。使死亡之翼的消耗降低({1}) (預兆可強化！)"
+    },
+    {
+      "card_id": "TIME_616",
+      "name": "回憶顯化",
+      "type": "SPELL",
+      "cost": 4,
+      "text": "召喚本賽局中死亡的消耗最高的友方不死族"
+    },
+    {
+      "card_id": "CORE_EDR_002",
+      "name": "毒息",
+      "type": "SPELL",
+      "cost": 2,
+      "text": "賦予一個友方不死族致命劇毒"
+    }
+  ],
+  "play_style": "中速型，平衡前後期，有多樣化的應對手段",
+  "win_condition": "耗盡對手資源或建立不可解的板面",
+  "key_turns": "5-8 回合決定走向",
+  "against_tips": [
+    "觀察對手打出的關鍵牌，判斷其 win condition",
+    "小心中期威脅，注意是否有 buff 型隨從雪球",
+    "保留高費法術應對關鍵隨從"
+  ],
+  "notes": ""
+}

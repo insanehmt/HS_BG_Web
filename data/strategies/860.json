@@ -1,0 +1,79 @@
+{
+  "archetype_id": 860,
+  "name": "Murloc Hunter",
+  "name_zh": "",
+  "class": "HUNTER",
+  "class_zh": "獵人",
+  "style": "快攻",
+  "win_rate": 51.6,
+  "pct_of_total": 0.1,
+  "rank": 21,
+  "core_cards": [
+    {
+      "card_id": "CORE_EX1_506",
+      "name": "獵潮魚人",
+      "type": "MINION",
+      "cost": 2,
+      "text": "戰吼：召喚一個 1/1魚人斥候"
+    },
+    {
+      "card_id": "CORE_EX1_103",
+      "name": "冷光先知",
+      "type": "MINION",
+      "cost": 3,
+      "text": "戰吼：賦予你的其他魚人+2生命值"
+    },
+    {
+      "card_id": "CORE_EX1_509",
+      "name": "魚人招潮者",
+      "type": "MINION",
+      "cost": 1,
+      "text": "每當你召喚魚人，獲得+1攻擊力"
+    },
+    {
+      "card_id": "CORE_EX1_507",
+      "name": "魚人隊長",
+      "type": "MINION",
+      "cost": 3,
+      "text": "你的其他魚人獲得 +2攻擊力"
+    },
+    {
+      "card_id": "CORE_ULD_723",
+      "name": "木乃魚",
+      "type": "MINION",
+      "cost": 1,
+      "text": "重生"
+    },
+    {
+      "card_id": "EDR_999",
+      "name": "綠鰭咬咬者",
+      "type": "MINION",
+      "cost": 1,
+      "text": "戰吼：獲得一個隨機魚人"
+    },
+    {
+      "card_id": "CORE_DMF_067",
+      "name": "獎品商人",
+      "type": "MINION",
+      "cost": 2,
+      "text": "戰吼及死亡之聲：雙方各抽一張牌"
+    },
+    {
+      "card_id": "TIME_428",
+      "name": "昨日魚人",
+      "type": "MINION",
+      "cost": 2,
+      "text": "在你的回合結束時，賦予你的其他 手下+1生命值"
+    }
+  ],
+  "play_style": "快攻型，前期快速鋪場並強攻英雄血量，通常在 6-8 回合結束遊戲",
+  "win_condition": "清場穩住板面後，對手牌力下降即可反攻",
+  "key_turns": "1-6 回合最關鍵，超過 8 回合通常你佔優",
+  "against_tips": [
+    "前期必須積極清場，不讓對手建立雪球優勢",
+    "優先保留 AoE（全體傷害）法術，開板後使用",
+    "維持自己的血量在 15 以上，不要讓 burst 一次帶走",
+    "對手血量剩餘少時，當心手牌 burn（燃燒傷害）combo"
+  ],
+  "notes": ""
+}

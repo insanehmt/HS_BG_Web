@@ -1,0 +1,78 @@
+{
+  "archetype_id": 594,
+  "name": "Burn Mage",
+  "name_zh": "",
+  "class": "MAGE",
+  "class_zh": "法師",
+  "style": "爆發傷害",
+  "win_rate": 51.4,
+  "pct_of_total": 1.0,
+  "rank": 23,
+  "core_cards": [
+    {
+      "card_id": "CORE_EX1_012",
+      "name": "血法師薩爾諾斯",
+      "type": "MINION",
+      "cost": 2,
+      "text": "法術傷害+1 死亡之聲：抽一張牌"
+    },
+    {
+      "card_id": "FIR_929",
+      "name": "活焰元素",
+      "type": "MINION",
+      "cost": 2,
+      "text": "死亡之聲：抽一張 火焰法術"
+    },
+    {
+      "card_id": "TLC_226",
+      "name": "魔法書吏",
+      "type": "MINION",
+      "cost": 3,
+      "text": "死亡之聲：抽一張法術。同類：召喚一個此手下的分身"
+    },
+    {
+      "card_id": "CATA_452",
+      "name": "織法者的光輝",
+      "type": "SPELL",
+      "cost": 10,
+      "text": "召喚一個6/6龍類。本回合每使用法術造成一點傷害，消耗減少(1)"
+    },
+    {
+      "card_id": "CATA_487",
+      "name": "喚雨者",
+      "type": "MINION",
+      "cost": 2,
+      "text": "每回合你首次使用法術造成傷害時，獲得+2攻擊力"
+    },
+    {
+      "card_id": "CORE_CS2_029",
+      "name": "火球術",
+      "type": "SPELL",
+      "cost": 4,
+      "text": "造成$6點傷害"
+    },
+    {
+      "card_id": "CORE_CS2_024",
+      "name": "寒冰箭",
+      "type": "SPELL",
+      "cost": 2,
+      "text": "對一個角色造成$3點傷害並使其凍結"
+    },
+    {
+      "card_id": "CATA_209",
+      "name": "戰場轟擊手",
+      "type": "MINION",
+      "cost": 3,
+      "text": "戰吼：選擇你手中的一個法術，賦予其 法術傷害+1"
+    }
+  ],
+  "play_style": "爆發型，靠直接傷害法術快速帶走英雄血量",
+  "win_condition": "combo 連打直傷斃命英雄",
+  "key_turns": "積累到 7-10 費時為 OTK 窗口期",
+  "against_tips": [
+    "保持血量在 15 以上，避免一波 combo 帶走",
+    "不要讓對手安心抽牌組合，保持施壓",
+    "可以適當無視板面，優先確保自己血線安全"
+  ],
+  "notes": ""
+}

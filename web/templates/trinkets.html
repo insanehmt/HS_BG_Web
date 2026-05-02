@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>飾品圖鑑 — HS BG Tracker</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  [x-cloak]{display:none}
+  body{background:#0d0718;color:#d4c4a8;font-family:'Segoe UI',sans-serif;min-height:100vh}
+  ::-webkit-scrollbar{width:5px;height:5px}
+  ::-webkit-scrollbar-track{background:#0d0718}
+  ::-webkit-scrollbar-thumb{background:#3a1a50;border-radius:3px}
+
+  .page-title{font-family:'Cinzel',serif;font-size:1.6rem;font-weight:900;color:#d0a0f0;text-shadow:0 0 30px #9060c080}
+  .nav-link{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:8px;
+    border:1px solid #3a1a50;color:#8060a0;font-size:.82rem;transition:all .15s;text-decoration:none}
+  .nav-link:hover,.nav-link.active{border-color:#9060c0;color:#d0a0f0;background:#1a0a28}
+
+  /* toolbar */
+  .toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+    background:#120820;border:1px solid #2a1040;border-radius:10px;padding:10px 14px}
+  .fbtn{padding:4px 13px;border-radius:6px;border:1px solid #3a1a50;
+    color:#8060a0;font-size:.78rem;cursor:pointer;transition:all .15s;background:transparent;white-space:nowrap}
+  .fbtn.on,.fbtn:hover{background:#2a0a40;border-color:#9060c0;color:#d0a0ff}
+  .search-box{flex:1;min-width:140px;max-width:240px;
+    background:#0d0718;border:1px solid #3a1a50;border-radius:6px;
+    color:#d4c4a8;font-size:.8rem;padding:5px 10px;outline:none}
+  .search-box:focus{border-color:#7040b0}
+  .sort-sel{background:#0d0718;border:1px solid #3a1a50;border-radius:6px;
+    color:#a070c0;font-size:.78rem;padding:4px 8px;outline:none;cursor:pointer}
+
+  /* tier pills */
+  .tier-lesser{background:#1a2a3a;border:1px solid #204060;color:#60a0e0;
+    font-size:.62rem;font-weight:700;padding:2px 7px;border-radius:8px}
+  .tier-greater{background:#2a1a00;border:1px solid #806000;color:#d4af37;
+    font-size:.62rem;font-weight:700;padding:2px 7px;border-radius:8px}
+
+  /* grid */
+  .trinket-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+
+  /* card */
+  .t-card{
+    background:linear-gradient(160deg,#120820,#180a26);
+    border:1px solid #2a1040;border-radius:12px;
+    padding:12px 10px 10px;
+    display:flex;flex-direction:column;align-items:center;gap:6px;
+    transition:border-color .15s,transform .12s,box-shadow .15s;
+    cursor:default;position:relative;
+  }
+  .t-card:hover{border-color:#6030a0;transform:translateY(-3px);box-shadow:0 8px 24px #00000070}
+  .t-card.lesser-card{border-color:#1a2a3a}
+  .t-card.lesser-card:hover{border-color:#3060a0}
+  .t-card.greater-card{border-color:#2a1a00}
+  .t-card.greater-card:hover{border-color:#806000}
+  .t-card.seen-card{border-color:#3a2a50}
+
+  /* image — rounded rect (trinket style) */
+  .t-img-wrap{
+    width:80px;height:80px;border-radius:16px;
+    overflow:hidden;background:#1a0e06;flex-shrink:0;
+    border:2px solid #4a3020;
+    transition:border-color .15s;
+  }
+  .t-card.lesser-card .t-img-wrap{border-color:#204060}
+  .t-card.greater-card .t-img-wrap{border-color:#806000;box-shadow:0 0 10px #80600040}
+  .t-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center}
+
+  /* variant toggle button */
+  .var-toggle{
+    position:absolute;bottom:6px;right:6px;
+    font-size:.6rem;font-weight:900;padding:2px 6px;border-radius:6px;
+    cursor:pointer;transition:all .15s;z-index:10;border:1px solid #3a2060;
+    background:#1a0a2a;color:#9060c0;
+  }
+  .var-toggle:hover{background:#2a0a40;border-color:#7040b0;color:#c080f0}
+  .var-toggle.on{background:#3a1060;border-color:#9060c0;color:#e0a0ff}
+
+  /* name */
+  .t-name{font-size:.75rem;font-weight:700;color:#c0a0e0;text-align:center;
+    line-height:1.3;max-width:140px;word-break:break-all}
+  .t-variant-name{font-size:.65rem;color:#9060c0;text-align:center;
+    max-width:140px;word-break:break-all}
+
+  /* text box */
+  .t-text{
+    font-size:.65rem;color:#907080;text-align:center;line-height:1.4;
+    max-width:140px;background:#0d0718;border-radius:6px;padding:5px 7px;
+    border:1px solid #1a0a28;
+  }
+  .t-text.variant-text{color:#a08040;border-color:#2a1800}
+
+  /* personal stats */
+  .p-stats{width:100%;background:#0d0718;border:1px solid #2a1040;border-radius:6px;
+    padding:4px 7px;display:flex;flex-direction:column;gap:2px;margin-top:2px}
+  .p-row{display:flex;justify-content:space-between;font-size:.63rem}
+  .p-lbl{color:#5a3a70}
+  .avg-good{color:#48e080;font-weight:900}
+  .avg-mid {color:#f0c040;font-weight:900}
+  .avg-bad {color:#ff6060;font-weight:900}
+  .val-purple{color:#c080e0;font-weight:700}
+
+  /* "seen" indicator */
+  .seen-dot{display:inline-block;width:6px;height:6px;border-radius:50%;
+    background:#9060c0;box-shadow:0 0 5px #9060c0;margin-right:3px;vertical-align:middle}
+
+  .empty{text-align:center;padding:60px;color:#4a3060}
+  .count-bar{font-size:.75rem;color:#7050a0}
+</style>
+</head>
+<body x-data="app()" x-init="init()" x-cloak>
+<div class="max-w-7xl mx-auto px-4 py-6">
+
+  <!-- Header -->
+  <header class="flex items-center justify-between mb-6 flex-wrap gap-3">
+    <div>
+      <h1 class="page-title">💎 飾品圖鑑</h1>
+      <p class="text-xs mt-1" style="color:#5a3a70">
+        Trinket Database · <span x-text="total"></span> 個飾品
+      </p>
+    </div>
+    <div class="flex gap-2 flex-wrap">
+      {% if not public_mode %}<a href="/"           class="nav-link">📋 紀錄總覽</a>{% endif %}
+      {% if not public_mode %}<a href="/heroes"     class="nav-link">🏆 英雄排名</a>{% endif %}
+      <a href="/hero-guide" class="nav-link">🦸 英雄圖鑑</a>
+      <a href="/tier-list"  class="nav-link">⚔️ 當季最強</a>
+      {% if not public_mode %}<a href="/comps"      class="nav-link">🎯 組合排名</a>{% endif %}
+      <a href="/minions"    class="nav-link">🐾 手下圖鑑</a>
+      <a href="/spells"     class="nav-link">✨ 法術圖鑑</a>
+      <a href="/trinkets"   class="nav-link active">💎 飾品圖鑑</a>
+    </div>
+  </header>
+
+  <!-- Toolbar -->
+  <div class="toolbar mb-5">
+    <!-- Tier -->
+    <span style="font-size:.78rem;color:#6a4a80;font-weight:700">類型</span>
+    <button class="fbtn" :class="tierFilter==='all'?'on':''"     @click="tierFilter='all';applyFilter()">全部</button>
+    <button class="fbtn" :class="tierFilter==='lesser'?'on':''"  @click="tierFilter='lesser';applyFilter()"
+            style="color:#60a0e0;border-color:#204060">🔵 小飾品</button>
+    <button class="fbtn" :class="tierFilter==='greater'?'on':''" @click="tierFilter='greater';applyFilter()"
+            style="color:#d4af37;border-color:#806000">🟡 大飾品</button>
+
+    <span style="color:#2a1040;font-size:1.2rem;padding:0 2px">|</span>
+
+    <!-- Sort -->
+    <span style="font-size:.78rem;color:#6a4a80;font-weight:700">排序</span>
+    <select class="sort-sel" x-model="sortBy" @change="applyFilter()">
+      <option value="name">名稱</option>
+      <option value="seen_desc">我的使用 ↓</option>
+      <option value="avg_asc">我的均名次 ↑</option>
+    </select>
+
+    <!-- Seen only -->
+    <button class="fbtn" :class="seenOnly?'on':''" @click="seenOnly=!seenOnly;applyFilter()">
+      👁 只看用過的
+    </button>
+
+    <!-- Search -->
+    <input class="search-box" type="text" placeholder="🔍 搜尋飾品名稱…"
+           x-model="search" @input="applyFilter()">
+
+    <span class="count-bar ml-auto">
+      顯示 <b x-text="filtered.length" style="color:#9060b0"></b> /
+      <b x-text="total" style="color:#6040a0"></b>
+    </span>
+  </div>
+
+  <!-- Sub-stats bar (only when seen data exists) -->
+  <div x-show="totalSeen>0"
+       style="display:flex;gap:16px;flex-wrap:wrap;background:#120820;border:1px solid #2a1040;
+              border-radius:10px;padding:8px 16px;margin-bottom:16px;font-size:.78rem">
+    <span style="color:#6a4a80;font-weight:700">我的飾品統計</span>
+    <span>使用過 <b x-text="totalSeen" style="color:#d0a0f0"></b> 次</span>
+    <span>種類 <b x-text="uniqueSeen" style="color:#d0a0f0"></b> 種</span>
+  </div>
+
+  <div x-show="loading" class="empty">⏳ 載入中…</div>
+  <div x-show="!loading && filtered.length===0" class="empty">沒有符合條件的飾品。</div>
+
+  <!-- Grid -->
+  <div class="trinket-grid" x-show="!loading && filtered.length>0">
+    <template x-for="t in filtered" :key="t.id">
+      <div class="t-card"
+           :class="(t.tier==='lesser'?'lesser-card':'greater-card')+(t.seen>0||t.variant_seen>0?' seen-card':'')"
+           x-data="{showVar:false}">
+
+        <!-- tier badge -->
+        <div style="width:100%;display:flex;justify-content:space-between;align-items:center">
+          <span :class="t.tier==='lesser'?'tier-lesser':'tier-greater'"
+                x-text="t.tier==='lesser'?'🔵 小飾品':'🟡 大飾品'"></span>
+          <span x-show="t.seen>0||t.variant_seen>0">
+            <span class="seen-dot"></span>
+            <span style="font-size:.6rem;color:#9060c0">用過</span>
+          </span>
+        </div>
+
+        <!-- image -->
+        <div class="t-img-wrap">
+          <img :src="`https://art.hearthstonejson.com/v1/256x/${showVar && t.variant_id ? t.variant_id : t.id}.jpg`"
+               :alt="t.name" onerror="this.style.opacity='.15'">
+        </div>
+
+        <!-- name -->
+        <div class="t-name" x-text="showVar && t.variant_id ? t.variant_name||t.name : t.name"></div>
+
+        <!-- effect text -->
+        <div class="t-text" :class="showVar?'variant-text':''"
+             x-html="(showVar && t.variant_id ? t.variant_text||t.text : t.text)||'—'"></div>
+
+        <!-- variant toggle -->
+        <button class="var-toggle" x-show="t.variant_id"
+                :class="showVar?'on':''"
+                @click.stop="showVar=!showVar"
+                x-text="showVar?'↩ 普通':'⬆ 上版'"
+                title="切換上版飾品"></button>
+
+        <!-- personal stats -->
+        <template x-if="(showVar ? t.variant_seen : t.seen) > 0">
+          <div class="p-stats">
+            <div class="p-row">
+              <span class="p-lbl">均名次</span>
+              <span :class="avgClass(showVar ? t.variant_avg_placement : t.avg_placement)"
+                    x-text="(showVar ? t.variant_avg_placement : t.avg_placement)?.toFixed(1)??'—'"></span>
+            </div>
+            <div class="p-row">
+              <span class="p-lbl">使用</span>
+              <span class="val-purple" x-text="(showVar ? t.variant_seen : t.seen)+'次'"></span>
+            </div>
+            <div class="p-row" x-show="(showVar ? t.variant_top4_rate : t.top4_rate) != null">
+              <span class="p-lbl">Top4</span>
+              <span :class="top4Class(showVar ? t.variant_top4_rate : t.top4_rate)"
+                    x-text="(showVar ? t.variant_top4_rate : t.top4_rate)+'%'"></span>
+            </div>
+          </div>
+        </template>
+        <template x-if="(showVar ? t.variant_seen : t.seen) === 0">
+          <div style="font-size:.6rem;color:#3a2050;margin-top:2px">未使用</div>
+        </template>
+
+      </div>
+    </template>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="max-w-7xl mx-auto px-4 py-6 mt-8 border-t text-center text-xs space-y-1"
+        style="border-color:#2a1040;color:#3a2050">
+  <div>Hearthstone™ is a trademark of Blizzard Entertainment, Inc. All card data and images are © Blizzard Entertainment.</div>
+  <div>This project is not affiliated with or endorsed by Blizzard. © 2025 HS BG Tracker. All rights reserved.</div>
+</footer>
+
+<script>
+function app() {
+  return {
+    loading: true,
+    all: [], filtered: [],
+    total: 0, totalSeen: 0, uniqueSeen: 0,
+    tierFilter: 'all',
+    sortBy: 'name',
+    search: '',
+    seenOnly: false,
+
+    async init() { await this.load() },
+
+    async load() {
+      this.loading = true
+      const r = await fetch(`/api/trinkets`)
+      const d = await r.json()
+      this.all   = d.trinkets || []
+      this.total = d.total || 0
+      this.totalSeen  = this.all.reduce((s,t) => s + t.seen + (t.variant_seen||0), 0)
+      this.uniqueSeen = this.all.filter(t => t.seen > 0 || t.variant_seen > 0).length
+      this.applyFilter()
+      this.loading = false
+    },
+
+    applyFilter() {
+      let list = [...this.all]
+
+      if (this.tierFilter !== 'all')
+        list = list.filter(t => t.tier === this.tierFilter)
+
+      if (this.seenOnly)
+        list = list.filter(t => t.seen > 0 || t.variant_seen > 0)
+
+      const q = this.search.trim().toLowerCase()
+      if (q) list = list.filter(t =>
+        t.name.toLowerCase().includes(q) ||
+        (t.variant_name||'').toLowerCase().includes(q) ||
+        (t.text||'').toLowerCase().includes(q)
+      )
+
+      switch (this.sortBy) {
+        case 'name':
+          list.sort((a,b) => a.name.localeCompare(b.name, 'zh')); break
+        case 'seen_desc':
+          list.sort((a,b) => (b.seen + (b.variant_seen||0)) - (a.seen + (a.variant_seen||0))); break
+        case 'avg_asc':
+          list.sort((a,b) => {
+            const ap = a.avg_placement ?? 99
+            const bp = b.avg_placement ?? 99
+            return ap - bp
+          }); break
+      }
+      this.filtered = list
+    },
+
+    avgClass(v) {
+      if (v == null) return ''
+      return v <= 2 ? 'avg-good' : v <= 4 ? 'avg-mid' : 'avg-bad'
+    },
+    top4Class(v) {
+      if (v == null) return ''
+      return v >= 70 ? 'avg-good' : v >= 40 ? 'avg-mid' : 'avg-bad'
+    }
+  }
+}
+</script>
+</body>
+</html>

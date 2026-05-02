@@ -1,0 +1,78 @@
+{
+  "archetype_id": 856,
+  "name": "Herald Rogue",
+  "name_zh": "",
+  "class": "ROGUE",
+  "class_zh": "盜賊",
+  "style": "中速",
+  "win_rate": 53.4,
+  "pct_of_total": 4.4,
+  "rank": 17,
+  "core_cards": [
+    {
+      "card_id": "CATA_200",
+      "name": "古神特使",
+      "type": "MINION",
+      "cost": 1,
+      "text": "戰吼：選擇你的一張手牌，將其變形為幸運幣"
+    },
+    {
+      "card_id": "TLC_100",
+      "name": "領路者伊莉絲",
+      "type": "MINION",
+      "cost": 4,
+      "text": "戰吼：如果你的牌堆開始時有10張不同消耗的卡牌，製造一張自訂地點"
+    },
+    {
+      "card_id": "TIME_875",
+      "name": "迦羅娜‧半血",
+      "type": "MINION",
+      "cost": 4,
+      "text": "顯赫 戰吼：若對手手上有萊恩王，摧毀他並將對手的生命值砍半"
+    },
+    {
+      "card_id": "TIME_875t",
+      "name": "萊恩王",
+      "type": "MINION",
+      "cost": 3,
+      "text": "對戰開始：躲入敵方 牌堆逃避迦羅娜 戰吼：抽一張牌，並將 此手下洗入你的牌堆"
+    },
+    {
+      "card_id": "TIME_875t1",
+      "name": "弒君之刃",
+      "type": "WEAPON",
+      "cost": 2,
+      "text": "在你的英雄攻擊後，雙方抽一張 傳說牌"
+    },
+    {
+      "card_id": "CORE_BT_701",
+      "name": "間諜首領",
+      "type": "MINION",
+      "cost": 1,
+      "text": "潛行"
+    },
+    {
+      "card_id": "EDR_846",
+      "name": "夏達希爾",
+      "type": "SPELL",
+      "cost": 8,
+      "text": "獲得全部5張夢境牌。若你於此牌在手中時打出了消耗更高的牌，將其腐化！"
+    },
+    {
+      "card_id": "TIME_770",
+      "name": "快轉",
+      "type": "SPELL",
+      "cost": 4,
+      "text": "抽2張牌。選擇一張並使其消耗降低(2)"
+    }
+  ],
+  "play_style": "中速型，平衡前後期，有多樣化的應對手段",
+  "win_condition": "耗盡對手資源或建立不可解的板面",
+  "key_turns": "5-8 回合決定走向",
+  "against_tips": [
+    "觀察對手打出的關鍵牌，判斷其 win condition",
+    "小心中期威脅，注意是否有 buff 型隨從雪球",
+    "保留高費法術應對關鍵隨從"
+  ],
+  "notes": ""
+}

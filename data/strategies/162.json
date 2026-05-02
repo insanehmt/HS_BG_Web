@@ -1,0 +1,78 @@
+{
+  "archetype_id": 162,
+  "name": "Quest Warrior",
+  "name_zh": "",
+  "class": "WARRIOR",
+  "class_zh": "戰士",
+  "style": "任務",
+  "win_rate": 49.4,
+  "pct_of_total": 0.5,
+  "rank": 29,
+  "core_cards": [
+    {
+      "card_id": "TLC_602",
+      "name": "進入迷城",
+      "type": "SPELL",
+      "cost": 1,
+      "text": "任務： 存活10個回合 獎勵:『城市守望者』拉托維斯"
+    },
+    {
+      "card_id": "CATA_615",
+      "name": "『詛咒之王』吉恩",
+      "type": "MINION",
+      "cost": 4,
+      "text": "此牌在手中時，若你其餘手牌的消耗皆為偶數或奇數，變形為6/5的狼人之王"
+    },
+    {
+      "card_id": "END_023",
+      "name": "苦澀終焉",
+      "type": "SPELL",
+      "cost": 5,
+      "text": "凍結一個手下及其兩側手下。摧毀任何受傷的手下"
+    },
+    {
+      "card_id": "EDR_000",
+      "name": "『翡翠守護巨龍』伊瑟拉",
+      "type": "MINION",
+      "cost": 9,
+      "text": "對戰開始：雙方 法力上限提高5 戰吼：獲得3顆 法力水晶"
+    },
+    {
+      "card_id": "EDR_979",
+      "name": "往昔古樹",
+      "type": "MINION",
+      "cost": 5,
+      "text": "休眠2回合 於休眠中，在你的回合結束時獲得3點護甲值並抽一張牌"
+    },
+    {
+      "card_id": "TIME_715",
+      "name": "為了榮耀！",
+      "type": "SPELL",
+      "cost": 5,
+      "text": "抽2張牌。對手場上每個手下使其消耗減少(1)"
+    },
+    {
+      "card_id": "CORE_EX1_007",
+      "name": "苦痛侍僧",
+      "type": "MINION",
+      "cost": 3,
+      "text": "每當此手下受到傷害，抽一張牌"
+    },
+    {
+      "card_id": "CORE_CS2_108",
+      "name": "斬殺",
+      "type": "SPELL",
+      "cost": 1,
+      "text": "摧毀一個受傷的敵方手下"
+    }
+  ],
+  "play_style": "任務型，完成特定任務後解鎖強力能力或獎勵",
+  "win_condition": "任務完成前決出勝負，或之後快速答問",
+  "key_turns": "任務完成前（通常 5-8 回合）是最佳攻勢視窗",
+  "against_tips": [
+    "積極施壓，不要給對手安穩完成任務的時間",
+    "注意對手完成任務的時間節點，判斷威脅等級",
+    "任務完成後遊戲通常進入對方優勢，需在此之前分出勝負"
+  ],
+  "notes": ""
+}

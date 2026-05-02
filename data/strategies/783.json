@@ -1,0 +1,78 @@
+{
+  "archetype_id": 783,
+  "name": "Imbue Priest",
+  "name_zh": "",
+  "class": "PRIEST",
+  "class_zh": "牧師",
+  "style": "中速",
+  "win_rate": 47.4,
+  "pct_of_total": 0.9,
+  "rank": 34,
+  "core_cards": [
+    {
+      "card_id": "EDR_888",
+      "name": "『守道者』瑪洛尼",
+      "type": "MINION",
+      "cost": 8,
+      "text": "戰吼：發現一個 傳說荒野神靈。 注能你的英雄能力 4次後消耗改為(1)"
+    },
+    {
+      "card_id": "FIR_777",
+      "name": "卡多雷之魂",
+      "type": "MINION",
+      "cost": 2,
+      "text": "嘲諷、生命竊取 戰吼：若你本回合已用過英雄能力，獲得 +3/+3"
+    },
+    {
+      "card_id": "FIR_921",
+      "name": "護花使者",
+      "type": "MINION",
+      "cost": 3,
+      "text": "戰吼：若你已注能兩次英雄能力，抽2張牌"
+    },
+    {
+      "card_id": "EDR_979",
+      "name": "往昔古樹",
+      "type": "MINION",
+      "cost": 5,
+      "text": "休眠2回合 於休眠中，在你的回合結束時獲得3點護甲值並抽一張牌"
+    },
+    {
+      "card_id": "TLC_820",
+      "name": "林地生態學家",
+      "type": "MINION",
+      "cost": 1,
+      "text": "死亡之聲：你獲得一張法力消耗為1，賦予一個手下+2或-2生命值的神聖法術"
+    },
+    {
+      "card_id": "EDR_800",
+      "name": "顫翼蝶守護者",
+      "type": "MINION",
+      "cost": 4,
+      "text": "嘲諷、聖盾術 戰吼：注能你的英雄能力"
+    },
+    {
+      "card_id": "EDR_476",
+      "name": "月井",
+      "type": "SPELL",
+      "cost": 6,
+      "text": "對全部敵方角色造成$4點傷害。恢復全部友方角色#4點生命值"
+    },
+    {
+      "card_id": "EDR_846",
+      "name": "夏達希爾",
+      "type": "SPELL",
+      "cost": 8,
+      "text": "獲得全部5張夢境牌。若你於此牌在手中時打出了消耗更高的牌，將其腐化！"
+    }
+  ],
+  "play_style": "中速型，平衡前後期，有多樣化的應對手段",
+  "win_condition": "耗盡對手資源或建立不可解的板面",
+  "key_turns": "5-8 回合決定走向",
+  "against_tips": [
+    "觀察對手打出的關鍵牌，判斷其 win condition",
+    "小心中期威脅，注意是否有 buff 型隨從雪球",
+    "保留高費法術應對關鍵隨從"
+  ],
+  "notes": ""
+}
