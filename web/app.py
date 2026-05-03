@@ -1000,6 +1000,7 @@ def api_tier_list_add():
         "addon_names": data.get("addon_names", []),
         "strategy": (data.get("strategy") or "").strip(),
         "tips": data.get("tips", []),
+        "user_locked": True,   # 手動新增的 comp，爬蟲不覆蓋卡牌
     }
 
     if os.path.exists(BG_COMPS_CACHE):
@@ -1024,10 +1025,14 @@ def api_tier_list_edit(comp_id):
         return jsonify({"success": False, "error": f"找不到 id={comp_id}"}), 404
 
     comp = comps[idx]
+    card_fields = {"core", "core_names", "addon", "addon_names"}
     for field in ("name", "tier", "races", "difficulty", "core", "core_names",
                   "addon", "addon_names", "strategy", "tips"):
         if field in data:
             comp[field] = data[field]
+    # 若用戶修改了卡牌，標記為手動編輯（爬蟲不覆蓋）
+    if any(f in data for f in card_fields):
+        comp["user_locked"] = True
     comps[idx] = comp
     _save_comps(comps)
 
@@ -1216,37 +1221,28 @@ def api_scrape_comps():
         return merged, [nm.get(c, c) for c in merged]
 
     def _apply_firestone(ec, comp):
-        """將 Firestone 資料套用到現有 comp，core/addon 採合併策略。"""
+        """將 Firestone 資料套用到現有 comp。
+        - user_locked=True 的 comp：只更新 tier/stats，不動卡牌
+        - 其他：直接用 Firestone 的卡牌（不再 union 累積）
+        """
         ec["tier"]          = comp["tier"]
         ec["original_name"] = comp["original_name"]
         ec["difficulty"]    = comp["difficulty"]
-        # core cards：合併（現有 + 新增不重複）
-        merged_core, merged_core_names = _merge_cards(
-            ec.get("core", []), comp["core"], name_map)
-        ec["core"]       = merged_core
-        ec["core_names"] = merged_core_names
-        # addon cards：合併每個 addon 群
-        existing_addons = ec.get("addon", [])
-        new_addons      = comp["addon"]
-        if new_addons:
-            if existing_addons:
-                merged_addons = []
-                merged_addon_names = []
-                for i, new_grp in enumerate(new_addons):
-                    exist_grp = existing_addons[i] if i < len(existing_addons) else []
-                    mg, mn = _merge_cards(exist_grp, new_grp, name_map)
+
+        if not ec.get("user_locked"):
+            # 直接使用 Firestone 的 core/addon（附上中文名補全）
+            new_core, new_core_names = _merge_cards([], comp["core"], name_map)
+            ec["core"]       = new_core
+            ec["core_names"] = new_core_names
+            if comp.get("addon"):
+                merged_addons, merged_addon_names = [], []
+                for grp in comp["addon"]:
+                    mg, mn = _merge_cards([], grp, name_map)
                     merged_addons.append(mg)
                     merged_addon_names.append(mn)
-                # 保留 existing 中多餘的 addon 群
-                for j in range(len(new_addons), len(existing_addons)):
-                    merged_addons.append(existing_addons[j])
-                    merged_addon_names.append(
-                        ec.get("addon_names", [[]] * len(existing_addons))[j])
                 ec["addon"]       = merged_addons
                 ec["addon_names"] = merged_addon_names
-            else:
-                ec["addon"]       = comp["addon"]
-                ec["addon_names"] = comp["addon_names"]
+
         ec["avg_placement"] = comp["avg_placement"]
         ec["data_points"]   = comp["data_points"]
         ec["patch"]         = comp["patch"]
@@ -1496,17 +1492,10 @@ def api_scrape_hsreplay():
             # HSReplay 不覆蓋 tier（Firestone 評分優先）；只補齊 difficulty，合併 core 卡片
             if diff and not ec.get("difficulty"):
                 ec["difficulty"] = diff
-            # core 卡片：合併（現有 + 新增不重複），不覆蓋
-            if cards:
-                existing_core = ec.get("core", [])
-                seen = set(existing_core)
-                merged = list(existing_core)
-                for cid in cards:
-                    if cid not in seen:
-                        merged.append(cid)
-                        seen.add(cid)
-                ec["core"]       = merged
-                ec["core_names"] = [name_map.get(cid, cid) for cid in merged]
+            # core 卡片：user_locked 的 comp 不覆蓋；其他直接用 HSReplay 的
+            if cards and not ec.get("user_locked"):
+                ec["core"]       = cards
+                ec["core_names"] = [name_map.get(cid, cid) for cid in cards]
             existing_map[comp_id] = ec
             updated_count += 1
         else:

@@ -55,7 +55,7 @@
     "id": "quilboar_smuggler",
     "tier": "S",
     "name": "走私野豬人流",
-    "original_name": "Smuggler Quilboar",
+    "original_name": "Quilboar Smuggler",
     "races": [
       "QUILBOAR"
     ],
@@ -66,7 +66,8 @@
       "BG_LOE_077",
       "BG25_354",
       "BG26_159",
-      "BGS_078"
+      "BGS_078",
+      "BG26_160"
     ],
     "core_names": [
       "鐵頭萊拉克",
@@ -74,7 +75,8 @@
       "布萊恩‧銅鬚",
       "提圖斯‧瑞文戴爾",
       "月之培根爵士樂手",
-      "恐怖的鸚鵡"
+      "恐怖的鸚鵡",
+      "多毛風笛手"
     ],
     "addon": [
       [
@@ -104,26 +106,31 @@
       "暗視長老在金幣充裕時可以一次給全場野豬人大量頂級寶石"
     ],
     "avg_placement": 3.7,
-    "data_points": 2711,
+    "data_points": 3240,
     "patch": 231720
   },
   {
     "id": "demon_fodder",
     "tier": "S",
     "name": "食料惡魔流",
-    "original_name": "Fodder Demon",
+    "original_name": "Demon Fodder ",
     "races": [
       "DEMON"
     ],
     "difficulty": "medium",
     "core": [
       "BG_LOE_077",
-      "BG35_155"
+      "BG35_155",
+      "BG32_873",
+      "BG26_524",
+      "BG35_153"
     ],
     "core_names": [
       "布萊恩‧銅鬚",
       "扭曲的憤怒守衛",
-      "FAKE_TEST_CARD_001"
+      "灰燼墮落者",
+      "『舞動王子』莫克札",
+      "頂尖征服者"
     ],
     "addon": [
       [
@@ -158,9 +165,56 @@
       "搭配強化旅店的卡（沙丘居怪、魔化元素）讓食料體質更高，燃焰執行者吃到更多",
       "挑食客可以立即消化一個旅店手下，在轉型期節省資源"
     ],
-    "avg_placement": 3.36,
-    "data_points": 21101,
+    "avg_placement": 3.35,
+    "data_points": 24204,
     "patch": 231720
+  },
+  {
+    "id": "beast_leviathan",
+    "tier": "A",
+    "name": "Beast Leviathan",
+    "original_name": "Beast Leviathan",
+    "races": [],
+    "difficulty": "medium",
+    "core": [
+      "BG26_802",
+      "BG35_604",
+      "BG35_602"
+    ],
+    "core_names": [
+      "蕉流猩",
+      "下水道之王",
+      "潛伏海獸"
+    ],
+    "addon": [
+      [
+        "BGS_018",
+        "BG25_354",
+        "BGS_078",
+        "BG26_800",
+        "BG19_010",
+        "BG25_806",
+        "BG33_371",
+        "BG27_084"
+      ]
+    ],
+    "addon_names": [
+      [
+        "『巨狼先祖』戈德林",
+        "提圖斯‧瑞文戴爾",
+        "恐怖的鸚鵡",
+        "法力刃豹",
+        "下水道老鼠",
+        "狡詐迅猛龍",
+        "P-0UL-TR-0N",
+        "活力甲蟲"
+      ]
+    ],
+    "strategy": "",
+    "tips": [],
+    "avg_placement": 3.71,
+    "data_points": 7,
+    "patch": 235290
   },
   {
     "id": "neutral_poison_scout",
@@ -387,7 +441,7 @@
     "id": "dragon_ring_bearer",
     "tier": "A",
     "name": "戒指持有者龍族流",
-    "original_name": "Ring Bearer Dragon",
+    "original_name": "Dragon Ring Bearer",
     "races": [
       "DRAGON",
       "NAGA"
@@ -396,12 +450,20 @@
     "core": [
       "BG34_921",
       "BG29_813",
-      "BG32_822"
+      "BG32_822",
+      "BG25_354",
+      "BG34_731",
+      "BG34_922",
+      "BG32_821"
     ],
     "core_names": [
       "戒指持有者",
       "堅持的吟詩龍",
-      "炎鑄喚術師"
+      "炎鑄喚術師",
+      "提圖斯‧瑞文戴爾",
+      "暮光育母",
+      "漩渦湧現者",
+      "魔焰咒術師"
     ],
     "addon": [
       [
@@ -432,14 +494,14 @@
       "此流爆發力極高但需精確排板，練習各手下的位置配置"
     ],
     "avg_placement": 3.25,
-    "data_points": 8922,
+    "data_points": 12293,
     "patch": 235290
   },
   {
     "id": "elemental_shop_buff",
     "tier": "A",
     "name": "旅店強化元素流",
-    "original_name": "Shop Buff Elemental",
+    "original_name": "Elemental Shop Buff",
     "races": [
       "ELEMENTAL"
     ],
@@ -447,12 +509,16 @@
     "core": [
       "BG34_858",
       "BG_LOE_077",
-      "BG28_707"
+      "BG28_707",
+      "BG35_881",
+      "BG35_883"
     ],
     "core_names": [
       "陣風亡魄",
       "布萊恩‧銅鬚",
-      "活化的艾澤萊晶岩"
+      "活化的艾澤萊晶岩",
+      "地脈具現元素",
+      "巴琳達‧石爐"
     ],
     "addon": [
       [
@@ -487,8 +553,8 @@
       "此流難度在於需要頻繁重置旅店找元素並施放法術，操作量大",
       "石器巨碑是終極手段，每回合購買一張手下就獲得+10/+10並體質翻倍"
     ],
-    "avg_placement": 3.47,
-    "data_points": 6793,
+    "avg_placement": 3.46,
+    "data_points": 8491,
     "patch": 231720
   },
   {
@@ -546,7 +612,7 @@
   {
     "id": "back_to_back_ballers",
     "tier": "A",
-    "name": "背靠背T2球手連鎖爆發流",
+    "name": "T2球手連鎖爆發流",
     "races": [
       "ELEMENTAL"
     ],
@@ -555,13 +621,15 @@
       "BG31_816",
       "BG31_818",
       "BG31_815",
-      "BG31_810"
+      "BG31_810",
+      "BG35_MagicItem_303"
     ],
     "core_names": [
       "火球手",
       "雪球手",
       "沙丘居怪",
-      "紫外線晉升者"
+      "紫外線晉升者",
+      "跳越者頭像"
     ],
     "addon": [
       [
@@ -604,18 +672,22 @@
     "id": "pirate_bounty",
     "tier": "A",
     "name": "賞金海盜流",
-    "original_name": "Bounty Pirate",
+    "original_name": "Pirate Bounty ",
     "races": [
       "PIRATE"
     ],
     "difficulty": "hard",
     "core": [
       "BG33_823",
-      "BG33_825"
+      "BG33_825",
+      "BG_LOE_077",
+      "BG35_701"
     ],
     "core_names": [
       "空軍上將羅傑斯",
-      "傲氣私掠者"
+      "傲氣私掠者",
+      "布萊恩‧銅鬚",
+      "狂妄海賊"
     ],
     "addon": [
       [
@@ -653,58 +725,14 @@
       "此流難度高，需要了解所有賞金效果才能最大化利用"
     ],
     "avg_placement": 3.68,
-    "data_points": 15034,
-    "patch": 231720
-  },
-  {
-    "id": "neutral_back_to_back",
-    "tier": "A",
-    "name": "連續觸發流",
-    "original_name": "Back to Back",
-    "races": [],
-    "difficulty": "easy",
-    "core": [
-      "BG35_952",
-      "BG35_883",
-      "BG26_ICC_901",
-      "BG35_123"
-    ],
-    "core_names": [
-      "BG35_952",
-      "巴琳達‧石爐",
-      "德拉克瑞附魔師",
-      "災變預示者"
-    ],
-    "addon": [
-      [
-        "BG32_821",
-        "BG33_891",
-        "BG24_005"
-      ]
-    ],
-    "addon_names": [
-      [
-        "魔焰咒術師",
-        "魔術魚真菌學家",
-        "罪奔者布蘭契"
-      ]
-    ],
-    "strategy": "火球手出售時全場+1攻擊力並強化下一個球手；雪球手出售時全場+1生命值並強化下一個球手——連續「背靠背」出售重購球手使每張效果越來越大。沙丘居怪讓旅店元素提前獲得基礎加成，紫外線晉升者在大量元素被打出後給全場元素+3/+2。",
-    "tips": [
-      "每回合循環：出售球手→從旅店買同名球手→繼續出售，每次全場累積更多加成",
-      "火球手和雪球手交替出售可以讓攻擊力和生命值均衡成長",
-      "每出售一張球手，下一張同名球手的加成效果就更強，盡早開始循環",
-      "紫外線晉升者在元素打出越多後越強，中後期是核心戰力"
-    ],
-    "avg_placement": 3.21,
-    "data_points": 8504,
+    "data_points": 17189,
     "patch": 231720
   },
   {
     "id": "undead_attack",
     "tier": "A",
     "name": "進攻亡靈流",
-    "original_name": "Attack Undead",
+    "original_name": "Undead Attack",
     "races": [
       "UNDEAD"
     ],
@@ -712,12 +740,22 @@
     "core": [
       "BG25_010",
       "BG32_324",
-      "BG32_880"
+      "BG32_880",
+      "BG35_883",
+      "BGS_018",
+      "BG25_354",
+      "BGS_078",
+      "BG35_604"
     ],
     "core_names": [
       "沒有手的被遺忘者",
       "墮落佐司特屠夫",
-      "友善的魂屍"
+      "友善的魂屍",
+      "巴琳達‧石爐",
+      "『巨狼先祖』戈德林",
+      "提圖斯‧瑞文戴爾",
+      "恐怖的鸚鵡",
+      "下水道之王"
     ],
     "addon": [
       [
@@ -756,8 +794,8 @@
       "致命孢子給低攻擊力手下注入毒性，帶毒永恆騎士無論多大都能殺敵",
       "古老靈魂需要15個友方手下死亡，亡靈流正好能快速累積死亡數"
     ],
-    "avg_placement": 3.24,
-    "data_points": 6739,
+    "avg_placement": 3.25,
+    "data_points": 7830,
     "patch": 231720
   },
   {
@@ -974,18 +1012,26 @@
     "id": "dragon_kalecgos",
     "tier": "B",
     "name": "卡雷苟斯龍族流",
-    "original_name": "Kalecgos Dragon",
+    "original_name": "Dragon Kalecgos",
     "races": [
       "DRAGON"
     ],
     "difficulty": "medium",
     "core": [
       "BGS_041",
-      "BG_LOE_077"
+      "BG_LOE_077",
+      "BG29_813",
+      "BG32_822",
+      "BG33_823",
+      "BG34_633"
     ],
     "core_names": [
       "『秘法巨龍』卡雷苟斯",
-      "布萊恩‧銅鬚"
+      "布萊恩‧銅鬚",
+      "堅持的吟詩龍",
+      "炎鑄喚術師",
+      "空軍上將羅傑斯",
+      "龍族看守者"
     ],
     "addon": [
       [
@@ -1024,8 +1070,8 @@
       "熾炎天鰭魚人（MURLOC/DRAGON）自己觸發戰吼也獲得+1/+1加成",
       "此流中後期爆發強但需要維持足夠的龍族數量和戰吼來源"
     ],
-    "avg_placement": 3.64,
-    "data_points": 11631,
+    "avg_placement": 3.66,
+    "data_points": 12976,
     "patch": 231720
   },
   {
@@ -1088,7 +1134,7 @@
     "id": "quilboar_avenge",
     "tier": "B",
     "name": "復仇野豬人流",
-    "original_name": "Avenge Quilboar",
+    "original_name": "Quilboar Avenge",
     "races": [
       "QUILBOAR"
     ],
@@ -1096,12 +1142,22 @@
     "core": [
       "BG26_157",
       "BG35_437",
-      "BG32_430"
+      "BG32_430",
+      "BG23_018",
+      "BG26_160",
+      "BG_LOE_077",
+      "BG26_867",
+      "BG35_433"
     ],
     "core_names": [
       "剛鬃作曲家",
       "藤蔓語者",
-      "螢喉督軍"
+      "螢喉督軍",
+      "暗視長老",
+      "多毛風笛手",
+      "布萊恩‧銅鬚",
+      "三隻小野豬人",
+      "赤牙喚棘者"
     ],
     "addon": [
       [
@@ -1135,7 +1191,7 @@
       "要盡早疊加多毛風笛手和月之培根爵士樂手讓寶石加成乘上去"
     ],
     "avg_placement": 3.14,
-    "data_points": 4044,
+    "data_points": 4569,
     "patch": 231720
   },
   {
@@ -1194,7 +1250,7 @@
     "id": "naga_spellspam",
     "tier": "B",
     "name": "法術狂納迦流",
-    "original_name": "Spell Spam Naga",
+    "original_name": "Naga Spell Spam",
     "races": [
       "NAGA"
     ],
@@ -1202,12 +1258,16 @@
     "core": [
       "BG34_926",
       "BG34_922",
-      "BG31_035"
+      "BG31_035",
+      "BG32_835",
+      "BG25_354"
     ],
     "core_names": [
       "無情的女王近衛",
       "漩渦湧現者",
-      "破土者"
+      "破土者",
+      "寧靜冥想",
+      "提圖斯‧瑞文戴爾"
     ],
     "addon": [
       [
@@ -1246,8 +1306,8 @@
       "亮鱗讓法術給聖盾術，配合充能女皇進一步強化有聖盾的手下",
       "此流難度高在於法術管理：要確保每回合有足夠旅店法術施放"
     ],
-    "avg_placement": 3.16,
-    "data_points": 12089,
+    "avg_placement": 3.17,
+    "data_points": 13702,
     "patch": 231720
   },
   {
@@ -1306,7 +1366,7 @@
     "id": "naga_deep_blue",
     "tier": "B",
     "name": "深藍納迦流",
-    "original_name": "Deep Blue Naga",
+    "original_name": "Naga Deep Blue",
     "races": [
       "NAGA"
     ],
@@ -1314,12 +1374,20 @@
     "core": [
       "BG26_502",
       "BG26_505",
-      "BG35_883"
+      "BG35_883",
+      "BG31_920",
+      "BG_LOE_077",
+      "BG31_035",
+      "BG34_925"
     ],
     "core_names": [
       "深情藍調歌手",
       "熱情沙鈴手",
-      "巴琳達‧石爐"
+      "巴琳達‧石爐",
+      "暗羽戰略家",
+      "布萊恩‧銅鬚",
+      "破土者",
+      "海床招募者"
     ],
     "addon": [
       [
@@ -1348,8 +1416,8 @@
       "深淵衛士長期在場後體質很高，不要輕易替換",
       "此流易上手因為只需要管理造法順序，不需要複雜的法術搭配"
     ],
-    "avg_placement": 4.14,
-    "data_points": 4754,
+    "avg_placement": 4.15,
+    "data_points": 5491,
     "patch": 231720
   },
   {
@@ -1464,7 +1532,7 @@
     "id": "mech_automaton",
     "tier": "B",
     "name": "自動機機械流",
-    "original_name": "Automaton Mech",
+    "original_name": "Mech Automaton",
     "races": [
       "MECHANICAL"
     ],
@@ -1508,65 +1576,15 @@
       "偏斜防護機器人每次召喚機械時獲得+2攻擊力和聖盾術，是最佳配件",
       "充能女皇讓施放旅店法術時所有有聖盾術的手下+3攻擊力，爆炸性增長"
     ],
-    "avg_placement": 3.75,
-    "data_points": 8368,
-    "patch": 231720
-  },
-  {
-    "id": "murloc_scam",
-    "tier": "B",
-    "name": "詐騙魚人流",
-    "original_name": "Scam Murloc",
-    "races": [
-      "MURLOC"
-    ],
-    "difficulty": "medium",
-    "core": [
-      "BG23_318",
-      "BG33_318",
-      "BG27_556"
-    ],
-    "core_names": [
-      "『魯莽者』李洛伊",
-      "膽汁噴吐者",
-      "沼泥採獵者"
-    ],
-    "addon": [
-      [
-        "BG34_140",
-        "BGS_131",
-        "BG34_604",
-        "BG25_039",
-        "BG23_008",
-        "BG28_500"
-      ]
-    ],
-    "addon_names": [
-      [
-        "專家飛行員",
-        "致命孢子",
-        "英勇弱者",
-        "鼓囊野豬人",
-        "亮鱗",
-        "BG28_500"
-      ]
-    ],
-    "strategy": "「詐術」核心：泰德出售後免費獲得一個隨機魚人，重複出售加倍獲取。除汙魚人死亡後給手中隨機手下+7/+7，鯛魚計數員在手牌中每次打出魚人就獲得+4/+4。吧嘎咕王一口氣給手牌和場上全部魚人+2/+3。",
-    "tips": [
-      "泰德出售→買回→再賣的循環可以快速累積多張魚人",
-      "鯛魚計數員要留在手牌中，每打出一隻魚人他就自動加強",
-      "除汙魚人死亡後+7/+7給手牌，確保有重要手下在手裡準備接收",
-      "沼泥採獵者在戰鬥開始時從手牌召喚最強魚人，讓手牌buffed魚人直接上場"
-    ],
-    "avg_placement": 2.8,
-    "data_points": 2253,
+    "avg_placement": 3.77,
+    "data_points": 9456,
     "patch": 231720
   },
   {
     "id": "mech_shield",
     "tier": "B",
     "name": "護盾機械流",
-    "original_name": "Shield Mech",
+    "original_name": "Mech Shield",
     "races": [
       "MECHANICAL"
     ],
@@ -1607,8 +1625,54 @@
     ],
     "strategy": "Generate Sanctify with Divine Sparkbot + Titus Rivendare/Monstrous Macaw/Kangor's Apprentice. If possible try to boost your Tavern Spells (Humon'gozz for ex)",
     "tips": [],
-    "avg_placement": 3.45,
-    "data_points": 2414,
+    "avg_placement": 3.44,
+    "data_points": 2786,
+    "patch": 231720
+  },
+  {
+    "id": "neutral_back_to_back",
+    "tier": "B",
+    "name": "連續觸發流",
+    "original_name": "Back to Back",
+    "races": [],
+    "difficulty": "easy",
+    "core": [
+      "BG35_952",
+      "BG35_883",
+      "BG26_ICC_901",
+      "BG35_123",
+      "BG32_821"
+    ],
+    "core_names": [
+      "BG35_952",
+      "巴琳達‧石爐",
+      "德拉克瑞附魔師",
+      "災變預示者",
+      "魔焰咒術師"
+    ],
+    "addon": [
+      [
+        "BG32_821",
+        "BG33_891",
+        "BG24_005"
+      ]
+    ],
+    "addon_names": [
+      [
+        "魔焰咒術師",
+        "魔術魚真菌學家",
+        "罪奔者布蘭契"
+      ]
+    ],
+    "strategy": "火球手出售時全場+1攻擊力並強化下一個球手；雪球手出售時全場+1生命值並強化下一個球手——連續「背靠背」出售重購球手使每張效果越來越大。沙丘居怪讓旅店元素提前獲得基礎加成，紫外線晉升者在大量元素被打出後給全場元素+3/+2。",
+    "tips": [
+      "每回合循環：出售球手→從旅店買同名球手→繼續出售，每次全場累積更多加成",
+      "火球手和雪球手交替出售可以讓攻擊力和生命值均衡成長",
+      "每出售一張球手，下一張同名球手的加成效果就更強，盡早開始循環",
+      "紫外線晉升者在元素打出越多後越強，中後期是核心戰力"
+    ],
+    "avg_placement": 3.22,
+    "data_points": 9842,
     "patch": 231720
   },
   {
@@ -1667,7 +1731,7 @@
     "id": "elemental_tier2_ballers",
     "tier": "C",
     "name": "二費球手元素流",
-    "original_name": "Tier 2 Bailers Elemental",
+    "original_name": "Elemental Tier 2 Bailers",
     "races": [
       "ELEMENTAL"
     ],
@@ -1705,7 +1769,7 @@
     "strategy": "Stay on Tier 2, cycle every Snow Baller & Fire Baller on divine shield minions. Also cycle Strike Oil",
     "tips": [],
     "avg_placement": 5.12,
-    "data_points": 448,
+    "data_points": 506,
     "patch": 231720
   },
   {
@@ -1764,7 +1828,7 @@
     "id": "beast_stegodon",
     "tier": "C",
     "name": "劍龍野獸流",
-    "original_name": "Stegodon Beast",
+    "original_name": "Beast Stegodon",
     "races": [
       "BEAST"
     ],
@@ -1772,12 +1836,16 @@
     "core": [
       "BG33_840",
       "BG33_371",
-      "BG35_604"
+      "BG35_604",
+      "BG35_602",
+      "BG26_802"
     ],
     "core_names": [
       "重踏劍龍",
       "P-0UL-TR-0N",
-      "下水道之王"
+      "下水道之王",
+      "潛伏海獸",
+      "蕉流猩"
     ],
     "addon": [
       [
@@ -1804,15 +1872,15 @@
       "多張奮戰效果之後每張野獸都有極高攻擊力，確保板面夠寬",
       "戈德林作為死亡後的保底強化，放在最前面讓他先死觸發效果"
     ],
-    "avg_placement": 4.48,
-    "data_points": 3678,
+    "avg_placement": 4.47,
+    "data_points": 4106,
     "patch": 231720
   },
   {
     "id": "undead_end_of_turn",
     "tier": "C",
     "name": "回合結束亡靈流",
-    "original_name": "End of turn Undead",
+    "original_name": "Undead End of turn",
     "races": [
       "UNDEAD"
     ],
@@ -1848,14 +1916,14 @@
     "strategy": "",
     "tips": [],
     "avg_placement": 4.01,
-    "data_points": 3089,
+    "data_points": 3490,
     "patch": 235290
   },
   {
     "id": "murloc_handbuff",
     "tier": "C",
     "name": "手牌強化魚人流",
-    "original_name": "Handbuff Murloc",
+    "original_name": "Murloc Handbuff",
     "races": [
       "MURLOC"
     ],
@@ -1896,15 +1964,15 @@
     ],
     "strategy": "Generate Murloc with Brann Bronzebeard, Primalfin Lookout & Magicfin Mycologist and boost your Bream Counter with Mrglin' Burglar. Summon it in fight with Diremuck Forager",
     "tips": [],
-    "avg_placement": 3.18,
-    "data_points": 3897,
+    "avg_placement": 3.19,
+    "data_points": 4389,
     "patch": 231720
   },
   {
     "id": "undead_overflow",
     "tier": "C",
     "name": "溢出亡靈流",
-    "original_name": "Overflow Undead",
+    "original_name": "Undead Overflow ",
     "races": [
       "UNDEAD"
     ],
@@ -1941,15 +2009,15 @@
     ],
     "strategy": "Trigger your summoning minion (Cadaver Caretaker or Lava Lurker + Surf n' Surf's spellcraft) as much as you can",
     "tips": [],
-    "avg_placement": 3.37,
-    "data_points": 2195,
+    "avg_placement": 3.38,
+    "data_points": 2518,
     "patch": 231720
   },
   {
     "id": "beast_self_damage",
     "tier": "C",
     "name": "自傷野獸流",
-    "original_name": "Self-Damage Beast",
+    "original_name": "Beast Self-Damage",
     "races": [
       "BEAST"
     ],
@@ -1986,8 +2054,58 @@
     ],
     "strategy": "If you have Rabid Panther, try to keep Hunting Tiger Shark on board and trigger him with rylak + titus/brann. then cycle some beast",
     "tips": [],
-    "avg_placement": 4.0,
-    "data_points": 1795,
+    "avg_placement": 4.01,
+    "data_points": 2040,
+    "patch": 231720
+  },
+  {
+    "id": "murloc_scam",
+    "tier": "C",
+    "name": "詐騙魚人流",
+    "original_name": "Murloc Scam ",
+    "races": [
+      "MURLOC"
+    ],
+    "difficulty": "medium",
+    "core": [
+      "BG23_318",
+      "BG33_318",
+      "BG27_556"
+    ],
+    "core_names": [
+      "『魯莽者』李洛伊",
+      "膽汁噴吐者",
+      "沼泥採獵者"
+    ],
+    "addon": [
+      [
+        "BG34_140",
+        "BGS_131",
+        "BG34_604",
+        "BG25_039",
+        "BG23_008",
+        "BG28_500"
+      ]
+    ],
+    "addon_names": [
+      [
+        "專家飛行員",
+        "致命孢子",
+        "英勇弱者",
+        "鼓囊野豬人",
+        "亮鱗",
+        "BG28_500"
+      ]
+    ],
+    "strategy": "「詐術」核心：泰德出售後免費獲得一個隨機魚人，重複出售加倍獲取。除汙魚人死亡後給手中隨機手下+7/+7，鯛魚計數員在手牌中每次打出魚人就獲得+4/+4。吧嘎咕王一口氣給手牌和場上全部魚人+2/+3。",
+    "tips": [
+      "泰德出售→買回→再賣的循環可以快速累積多張魚人",
+      "鯛魚計數員要留在手牌中，每打出一隻魚人他就自動加強",
+      "除汙魚人死亡後+7/+7給手牌，確保有重要手下在手裡準備接收",
+      "沼泥採獵者在戰鬥開始時從手牌召喚最強魚人，讓手牌buffed魚人直接上場"
+    ],
+    "avg_placement": 2.82,
+    "data_points": 2600,
     "patch": 231720
   },
   {
@@ -2046,7 +2164,7 @@
     "id": "murloc_mrrglton",
     "tier": "C",
     "name": "魚人鎮流",
-    "original_name": "Mrrglton Murloc",
+    "original_name": "Murloc Mrrglton",
     "races": [
       "MURLOC"
     ],
@@ -2054,12 +2172,18 @@
     "core": [
       "BG35_142",
       "BG_LOE_077",
-      "BG26_ICC_901"
+      "BG26_ICC_901",
+      "BG33_893",
+      "BG34_140",
+      "BG33_891"
     ],
     "core_names": [
       "厄格表弟",
       "布萊恩‧銅鬚",
-      "德拉克瑞附魔師"
+      "德拉克瑞附魔師",
+      "原始畫家",
+      "專家飛行員",
+      "魔術魚真菌學家"
     ],
     "addon": [
       [
@@ -2092,8 +2216,8 @@
       "魚人合唱團在你手牌有多張大體質魚人時爆發，注意補手牌",
       "吧嘎咕王給手牌+場上全部魚人+2/+3，是最佳一次性加倍手段"
     ],
-    "avg_placement": 3.69,
-    "data_points": 5668,
+    "avg_placement": 3.7,
+    "data_points": 6417,
     "patch": 231720
   }
 ]
