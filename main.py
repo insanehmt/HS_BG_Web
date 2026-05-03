@@ -9,6 +9,7 @@ import sys
 import re
 import time
 import signal
+import traceback
 from datetime import datetime
 from pathlib import Path
 from typing import Optional
@@ -207,8 +208,16 @@ def main():
     print("  爐石傳說 英雄戰場 對局紀錄器  v2.0")
     print("=" * 55)
 
-    setup_log_config()
-    init_db()
+    try:
+        setup_log_config()
+    except Exception as e:
+        print(f"[main] ⚠️  log.config 設定失敗（無影響）：{e}")
+
+    try:
+        init_db()
+    except Exception as e:
+        print(f"[main] ❌ 資料庫初始化失敗：{e}")
+        return
 
     print("[main] 載入卡牌資料庫...")
     card_db = load_card_db()
@@ -233,12 +242,21 @@ def main():
     # 掃描現有 log（防重複由 DB 處理）
     if log_path and os.path.exists(log_path):
         print("[main] 掃描歷史 log...")
-        with open(log_path, "r", encoding="utf-8", errors="replace") as f:
-            content = f.read()
-            offset = f.tell()
-        games = parser.parse_file(content)
-        process_games(games, card_db)
-        print(f"[main] 歷史掃描完成，找到 {len(games)} 局")
+        try:
+            with open(log_path, "r", encoding="utf-8", errors="replace") as f:
+                content = f.read()
+                offset = f.tell()
+            games = parser.parse_file(content)
+            process_games(games, card_db)
+            print(f"[main] 歷史掃描完成，找到 {len(games)} 局")
+        except Exception as e:
+            print(f"[main] ⚠️  歷史掃描失敗（略過）：{e}")
+            try:
+                with open(log_path, "r", encoding="utf-8", errors="replace") as f:
+                    f.seek(0, 2)
+                    offset = f.tell()  # 跳到檔案末尾，只監控新增資料
+            except Exception:
+                offset = 0
 
     print("[main] 開始即時監控（Ctrl+C 退出）...\n")
 
@@ -278,7 +296,7 @@ def main():
             if size < offset:
                 print("[main] log 重置，重新解析")
                 offset = 0
-                parser = PowerLogParser(log_path, build_version)
+                parser = PowerLogParser(log_path, build_version, name_resolver=lambda cid: card_db.get(cid, cid))
 
             if size <= offset:
                 continue
@@ -297,6 +315,7 @@ def main():
 
         except Exception as e:
             print(f"[main] 錯誤：{e}")
+            traceback.print_exc()
 
     print("[main] 已停止，再見！")
 
