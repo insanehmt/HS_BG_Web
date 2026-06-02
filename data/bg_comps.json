@@ -1738,11 +1738,13 @@
     "difficulty": "easy",
     "core": [
       "BG31_818",
-      "BG31_816"
+      "BG31_816",
+      "BG34_Giant_072"
     ],
     "core_names": [
       "雪球手",
-      "火球手"
+      "火球手",
+      "時光扭曲跳越者"
     ],
     "addon": [
       [
@@ -1770,7 +1772,8 @@
     "tips": [],
     "avg_placement": 5.12,
     "data_points": 506,
-    "patch": 231720
+    "patch": 231720,
+    "user_locked": true
   },
   {
     "id": "all_titus_combo",
