@@ -968,7 +968,10 @@ def api_update_cards():
         json.dump(cfg, f, ensure_ascii=False, indent=2)
 
     # Auto-commit and push to GitHub if GITHUB_PAT is set
-    git_result = _git_push_data()
+    try:
+        git_result = _git_push_data()
+    except Exception as e:
+        git_result = {"pushed": False, "reason": f"git error: {e}"}
 
     return jsonify({
         "success": True,
