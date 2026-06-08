@@ -817,16 +817,14 @@ def api_update_cards():
 
     # Download latest cards
     try:
-        result = subprocess.run(
-            ["curl", "-s", "-A", "Mozilla/5.0",
-             "https://api.hearthstonejson.com/v1/latest/zhTW/cards.json",
-             "-o", raw_path],
-            capture_output=True, timeout=120
-        )
-        if result.returncode != 0:
-            return jsonify({"success": False, "error": "下載失敗"})
+        import urllib.request
+        url = "https://api.hearthstonejson.com/v1/latest/zhTW/cards.json"
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+        with urllib.request.urlopen(req, timeout=120) as resp:
+            with open(raw_path, "wb") as f:
+                f.write(resp.read())
     except Exception as e:
-        return jsonify({"success": False, "error": str(e)})
+        return jsonify({"success": False, "error": f"下載失敗: {e}"})
 
     try:
         with open(raw_path, encoding="utf-8") as f:
