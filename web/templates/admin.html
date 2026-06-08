@@ -45,8 +45,12 @@
         let msg = `手下: ${u.minions}  法術: ${u.spells}  英雄: ${u.heroes}  飾品: ${u.trinkets}`;
         if (d.build) msg += `\nBuild: ${d.build}`;
         if (d.git) {
-          if (d.git.pushed) msg += `\n\nGit push ✅\n${d.git.files.join(', ')}\n${d.git.output}`;
-          else msg += `\n\nGit push 跳過: ${d.git.reason || d.git.output || ''}`;
+          if (d.git.pushed) {
+            msg += `\n\nGit push ✅  ${d.git.files.join(', ')}`;
+            if (d.git.skipped && d.git.skipped.length) msg += `\n跳過(無變動): ${d.git.skipped.join(', ')}`;
+          } else {
+            msg += `\n\nGit push 跳過: ${d.git.reason || ''}`;
+          }
         }
         this.updateResult = msg;
       } else {

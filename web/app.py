@@ -931,26 +931,24 @@ def api_update_cards():
         json.dump(spells, f, ensure_ascii=False, indent=2)
 
     # --- Heroes ---
-    hero_count = 0
-    if os.path.exists(BG_HEROES_CACHE):
-        heroes = []
-        seen = set()
-        for card in all_cards:
-            cid = card.get("id", "")
-            if not (card.get("type") == "HERO" and
-                    cid.startswith("BG") and
-                    card.get("name") and
-                    cid not in seen):
-                continue
-            heroes.append({
-                "id": cid,
-                "name": card.get("name", ""),
-                "text": card.get("text", "").replace("\n", " "),
-            })
-            seen.add(cid)
-        with open(BG_HEROES_CACHE, "w", encoding="utf-8") as f:
-            json.dump(heroes, f, ensure_ascii=False, indent=2)
-        hero_count = len(heroes)
+    heroes = []
+    seen = set()
+    for card in all_cards:
+        cid = card.get("id", "")
+        if not (card.get("type") == "HERO" and
+                cid.startswith("BG") and
+                card.get("name") and
+                cid not in seen):
+            continue
+        heroes.append({
+            "id": cid,
+            "name": card.get("name", ""),
+            "text": card.get("text", "").replace("\n", " "),
+        })
+        seen.add(cid)
+    with open(BG_HEROES_CACHE, "w", encoding="utf-8") as f:
+        json.dump(heroes, f, ensure_ascii=False, indent=2)
+    hero_count = len(heroes)
 
     # --- Trinkets ---
     trinkets = []
