@@ -758,6 +758,48 @@ def api_check_version():
     })
 
 
+def _git_push_data():
+    """Commit changed data/ files and push to GitHub via GITHUB_PAT env var."""
+    import subprocess, datetime as _dt
+    repo_dir = os.path.join(os.path.dirname(__file__), "..")
+    pat = os.environ.get("GITHUB_PAT", "")
+    if not pat:
+        return {"pushed": False, "reason": "GITHUB_PAT not set"}
+
+    # Check for changes in data/
+    diff = subprocess.run(
+        ["git", "diff", "--name-only", "--", "data/"],
+        cwd=repo_dir, capture_output=True, text=True
+    )
+    changed = [l for l in diff.stdout.strip().splitlines() if l.startswith("data/")]
+    if not changed:
+        return {"pushed": False, "reason": "no changes"}
+
+    # Stage data/
+    subprocess.run(["git", "add", "--", "data/"], cwd=repo_dir)
+
+    # Commit
+    now = _dt.datetime.now().strftime("%Y-%m-%d %H:%M")
+    subprocess.run([
+        "git", "-c", "user.email=ryanh74@gmail.com",
+        "-c", "user.name=insanehmt",
+        "commit", "-m", f"auto: 更新排庫 {now} ({len(changed)} files)"
+    ], cwd=repo_dir, capture_output=True, text=True)
+
+    # Push
+    push = subprocess.run([
+        "git", "push",
+        f"https://insanehmt:{pat}@github.com/insanehmt/HS_BG_Web.git",
+        "HEAD:main"
+    ], cwd=repo_dir, capture_output=True, text=True)
+
+    return {
+        "pushed": push.returncode == 0,
+        "files": changed,
+        "output": (push.stdout + push.stderr).strip()
+    }
+
+
 @app.route("/api/update-cards", methods=["POST"])
 def api_update_cards():
     import subprocess, re as _re, datetime as _dt
@@ -917,6 +959,9 @@ def api_update_cards():
     with open(BG_CONFIG_PATH, "w", encoding="utf-8") as f:
         json.dump(cfg, f, ensure_ascii=False, indent=2)
 
+    # Auto-commit and push to GitHub if GITHUB_PAT is set
+    git_result = _git_push_data()
+
     return jsonify({
         "success": True,
         "updated": {
@@ -926,6 +971,7 @@ def api_update_cards():
             "heroes": hero_count,
         },
         "build": current_build,
+        "git": git_result,
     })
 
 
