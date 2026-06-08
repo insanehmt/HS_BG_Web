@@ -30,6 +30,8 @@ app.config["MAX_CONTENT_LENGTH"] = 10 * 1024 * 1024  # 10MB
 
 # 公開模式：設定環境變數 PUBLIC_MODE=1 隱藏私人紀錄頁面
 PUBLIC_MODE = os.environ.get("PUBLIC_MODE", "0") == "1"
+# 管理員 token：設定環境變數 ADMIN_TOKEN=your_secret
+ADMIN_TOKEN = os.environ.get("ADMIN_TOKEN", "")
 
 
 @app.context_processor
@@ -632,6 +634,14 @@ def api_top_builds():
 @app.route("/tier-list")
 def tier_list_page():
     return render_template("tier_list.html")
+
+
+@app.route("/admin")
+def admin_page():
+    token = request.args.get("token", "")
+    if not ADMIN_TOKEN or token != ADMIN_TOKEN:
+        return "403 Forbidden", 403
+    return render_template("admin.html", token=token)
 
 
 @app.route("/api/spells")

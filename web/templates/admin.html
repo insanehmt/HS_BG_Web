@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HS BG Admin</title>
+<script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+<style>
+  body{margin:0;padding:24px;background:#0a0418;color:#c0a0e0;font-family:system-ui,sans-serif;min-height:100vh}
+  h1{color:#a070d0;font-size:1.2rem;margin:0 0 20px;border-bottom:1px solid #2a1040;padding-bottom:12px}
+  .card{background:#120828;border:1px solid #2a1040;border-radius:10px;padding:16px;margin-bottom:16px}
+  .card h2{font-size:.85rem;color:#8060a0;margin:0 0 12px;text-transform:uppercase;letter-spacing:.08em}
+  button{background:#1a0a30;border:1px solid #4a2080;color:#b090e0;padding:8px 18px;border-radius:8px;
+    cursor:pointer;font-size:.85rem;transition:all .15s}
+  button:hover:not(:disabled){background:#2a1050;border-color:#7040c0}
+  button:disabled{opacity:.4;cursor:not-allowed}
+  .btn-green{border-color:#205040;color:#50c090}
+  .btn-green:hover:not(:disabled){background:#0a2018;border-color:#40a070}
+  .btn-blue{border-color:#204060;color:#60a0d0}
+  .btn-blue:hover:not(:disabled){background:#0a1828;border-color:#4080b0}
+  .result{margin-top:12px;padding:10px 14px;background:#0a0820;border-radius:8px;
+    font-size:.78rem;font-family:monospace;white-space:pre-wrap;max-height:260px;overflow-y:auto;
+    border:1px solid #1a0a30;color:#90d090}
+  .result.error{color:#ff7070;border-color:#3a1020}
+  .tag{display:inline-block;padding:2px 8px;border-radius:6px;font-size:.7rem;font-weight:700}
+  .tag-ok{background:#0a2818;border:1px solid #205040;color:#40c070}
+  .tag-err{background:#2a0a10;border:1px solid #602020;color:#ff6060}
+  a.back{color:#7050a0;font-size:.8rem;text-decoration:none;display:inline-block;margin-bottom:16px}
+  a.back:hover{color:#b090d0}
+</style>
+</head>
+<body x-data="{
+  token: '{{ token }}',
+  updateLoading: false, updateResult: null, updateError: false,
+  scrapeLoading: false, scrapeResult: null, scrapeError: false,
+
+  async updateCards() {
+    this.updateLoading = true; this.updateResult = null;
+    try {
+      const r = await fetch('/api/update-cards', {method:'POST'});
+      const d = await r.json();
+      this.updateError = !d.success;
+      if (d.success) {
+        const u = d.updated;
+        let msg = `手下: ${u.minions}  法術: ${u.spells}  英雄: ${u.heroes}  飾品: ${u.trinkets}`;
+        if (d.build) msg += `\nBuild: ${d.build}`;
+        if (d.git) {
+          if (d.git.pushed) msg += `\n\nGit push ✅\n${d.git.files.join(', ')}\n${d.git.output}`;
+          else msg += `\n\nGit push 跳過: ${d.git.reason || d.git.output || ''}`;
+        }
+        this.updateResult = msg;
+      } else {
+        this.updateResult = d.error || '未知錯誤';
+      }
+    } catch(e) { this.updateError = true; this.updateResult = e.message; }
+    this.updateLoading = false;
+  },
+
+  async scrapeFirestone() {
+    this.scrapeLoading = true; this.scrapeResult = null;
+    try {
+      const r = await fetch('/api/scrape-comps', {method:'POST'});
+      const d = await r.json();
+      this.scrapeError = !d.success;
+      this.scrapeResult = d.success ? `更新 ${d.updated} 套，新增 ${d.added} 套` : (d.error || '失敗');
+    } catch(e) { this.scrapeError = true; this.scrapeResult = e.message; }
+    this.scrapeLoading = false;
+  }
+}">
+
+<a class="back" href="/tier-list">← 回到牌組頁面</a>
+<h1>🔧 HS BG 管理後台</h1>
+
+<div class="card">
+  <h2>📦 排庫更新</h2>
+  <p style="font-size:.8rem;color:#7060a0;margin:0 0 12px">
+    從 hearthstonejson.com 下載最新卡牌，重建手下 / 法術 / 英雄 / 飾品 cache。<br>
+    若 <code>GITHUB_PAT</code> 已設定，有變動時自動 commit + push → Render auto-redeploy。
+  </p>
+  <button class="btn-green" @click="updateCards()" :disabled="updateLoading"
+    x-text="updateLoading ? '⏳ 更新中…' : '🔄 更新排庫'">
+  </button>
+  <div x-show="updateResult" class="result" :class="updateError ? 'error' : ''"
+    x-text="updateResult"></div>
+</div>
+
+<div class="card">
+  <h2>🕷️ 抓取牌組</h2>
+  <p style="font-size:.8rem;color:#7060a0;margin:0 0 12px">
+    從 Firestone 自動抓取最新推薦組合（需要 Playwright）。
+  </p>
+  <button class="btn-blue" @click="scrapeFirestone()" :disabled="scrapeLoading"
+    x-text="scrapeLoading ? '⏳ 抓取中…（約30秒）' : '🕷️ 抓取 Firestone'">
+  </button>
+  <div x-show="scrapeResult" class="result" :class="scrapeError ? 'error' : ''"
+    x-text="scrapeResult"></div>
+</div>
+
+<div class="card" style="border-color:#2a1a00">
+  <h2 style="color:#806040">🔑 存取資訊</h2>
+  <p style="font-size:.78rem;color:#6a5030;margin:0">
+    此頁面需要 token，請妥善保管網址。<br>
+    在 Render 環境變數設定 <code>ADMIN_TOKEN</code> 可更改 token。
+  </p>
+</div>
+
+</body>
+</html>
