@@ -352,7 +352,7 @@
       "DEATHRATTLE",
       "TAUNT"
     ],
-    "in_pool": false
+    "in_pool": true
   },
   {
     "id": "BG31_803_G",
@@ -1773,7 +1773,7 @@
     "mechanics": [
       "DEATHRATTLE"
     ],
-    "in_pool": true
+    "in_pool": false
   },
   {
     "id": "BG26_800_G",
@@ -3331,7 +3331,7 @@
     "attack": 3,
     "health": 2,
     "mechanics": [],
-    "in_pool": true
+    "in_pool": false
   },
   {
     "id": "BG19_010_G",
@@ -4346,7 +4346,7 @@
   {
     "id": "BG25_HERO_103_Buddy",
     "name": "幽暗靈體",
-    "text": "當一名友方手下死亡時，獲得其最大體質<i>(每場戰鬥觸發一次)</i>",
+    "text": "每當一名友方手下死亡時，獲得其最大體質<i>(每場戰鬥觸發一次)</i>",
     "tech_level": 2,
     "races": [
       "UNDEAD"
@@ -4361,7 +4361,7 @@
   {
     "id": "BG25_HERO_103_Buddy_G",
     "name": "幽暗靈體",
-    "text": "當一名友方手下死亡時，獲得其最大體質<i>(每場戰鬥觸發兩次)</i>",
+    "text": "每當一名友方手下死亡時，獲得其最大體質<i>(每場戰鬥觸發兩次)</i>",
     "tech_level": 2,
     "races": [
       "UNDEAD"
@@ -4609,7 +4609,7 @@
       "BATTLECRY",
       "DEATHRATTLE"
     ],
-    "in_pool": false
+    "in_pool": true
   },
   {
     "id": "BG31_801_G",
@@ -5154,7 +5154,7 @@
     "mechanics": [
       "TRIGGER_VISUAL"
     ],
-    "in_pool": true
+    "in_pool": false
   },
   {
     "id": "BG25_040_G",
@@ -6584,6 +6584,36 @@
     "in_pool": false
   },
   {
+    "id": "BG26_524",
+    "name": "『舞動王子』莫克札",
+    "text": "每回合有兩次消耗生命值，而非金幣的<b>重置</b> <i>（還剩2次！）</i>",
+    "tech_level": 3,
+    "races": [
+      "DEMON"
+    ],
+    "attack": 2,
+    "health": 1,
+    "mechanics": [
+      "TRIGGER_VISUAL"
+    ],
+    "in_pool": true
+  },
+  {
+    "id": "BG26_524_G",
+    "name": "『舞動王子』莫克札",
+    "text": "每回合有四次消耗生命值，而非金幣的<b>重置</b> <i>（還剩4次！）</i>",
+    "tech_level": 3,
+    "races": [
+      "DEMON"
+    ],
+    "attack": 4,
+    "health": 2,
+    "mechanics": [
+      "TRIGGER_VISUAL"
+    ],
+    "in_pool": false
+  },
+  {
     "id": "BG34_405",
     "name": "不懈偏斜者",
     "text": "若此手下擁有<b>聖盾術</b>時， 擁有<b>嘲諷</b>。<b>報復(3)：</b>獲得<b>聖盾術</b>",
@@ -6823,7 +6853,7 @@
       "BATTLECRY",
       "DEATHRATTLE"
     ],
-    "in_pool": false
+    "in_pool": true
   },
   {
     "id": "BG33_894_G",
@@ -7062,7 +7092,7 @@
     "attack": 3,
     "health": 3,
     "mechanics": [],
-    "in_pool": true
+    "in_pool": false
   },
   {
     "id": "BG25_520_G",
@@ -7568,7 +7598,7 @@
     "mechanics": [
       "DEATHRATTLE"
     ],
-    "in_pool": false
+    "in_pool": true
   },
   {
     "id": "BG32_842_G",
@@ -10161,11 +10191,11 @@
       "QUILBOAR"
     ],
     "attack": 5,
-    "health": 2,
+    "health": 3,
     "mechanics": [
       "BATTLECRY"
     ],
-    "in_pool": false
+    "in_pool": true
   },
   {
     "id": "BG34_683_G",
@@ -10176,7 +10206,7 @@
       "QUILBOAR"
     ],
     "attack": 10,
-    "health": 4,
+    "health": 6,
     "mechanics": [
       "BATTLECRY"
     ],
@@ -10735,7 +10765,7 @@
     "mechanics": [
       "TRIGGER_VISUAL"
     ],
-    "in_pool": true
+    "in_pool": false
   },
   {
     "id": "BG32_860",
@@ -10748,7 +10778,7 @@
     "attack": 4,
     "health": 4,
     "mechanics": [],
-    "in_pool": true
+    "in_pool": false
   },
   {
     "id": "BG32_860_G",
@@ -13054,36 +13084,6 @@
     "in_pool": false
   },
   {
-    "id": "BG26_524",
-    "name": "『舞動王子』莫克札",
-    "text": "每回合有兩次消耗生命值，而非金幣的<b>重置</b> <i>（還剩2次！）</i>",
-    "tech_level": 4,
-    "races": [
-      "DEMON"
-    ],
-    "attack": 5,
-    "health": 4,
-    "mechanics": [
-      "TRIGGER_VISUAL"
-    ],
-    "in_pool": true
-  },
-  {
-    "id": "BG26_524_G",
-    "name": "『舞動王子』莫克札",
-    "text": "每回合有四次消耗生命值，而非金幣的<b>重置</b> <i>（還剩4次！）</i>",
-    "tech_level": 4,
-    "races": [
-      "DEMON"
-    ],
-    "attack": 10,
-    "health": 8,
-    "mechanics": [
-      "TRIGGER_VISUAL"
-    ],
-    "in_pool": false
-  },
-  {
     "id": "BG23_HERO_305_Buddy",
     "name": "『蠟滴』瓦蠟雷德",
     "text": "<b><b>戰吼：</b>重置</b>旅店為每位對手陣容中旅店等級最高的手下",
@@ -13185,7 +13185,7 @@
       "BACON_SPELLCRAFT_ID",
       "TRIGGER_VISUAL"
     ],
-    "in_pool": true
+    "in_pool": false
   },
   {
     "id": "BG23_007_G",
@@ -13247,7 +13247,7 @@
       "DIVINE_SHIELD",
       "TRIGGER_VISUAL"
     ],
-    "in_pool": true
+    "in_pool": false
   },
   {
     "id": "BG31_812_G",
@@ -13447,12 +13447,12 @@
     "races": [
       "QUILBOAR"
     ],
-    "attack": 5,
-    "health": 3,
+    "attack": 6,
+    "health": 2,
     "mechanics": [
       "DEATHRATTLE"
     ],
-    "in_pool": false
+    "in_pool": true
   },
   {
     "id": "BG34_682_G",
@@ -13462,8 +13462,8 @@
     "races": [
       "QUILBOAR"
     ],
-    "attack": 10,
-    "health": 6,
+    "attack": 12,
+    "health": 4,
     "mechanics": [
       "DEATHRATTLE"
     ],
@@ -13850,7 +13850,7 @@
       "DEATHRATTLE",
       "TAUNT"
     ],
-    "in_pool": true
+    "in_pool": false
   },
   {
     "id": "BG35_122_G",
@@ -14782,7 +14782,7 @@
     "mechanics": [
       "BATTLECRY"
     ],
-    "in_pool": false
+    "in_pool": true
   },
   {
     "id": "BG32_841_G",
@@ -15784,7 +15784,7 @@
   {
     "id": "BG30_117",
     "name": "火山遊客",
-    "text": "<b>造法：二選一：</b>賦予你的手下+3攻擊力或+3生命值",
+    "text": "<b><b>造法：</b>二選一：</b>賦予你的手下+4攻擊力或+4生命值",
     "tech_level": 4,
     "races": [
       "NAGA"
@@ -15795,12 +15795,12 @@
       "BACON_SPELLCRAFT_ID",
       "TRIGGER_VISUAL"
     ],
-    "in_pool": false
+    "in_pool": true
   },
   {
     "id": "BG30_117_G",
     "name": "火山遊客",
-    "text": "<b>造法：二選一：</b>賦予你的手下+6攻擊力或+6生命值",
+    "text": "<b><b>造法：</b>二選一：</b>賦予你的手下+8攻擊力或+8生命值",
     "tech_level": 4,
     "races": [
       "NAGA"
@@ -16431,7 +16431,7 @@
     "mechanics": [
       "BATTLECRY"
     ],
-    "in_pool": false
+    "in_pool": true
   },
   {
     "id": "BG29_503_G",
@@ -17093,7 +17093,7 @@
     "mechanics": [
       "TRIGGER_VISUAL"
     ],
-    "in_pool": false
+    "in_pool": true
   },
   {
     "id": "BG33_155_G",
@@ -17466,7 +17466,7 @@
     "mechanics": [
       "BACON_RALLY"
     ],
-    "in_pool": true
+    "in_pool": false
   },
   {
     "id": "BG33_840_G",
@@ -17700,7 +17700,7 @@
     "mechanics": [
       "TRIGGER_VISUAL"
     ],
-    "in_pool": true
+    "in_pool": false
   },
   {
     "id": "BG35_434_G",
@@ -17997,7 +17997,7 @@
       "DEATHRATTLE",
       "TAUNT"
     ],
-    "in_pool": false
+    "in_pool": true
   },
   {
     "id": "BG33_156_G",
@@ -18337,7 +18337,7 @@
   {
     "id": "BGS_104",
     "name": "『廚房夢魘』糯米",
-    "text": "在你打出元素後，在本賽局中賦予旅店的元素+3/+3",
+    "text": "在你打出元素後，在本賽局中賦予旅店的元素+4/+4",
     "tech_level": 5,
     "races": [],
     "attack": 6,
@@ -18345,7 +18345,7 @@
     "mechanics": [
       "TRIGGER_VISUAL"
     ],
-    "in_pool": false
+    "in_pool": true
   },
   {
     "id": "BG28_551",
@@ -18926,28 +18926,28 @@
   {
     "id": "BG26_162",
     "name": "勁舞穀倉風暴",
-    "text": "<b>戰吼及死亡之聲：</b>在本賽局中，賦予旅店中的元素+4/+4",
+    "text": "<b>戰吼及死亡之聲：</b>在本賽局中，賦予旅店中的元素+8/+8",
     "tech_level": 5,
     "races": [
       "ELEMENTAL"
     ],
-    "attack": 5,
+    "attack": 4,
     "health": 4,
     "mechanics": [
       "BATTLECRY",
       "DEATHRATTLE"
     ],
-    "in_pool": false
+    "in_pool": true
   },
   {
     "id": "BG26_162_G",
     "name": "勁舞穀倉風暴",
-    "text": "<b>戰吼及死亡之聲：</b>在本賽局中，賦予旅店中的元素+4/+4兩次",
+    "text": "<b>戰吼及死亡之聲：</b>在本賽局中，賦予旅店中的元素+8/+8兩次",
     "tech_level": 5,
     "races": [
       "ELEMENTAL"
     ],
-    "attack": 10,
+    "attack": 8,
     "health": 8,
     "mechanics": [
       "BATTLECRY",
@@ -19091,6 +19091,38 @@
     "attack": 12,
     "health": 12,
     "mechanics": [
+      "TRIGGER_VISUAL"
+    ],
+    "in_pool": false
+  },
+  {
+    "id": "BG35_895",
+    "name": "喚潮者先知",
+    "text": "本回合你的旅店法術額外賦予+1/+1。在你打出2個魚人後，強化此效果 <i>(還差2個！)</i>",
+    "tech_level": 5,
+    "races": [
+      "MURLOC"
+    ],
+    "attack": 5,
+    "health": 6,
+    "mechanics": [
+      "AURA",
+      "TRIGGER_VISUAL"
+    ],
+    "in_pool": true
+  },
+  {
+    "id": "BG35_895_G",
+    "name": "喚潮者先知",
+    "text": "本回合你的旅店法術額外賦予+2/+2。在你打出2個魚人後，強化此效果 <i>(還差2個！)</i>",
+    "tech_level": 5,
+    "races": [
+      "MURLOC"
+    ],
+    "attack": 10,
+    "health": 12,
+    "mechanics": [
+      "AURA",
       "TRIGGER_VISUAL"
     ],
     "in_pool": false
@@ -19278,6 +19310,36 @@
     "in_pool": false
   },
   {
+    "id": "BG28_308",
+    "name": "大巫妖科爾蘇加德",
+    "text": "在你的回合結束時，摧毀這個手下左側的不死族並重新召喚它的相同複製品",
+    "tech_level": 5,
+    "races": [
+      "UNDEAD"
+    ],
+    "attack": 10,
+    "health": 8,
+    "mechanics": [
+      "END_OF_TURN_TRIGGER"
+    ],
+    "in_pool": true
+  },
+  {
+    "id": "BG28_308_G",
+    "name": "大巫妖科爾蘇加德",
+    "text": "在你的回合結束時，摧毀這個手下兩側的不死族並重新召喚它們的相同複製品",
+    "tech_level": 5,
+    "races": [
+      "UNDEAD"
+    ],
+    "attack": 20,
+    "health": 16,
+    "mechanics": [
+      "END_OF_TURN_TRIGGER"
+    ],
+    "in_pool": false
+  },
+  {
     "id": "BG33_114",
     "name": "天譴收割者",
     "text": "你在戰鬥中 召喚不死族後，獲得其體質",
@@ -19425,7 +19487,7 @@
     "mechanics": [
       "BATTLECRY"
     ],
-    "in_pool": true
+    "in_pool": false
   },
   {
     "id": "BG25_155_G",
@@ -19594,7 +19656,7 @@
     "mechanics": [
       "TRIGGER_VISUAL"
     ],
-    "in_pool": true
+    "in_pool": false
   },
   {
     "id": "BG28_905_G",
@@ -19979,7 +20041,7 @@
     "mechanics": [
       "TRIGGER_VISUAL"
     ],
-    "in_pool": false
+    "in_pool": true
   },
   {
     "id": "BG28_633_G",
@@ -20042,7 +20104,7 @@
     "mechanics": [
       "TRIGGER_VISUAL"
     ],
-    "in_pool": true
+    "in_pool": false
   },
   {
     "id": "BG26_523_G",
@@ -23358,7 +23420,7 @@
       "END_OF_TURN_TRIGGER",
       "TRIGGER_VISUAL"
     ],
-    "in_pool": false
+    "in_pool": true
   },
   {
     "id": "BG26_199_G",
@@ -23629,7 +23691,7 @@
     "mechanics": [
       "TRIGGER_VISUAL"
     ],
-    "in_pool": true
+    "in_pool": false
   },
   {
     "id": "BG28_707_G",
@@ -24623,7 +24685,7 @@
   {
     "id": "BG24_005",
     "name": "罪奔者布蘭契",
-    "text": "<b>重生</b> 此手下<b>重生</b>後擁有完整體質和<b>額外關鍵字</b>",
+    "text": "<b>重生</b> 此手下<b>重生</b>後擁有完整體質和<b><b>額外關鍵字</b></b>",
     "tech_level": 5,
     "races": [
       "UNDEAD",
@@ -24634,7 +24696,7 @@
     "mechanics": [
       "REBORN"
     ],
-    "in_pool": true
+    "in_pool": false
   },
   {
     "id": "BG24_005_G",
@@ -25136,7 +25198,7 @@
     "mechanics": [
       "DEATHRATTLE"
     ],
-    "in_pool": false
+    "in_pool": true
   },
   {
     "id": "BG29_862_G",
@@ -25432,36 +25494,6 @@
     "in_pool": false
   },
   {
-    "id": "BG32_846",
-    "name": "釋放的法力湧流",
-    "text": "在你打出元素後，賦予你的元素+2/+2",
-    "tech_level": 5,
-    "races": [
-      "ELEMENTAL"
-    ],
-    "attack": 5,
-    "health": 4,
-    "mechanics": [
-      "TRIGGER_VISUAL"
-    ],
-    "in_pool": false
-  },
-  {
-    "id": "BG32_846_G",
-    "name": "釋放的法力湧流",
-    "text": "在你打出元素後，賦予你的元素+2/+2兩次",
-    "tech_level": 5,
-    "races": [
-      "ELEMENTAL"
-    ],
-    "attack": 10,
-    "health": 8,
-    "mechanics": [
-      "TRIGGER_VISUAL"
-    ],
-    "in_pool": false
-  },
-  {
     "id": "BG33_888",
     "name": "野豬看守者",
     "text": "<b>戰吼：</b>獲得一個可同時賦予野豬人<b>聖盾術</b>的<b>鮮血寶石</b>",
@@ -25674,6 +25706,36 @@
     "in_pool": false
   },
   {
+    "id": "BG35_890",
+    "name": "靈巧發明家",
+    "text": "<b>死亡之聲：</b>本次戰鬥中你的機械獲得+2攻擊力 <i>(依你本賽局<b>合體</b>的次數提升！)</i>",
+    "tech_level": 5,
+    "races": [
+      "MECHANICAL"
+    ],
+    "attack": 9,
+    "health": 4,
+    "mechanics": [
+      "DEATHRATTLE"
+    ],
+    "in_pool": true
+  },
+  {
+    "id": "BG35_890_G",
+    "name": "靈巧發明家",
+    "text": "<b>死亡之聲：</b>本次戰鬥中你的機械獲得+4攻擊力 <i>(依你本賽局<b>合體</b>的次數提升！)</i>",
+    "tech_level": 5,
+    "races": [
+      "MECHANICAL"
+    ],
+    "attack": 18,
+    "health": 8,
+    "mechanics": [
+      "DEATHRATTLE"
+    ],
+    "in_pool": false
+  },
+  {
     "id": "BG33_244",
     "name": "靈活幼龍",
     "text": "<b>戰吼：</b>獲得一張靈活振翼",
@@ -25716,7 +25778,7 @@
     "mechanics": [
       "DEATHRATTLE"
     ],
-    "in_pool": false
+    "in_pool": true
   },
   {
     "id": "BG31_809_G",
@@ -25924,7 +25986,7 @@
     "mechanics": [
       "TRIGGER_VISUAL"
     ],
-    "in_pool": false
+    "in_pool": true
   },
   {
     "id": "BG29_840_G",
@@ -26275,7 +26337,7 @@
     "mechanics": [
       "AVENGE"
     ],
-    "in_pool": true
+    "in_pool": false
   },
   {
     "id": "BG33_371_G",
@@ -26834,7 +26896,7 @@
     "mechanics": [
       "TRIGGER_VISUAL"
     ],
-    "in_pool": true
+    "in_pool": false
   },
   {
     "id": "BG30_102_G",
@@ -26869,7 +26931,7 @@
   {
     "id": "BG35_431",
     "name": "地歌薩滿",
-    "text": "<b>風怒</b>。在你的回合結束時，對你的全部手下打出一顆 <b>鮮血寶石</b>。然後再依此手下擁有的<b>額外關鍵字</b>數量重複施放",
+    "text": "<b>風怒</b>。在你的回合結束時，對你的手下打出一顆<b>鮮血寶石</b>。然後再依此手下擁有的 <b>額外關鍵字</b>數量重複施放",
     "tech_level": 6,
     "races": [
       "QUILBOAR"
@@ -26885,7 +26947,7 @@
   {
     "id": "BG35_431_G",
     "name": "地歌薩滿",
-    "text": "<b>風怒</b>。在你的回合結束時，對你的全部手下打出2顆 <b>鮮血寶石</b>。然後再依此手下擁有的<b>額外關鍵字</b>數量重複施放",
+    "text": "<b>風怒</b>。在你的回合結束時，對你的手下打出2顆<b>鮮血寶石</b>。然後再依此手下擁有的 <b>額外關鍵字</b>數量重複施放",
     "tech_level": 6,
     "races": [
       "QUILBOAR"
@@ -26961,36 +27023,6 @@
     "in_pool": false
   },
   {
-    "id": "BG28_308",
-    "name": "大巫妖科爾蘇加德",
-    "text": "在你的回合結束時，摧毀這個手下左側的不死族並重新召喚它的相同複製品",
-    "tech_level": 6,
-    "races": [
-      "UNDEAD"
-    ],
-    "attack": 10,
-    "health": 8,
-    "mechanics": [
-      "END_OF_TURN_TRIGGER"
-    ],
-    "in_pool": false
-  },
-  {
-    "id": "BG28_308_G",
-    "name": "大巫妖科爾蘇加德",
-    "text": "在你的回合結束時，摧毀這個手下兩側的不死族並重新召喚它們的相同複製品",
-    "tech_level": 6,
-    "races": [
-      "UNDEAD"
-    ],
-    "attack": 20,
-    "health": 16,
-    "mechanics": [
-      "END_OF_TURN_TRIGGER"
-    ],
-    "in_pool": false
-  },
-  {
     "id": "BG20_304",
     "name": "大德魯伊哈繆爾",
     "text": "<b>戰吼：</b>以你數量最多的手下類型<b>重置</b>旅店",
@@ -27029,7 +27061,7 @@
     "mechanics": [
       "TRIGGER_VISUAL"
     ],
-    "in_pool": false
+    "in_pool": true
   },
   {
     "id": "BG31_820_G",
@@ -27235,7 +27267,7 @@
     "mechanics": [
       "TRIGGER_VISUAL"
     ],
-    "in_pool": false
+    "in_pool": true
   },
   {
     "id": "BG33_920_G",
@@ -27675,6 +27707,38 @@
     "in_pool": false
   },
   {
+    "id": "BG34_765",
+    "name": "死海劫毀者",
+    "text": "<b>奮戰：</b>賦予其他3個友方手下此手下的 攻擊力",
+    "tech_level": 6,
+    "races": [
+      "UNDEAD",
+      "PIRATE"
+    ],
+    "attack": 5,
+    "health": 5,
+    "mechanics": [
+      "BACON_RALLY"
+    ],
+    "in_pool": true
+  },
+  {
+    "id": "BG34_765_G",
+    "name": "死海劫毀者",
+    "text": "<b>奮戰：</b>賦予其他3個友方手下此手下的 攻擊力兩次",
+    "tech_level": 6,
+    "races": [
+      "UNDEAD",
+      "PIRATE"
+    ],
+    "attack": 10,
+    "health": 10,
+    "mechanics": [
+      "BACON_RALLY"
+    ],
+    "in_pool": false
+  },
+  {
     "id": "BG33_154",
     "name": "毀壞領主",
     "text": "在友方惡魔造成傷害後，賦予該惡魔之外的友方手下+2/+1",
@@ -27687,7 +27751,7 @@
     "mechanics": [
       "TRIGGER_VISUAL"
     ],
-    "in_pool": false
+    "in_pool": true
   },
   {
     "id": "BG33_154_G",
@@ -27811,7 +27875,7 @@
     "mechanics": [
       "TRIGGER_VISUAL"
     ],
-    "in_pool": true
+    "in_pool": false
   },
   {
     "id": "BG23_013_G",
@@ -28201,7 +28265,7 @@
     "mechanics": [
       "TRIGGER_VISUAL"
     ],
-    "in_pool": false
+    "in_pool": true
   },
   {
     "id": "BG33_923_G",
@@ -28310,7 +28374,7 @@
       "START_OF_COMBAT",
       "TRIGGER_VISUAL"
     ],
-    "in_pool": true
+    "in_pool": false
   },
   {
     "id": "BG31_810_G",
@@ -28341,7 +28405,7 @@
     "mechanics": [
       "DEATHRATTLE"
     ],
-    "in_pool": false
+    "in_pool": true
   },
   {
     "id": "BG32_204_G",
@@ -28403,7 +28467,7 @@
     "mechanics": [
       "DEATHRATTLE"
     ],
-    "in_pool": true
+    "in_pool": false
   },
   {
     "id": "BG33_828_G",
@@ -28507,7 +28571,7 @@
     "mechanics": [
       "TRIGGER_VISUAL"
     ],
-    "in_pool": false
+    "in_pool": true
   },
   {
     "id": "BG29_841_G",
@@ -28627,7 +28691,7 @@
     "mechanics": [
       "TRIGGER_VISUAL"
     ],
-    "in_pool": true
+    "in_pool": false
   },
   {
     "id": "BG31_871_G",
@@ -28903,6 +28967,36 @@
     ],
     "attack": 16,
     "health": 16,
+    "mechanics": [
+      "TRIGGER_VISUAL"
+    ],
+    "in_pool": false
+  },
+  {
+    "id": "BG32_846",
+    "name": "釋放的法力湧流",
+    "text": "在你打出元素後，賦予你的元素+4/+4",
+    "tech_level": 6,
+    "races": [
+      "ELEMENTAL"
+    ],
+    "attack": 6,
+    "health": 5,
+    "mechanics": [
+      "TRIGGER_VISUAL"
+    ],
+    "in_pool": true
+  },
+  {
+    "id": "BG32_846_G",
+    "name": "釋放的法力湧流",
+    "text": "在你打出元素後，賦予你的元素+4/+4兩次",
+    "tech_level": 6,
+    "races": [
+      "ELEMENTAL"
+    ],
+    "attack": 12,
+    "health": 10,
     "mechanics": [
       "TRIGGER_VISUAL"
     ],
@@ -29458,7 +29552,7 @@
   {
     "id": "BG33_240",
     "name": "魅翼",
-    "text": "<b>奮戰：</b>賦予2個友方龍類此手下的生命值<i>(魅翼除外)</i>",
+    "text": "<b>奮戰：</b>賦予2個友方龍類此手下的生命值上限<i>(魅翼除外)</i>",
     "tech_level": 6,
     "races": [
       "DRAGON"
@@ -29468,12 +29562,12 @@
     "mechanics": [
       "BACON_RALLY"
     ],
-    "in_pool": false
+    "in_pool": true
   },
   {
     "id": "BG33_240_G",
     "name": "魅翼",
-    "text": "<b>奮戰：</b>賦予2個友方龍類此手下的生命值兩次 <i>(魅翼除外)</i>",
+    "text": "<b>奮戰：</b>賦予2個友方龍類此手下的生命值上限兩次<i>(魅翼除外)</i>",
     "tech_level": 6,
     "races": [
       "DRAGON"
@@ -29684,7 +29778,7 @@
       "DEATHRATTLE",
       "TAUNT"
     ],
-    "in_pool": true
+    "in_pool": false
   },
   {
     "id": "BG29_815_G",

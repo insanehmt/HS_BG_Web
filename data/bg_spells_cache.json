@@ -996,7 +996,7 @@
     "tech_level": 3,
     "set": "BATTLEGROUNDS",
     "cost": 1,
-    "in_pool": false,
+    "in_pool": true,
     "timewarp": false,
     "related_card": null
   },
