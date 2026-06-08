@@ -769,44 +769,85 @@ def api_check_version():
 
 
 def _git_push_data():
-    """Commit changed data/ files and push to GitHub via GITHUB_PAT env var."""
-    import subprocess, datetime as _dt
-    repo_dir = os.path.join(os.path.dirname(__file__), "..")
+    """Commit changed data/ files and push to GitHub via GitHub API (no git CLI needed)."""
+    import datetime as _dt, base64, json as _json
+    import urllib.request as _urlreq, urllib.error as _urlerr
+
     pat = os.environ.get("GITHUB_PAT", "")
     if not pat:
         return {"pushed": False, "reason": "GITHUB_PAT not set"}
 
-    # Check for changes in data/
-    diff = subprocess.run(
-        ["git", "diff", "--name-only", "--", "data/"],
-        cwd=repo_dir, capture_output=True, text=True
-    )
-    changed = [l for l in diff.stdout.strip().splitlines() if l.startswith("data/")]
-    if not changed:
-        return {"pushed": False, "reason": "no changes"}
+    repo = "insanehmt/HS_BG_Web"
+    data_dir = os.path.join(os.path.dirname(__file__), "..", "data")
+    api_base = f"https://api.github.com/repos/{repo}/contents"
+    headers = {
+        "Authorization": f"token {pat}",
+        "Accept": "application/vnd.github.v3+json",
+        "Content-Type": "application/json",
+        "User-Agent": "HS-BG-App",
+    }
 
-    # Stage data/
-    subprocess.run(["git", "add", "--", "data/"], cwd=repo_dir)
+    def gh_get(path):
+        req = _urlreq.Request(f"{api_base}/{path}", headers=headers)
+        with _urlreq.urlopen(req, timeout=30) as r:
+            return _json.loads(r.read())
 
-    # Commit
+    def gh_put(path, content_bytes, sha, message):
+        body = _json.dumps({
+            "message": message,
+            "content": base64.b64encode(content_bytes).decode(),
+            "sha": sha,
+        }).encode()
+        req = _urlreq.Request(f"{api_base}/{path}", data=body, headers=headers, method="PUT")
+        with _urlreq.urlopen(req, timeout=60) as r:
+            return _json.loads(r.read())
+
+    # Files to sync
+    data_files = ["bg_minions_cache.json", "bg_spells_cache.json",
+                  "bg_trinkets_cache.json", "bg_heroes_cache.json", "bg_config.json"]
+
     now = _dt.datetime.now().strftime("%Y-%m-%d %H:%M")
-    subprocess.run([
-        "git", "-c", "user.email=ryanh74@gmail.com",
-        "-c", "user.name=insanehmt",
-        "commit", "-m", f"auto: 更新排庫 {now} ({len(changed)} files)"
-    ], cwd=repo_dir, capture_output=True, text=True)
+    pushed = []
+    skipped = []
 
-    # Push
-    push = subprocess.run([
-        "git", "push",
-        f"https://insanehmt:{pat}@github.com/insanehmt/HS_BG_Web.git",
-        "HEAD:main"
-    ], cwd=repo_dir, capture_output=True, text=True)
+    for fname in data_files:
+        local_path = os.path.join(data_dir, fname)
+        if not os.path.exists(local_path):
+            continue
+        with open(local_path, "rb") as f:
+            local_bytes = f.read()
+
+        try:
+            remote = gh_get(f"data/{fname}")
+            remote_content = base64.b64decode(remote["content"].replace("\n", ""))
+            if local_bytes == remote_content:
+                skipped.append(fname)
+                continue
+            gh_put(f"data/{fname}", local_bytes, remote["sha"],
+                   f"auto: 更新排庫 {now} - {fname}")
+            pushed.append(fname)
+        except _urlerr.HTTPError as e:
+            if e.code == 404:
+                # File doesn't exist yet — create it (sha not needed for new files)
+                body = _json.dumps({
+                    "message": f"auto: 新增 {fname} {now}",
+                    "content": base64.b64encode(local_bytes).decode(),
+                }).encode()
+                req = _urlreq.Request(f"{api_base}/data/{fname}", data=body,
+                                      headers=headers, method="PUT")
+                with _urlreq.urlopen(req, timeout=60):
+                    pass
+                pushed.append(fname)
+            else:
+                skipped.append(f"{fname}(err{e.code})")
+
+    if not pushed:
+        return {"pushed": False, "reason": "no changes", "skipped": skipped}
 
     return {
-        "pushed": push.returncode == 0,
-        "files": changed,
-        "output": (push.stdout + push.stderr).strip()
+        "pushed": True,
+        "files": pushed,
+        "skipped": skipped,
     }
 
 
