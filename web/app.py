@@ -823,23 +823,31 @@ def _git_push_data():
             if local_bytes == remote_content:
                 skipped.append(fname)
                 continue
-            gh_put(f"data/{fname}", local_bytes, remote["sha"],
-                   f"auto: 更新排庫 {now} - {fname}")
-            pushed.append(fname)
+            try:
+                gh_put(f"data/{fname}", local_bytes, remote["sha"],
+                       f"auto: 更新排庫 {now} - {fname}")
+                pushed.append(fname)
+            except Exception as put_err:
+                skipped.append(f"{fname}(put_err: {put_err})")
         except _urlerr.HTTPError as e:
             if e.code == 404:
                 # File doesn't exist yet — create it (sha not needed for new files)
-                body = _json.dumps({
-                    "message": f"auto: 新增 {fname} {now}",
-                    "content": base64.b64encode(local_bytes).decode(),
-                }).encode()
-                req = _urlreq.Request(f"{api_base}/data/{fname}", data=body,
-                                      headers=headers, method="PUT")
-                with _urlreq.urlopen(req, timeout=60):
-                    pass
-                pushed.append(fname)
+                try:
+                    body = _json.dumps({
+                        "message": f"auto: 新增 {fname} {now}",
+                        "content": base64.b64encode(local_bytes).decode(),
+                    }).encode()
+                    req = _urlreq.Request(f"{api_base}/data/{fname}", data=body,
+                                          headers=headers, method="PUT")
+                    with _urlreq.urlopen(req, timeout=60):
+                        pass
+                    pushed.append(fname)
+                except Exception as create_err:
+                    skipped.append(f"{fname}(create_err: {create_err})")
             else:
                 skipped.append(f"{fname}(err{e.code})")
+        except Exception as e:
+            skipped.append(f"{fname}(err: {e})")
 
     if not pushed:
         return {"pushed": False, "reason": "no changes", "skipped": skipped}
@@ -853,6 +861,9 @@ def _git_push_data():
 
 @app.route("/api/update-cards", methods=["POST"])
 def api_update_cards():
+    token = request.headers.get("X-Admin-Token", "")
+    if not ADMIN_TOKEN or token != ADMIN_TOKEN:
+        return jsonify({"success": False, "error": "Unauthorized"}), 403
     import subprocess, re as _re, datetime as _dt
     raw_path = os.path.join(os.path.dirname(__file__), "..", "data", "cards_zhtw_raw.json")
 
@@ -1145,6 +1156,9 @@ def api_tier_list_edit(comp_id):
 @app.route("/api/scrape-comps", methods=["POST"])
 def api_scrape_comps():
     """用 Playwright 從 Firestone 抓取最新牌組數據並更新 bg_comps.json。"""
+    token = request.headers.get("X-Admin-Token", "")
+    if not ADMIN_TOKEN or token != ADMIN_TOKEN:
+        return jsonify({"success": False, "error": "Unauthorized"}), 403
     import sys, gzip as gz, traceback
 
     try:
@@ -2220,16 +2234,22 @@ def api_push_data():
     if not files:
         return jsonify({"success": False, "error": "未包含任何檔案"}), 400
 
+    # Guard against oversized payloads (each file capped at 10 MB serialised)
+    _MAX_FILE_BYTES = 10 * 1024 * 1024
     updated = []
     skipped = []
     for fname, content in files.items():
         if fname not in _SYNC_ALLOWED:
             skipped.append(fname)
             continue
+        serialised = json.dumps(content, ensure_ascii=False, indent=2)
+        if len(serialised.encode()) > _MAX_FILE_BYTES:
+            skipped.append(f"{fname}(too large)")
+            continue
         target = os.path.join(_DATA_DIR, fname)
         os.makedirs(os.path.dirname(target), exist_ok=True)
         with open(target, "w", encoding="utf-8") as f:
-            json.dump(content, f, ensure_ascii=False, indent=2)
+            f.write(serialised)
         updated.append(fname)
 
     return jsonify({

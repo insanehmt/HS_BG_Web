@@ -30,14 +30,18 @@
 </style>
 </head>
 <body x-data="{
-  token: '{{ token }}',
+  token: {{ token | tojson }},
   updateLoading: false, updateResult: null, updateError: false,
   scrapeLoading: false, scrapeResult: null, scrapeError: false,
+
+  authHeaders() {
+    return {'Content-Type': 'application/json', 'X-Admin-Token': this.token};
+  },
 
   async updateCards() {
     this.updateLoading = true; this.updateResult = null;
     try {
-      const r = await fetch('/api/update-cards', {method:'POST'});
+      const r = await fetch('/api/update-cards', {method:'POST', headers: this.authHeaders()});
       const d = await r.json();
       this.updateError = !d.success;
       if (d.success) {
@@ -63,7 +67,7 @@
   async scrapeFirestone() {
     this.scrapeLoading = true; this.scrapeResult = null;
     try {
-      const r = await fetch('/api/scrape-comps', {method:'POST'});
+      const r = await fetch('/api/scrape-comps', {method:'POST', headers: this.authHeaders()});
       const d = await r.json();
       this.scrapeError = !d.success;
       this.scrapeResult = d.success ? `更新 ${d.updated} 套，新增 ${d.added} 套` : (d.error || '失敗');
