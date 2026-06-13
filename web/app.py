@@ -1064,10 +1064,8 @@ def api_update_cards():
             continue
         if not name or cid in seen_ids:
             continue
-        # Skip token variants (IDs ending with t, t2 … t10)
-        if re.search(r"t\d*$", cid):
-            continue
-        # Skip duplicate names (keep earliest ID alphabetically)
+        # Skip duplicate names (seen_names dedup is sufficient; ID-based token filter
+        # incorrectly removes cards like BG34_Anomaly_800t which are real named cards)
         if name in seen_names:
             continue
         duo = cid.startswith("BGDUO")
