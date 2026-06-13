@@ -897,7 +897,7 @@ def api_update_cards():
     for card in all_cards:
         cid  = card.get("id", "")
         name = card.get("name", "")
-        if not ((cid.startswith("BG") or cid.startswith("BGS_")) and
+        if not ((cid.startswith("BG") or cid.startswith("BGS_") or cid.startswith("EBG_")) and
                 card.get("type") == "MINION" and
                 name and
                 cid not in seen):
@@ -932,7 +932,8 @@ def api_update_cards():
     for card in all_cards:
         cid = card.get("id", "")
         ctype = card.get("type", "")
-        if not (cid.startswith("BG") and
+        # 接受 BG_ 和 EBG_ 前綴（EBG_ 是新一批戰場法術）
+        if not ((cid.startswith("BG") or cid.startswith("EBG_")) and
                 ctype in ("SPELL", "BATTLEGROUND_SPELL") and
                 card.get("techLevel") and
                 card.get("name") and
