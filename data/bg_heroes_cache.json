@@ -1,0 +1,1307 @@
+[
+  {
+    "id": "BG20_HERO_100",
+    "name": "洛卡菈",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_100_SKIN_A4",
+    "name": "秘法戰士洛卡菈",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_100_SKIN_B",
+    "name": "莫卡菈",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_100_SKIN_C",
+    "name": "柯基跑者洛卡菈",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_100_SKIN_D",
+    "name": "搖滾樂手洛卡菈",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_100_SKIN_E",
+    "name": "守護者洛卡菈",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_100_SKIN_F",
+    "name": "競技場冠軍洛卡菈",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_100_SKIN_G",
+    "name": "探險者洛卡菈",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_101",
+    "name": "賽瑞菈",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_101_SKIN_A",
+    "name": "星際賽瑞菈",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_101_SKIN_B",
+    "name": "伊萊克騎手賽瑞菈",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_101_SKIN_C",
+    "name": "風雅時尚賽瑞菈",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_101_SKIN_D2",
+    "name": "節慶守護者賽瑞菈",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_101_SKIN_E4",
+    "name": "彌達勇士賽瑞菈",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_101_SKIN_F",
+    "name": "聖光守衛者賽瑞菈",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_101_SKIN_G",
+    "name": "長髮公主賽瑞菈",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_101_SKIN_H",
+    "name": "曼那瑞賽瑞菈",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_102",
+    "name": "薩魯法爾霸王",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_102_SKIN_A",
+    "name": "海軍上將薩魯法爾",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_102_SKIN_B",
+    "name": "衝鋒隊長薩魯法爾",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_102_SKIN_C",
+    "name": "關羽薩魯法爾",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_102_SKIN_D",
+    "name": "巨像龍甲薩魯法爾",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_102_SKIN_E4",
+    "name": "暗影指揮官薩魯法爾",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_103",
+    "name": "亡語者黑棘",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_103_SKIN_A",
+    "name": "潮語者黑棘",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_103_SKIN_B2",
+    "name": "明亮火把黑棘",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_103_SKIN_C4",
+    "name": "交易談判者黑棘",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_201",
+    "name": "沃金",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_201_SKIN_A",
+    "name": "酷哥沃金",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_201_SKIN_B",
+    "name": "霜狼軍官沃金",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_201_SKIN_C",
+    "name": "盲目赦免法衣沃金",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_201_SKIN_D",
+    "name": "龐克流行沃金",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_202",
+    "name": "阮大師",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_202_SKIN_A",
+    "name": "班盧阮大師",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_202_SKIN_B4",
+    "name": "神秘導師阮大師",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_202_SKIN_C",
+    "name": "太陽之井阮大師",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_202_SKIN_D",
+    "name": "MVP阮大師",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_202_SKIN_E",
+    "name": "節慶阮大師",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_202_SKIN_F",
+    "name": "亡命之徒阮大師",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_242",
+    "name": "葛夫‧符文圖騰",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_242_SKIN_A",
+    "name": "暴風城守衛葛夫",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_242_SKIN_B",
+    "name": "綠洲葛夫",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_242_SKIN_C",
+    "name": "艾克索達葛夫",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_242_SKIN_D",
+    "name": "幻光蛾葛夫",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_280",
+    "name": "克圖斯‧灰殞",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_280_SKIN_A",
+    "name": "麂皮勁裝克圖斯",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_280_SKIN_B2",
+    "name": "行火者克圖斯",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_280_SKIN_C3",
+    "name": "體面的灰殞",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_280_SKIN_D",
+    "name": "莫圖斯‧灰殞",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_280_SKIN_E",
+    "name": "槍刃克圖斯",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_282",
+    "name": "塔姆辛‧羅姆",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_282_SKIN_A",
+    "name": "舞廳塔姆辛",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_282_SKIN_B",
+    "name": "跳舞的塔姆辛",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_282_SKIN_C4",
+    "name": "暗影法師塔姆辛",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_282_SKIN_D",
+    "name": "叛徒塔姆辛",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_282_SKIN_E",
+    "name": "駭客塔姆辛",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_282_SKIN_F",
+    "name": "龍誓者塔姆辛",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_283",
+    "name": "飆翼",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_283_SKIN_A",
+    "name": "星爆飆翼",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_283_SKIN_B2",
+    "name": "火焰飆翼",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_283_SKIN_C3",
+    "name": "墓翼飆翼",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_283_SKIN_D4",
+    "name": "天空領航員飆翼",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_283_SKIN_E",
+    "name": "燈籠吊掛者飆翼",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_283_SKIN_F",
+    "name": "永恆飆翼",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_283_SKIN_G",
+    "name": "恆龍飆翼",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_301",
+    "name": "吞噬者穆坦努斯",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_301_SKIN_A",
+    "name": "石頭魚",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_301_SKIN_B",
+    "name": "大快朵頤的穆坦努斯",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_301_SKIN_C",
+    "name": "派對吃貨穆坦努斯",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_301_SKIN_D2",
+    "name": "食火者穆坦努斯",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_301_SKIN_E",
+    "name": "欠吃的穆坦努斯",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_301_SKIN_F",
+    "name": "管理者穆坦努斯",
+    "text": ""
+  },
+  {
+    "id": "BG20_HERO_301_SKIN_G",
+    "name": "城堡穆坦努斯",
+    "text": ""
+  },
+  {
+    "id": "BG21_HERO_000",
+    "name": "凱瑞爾‧羅姆",
+    "text": ""
+  },
+  {
+    "id": "BG21_HERO_000_SKIN_A",
+    "name": "飆馬凱瑞爾",
+    "text": ""
+  },
+  {
+    "id": "BG21_HERO_000_SKIN_B2",
+    "name": "火繩鏢凱瑞爾",
+    "text": ""
+  },
+  {
+    "id": "BG21_HERO_000_SKIN_C4",
+    "name": "聖光之錘凱瑞爾",
+    "text": ""
+  },
+  {
+    "id": "BG21_HERO_000_SKIN_D",
+    "name": "『天選者』凱瑞爾",
+    "text": ""
+  },
+  {
+    "id": "BG21_HERO_000_SKIN_E",
+    "name": "好皇后凱瑞爾",
+    "text": ""
+  },
+  {
+    "id": "BG21_HERO_000_SKIN_F",
+    "name": "山貓騎士凱瑞爾",
+    "text": ""
+  },
+  {
+    "id": "BG21_HERO_000_SKIN_G",
+    "name": "領袖凱瑞爾",
+    "text": ""
+  },
+  {
+    "id": "BG21_HERO_010",
+    "name": "史蓋伯斯‧油切",
+    "text": ""
+  },
+  {
+    "id": "BG21_HERO_010_SKIN_A3",
+    "name": "臥底廚師油切",
+    "text": ""
+  },
+  {
+    "id": "BG21_HERO_010_SKIN_B4",
+    "name": "星際斥候史蓋伯斯",
+    "text": ""
+  },
+  {
+    "id": "BG21_HERO_010_SKIN_C",
+    "name": "MC史蓋伯斯",
+    "text": ""
+  },
+  {
+    "id": "BG21_HERO_010_SKIN_D",
+    "name": "美食探究者史蓋伯斯",
+    "text": ""
+  },
+  {
+    "id": "BG21_HERO_020",
+    "name": "餅乾大廚",
+    "text": ""
+  },
+  {
+    "id": "BG21_HERO_020_SKIN_A2",
+    "name": "糖餅大師餅乾",
+    "text": ""
+  },
+  {
+    "id": "BG21_HERO_020_SKIN_B",
+    "name": "盛宴大廚餅乾",
+    "text": ""
+  },
+  {
+    "id": "BG21_HERO_020_SKIN_C",
+    "name": "『亞煞拉懼』餅乾",
+    "text": ""
+  },
+  {
+    "id": "BG21_HERO_020_SKIN_D",
+    "name": "餃子餅乾大廚",
+    "text": ""
+  },
+  {
+    "id": "BG21_HERO_020_SKIN_E",
+    "name": "釣魚的餅乾",
+    "text": ""
+  },
+  {
+    "id": "BG21_HERO_020_SKIN_F",
+    "name": "恆龍餅乾",
+    "text": ""
+  },
+  {
+    "id": "BG21_HERO_020_SKIN_G",
+    "name": "毒藥大師餅乾",
+    "text": ""
+  },
+  {
+    "id": "BG21_HERO_030",
+    "name": "斯尼德",
+    "text": ""
+  },
+  {
+    "id": "BG21_HERO_030_SKIN_A",
+    "name": "潛海斯尼德",
+    "text": ""
+  },
+  {
+    "id": "BG21_HERO_030_SKIN_B3",
+    "name": "罪孽石斯尼德",
+    "text": ""
+  },
+  {
+    "id": "BG21_HERO_030_SKIN_C",
+    "name": "碎骨機斯尼德",
+    "text": ""
+  },
+  {
+    "id": "BG21_HERO_030_SKIN_D",
+    "name": "戰車競速手斯尼德",
+    "text": ""
+  },
+  {
+    "id": "BG21_HERO_030_SKIN_E",
+    "name": "骯髒斯尼德",
+    "text": ""
+  },
+  {
+    "id": "BG21_HERO_030_SKIN_G",
+    "name": "神秘競速手斯尼德",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_000",
+    "name": "塔維西‧雷矛",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_000_SKIN_A",
+    "name": "斥侯隊長塔維西",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_000_SKIN_B",
+    "name": "中世紀風塔維西",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_000_SKIN_C",
+    "name": "長程射手塔維西",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_000_SKIN_D",
+    "name": "塔維西‧雨矛",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_000_SKIN_E",
+    "name": "緞帶塔維西",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_001",
+    "name": "布魯坎",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_001_SKIN_A",
+    "name": "天譴之縛布魯坎",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_001_SKIN_B",
+    "name": "『搖滾之神』布魯坎",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_001_SKIN_C",
+    "name": "祈求者布魯坎",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_001_SKIN_D",
+    "name": "林地看守者布魯坎",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_001_SKIN_E",
+    "name": "幻象布魯坎",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_002",
+    "name": "德雷克塔爾",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_002_SKIN_A",
+    "name": "迪斯可塔爾",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_002_SKIN_B",
+    "name": "天譴之狼德雷克塔爾",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_002_SKIN_C",
+    "name": "挑戰者德雷克塔爾",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_002_SKIN_D",
+    "name": "持械土匪德雷克塔爾",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_002_SKIN_E",
+    "name": "賞鳥的德雷克塔爾",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_003",
+    "name": "范達爾·雷矛",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_003_SKIN_A",
+    "name": "指揮官范達爾",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_003_SKIN_B",
+    "name": "風笛樂手范達爾",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_003_SKIN_C",
+    "name": "副警長范達爾",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_003_SKIN_D",
+    "name": "地穴工人范達爾",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_003_SKIN_E",
+    "name": "土靈范達爾",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_004",
+    "name": "瓦登‧晨握",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_004_SKIN_A",
+    "name": "晨光守護者瓦登",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_004_SKIN_B",
+    "name": "博學者瓦登",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_004_SKIN_C",
+    "name": "華爾琪瓦登",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_004_SKIN_D",
+    "name": "艾澤萊晶岩瓦登",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_004_SKIN_E",
+    "name": "反抗軍瓦登",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_004_SKIN_G",
+    "name": "反抗軍瓦登",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_007",
+    "name": "艾薩拉女王",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_007_SKIN_A",
+    "name": "仲夏節女王",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_007_SKIN_At",
+    "name": "仲夏節納迦女王",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_007_SKIN_B",
+    "name": "管理者艾薩拉",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_007_SKIN_Bt",
+    "name": "熔火艾薩拉女王",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_007_SKIN_C",
+    "name": "原生艾薩拉女王",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_007_SKIN_Ct",
+    "name": "原生納迦艾薩拉女王",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_007_SKIN_D",
+    "name": "奈幽艾薩拉女王",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_007_SKIN_Dt",
+    "name": "奈幽納迦艾薩拉女王",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_007t",
+    "name": "納迦女王艾薩拉",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_200",
+    "name": "伊尼‧風暴線圈",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_200_SKIN_A",
+    "name": "雪球大師伊尼",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_200_SKIN_B",
+    "name": "故障風格伊尼",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_200_SKIN_C",
+    "name": "鬥士戰甲伊尼",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_200_SKIN_D",
+    "name": "戶外風格伊尼",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_200_SKIN_E",
+    "name": "太空工程車伊尼",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_200_SKIN_F",
+    "name": "時光旅人伊尼",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_201",
+    "name": "費林大使",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_201_SKIN_A",
+    "name": "伯爵費林",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_201_SKIN_B",
+    "name": "白銀護衛費林",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_201_SKIN_C",
+    "name": "貴族費林",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_201_SKIN_D",
+    "name": "好國王費林",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_201_SKIN_E",
+    "name": "龐克費林",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_201_SKIN_F",
+    "name": "辛艾薩拉費林",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_305",
+    "name": "奧妮克希亞",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_305_SKIN_A4",
+    "name": "惡兆化身普瑞斯托",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_305_SKIN_B",
+    "name": "盒中巨龍奧妮克希亞",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_305_SKIN_C",
+    "name": "普瑞斯托教授",
+    "text": ""
+  },
+  {
+    "id": "BG22_HERO_305_SKIN_D",
+    "name": "希瓦爾奧妮克希亞",
+    "text": ""
+  },
+  {
+    "id": "BG23_HERO_201",
+    "name": "歐蘇瑪特",
+    "text": ""
+  },
+  {
+    "id": "BG23_HERO_201_SKIN_A",
+    "name": "『冰川懼怪』歐蘇瑪特",
+    "text": ""
+  },
+  {
+    "id": "BG23_HERO_201_SKIN_B",
+    "name": "海戰歐蘇瑪特",
+    "text": ""
+  },
+  {
+    "id": "BG23_HERO_201_SKIN_C",
+    "name": "沙漠歐蘇瑪特",
+    "text": ""
+  },
+  {
+    "id": "BG23_HERO_201_SKIN_D",
+    "name": "油沼歐蘇瑪特",
+    "text": ""
+  },
+  {
+    "id": "BG23_HERO_303",
+    "name": "魚爾摩斯",
+    "text": ""
+  },
+  {
+    "id": "BG23_HERO_303_SKIN_A",
+    "name": "哲學家魚爾摩斯",
+    "text": ""
+  },
+  {
+    "id": "BG23_HERO_303_SKIN_B",
+    "name": "警長魚爾摩斯",
+    "text": ""
+  },
+  {
+    "id": "BG23_HERO_303_SKIN_C",
+    "name": "假期魚爾摩斯",
+    "text": ""
+  },
+  {
+    "id": "BG23_HERO_303_SKIN_D",
+    "name": "洞穴探險家魚爾摩斯",
+    "text": ""
+  },
+  {
+    "id": "BG23_HERO_304",
+    "name": "瓦許女士",
+    "text": ""
+  },
+  {
+    "id": "BG23_HERO_304_SKIN_A",
+    "name": "瓦許女爵",
+    "text": ""
+  },
+  {
+    "id": "BG23_HERO_304_SKIN_B",
+    "name": "蛇語者瓦許",
+    "text": ""
+  },
+  {
+    "id": "BG23_HERO_304_SKIN_C",
+    "name": "一人樂團瓦許",
+    "text": ""
+  },
+  {
+    "id": "BG23_HERO_304_SKIN_D",
+    "name": "蛇髮瓦許",
+    "text": ""
+  },
+  {
+    "id": "BG23_HERO_304_SKIN_E",
+    "name": "瑪卓薩斯瓦許",
+    "text": ""
+  },
+  {
+    "id": "BG23_HERO_305",
+    "name": "劫匪大亨托戈瓦哥",
+    "text": ""
+  },
+  {
+    "id": "BG23_HERO_305_SKIN_A",
+    "name": "藏書大亨托戈瓦哥",
+    "text": ""
+  },
+  {
+    "id": "BG23_HERO_305_SKIN_B",
+    "name": "煙火囤積者托戈瓦哥",
+    "text": ""
+  },
+  {
+    "id": "BG23_HERO_305_SKIN_C",
+    "name": "『大巫妖』托戈瓦哥",
+    "text": ""
+  },
+  {
+    "id": "BG23_HERO_305_SKIN_D",
+    "name": "保險箱竊賊托戈瓦哥",
+    "text": ""
+  },
+  {
+    "id": "BG23_HERO_305_SKIN_E",
+    "name": "托戈瓦哥蠟燭王",
+    "text": ""
+  },
+  {
+    "id": "BG23_HERO_306",
+    "name": "希瓦娜斯‧風行者",
+    "text": "別想約她出來喝咖啡，她絕不會服從。"
+  },
+  {
+    "id": "BG24_HERO_100",
+    "name": "戴納瑟斯王",
+    "text": ""
+  },
+  {
+    "id": "BG24_HERO_100_SKIN_A",
+    "name": "舞台旋律戴納瑟斯",
+    "text": ""
+  },
+  {
+    "id": "BG24_HERO_100_SKIN_B",
+    "name": "戰車車手戴納瑟斯",
+    "text": ""
+  },
+  {
+    "id": "BG24_HERO_100_SKIN_C",
+    "name": "老大戴納瑟斯",
+    "text": ""
+  },
+  {
+    "id": "BG24_HERO_100_SKIN_D",
+    "name": "蝙蝠戴納瑟斯王",
+    "text": ""
+  },
+  {
+    "id": "BG24_HERO_100_SKIN_E",
+    "name": "首領戴納瑟斯",
+    "text": ""
+  },
+  {
+    "id": "BG24_HERO_204",
+    "name": "強化機器人",
+    "text": ""
+  },
+  {
+    "id": "BG24_HERO_204_SKIN_A",
+    "name": "音樂強化機器人",
+    "text": ""
+  },
+  {
+    "id": "BG24_HERO_204_SKIN_B",
+    "name": "鬥士強化機器人",
+    "text": ""
+  },
+  {
+    "id": "BG24_HERO_204_SKIN_C",
+    "name": "錫製機器人",
+    "text": ""
+  },
+  {
+    "id": "BG24_HERO_204_SKIN_D",
+    "name": "劫奪機器人",
+    "text": ""
+  },
+  {
+    "id": "BG24_HERO_204_SKIN_E",
+    "name": "發條機器人",
+    "text": ""
+  },
+  {
+    "id": "BG25_HERO_100",
+    "name": "普崔希德教授",
+    "text": ""
+  },
+  {
+    "id": "BG25_HERO_100_SKIN_A",
+    "name": "油料大亨普崔希德",
+    "text": ""
+  },
+  {
+    "id": "BG25_HERO_100_SKIN_B",
+    "name": "瘋帽客普崔希德",
+    "text": ""
+  },
+  {
+    "id": "BG25_HERO_100_SKIN_C",
+    "name": "古生物學家普崔西德",
+    "text": ""
+  },
+  {
+    "id": "BG25_HERO_103",
+    "name": "泰朗‧血魔",
+    "text": ""
+  },
+  {
+    "id": "BG25_HERO_103_SKIN_A",
+    "name": "擺渡人泰朗",
+    "text": ""
+  },
+  {
+    "id": "BG25_HERO_103_SKIN_B",
+    "name": "牛仔泰朗",
+    "text": ""
+  },
+  {
+    "id": "BG25_HERO_103_SKIN_C",
+    "name": "天狗泰朗",
+    "text": ""
+  },
+  {
+    "id": "BG25_HERO_103_SKIN_D",
+    "name": "幽魂泰朗",
+    "text": ""
+  },
+  {
+    "id": "BG25_HERO_105",
+    "name": "『樂團經理』精英牛頭大佬",
+    "text": ""
+  },
+  {
+    "id": "BG25_HERO_105_SKIN_A",
+    "name": "火熱牛頭大佬",
+    "text": ""
+  },
+  {
+    "id": "BG25_HERO_105_SKIN_C",
+    "name": "舞龍精英牛頭大佬",
+    "text": ""
+  },
+  {
+    "id": "BG25_HERO_105_SKIN_D",
+    "name": "『霸主經理』精英牛頭大佬",
+    "text": ""
+  },
+  {
+    "id": "BG25_HERO_105_SKIN_E",
+    "name": "L800精英牛頭大佬",
+    "text": ""
+  },
+  {
+    "id": "BG26_HERO_100_SKIN_A",
+    "name": "『搖滾之王』牛頭大佬",
+    "text": ""
+  },
+  {
+    "id": "BG26_HERO_101",
+    "name": "霍格爾船長",
+    "text": ""
+  },
+  {
+    "id": "BG26_HERO_102",
+    "name": "『鋼鐵禮頌』英格",
+    "text": ""
+  },
+  {
+    "id": "BG26_HERO_102_SKIN_A",
+    "name": "戰歌英格",
+    "text": ""
+  },
+  {
+    "id": "BG26_HERO_104",
+    "name": "搖滾大師沃恩",
+    "text": ""
+  },
+  {
+    "id": "BG27_HERO_801",
+    "name": "『風暴之王』索林姆",
+    "text": ""
+  },
+  {
+    "id": "BG27_HERO_801_SKIN_A",
+    "name": "索林姆大帝",
+    "text": ""
+  },
+  {
+    "id": "BG27_HERO_801_SKIN_C",
+    "name": "樵夫索林姆",
+    "text": ""
+  },
+  {
+    "id": "BG27_HERO_801_SKIN_D",
+    "name": "冬天爺爺索林姆",
+    "text": ""
+  },
+  {
+    "id": "BG27_HERO_801_SKIN_E",
+    "name": "飛龍騎手索林姆",
+    "text": ""
+  },
+  {
+    "id": "BG28_HERO_400",
+    "name": "蛇眼",
+    "text": ""
+  },
+  {
+    "id": "BG28_HERO_400_SKIN_A",
+    "name": "蛇眼蛇",
+    "text": ""
+  },
+  {
+    "id": "BG28_HERO_400_SKIN_B",
+    "name": "木魈蛇眼",
+    "text": ""
+  },
+  {
+    "id": "BG28_HERO_400_SKIN_C",
+    "name": "遊戲攤位老闆蛇眼",
+    "text": ""
+  },
+  {
+    "id": "BG28_HERO_800",
+    "name": "泰瑟連‧血腥看守者",
+    "text": ""
+  },
+  {
+    "id": "BG28_HERO_800_SKIN_A",
+    "name": "考古學家泰瑟連",
+    "text": ""
+  },
+  {
+    "id": "BG28_HERO_801",
+    "name": "醫生荷利代",
+    "text": ""
+  },
+  {
+    "id": "BG28_HERO_801_SKIN_A",
+    "name": "龍類醫生荷利代",
+    "text": ""
+  },
+  {
+    "id": "BG30_HERO_304",
+    "name": "經理馬林",
+    "text": ""
+  },
+  {
+    "id": "BG30_HERO_304_SKIN_A",
+    "name": "飛行員馬林",
+    "text": ""
+  },
+  {
+    "id": "BG31_HERO_003",
+    "name": "先知諾柏多",
+    "text": ""
+  },
+  {
+    "id": "BG31_HERO_003_SKIN_A",
+    "name": "燈火者諾柏多",
+    "text": ""
+  },
+  {
+    "id": "BG31_HERO_005",
+    "name": "複製大師澤瑞克",
+    "text": ""
+  },
+  {
+    "id": "BG31_HERO_005_SKIN_A",
+    "name": "恐龍複製大師澤瑞克",
+    "text": ""
+  },
+  {
+    "id": "BG31_HERO_006",
+    "name": "奧薩爾主教",
+    "text": ""
+  },
+  {
+    "id": "BG31_HERO_006_SKIN_A",
+    "name": "阿拉希奧薩爾",
+    "text": ""
+  },
+  {
+    "id": "BG31_HERO_801",
+    "name": "吉姆‧雷諾",
+    "text": ""
+  },
+  {
+    "id": "BG31_HERO_802",
+    "name": "亞坦尼斯",
+    "text": ""
+  },
+  {
+    "id": "BG31_HERO_811",
+    "name": "『刀鋒女皇』凱莉根",
+    "text": ""
+  },
+  {
+    "id": "BG32_HERO_001",
+    "name": "森林之王塞納留斯",
+    "text": ""
+  },
+  {
+    "id": "BG32_HERO_002",
+    "name": "扣仔",
+    "text": ""
+  },
+  {
+    "id": "BG33_HERO_001",
+    "name": "『活蹦亂跳的傳奇』樂樂",
+    "text": ""
+  },
+  {
+    "id": "BG34_HERO_000",
+    "name": "『無縛者』姆多茲諾",
+    "text": ""
+  },
+  {
+    "id": "BG34_HERO_001",
+    "name": "時光轉繞者克羅米",
+    "text": ""
+  },
+  {
+    "id": "BG34_HERO_002",
+    "name": "鐘錶沃斯先生",
+    "text": ""
+  },
+  {
+    "id": "BG34_HERO_004",
+    "name": "米羅克",
+    "text": ""
+  },
+  {
+    "id": "BG35_HERO_001",
+    "name": "『狼人之王』吉恩",
+    "text": ""
+  },
+  {
+    "id": "BGDUO_HERO_100",
+    "name": "無名者",
+    "text": ""
+  },
+  {
+    "id": "BGDUO_HERO_100_SKIN_A",
+    "name": "無名之龍",
+    "text": ""
+  },
+  {
+    "id": "BGDUO_HERO_101",
+    "name": "黏糊糊的弗洛普",
+    "text": ""
+  },
+  {
+    "id": "BGDUO_HERO_101_SKIN_A",
+    "name": "軟泥龍弗洛普",
+    "text": ""
+  },
+  {
+    "id": "BGDUO_HERO_104",
+    "name": "苟雅女士",
+    "text": ""
+  },
+  {
+    "id": "BGDUO_HERO_104_SKIN_A",
+    "name": "圖書管理員苟雅",
+    "text": ""
+  },
+  {
+    "id": "BGDUO_HERO_222",
+    "name": "丘",
+    "text": ""
+  },
+  {
+    "id": "BGDUO_HERO_222_SKIN_A",
+    "name": "墮落者丘",
+    "text": ""
+  },
+  {
+    "id": "BGDUO_HERO_222_SKIN_B",
+    "name": "蟲族感染丘",
+    "text": ""
+  },
+  {
+    "id": "BGDUO_HERO_222_SKIN_C",
+    "name": "暮光丘",
+    "text": ""
+  },
+  {
+    "id": "BGDUO_HERO_223",
+    "name": "加利",
+    "text": ""
+  },
+  {
+    "id": "BGDUO_HERO_223_SKIN_A",
+    "name": "墮落者加利",
+    "text": ""
+  },
+  {
+    "id": "BGDUO_HERO_223_SKIN_B",
+    "name": "蟲族感染加利",
+    "text": ""
+  },
+  {
+    "id": "BGDUO_HERO_223_SKIN_C",
+    "name": "暮光加利",
+    "text": ""
+  }
+]
