@@ -1213,45 +1213,114 @@ def api_scrape_comps():
         'elemental_shop_buff': '旅店強化元素流',
     }
 
+    # ── 直接 HTTP 抓取（嘗試已知靜態端點）──
+    DIRECT_URLS = [
+        "https://static.firestoneapp.com/data/bgs-comps-strategies.json",
+        "https://static.firestoneapp.com/data/bgs/bgs-comps-strategies.json",
+        "https://static.firestoneapp.com/bgs-comps-strategies.json",
+    ]
+
+    def _try_direct_fetch():
+        import urllib.request as _ur
+        for url in DIRECT_URLS:
+            try:
+                req = _ur.Request(url, headers={"User-Agent": "Mozilla/5.0", "Accept-Encoding": "gzip"})
+                with _ur.urlopen(req, timeout=20) as r:
+                    raw = r.read()
+                try:
+                    raw = gz.decompress(raw)
+                except Exception:
+                    pass
+                data = json.loads(raw.decode("utf-8", "ignore"))
+                if isinstance(data, list) and data and "compId" in data[0]:
+                    return data
+                if isinstance(data, dict) and isinstance(data.get("strategies"), list):
+                    return data["strategies"]
+            except Exception:
+                pass
+        return None
+
     # ── Playwright 抓取 ──
     strategies = None
     stats_map = {}
-    try:
-        with sync_playwright() as pw:
-            browser = pw.chromium.launch(headless=True)
-            page = browser.new_page()
-            captured = {}
 
-            def on_response(resp):
-                url = resp.url
-                if "bgs-comps-strategies" in url or "comp-stats" in url:
+    # 先嘗試直接 HTTP 抓取（速度快、不需要 Playwright）
+    strategies = _try_direct_fetch()
+
+    if not strategies:
+        try:
+            with sync_playwright() as pw:
+                browser = pw.chromium.launch(headless=True)
+                page = browser.new_page()
+                captured = {}
+                captured_urls = []
+
+                def on_response(resp):
+                    url = resp.url
+                    # 攔截所有來自 firestoneapp.com 的 JSON 回應
+                    if "firestone" not in url.lower():
+                        return
                     try:
                         body = resp.body()
                         try:
                             body = gz.decompress(body)
                         except Exception:
                             pass
-                        captured[url] = json.loads(body.decode("utf-8", "ignore"))
+                        data = json.loads(body.decode("utf-8", "ignore"))
+                        captured[url] = data
+                        captured_urls.append(url)
                     except Exception:
                         pass
 
-            page.on("response", on_response)
-            page.goto("https://www.firestoneapp.com/battlegrounds/comps",
-                      wait_until="networkidle", timeout=40000)
-            browser.close()
+                page.on("response", on_response)
+                try:
+                    page.goto("https://www.firestoneapp.com/battlegrounds/comps",
+                              wait_until="networkidle", timeout=60000)
+                except Exception:
+                    pass
+                # 額外等待動態資料載入
+                import time as _time
+                _time.sleep(5)
+                browser.close()
 
-        for url, data in captured.items():
-            if "strategies" in url:
-                strategies = data
-            elif "comp-stats" in url:
-                for s in data.get("compStats", []):
-                    arch = s.get("archetype", "")
-                    stats_map[arch] = {
-                        "avg_placement": round(s.get("averagePlacement", 0), 2),
-                        "data_points":   s.get("dataPoints", 0),
-                    }
-    except Exception as e:
-        return jsonify({"success": False, "error": f"Playwright 錯誤: {e}"}), 500
+            # 根據內容結構辨識策略資料（不依賴 URL 關鍵字）
+            for url, data in captured.items():
+                if isinstance(data, list) and data and isinstance(data[0], dict) and "compId" in data[0]:
+                    strategies = data
+                elif isinstance(data, dict):
+                    if isinstance(data.get("strategies"), list) and data["strategies"] and "compId" in data["strategies"][0]:
+                        strategies = data["strategies"]
+                    elif isinstance(data.get("compStats"), list):
+                        for s in data["compStats"]:
+                            arch = s.get("archetype", "")
+                            if arch:
+                                stats_map[arch] = {
+                                    "avg_placement": round(s.get("averagePlacement", 0), 2),
+                                    "data_points":   s.get("dataPoints", 0),
+                                }
+                    # comp-stats 可能在同一個物件或獨立 URL
+                    if "comp-stats" in url or "compStats" in url:
+                        for s in data.get("compStats", []):
+                            arch = s.get("archetype", "")
+                            if arch:
+                                stats_map[arch] = {
+                                    "avg_placement": round(s.get("averagePlacement", 0), 2),
+                                    "data_points":   s.get("dataPoints", 0),
+                                }
+                if strategies:
+                    break
+
+            if not strategies:
+                debug_urls = captured_urls[:10]
+                return jsonify({
+                    "success": False,
+                    "error": "無法取得 Firestone 牌組策略數據",
+                    "captured_urls": debug_urls,
+                    "hint": "Firestone API 端點可能已變更，請檢查 captured_urls 並更新程式碼",
+                }), 500
+
+        except Exception as e:
+            return jsonify({"success": False, "error": f"Playwright 錯誤: {e}"}), 500
 
     if not strategies:
         return jsonify({"success": False, "error": "無法取得 Firestone 牌組策略數據"}), 500
@@ -2326,7 +2395,8 @@ def api_sync_to_cloud():
                         "error": f"雲端回應 HTTP {r.status_code}"}), 500
 
 
-
+@app.route("/heroes")
+def heroes_page():
     return render_template("heroes.html")
 
 
