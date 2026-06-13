@@ -286,6 +286,19 @@
     "related_card": null
   },
   {
+    "id": "EBG_Spell_014",
+    "dbf_id": 100596,
+    "name": "尖尖箭",
+    "text": "賦予一個手下 +4攻擊力4賦予一個手下 +4/+0",
+    "type": "BATTLEGROUND_SPELL",
+    "tech_level": 1,
+    "set": "BATTLEGROUNDS",
+    "cost": 1,
+    "in_pool": true,
+    "timewarp": false,
+    "related_card": null
+  },
+  {
     "id": "BG28_518",
     "dbf_id": 105664,
     "name": "主廚精選",
@@ -2548,6 +2561,32 @@
     "related_card": null
   },
   {
+    "id": "EBG_Spell_032",
+    "dbf_id": 100899,
+    "name": "引導吞噬者",
+    "text": "出售一個友方手下，將其體質賦予一個隨機友方手下",
+    "type": "BATTLEGROUND_SPELL",
+    "tech_level": 5,
+    "set": "BATTLEGROUNDS",
+    "cost": 4,
+    "in_pool": true,
+    "timewarp": false,
+    "related_card": null
+  },
+  {
+    "id": "EBG_Spell_037",
+    "dbf_id": 100910,
+    "name": "揭露身分",
+    "text": "<b>發現</b>一個新的英雄能力",
+    "type": "BATTLEGROUND_SPELL",
+    "tech_level": 5,
+    "set": "BATTLEGROUNDS",
+    "cost": 3,
+    "in_pool": true,
+    "timewarp": false,
+    "related_card": null
+  },
+  {
     "id": "BG28_169",
     "dbf_id": 109232,
     "name": "艾澤萊晶岩強化",
@@ -2739,6 +2778,32 @@
     "set": "BATTLEGROUNDS",
     "cost": 2,
     "in_pool": false,
+    "timewarp": false,
+    "related_card": null
+  },
+  {
+    "id": "EBG_Spell_017",
+    "dbf_id": 100601,
+    "name": "大地之母的雙眼",
+    "text": "選擇一個旅店等級4以下的友方手下，將其 變成金卡",
+    "type": "BATTLEGROUND_SPELL",
+    "tech_level": 6,
+    "set": "BATTLEGROUNDS",
+    "cost": 4,
+    "in_pool": true,
+    "timewarp": false,
+    "related_card": null
+  },
+  {
+    "id": "EBG_Spell_038",
+    "dbf_id": 100911,
+    "name": "哈繆爾丟失的法杖",
+    "text": "選擇一個手下。以該手下類型<b>重置</b>旅店",
+    "type": "BATTLEGROUND_SPELL",
+    "tech_level": 6,
+    "set": "BATTLEGROUNDS",
+    "cost": 2,
+    "in_pool": true,
     "timewarp": false,
     "related_card": null
   },
