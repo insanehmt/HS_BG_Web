@@ -1252,16 +1252,23 @@ def api_scrape_comps():
             with sync_playwright() as pw:
                 browser = pw.chromium.launch(headless=True)
                 page = browser.new_page()
-                captured = {}
-                captured_urls = []
+                captured = {}        # url -> parsed JSON
+                captured_urls = []   # 所有成功解析的 JSON URL（含非 firestone 域）
 
                 def on_response(resp):
                     url = resp.url
-                    # 攔截所有來自 firestoneapp.com 的 JSON 回應
-                    if "firestone" not in url.lower():
+                    # 略過靜態資源、圖片、字型
+                    low = url.lower()
+                    if any(low.endswith(ext) for ext in (
+                        ".png", ".jpg", ".jpeg", ".webp", ".svg",
+                        ".woff", ".woff2", ".ttf", ".otf", ".css",
+                        ".js", ".map", ".ico",
+                    )):
                         return
                     try:
                         body = resp.body()
+                        if not body:
+                            return
                         try:
                             body = gz.decompress(body)
                         except Exception:
@@ -1278,45 +1285,55 @@ def api_scrape_comps():
                               wait_until="networkidle", timeout=60000)
                 except Exception:
                     pass
-                # 額外等待動態資料載入
                 import time as _time
                 _time.sleep(5)
                 browser.close()
 
-            # 根據內容結構辨識策略資料（不依賴 URL 關鍵字）
+            # 根據內容結構辨識策略資料（不依賴域名或 URL 關鍵字）
+            def _looks_like_strategies(data):
+                if isinstance(data, list) and data and isinstance(data[0], dict):
+                    first = data[0]
+                    return "compId" in first or "cards" in first
+                return False
+
+            def _extract_comp_stats(data, stats_map):
+                entries = []
+                if isinstance(data, dict):
+                    entries = data.get("compStats", [])
+                elif isinstance(data, list):
+                    entries = data
+                for s in entries:
+                    arch = s.get("archetype", "") or s.get("compId", "")
+                    if arch:
+                        stats_map[arch] = {
+                            "avg_placement": round(s.get("averagePlacement", 0), 2),
+                            "data_points":   s.get("dataPoints", 0),
+                        }
+
             for url, data in captured.items():
-                if isinstance(data, list) and data and isinstance(data[0], dict) and "compId" in data[0]:
+                if _looks_like_strategies(data):
                     strategies = data
-                elif isinstance(data, dict):
-                    if isinstance(data.get("strategies"), list) and data["strategies"] and "compId" in data["strategies"][0]:
-                        strategies = data["strategies"]
-                    elif isinstance(data.get("compStats"), list):
-                        for s in data["compStats"]:
-                            arch = s.get("archetype", "")
-                            if arch:
-                                stats_map[arch] = {
-                                    "avg_placement": round(s.get("averagePlacement", 0), 2),
-                                    "data_points":   s.get("dataPoints", 0),
-                                }
-                    # comp-stats 可能在同一個物件或獨立 URL
-                    if "comp-stats" in url or "compStats" in url:
-                        for s in data.get("compStats", []):
-                            arch = s.get("archetype", "")
-                            if arch:
-                                stats_map[arch] = {
-                                    "avg_placement": round(s.get("averagePlacement", 0), 2),
-                                    "data_points":   s.get("dataPoints", 0),
-                                }
-                if strategies:
                     break
+                if isinstance(data, dict):
+                    inner = data.get("strategies") or data.get("comps") or data.get("data")
+                    if isinstance(inner, list) and _looks_like_strategies(inner):
+                        strategies = inner
+                        break
+                    if data.get("compStats"):
+                        _extract_comp_stats(data, stats_map)
+
+            # 第二輪：補充 comp-stats（strategies 找到後再掃一遍）
+            if strategies:
+                for url, data in captured.items():
+                    if isinstance(data, dict) and data.get("compStats"):
+                        _extract_comp_stats(data, stats_map)
 
             if not strategies:
-                debug_urls = captured_urls[:10]
                 return jsonify({
                     "success": False,
                     "error": "無法取得 Firestone 牌組策略數據",
-                    "captured_urls": debug_urls,
-                    "hint": "Firestone API 端點可能已變更，請檢查 captured_urls 並更新程式碼",
+                    "captured_urls": captured_urls[:15],
+                    "hint": "請把 captured_urls 貼給開發者，用於更新 API 端點",
                 }), 500
 
         except Exception as e:
