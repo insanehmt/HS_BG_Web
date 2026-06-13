@@ -1224,20 +1224,18 @@ def api_scrape_comps():
         "Referer": "https://www.firestoneapp.com/",
     }
 
-    # Zero-to-Heroes CDN + Firestone 已知端點（依可能性排序）
+    # Zero-to-Heroes CDN — 由本機 Playwright 偵測確認的正確路徑
+    # 實際 URL 格式：.../battlegrounds-strategies/bgs-comps-strategies.gz.json?v=<patch>
+    # 版本號會隨 HS patch 更新；先試無版本號（CDN 通常回傳最新），再試近期 patch 版本
+    _BASE = "https://static.zerotoheroes.com/hearthstone/data/battlegrounds-strategies/bgs-comps-strategies.gz.json"
     DIRECT_URLS = [
-        # Zero-to-Heroes 靜態 CDN（Firestone 開發商）
-        "https://static.zerotoheroes.com/hearthstone/data/bgs-comps-strategies.json",
-        "https://static.zerotoheroes.com/hearthstone/data/battlegrounds/bgs-comps-strategies.json",
-        "https://static.zerotoheroes.com/hearthstone/data/battlegrounds/comps/strategies.json",
-        "https://static.zerotoheroes.com/hearthstone/data/bgs/bgs-comps-strategies.json",
-        # Firestone 自有 CDN
-        "https://static.firestoneapp.com/data/bgs-comps-strategies.json",
-        "https://static.firestoneapp.com/data/battlegrounds/bgs-comps-strategies.json",
-        "https://static.firestoneapp.com/data/bgs/comps/strategies.json",
-        # Firebase Realtime DB（Zero-to-Heroes 專案）
-        "https://firestone-app-default-rtdb.firebaseio.com/bgs-comps-strategies.json",
-        "https://zerotoheroes-default-rtdb.firebaseio.com/bgs-comps-strategies.json",
+        _BASE,                   # 無版本號（可能直接命中）
+        f"{_BASE}?v=35.6",
+        f"{_BASE}?v=35.4",
+        f"{_BASE}?v=35.2",
+        f"{_BASE}?v=35.0",
+        f"{_BASE}?v=34.4",
+        f"{_BASE}?v=34.2",
     ]
 
     def _try_fetch(url):
