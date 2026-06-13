@@ -92,7 +92,7 @@
     <span style="color:#2a1040;font-size:1.2rem;padding:0 2px">|</span>
     <button class="fbtn" :class="showAll?'on':''"
             @click="showAll=!showAll;applyFilter()"
-            x-text="showAll?'📜 顯示全部版本':'🔒 僅當前版本'"></button>
+            x-text="showAll?'🔒 僅顯示當前版本':'📜 顯示全部版本'"></button>
     <span style="color:#2a1040;font-size:1.2rem;padding:0 2px">|</span>
     <input class="search-box" type="text" placeholder="🔍 搜尋變異名稱或效果…"
            x-model="search" @input="applyFilter()">
@@ -147,7 +147,7 @@ function app() {
     total: 0,
     search: '',
     modeFilter: 'all',
-    showAll: false,
+    showAll: true,
     currentSeason: 0,
 
     async init() { await this.load() },
