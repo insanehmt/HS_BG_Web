@@ -77,9 +77,79 @@
     "season": 33
   },
   {
+    "id": "BG27_Anomaly_104t9",
+    "name": "哎呦，全是不死族！",
+    "text": "旅店裡只會有不死族",
+    "duo": false,
+    "season": 27
+  },
+  {
+    "id": "BG27_Anomaly_104t4",
+    "name": "哎呦，全是元素！",
+    "text": "旅店裡只會有元素",
+    "duo": false,
+    "season": 27
+  },
+  {
+    "id": "BG27_Anomaly_104t2",
+    "name": "哎呦，全是惡魔！",
+    "text": "旅店裡只會有惡魔",
+    "duo": false,
+    "season": 27
+  },
+  {
+    "id": "BG27_Anomaly_104t5",
+    "name": "哎呦，全是機械！",
+    "text": "旅店裡只會有機械",
+    "duo": false,
+    "season": 27
+  },
+  {
+    "id": "BG27_Anomaly_104t10",
+    "name": "哎呦，全是海盜！",
+    "text": "旅店裡只會有海盜。<i>霍格爾船長</i>在備選手下庫中",
+    "duo": false,
+    "season": 27
+  },
+  {
+    "id": "BG27_Anomaly_104t7",
+    "name": "哎呦，全是納迦！",
+    "text": "旅店裡只會有納迦",
+    "duo": false,
+    "season": 27
+  },
+  {
     "id": "BG27_Anomaly_307",
     "name": "哎呦，全是邪惡！",
     "text": "旅店裡只會有邪惡92",
+    "duo": false,
+    "season": 27
+  },
+  {
+    "id": "BG27_Anomaly_104t",
+    "name": "哎呦，全是野獸！",
+    "text": "旅店裡只會有野獸",
+    "duo": false,
+    "season": 27
+  },
+  {
+    "id": "BG27_Anomaly_104t8",
+    "name": "哎呦，全是野豬人！",
+    "text": "旅店裡只會有野豬人",
+    "duo": false,
+    "season": 27
+  },
+  {
+    "id": "BG27_Anomaly_104t6",
+    "name": "哎呦，全是魚人！",
+    "text": "旅店裡只會有魚人",
+    "duo": false,
+    "season": 27
+  },
+  {
+    "id": "BG27_Anomaly_104t3",
+    "name": "哎呦，全是龍類！",
+    "text": "旅店裡只會有龍類",
     "duo": false,
     "season": 27
   },
@@ -166,6 +236,13 @@
     "text": "每當你<b>重置</b>5次，找到<b>金</b>猴子！<i>(還差",
     "duo": false,
     "season": 27
+  },
+  {
+    "id": "BG34_Anomaly_800t",
+    "name": "小型金棘草藥水",
+    "text": "在本賽局中，小型<b>時光扭曲</b>提供5個金卡手下，它們不會給予三合一獎勵",
+    "duo": false,
+    "season": 34
   },
   {
     "id": "BG27_Anomaly_800",
