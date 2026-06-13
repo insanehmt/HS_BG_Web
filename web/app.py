@@ -470,9 +470,16 @@ def api_minions():
         if isinstance(races, str):
             races = [races]
         has_golden = card.get("has_golden", False)
-        in_pool = card.get("in_pool", False)
-        # Categorise: token/generated cards end in t, t2, or are not in pool
-        if in_pool:
+        in_pool    = card.get("in_pool", False)
+        # 舊快取沒有 timewarp/buddy 欄位時，從 card_id 推斷
+        is_timewarp = card.get("timewarp", False)
+        is_buddy    = card.get("buddy", False) or "_Buddy" in cid
+        # 分類優先順序：時光扭曲 > 英雄夥伴 > 一般 > 手下生成 > 已移除
+        if is_timewarp:
+            category = "時光扭曲"
+        elif is_buddy:
+            category = "英雄夥伴"
+        elif in_pool:
             category = "一般"
         elif re.search(r"t\d*$", cid):
             category = "手下生成"
@@ -888,23 +895,31 @@ def api_update_cards():
     minions = []
     seen = set()
     for card in all_cards:
-        cid = card.get("id", "")
+        cid  = card.get("id", "")
+        name = card.get("name", "")
         if not ((cid.startswith("BG") or cid.startswith("BGS_")) and
                 card.get("type") == "MINION" and
-                card.get("techLevel") and
-                card.get("name") and
+                name and
                 cid not in seen):
             continue
+        is_buddy    = "_Buddy" in cid
+        is_timewarp = bool(card.get("battlegroundsTimewarpCard"))
+        has_tech    = bool(card.get("techLevel"))
+        # 只收：有酒館等級 / 夥伴牌 / 時光扭曲牌
+        if not (has_tech or is_buddy or is_timewarp):
+            continue
         minions.append({
-            "id": cid,
-            "name": card.get("name", ""),
-            "text": card.get("text", "").replace("\n", " "),
+            "id":        cid,
+            "name":      name,
+            "text":      card.get("text", "").replace("\n", " "),
             "tech_level": card.get("techLevel", 0),
-            "races": card.get("races", []),
-            "attack": card.get("attack", 0),
-            "health": card.get("health", 0),
+            "races":     card.get("races", []),
+            "attack":    card.get("attack", 0),
+            "health":    card.get("health", 0),
             "mechanics": card.get("mechanics", []),
-            "in_pool": bool(card.get("isBattlegroundsPoolMinion")),
+            "in_pool":   bool(card.get("isBattlegroundsPoolMinion")),
+            "timewarp":  is_timewarp,
+            "buddy":     is_buddy,
         })
         seen.add(cid)
     minions.sort(key=lambda x: (x["tech_level"], x["name"]))
