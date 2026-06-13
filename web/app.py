@@ -324,7 +324,7 @@ def api_anomalies():
     with open(BG_ANOMALY_CACHE, encoding="utf-8") as f:
         anomalies = json.load(f)
 
-    pool_names = set()
+    pool_ids = set()
     current_season = 0
     if os.path.exists(BG_CONFIG_PATH):
         try:
@@ -333,7 +333,7 @@ def api_anomalies():
             ver = cfg.get("version", "")
             if ver:
                 current_season = int(ver.split(".")[0])
-            pool_names = set(cfg.get("anomaly_pool_names", []))
+            pool_ids = set(cfg.get("anomaly_pool_ids", []))
         except Exception:
             pass
     if not current_season:
@@ -341,7 +341,7 @@ def api_anomalies():
 
     for a in anomalies:
         a["text"] = _clean_card_text(a.get("text") or "")
-        a["in_pool"] = (a.get("name", "") in pool_names) if pool_names else True
+        a["in_pool"] = (a.get("id", "") in pool_ids) if pool_ids else True
 
     q = (request.args.get("q") or "").strip().lower()
     if q:
@@ -352,7 +352,7 @@ def api_anomalies():
         "total": len(anomalies),
         "current_season": current_season,
         "pool_size": pool_size,
-        "has_pool": bool(pool_names),
+        "has_pool": bool(pool_ids),
     })
 
 
@@ -1054,9 +1054,10 @@ def api_update_cards():
             json.dump(trinkets, f, ensure_ascii=False, indent=2)
 
     # --- Anomalies ---
+    # Build dbfId → card lookup for all_cards so we can match by dbfId later
+    _dbf_to_cid = {c.get("dbfId"): c.get("id", "") for c in all_cards if c.get("dbfId")}
     anomalies = []
     seen_ids = set()
-    seen_names = set()
     for card in sorted(all_cards, key=lambda c: c.get("id", "")):
         cid = card.get("id", "")
         name = card.get("name", "")
@@ -1064,30 +1065,27 @@ def api_update_cards():
             continue
         if not name or cid in seen_ids:
             continue
-        # Skip duplicate names (seen_names dedup is sufficient; ID-based token filter
-        # incorrectly removes cards like BG34_Anomaly_800t which are real named cards)
-        if name in seen_names:
-            continue
         duo = cid.startswith("BGDUO")
         _sm = re.search(r"^BG(\d+)_", cid)
         season = int(_sm.group(1)) if _sm else 0
         anomalies.append({
             "id":     cid,
+            "dbfId":  card.get("dbfId", 0),
             "name":   name,
             "text":   card.get("text", "").replace("\n", " "),
             "duo":    duo,
             "season": season,
         })
         seen_ids.add(cid)
-        seen_names.add(name)
-    anomalies.sort(key=lambda x: x["name"])
+    anomalies.sort(key=lambda x: (x["name"], x["id"]))
     with open(BG_ANOMALY_CACHE, "w", encoding="utf-8") as f:
         json.dump(anomalies, f, ensure_ascii=False, indent=2)
 
     # Fetch official anomaly pool (75 cards, cardTypeId=43) from Blizzard API
+    # Match by dbfId → hearthstonejson card ID for exact pool identification
     try:
         import urllib.request as _ur2, gzip as _gz2
-        _pool_names = set()
+        _pool_ids = set()
         _bg_page1 = _ur2.Request(
             "https://hearthstone.blizzard.com/en-us/api/cards?gameMode=battlegrounds&pageSize=200&page=1",
             headers={"User-Agent": "Mozilla/5.0"}
@@ -1111,12 +1109,12 @@ def api_update_cards():
                 _all_bg.extend(json.loads(_bd2).get("cards", []))
         for _bc in _all_bg:
             if _bc.get("cardTypeId") == 43:
-                _bname = _bc.get("name", {})
-                _tw = _bname.get("zh_TW", "") if isinstance(_bname, dict) else ""
-                if _tw:
-                    _pool_names.add(_tw)
+                _dbf = _bc.get("id")
+                _hsj_cid = _dbf_to_cid.get(_dbf)
+                if _hsj_cid:
+                    _pool_ids.add(_hsj_cid)
     except Exception:
-        _pool_names = set()
+        _pool_ids = set()
 
     # Clean up raw file
     try:
@@ -1169,8 +1167,8 @@ def api_update_cards():
     cfg["last_updated"] = _dt.datetime.now().isoformat()
     if current_version:
         cfg["version"] = current_version
-    if _pool_names:
-        cfg["anomaly_pool_names"] = sorted(_pool_names)
+    if _pool_ids:
+        cfg["anomaly_pool_ids"] = sorted(_pool_ids)
     with open(BG_CONFIG_PATH, "w", encoding="utf-8") as f:
         json.dump(cfg, f, ensure_ascii=False, indent=2)
 
