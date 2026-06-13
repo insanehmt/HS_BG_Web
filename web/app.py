@@ -320,15 +320,30 @@ def anomalies_page():
 @app.route("/api/anomalies")
 def api_anomalies():
     if not os.path.exists(BG_ANOMALY_CACHE):
-        return jsonify({"anomalies": [], "total": 0})
+        return jsonify({"anomalies": [], "total": 0, "current_season": 0})
     with open(BG_ANOMALY_CACHE, encoding="utf-8") as f:
         anomalies = json.load(f)
+
+    # Determine current season from version in config (e.g. "35.6.2" → 35)
+    current_season = 0
+    if os.path.exists(BG_CONFIG_PATH):
+        try:
+            with open(BG_CONFIG_PATH, encoding="utf-8") as f:
+                cfg = json.load(f)
+            ver = cfg.get("version", "")
+            if ver:
+                current_season = int(ver.split(".")[0])
+        except Exception:
+            pass
+    if not current_season:
+        current_season = max((a.get("season", 0) for a in anomalies), default=0)
+
     q = (request.args.get("q") or "").strip().lower()
     if q:
         anomalies = [a for a in anomalies if q in a.get("name", "").lower() or q in (a.get("text") or "").lower()]
     for a in anomalies:
         a["text"] = _clean_card_text(a.get("text") or "")
-    return jsonify({"anomalies": anomalies, "total": len(anomalies)})
+    return jsonify({"anomalies": anomalies, "total": len(anomalies), "current_season": current_season})
 
 
 @app.route("/api/trinkets")
@@ -1046,11 +1061,14 @@ def api_update_cards():
         if name in seen_names:
             continue
         duo = cid.startswith("BGDUO")
+        _sm = re.search(r"^BG(\d+)_", cid)
+        season = int(_sm.group(1)) if _sm else 0
         anomalies.append({
-            "id":   cid,
-            "name": name,
-            "text": card.get("text", "").replace("\n", " "),
-            "duo":  duo,
+            "id":     cid,
+            "name":   name,
+            "text":   card.get("text", "").replace("\n", " "),
+            "duo":    duo,
+            "season": season,
         })
         seen_ids.add(cid)
         seen_names.add(name)

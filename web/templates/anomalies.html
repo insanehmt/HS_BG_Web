@@ -90,6 +90,10 @@
     <button class="fbtn" :class="modeFilter==='solo'?'on':''" @click="modeFilter='solo';applyFilter()">⚔️ 一般</button>
     <button class="fbtn" :class="modeFilter==='duo'?'on':''"  @click="modeFilter='duo';applyFilter()">👥 雙人</button>
     <span style="color:#2a1040;font-size:1.2rem;padding:0 2px">|</span>
+    <button class="fbtn" :class="showAll?'on':''"
+            @click="showAll=!showAll;applyFilter()"
+            x-text="showAll?'📜 顯示全部版本':'🔒 僅當前版本'"></button>
+    <span style="color:#2a1040;font-size:1.2rem;padding:0 2px">|</span>
     <input class="search-box" type="text" placeholder="🔍 搜尋變異名稱或效果…"
            x-model="search" @input="applyFilter()">
     <span class="count-bar ml-auto">
@@ -143,6 +147,8 @@ function app() {
     total: 0,
     search: '',
     modeFilter: 'all',
+    showAll: false,
+    currentSeason: 0,
 
     async init() { await this.load() },
 
@@ -150,14 +156,19 @@ function app() {
       this.loading = true
       const r = await fetch('/api/anomalies')
       const d = await r.json()
-      this.all    = d.anomalies || []
-      this.total  = d.total || 0
+      this.all           = d.anomalies || []
+      this.total         = d.total || 0
+      this.currentSeason = d.current_season || 0
       this.applyFilter()
       this.loading = false
     },
 
     applyFilter() {
       let list = [...this.all]
+      // 預設只顯示當季（season == currentSeason），BGDUO 另外歸類
+      if (!this.showAll && this.currentSeason) {
+        list = list.filter(a => a.duo || a.season === this.currentSeason)
+      }
       if (this.modeFilter === 'duo')  list = list.filter(a => a.duo)
       if (this.modeFilter === 'solo') list = list.filter(a => !a.duo)
       const q = this.search.trim().toLowerCase()
