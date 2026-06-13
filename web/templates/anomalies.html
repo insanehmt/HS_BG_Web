@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>變異圖鑑 — HS BG Tracker</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  [x-cloak]{display:none}
+  body{background:#0d0718;color:#d4c4a8;font-family:'Segoe UI',sans-serif;min-height:100vh}
+  ::-webkit-scrollbar{width:5px;height:5px}
+  ::-webkit-scrollbar-track{background:#0d0718}
+  ::-webkit-scrollbar-thumb{background:#3a1a50;border-radius:3px}
+
+  .page-title{font-family:'Cinzel',serif;font-size:1.6rem;font-weight:900;color:#d0a0f0;text-shadow:0 0 30px #9060c080}
+  .nav-link{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:8px;
+    border:1px solid #3a1a50;color:#8060a0;font-size:.82rem;transition:all .15s;text-decoration:none}
+  .nav-link:hover,.nav-link.active{border-color:#9060c0;color:#d0a0f0;background:#1a0a28}
+
+  .toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+    background:#120820;border:1px solid #2a1040;border-radius:10px;padding:10px 14px}
+  .search-box{flex:1;min-width:160px;max-width:280px;
+    background:#0d0718;border:1px solid #3a1a50;border-radius:6px;
+    color:#d4c4a8;font-size:.8rem;padding:5px 10px;outline:none}
+  .search-box:focus{border-color:#7040b0}
+  .count-bar{font-size:.75rem;color:#7050a0}
+
+  /* grid */
+  .anomaly-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+
+  /* card */
+  .a-card{
+    background:linear-gradient(160deg,#0e1220,#141830);
+    border:1px solid #1a2040;border-radius:12px;
+    padding:12px;
+    display:flex;flex-direction:column;gap:8px;
+    transition:border-color .15s,transform .12s,box-shadow .15s;
+  }
+  .a-card:hover{border-color:#4060c0;transform:translateY(-3px);box-shadow:0 8px 24px #00000070}
+
+  /* image */
+  .a-img-wrap{
+    width:100%;height:110px;border-radius:10px;
+    overflow:hidden;background:#0a0f1a;flex-shrink:0;
+    border:1px solid #202840;
+  }
+  .a-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:top}
+
+  /* name */
+  .a-name{font-size:.8rem;font-weight:700;color:#a0b0e0;line-height:1.3}
+
+  /* text */
+  .a-text{font-size:.68rem;color:#6070a0;line-height:1.5;
+    background:#0a0f1a;border-radius:6px;padding:6px 8px;
+    border:1px solid #151e30}
+
+  .empty{text-align:center;padding:60px;color:#3a3060}
+</style>
+</head>
+<body x-data="app()" x-init="init()" x-cloak>
+<div class="max-w-7xl mx-auto px-4 py-6">
+
+  <!-- Header -->
+  <header class="flex items-center justify-between mb-6 flex-wrap gap-3">
+    <div>
+      <h1 class="page-title">🔀 變異圖鑑</h1>
+      <p class="text-xs mt-1" style="color:#4a5080">
+        Anomaly Database · <span x-text="total"></span> 種變異
+      </p>
+    </div>
+    <div class="flex gap-2 flex-wrap">
+      {% if not public_mode %}<a href="/"           class="nav-link">📋 紀錄總覽</a>{% endif %}
+      {% if not public_mode %}<a href="/heroes"     class="nav-link">🏆 英雄排名</a>{% endif %}
+      <a href="/hero-guide" class="nav-link">🦸 英雄圖鑑</a>
+      <a href="/tier-list"  class="nav-link">⚔️ 當季最強</a>
+      {% if not public_mode %}<a href="/comps"      class="nav-link">🎯 組合排名</a>{% endif %}
+      <a href="/minions"    class="nav-link">🐾 手下圖鑑</a>
+      <a href="/spells"     class="nav-link">✨ 法術圖鑑</a>
+      <a href="/trinkets"   class="nav-link">💎 飾品圖鑑</a>
+      <a href="/anomalies"  class="nav-link active">🔀 變異圖鑑</a>
+    </div>
+  </header>
+
+  <!-- Toolbar -->
+  <div class="toolbar mb-5">
+    <input class="search-box" type="text" placeholder="🔍 搜尋變異名稱或效果…"
+           x-model="search" @input="applyFilter()">
+    <span class="count-bar ml-auto">
+      顯示 <b x-text="filtered.length" style="color:#6080c0"></b> /
+      <b x-text="total" style="color:#4060a0"></b>
+    </span>
+  </div>
+
+  <div x-show="loading" class="empty">⏳ 載入中…</div>
+  <div x-show="!loading && filtered.length===0" class="empty">
+    <span x-show="!total">尚未建立變異資料庫，請在管理後台執行「更新排庫」。</span>
+    <span x-show="total && !filtered.length">沒有符合條件的變異。</span>
+  </div>
+
+  <!-- Grid -->
+  <div class="anomaly-grid" x-show="!loading && filtered.length>0">
+    <template x-for="a in filtered" :key="a.id">
+      <div class="a-card">
+        <!-- image -->
+        <div class="a-img-wrap">
+          <img :src="`https://art.hearthstonejson.com/v1/256x/${a.id}.jpg`"
+               :alt="a.name"
+               onerror="this.style.opacity='.08'">
+        </div>
+        <!-- name -->
+        <div class="a-name" x-text="a.name"></div>
+        <!-- effect text -->
+        <div class="a-text" x-html="a.text || '—'"></div>
+      </div>
+    </template>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="max-w-7xl mx-auto px-4 py-6 mt-8 border-t text-center text-xs space-y-1"
+        style="border-color:#1a2040;color:#2a3050">
+  <div>Hearthstone™ is a trademark of Blizzard Entertainment, Inc. All card data and images are © Blizzard Entertainment.</div>
+  <div>This project is not affiliated with or endorsed by Blizzard. © 2025 HS BG Tracker. All rights reserved.</div>
+</footer>
+
+<script>
+function app() {
+  return {
+    loading: true,
+    all: [], filtered: [],
+    total: 0,
+    search: '',
+
+    async init() { await this.load() },
+
+    async load() {
+      this.loading = true
+      const r = await fetch('/api/anomalies')
+      const d = await r.json()
+      this.all    = d.anomalies || []
+      this.total  = d.total || 0
+      this.applyFilter()
+      this.loading = false
+    },
+
+    applyFilter() {
+      let list = [...this.all]
+      const q = this.search.trim().toLowerCase()
+      if (q) list = list.filter(a =>
+        (a.name || '').toLowerCase().includes(q) ||
+        (a.text || '').toLowerCase().includes(q)
+      )
+      this.filtered = list
+    }
+  }
+}
+</script>
+</body>
+</html>

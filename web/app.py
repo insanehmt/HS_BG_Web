@@ -11,11 +11,12 @@ from flask import Flask, render_template, jsonify, request, redirect, url_for
 import openpyxl
 from werkzeug.utils import secure_filename
 
-BG_TRINKETS_CACHE = os.path.join(os.path.dirname(__file__), "..", "data", "bg_trinkets_cache.json")
-BG_MINIONS_CACHE  = os.path.join(os.path.dirname(__file__), "..", "data", "bg_minions_cache.json")
-BG_SPELLS_CACHE   = os.path.join(os.path.dirname(__file__), "..", "data", "bg_spells_cache.json")
-BG_CONFIG_PATH    = os.path.join(os.path.dirname(__file__), "..", "data", "bg_config.json")
-BG_HEROES_CACHE   = os.path.join(os.path.dirname(__file__), "..", "data", "bg_heroes_cache.json")
+BG_TRINKETS_CACHE  = os.path.join(os.path.dirname(__file__), "..", "data", "bg_trinkets_cache.json")
+BG_MINIONS_CACHE   = os.path.join(os.path.dirname(__file__), "..", "data", "bg_minions_cache.json")
+BG_SPELLS_CACHE    = os.path.join(os.path.dirname(__file__), "..", "data", "bg_spells_cache.json")
+BG_ANOMALY_CACHE   = os.path.join(os.path.dirname(__file__), "..", "data", "bg_anomaly_cache.json")
+BG_CONFIG_PATH     = os.path.join(os.path.dirname(__file__), "..", "data", "bg_config.json")
+BG_HEROES_CACHE    = os.path.join(os.path.dirname(__file__), "..", "data", "bg_heroes_cache.json")
 BG_COMPS_CACHE    = os.path.join(os.path.dirname(__file__), "..", "data", "bg_comps.json")
 CARDS_CACHE       = os.path.join(os.path.dirname(__file__), "..", "data", "cards_cache.json")
 HS_CARDS_FULL     = os.path.join(os.path.dirname(__file__), "..", "data", "hs_cards_full.json")
@@ -301,6 +302,25 @@ def api_comps():
 @app.route("/trinkets")
 def trinkets_page():
     return render_template("trinkets.html")
+
+
+@app.route("/anomalies")
+def anomalies_page():
+    return render_template("anomalies.html")
+
+
+@app.route("/api/anomalies")
+def api_anomalies():
+    if not os.path.exists(BG_ANOMALY_CACHE):
+        return jsonify({"anomalies": [], "total": 0})
+    with open(BG_ANOMALY_CACHE, encoding="utf-8") as f:
+        anomalies = json.load(f)
+    q = (request.args.get("q") or "").strip().lower()
+    if q:
+        anomalies = [a for a in anomalies if q in a.get("name", "").lower() or q in (a.get("text") or "").lower()]
+    for a in anomalies:
+        a["text"] = _clean_card_text(a.get("text") or "")
+    return jsonify({"anomalies": anomalies, "total": len(anomalies)})
 
 
 @app.route("/api/trinkets")
@@ -998,6 +1018,29 @@ def api_update_cards():
     if trinkets:
         with open(BG_TRINKETS_CACHE, "w", encoding="utf-8") as f:
             json.dump(trinkets, f, ensure_ascii=False, indent=2)
+
+    # --- Anomalies ---
+    anomalies = []
+    seen = set()
+    for card in all_cards:
+        cid = card.get("id", "")
+        if card.get("type") != "BATTLEGROUND_ANOMALY":
+            continue
+        if not card.get("name") or cid in seen:
+            continue
+        # Skip token variants (IDs ending with t, t2, t3, … t10)
+        if re.search(r"t\d*$", cid):
+            continue
+        anomalies.append({
+            "id":   cid,
+            "name": card.get("name", ""),
+            "text": card.get("text", "").replace("\n", " "),
+            "set":  card.get("set", ""),
+        })
+        seen.add(cid)
+    anomalies.sort(key=lambda x: x["name"])
+    with open(BG_ANOMALY_CACHE, "w", encoding="utf-8") as f:
+        json.dump(anomalies, f, ensure_ascii=False, indent=2)
 
     # Clean up raw file
     try:
