@@ -92,7 +92,7 @@
     <div>
       <h1 class="page-title">✨ 法術圖鑑</h1>
       <p class="text-xs mt-1" style="color:#5a3a70">
-        BG Spell Database · <span x-text="total"></span> 張法術
+        BG Spell Database · <span x-text="total"></span> 張法術{% if current_version %} · <span style="color:#6a4a80">v{{ current_version }}</span>{% endif %}
       </p>
     </div>
     <div class="flex gap-2 flex-wrap">

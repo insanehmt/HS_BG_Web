@@ -67,7 +67,7 @@
     <div>
       <h1 class="page-title">🔀 變異圖鑑</h1>
       <p class="text-xs mt-1" style="color:#4a5080">
-        Anomaly Database · <span x-text="total"></span> 種變異
+        Anomaly Database · <span x-text="total"></span> 種變異{% if current_version %} · <span style="color:#4a5080">v{{ current_version }}</span>{% endif %}
       </p>
     </div>
     <div class="flex gap-2 flex-wrap">

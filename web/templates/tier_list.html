@@ -599,6 +599,7 @@ document.addEventListener('alpine:init', () => {
   <div class="max-w-7xl mx-auto px-4 py-3 flex items-center gap-3 flex-wrap">
     <span class="page-title">⚔️ 當季最強</span>
     <span style="background:#3a0a0a;border:1px solid #8a2020;color:#ff6060;font-size:.72rem;font-weight:700;padding:2px 9px;border-radius:10px;letter-spacing:.06em" x-text="'S'+season">S13</span>
+    {% if current_version %}<span style="background:#1a0a30;border:1px solid #3a1a50;color:#6a4a80;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:8px">v{{ current_version }}</span>{% endif %}
     <span x-show="patchBuild" style="background:#0a1a1a;border:1px solid #205050;color:#60b0a0;font-size:.65rem;padding:2px 8px;border-radius:8px" x-text="'Build '+patchBuild"></span>
     {% if not public_mode %}
     <button @click="updateCards()" :disabled="updateLoading"

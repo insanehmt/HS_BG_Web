@@ -98,6 +98,7 @@
 <header class="sticky top-0 z-40" style="background:#0a0514;border-bottom:1px solid #1a0a28">
   <div class="max-w-7xl mx-auto px-4 py-3 flex items-center gap-3 flex-wrap">
     <span class="page-title">🏆 英雄勝率排名</span>
+    {% if current_version %}<span style="background:#1a0a30;border:1px solid #3a1a50;color:#6a4a80;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:8px">v{{ current_version }}</span>{% endif %}
     <div class="flex items-center gap-2 ml-auto flex-wrap">
       {% if not public_mode %}<a href="/"           class="nav-link">🎮 對局紀錄</a>{% endif %}
       {% if not public_mode %}<a href="/heroes"     class="nav-link active">🏆 英雄排名</a>{% endif %}

@@ -37,7 +37,15 @@ ADMIN_TOKEN = os.environ.get("ADMIN_TOKEN", "")
 
 @app.context_processor
 def inject_globals():
-    return {"public_mode": PUBLIC_MODE}
+    version = ""
+    if os.path.exists(BG_CONFIG_PATH):
+        try:
+            with open(BG_CONFIG_PATH, encoding="utf-8") as _f:
+                _cfg = json.load(_f)
+            version = _cfg.get("version", "")
+        except Exception:
+            pass
+    return {"public_mode": PUBLIC_MODE, "current_version": version}
 
 
 def get_db():
@@ -1068,6 +1076,26 @@ def api_update_cards():
         except Exception:
             pass
 
+    # Fetch latest HS patch version from Firestone patches API
+    current_version = ""
+    try:
+        import urllib.request as _urllib
+        _preq = _urllib.Request(
+            "https://static.zerotoheroes.com/hearthstone/data/patches.json",
+            headers={"User-Agent": "Mozilla/5.0"}
+        )
+        with _urllib.urlopen(_preq, timeout=10) as _pr:
+            _pdata = json.loads(_pr.read())
+        _patches = sorted(
+            _pdata.get("patches", []),
+            key=lambda p: p.get("date", ""),
+            reverse=True
+        )
+        if _patches:
+            current_version = _patches[0].get("version", "")
+    except Exception:
+        pass
+
     # Update config
     cfg = {"season": 13, "hdt_build": "", "last_updated": ""}
     if os.path.exists(BG_CONFIG_PATH):
@@ -1078,6 +1106,8 @@ def api_update_cards():
             pass
     cfg["hdt_build"] = current_build
     cfg["last_updated"] = _dt.datetime.now().isoformat()
+    if current_version:
+        cfg["version"] = current_version
     with open(BG_CONFIG_PATH, "w", encoding="utf-8") as f:
         json.dump(cfg, f, ensure_ascii=False, indent=2)
 
