@@ -96,9 +96,14 @@
     try {
       const d = await this._safePost('/api/scrape-hsreplay');
       this.hsrError = !d.success;
-      this.hsrResult = d.success
-        ? `更新 ${d.updated} 套，新增 ${d.added} 套（共 ${d.total} 套）`
-        : (d.error || '失敗');
+      if (d.success) {
+        this.hsrResult = `更新 ${d.updated} 套，新增 ${d.added} 套（共 ${d.total} 套）`;
+      } else {
+        let msg = d.error || '失敗';
+        if (d.tried_urls && d.tried_urls.length)
+          msg += '\n\n已嘗試 API:\n' + d.tried_urls.join('\n');
+        this.hsrResult = msg;
+      }
     } catch(e) { this.hsrError = true; this.hsrResult = e.message; }
     this.hsrLoading = false;
   }
@@ -133,10 +138,11 @@
 <div class="card">
   <h2>🌐 HSReplay 牌組</h2>
   <p style="font-size:.8rem;color:#7060a0;margin:0 0 12px">
-    從 HSReplay 抓取最新推薦組合卡牌，補齊或更新現有牌組（需要 Playwright）。
+    直接呼叫 HSReplay API 抓取牌組資料（不需要瀏覽器）。<br>
+    若 API 不可用，請改用下方「貼上匯入」功能。
   </p>
   <button class="btn-blue" @click="scrapeHSReplay()" :disabled="hsrLoading"
-    x-text="hsrLoading ? '⏳ 抓取中…（約30秒）' : '🌐 抓取 HSReplay'">🌐 抓取 HSReplay</button>
+    x-text="hsrLoading ? '⏳ 抓取中…' : '🌐 抓取 HSReplay'">🌐 抓取 HSReplay</button>
   <div x-show="hsrResult" class="result" :class="hsrError ? 'error' : ''"
     x-text="hsrResult"></div>
 </div>

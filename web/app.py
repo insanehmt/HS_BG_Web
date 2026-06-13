@@ -1508,13 +1508,14 @@ def api_scrape_comps():
 
 @app.route("/api/scrape-hsreplay", methods=["POST"])
 def api_scrape_hsreplay():
-    """用 Playwright 從 HSReplay 抓取牌組評級並更新 bg_comps.json。"""
-    import sys, traceback, time as _time, re as _re
+    """用直接 HTTP 從 HSReplay API 抓取牌組評級並更新 bg_comps.json。
+    不使用 Playwright（避免雲端 502 逾時）。
+    """
+    import urllib.request as _ur, urllib.error as _urlerr, re as _re, gzip as _gz
 
-    try:
-        from playwright.sync_api import sync_playwright
-    except ImportError:
-        return jsonify({"success": False, "error": "未安裝 playwright，請執行 pip install playwright && playwright install chromium"}), 500
+    token = request.headers.get("X-Admin-Token", "")
+    if not ADMIN_TOKEN or token != ADMIN_TOKEN:
+        return jsonify({"success": False, "error": "Unauthorized"}), 403
 
     # 讀取現有牌組
     existing_map = {}
@@ -1565,74 +1566,96 @@ def api_scrape_hsreplay():
         "quilboar": "QUILBOAR", "dragon": "DRAGON",
     }
 
-    JS_EXTRACT = """() => {
-        var minLinks = Array.from(document.querySelectorAll('a[href*="/battlegrounds/minions/"]'));
-        var seen = new Set();
-        var comps = [];
-        for (var link of minLinks) {
-            var el = link;
-            var compEl = null;
-            for (var j = 0; j < 15; j++) {
-                el = el.parentElement;
-                if (!el) break;
-                var cnt = el.querySelectorAll('a[href*="/battlegrounds/minions/"]').length;
-                if (cnt >= 3 && cnt <= 20) { compEl = el; break; }
-            }
-            if (!compEl || seen.has(compEl)) continue;
-            seen.add(compEl);
-            var cards = Array.from(compEl.querySelectorAll('a[href*="/battlegrounds/minions/"]')).map(function(a) {
-                var img = a.querySelector('img');
-                var src = img ? img.src : '';
-                var m = src.match(/\\/([A-Z][A-Z0-9_]+)\\.(png|webp)$/);
-                return m ? m[1] : '';
-            }).filter(Boolean);
-            var nameEl = compEl;
-            var compName = '', difficulty = '', tier = '';
-            for (var k = 0; k < 12; k++) {
-                nameEl = nameEl.parentElement;
-                if (!nameEl) break;
-                var text = nameEl.innerText || '';
-                var lines = text.split('\\n').map(function(s){return s.trim();}).filter(Boolean);
-                for (var line of lines) {
-                    if ((line==='S'||line==='A'||line==='B'||line==='C') && !tier) tier=line;
-                    if (/^(Medium|Easy|Hard)$/.test(line) && !difficulty) difficulty=line;
-                    if (/[A-Za-z]{4,}/.test(line) && !/(Medium|Easy|Hard|hearthstone|Comps|Heroes|Guides|Season|Tier7|HSReplay|Social|Download|Copyright|navigation|Battlegrounds|Sign|Match|Last|Powered|JeefHS|Scale|Summon|Make|Buy|Spend|Play|Cast|Cycle|Overflow|Bounce|Stack|Build|Standard|Meta|Arena|Rank|English|Patch|Updated|Win|Core|Minions|Tier|Comp|Difficulty)/.test(line) && !compName && line.length>4 && line.length<65) {
-                        compName = line;
-                    }
-                }
-                if (compName && tier) break;
-            }
-            if (cards.length > 0) comps.push({name: compName, tier: tier, difficulty: difficulty.toLowerCase(), cards: cards});
-        }
-        return comps;
-    }"""
+    # ── 直接 HTTP 抓取 HSReplay API（不用 Playwright，避免 502）──
+    _HEADERS = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+        "Accept": "application/json, */*",
+        "Accept-Encoding": "gzip",
+        "Referer": "https://hsreplay.net/",
+    }
+    _API_CANDIDATES = [
+        # 分析 API：BG 陣型表現（公開、無需登入）
+        "https://hsreplay.net/api/v1/analytics/query/battlegrounds_archetype_performance_summary/?GameType=BGT_RANKED&LeagueRankRange=GOLD_TO_INFINITE&TimeRange=CURRENT_SEASON",
+        "https://hsreplay.net/api/v1/analytics/query/battlegrounds_archetype_performance_summary/?GameType=BGT_RANKED&TimeRange=CURRENT_SEASON",
+        # 通用 BG 陣型列表
+        "https://hsreplay.net/api/v1/live/battlegrounds_archetypes/",
+        "https://hsreplay.net/api/v1/battlegrounds/comps/",
+    ]
 
+    def _fetch_json(url):
+        req = _ur.Request(url, headers=_HEADERS)
+        with _ur.urlopen(req, timeout=12) as r:
+            raw = r.read()
+        try:
+            raw = _gz.decompress(raw)
+        except Exception:
+            pass
+        return json.loads(raw.decode("utf-8", "ignore"))
+
+    raw_data = None
+    tried_urls = []
+    for api_url in _API_CANDIDATES:
+        tried_urls.append(api_url)
+        try:
+            raw_data = _fetch_json(api_url)
+            break
+        except Exception:
+            pass
+
+    # ── 解析 HSReplay 回傳格式 → raw_comps ──
     raw_comps = []
-    try:
-        with sync_playwright() as pw:
-            browser = pw.chromium.launch(headless=True, args=["--disable-blink-features=AutomationControlled"])
-            ctx = browser.new_context(
-                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-                viewport={"width": 1280, "height": 900},
-            )
-            page = ctx.new_page()
-            try:
-                page.goto("https://hsreplay.net/battlegrounds/comps/", wait_until="domcontentloaded", timeout=20000)
-            except Exception:
-                pass
-            _time.sleep(4)
-            # scroll to trigger lazy loading
-            for y in range(0, 8000, 600):
-                page.evaluate(f"window.scrollTo(0, {y})")
-                _time.sleep(0.2)
-            _time.sleep(1)
-            raw_comps = page.evaluate(JS_EXTRACT)
-            browser.close()
-    except Exception as e:
-        return jsonify({"success": False, "error": f"Playwright 錯誤：{e}\n{traceback.format_exc()}"}), 500
+
+    def _parse_hsreplay_data(data):
+        """把 HSReplay API 的各種可能格式轉為 [{name, tier, difficulty, cards}]。"""
+        rows = []
+        # 格式 1：{"series": {"data": {...}}, ...}  / 分析 API 標準格式
+        if isinstance(data, dict):
+            series = data.get("series") or {}
+            inner  = series.get("data") or data.get("data") or []
+            if isinstance(inner, dict):
+                # {"data": {"ALL": [row, ...]}}
+                for v in inner.values():
+                    if isinstance(v, list):
+                        rows.extend(v)
+                        break
+            elif isinstance(inner, list):
+                rows = inner
+            # 格式 2：直接是清單
+            if not rows and isinstance(data.get("archetypes"), list):
+                rows = data["archetypes"]
+            if not rows and isinstance(data.get("comps"), list):
+                rows = data["comps"]
+        elif isinstance(data, list):
+            rows = data
+
+        result = []
+        for row in rows:
+            if not isinstance(row, dict):
+                continue
+            name  = (row.get("archetype_name") or row.get("name") or "").strip()
+            tier  = (row.get("tier") or "").strip()
+            diff  = (row.get("difficulty") or "").strip().lower()
+            # 核心卡牌：嘗試多種欄位名
+            cards = (row.get("core_cards") or row.get("cards") or
+                     row.get("card_ids") or row.get("coreCards") or [])
+            if isinstance(cards, list) and name:
+                result.append({"name": name, "tier": tier,
+                               "difficulty": diff, "cards": cards})
+        return result
+
+    if raw_data is not None:
+        raw_comps = _parse_hsreplay_data(raw_data)
 
     if not raw_comps:
-        return jsonify({"success": False, "error": "HSReplay 頁面未回傳牌組數據"}), 500
+        return jsonify({
+            "success": False,
+            "error": (
+                "HSReplay API 無法取得牌組資料。\n"
+                "可能原因：API 需要登入、端點已變更，或目前沒有賽季資料。\n\n"
+                "建議改用「貼上匯入」功能（從 HSReplay 網頁手動複製貼上）。"
+            ),
+            "tried_urls": tried_urls,
+        }), 500
 
     # Firestone ID → 舊 ID alias（與 Firestone 爬蟲共用同一映射，避免重複新增）
     _HS_ALIASES = {
