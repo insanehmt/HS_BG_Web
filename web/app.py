@@ -863,7 +863,7 @@ def _git_push_data():
     # Files to sync
     data_files = ["bg_minions_cache.json", "bg_spells_cache.json",
                   "bg_trinkets_cache.json", "bg_heroes_cache.json",
-                  "bg_anomaly_cache.json", "bg_config.json"]
+                  "bg_anomaly_cache.json", "bg_config.json", "bg_comps.json"]
 
     now = _dt.datetime.now().strftime("%Y-%m-%d %H:%M")
     pushed = []
@@ -1588,6 +1588,11 @@ def api_scrape_comps():
     annotated = [_annotate_comp_rotated(c, valid_ids) for c in all_comps]
     hidden_count = sum(1 for c in annotated if c["rotated"])
 
+    try:
+        git_result = _git_push_data()
+    except Exception as e:
+        git_result = {"pushed": False, "reason": str(e)}
+
     return jsonify({
         "success":      True,
         "total":        len(all_comps),
@@ -1599,6 +1604,7 @@ def api_scrape_comps():
         "comps":        annotated,
         "stats_count":  len(stats_map),
         "patch":        all_comps[0].get("patch") if all_comps else None,
+        "git":          git_result,
     })
 
 
@@ -1856,6 +1862,11 @@ def api_scrape_hsreplay():
     annotated = [_annotate_comp_rotated(c, valid_ids) for c in all_comps]
     hidden_count = sum(1 for c in annotated if c["rotated"])
 
+    try:
+        git_result = _git_push_data()
+    except Exception as e:
+        git_result = {"pushed": False, "reason": str(e)}
+
     return jsonify({
         "success":  True,
         "total":    len(all_comps),
@@ -1864,6 +1875,7 @@ def api_scrape_hsreplay():
         "kept":     kept,
         "hidden":   hidden_count,
         "comps":    annotated,
+        "git":      git_result,
     })
 
 
