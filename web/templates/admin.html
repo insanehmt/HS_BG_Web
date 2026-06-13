@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>HS BG Admin</title>
-<script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js" defer></script>
 <style>
   body{margin:0;padding:24px;background:#0a0418;color:#c0a0e0;font-family:system-ui,sans-serif;min-height:100vh}
   h1{color:#a070d0;font-size:1.2rem;margin:0 0 20px;border-bottom:1px solid #2a1040;padding-bottom:12px}
@@ -86,8 +86,7 @@
     若 <code>GITHUB_PAT</code> 已設定，有變動時自動 commit + push → Render auto-redeploy。
   </p>
   <button class="btn-green" @click="updateCards()" :disabled="updateLoading"
-    x-text="updateLoading ? '⏳ 更新中…' : '🔄 更新排庫'">
-  </button>
+    x-text="updateLoading ? '⏳ 更新中…' : '🔄 更新排庫'">🔄 更新排庫</button>
   <div x-show="updateResult" class="result" :class="updateError ? 'error' : ''"
     x-text="updateResult"></div>
 </div>
@@ -98,8 +97,7 @@
     從 Firestone 自動抓取最新推薦組合（需要 Playwright）。
   </p>
   <button class="btn-blue" @click="scrapeFirestone()" :disabled="scrapeLoading"
-    x-text="scrapeLoading ? '⏳ 抓取中…（約30秒）' : '🕷️ 抓取 Firestone'">
-  </button>
+    x-text="scrapeLoading ? '⏳ 抓取中…（約30秒）' : '🕷️ 抓取 Firestone'">🕷️ 抓取 Firestone</button>
   <div x-show="scrapeResult" class="result" :class="scrapeError ? 'error' : ''"
     x-text="scrapeResult"></div>
 </div>
