@@ -1600,15 +1600,15 @@ def api_scrape_hsreplay():
             )
             page = ctx.new_page()
             try:
-                page.goto("https://hsreplay.net/battlegrounds/comps/", wait_until="domcontentloaded", timeout=30000)
+                page.goto("https://hsreplay.net/battlegrounds/comps/", wait_until="domcontentloaded", timeout=20000)
             except Exception:
                 pass
-            _time.sleep(8)
+            _time.sleep(4)
             # scroll to trigger lazy loading
             for y in range(0, 8000, 600):
                 page.evaluate(f"window.scrollTo(0, {y})")
-                _time.sleep(0.4)
-            _time.sleep(2)
+                _time.sleep(0.2)
+            _time.sleep(1)
             raw_comps = page.evaluate(JS_EXTRACT)
             browser.close()
     except Exception as e:

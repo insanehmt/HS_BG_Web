@@ -65,13 +65,28 @@
     this.updateLoading = false;
   },
 
+  async _safePost(url) {
+    const r = await fetch(url, {method:'POST', headers: this.authHeaders()});
+    const text = await r.text();
+    if (!text || !text.trim()) throw new Error(`伺服器回應為空（HTTP ${r.status}），可能已逾時`);
+    try { return JSON.parse(text); }
+    catch(e) { throw new Error(`回應非 JSON（HTTP ${r.status}）: ${text.slice(0,120)}`); }
+  },
+
   async scrapeFirestone() {
     this.scrapeLoading = true; this.scrapeResult = null;
     try {
-      const r = await fetch('/api/scrape-comps', {method:'POST', headers: this.authHeaders()});
-      const d = await r.json();
+      const d = await this._safePost('/api/scrape-comps');
       this.scrapeError = !d.success;
-      this.scrapeResult = d.success ? `更新 ${d.updated} 套，新增 ${d.added} 套` : (d.error || '失敗');
+      if (d.success) {
+        this.scrapeResult = `更新 ${d.updated} 套，新增 ${d.added} 套`;
+      } else {
+        let msg = d.error || '失敗';
+        if (d.captured_urls && d.captured_urls.length)
+          msg += '\n已攔截 URL:\n' + d.captured_urls.join('\n');
+        if (d.hint) msg += '\n\n' + d.hint;
+        this.scrapeResult = msg;
+      }
     } catch(e) { this.scrapeError = true; this.scrapeResult = e.message; }
     this.scrapeLoading = false;
   },
@@ -79,10 +94,11 @@
   async scrapeHSReplay() {
     this.hsrLoading = true; this.hsrResult = null;
     try {
-      const r = await fetch('/api/scrape-hsreplay', {method:'POST', headers: this.authHeaders()});
-      const d = await r.json();
+      const d = await this._safePost('/api/scrape-hsreplay');
       this.hsrError = !d.success;
-      this.hsrResult = d.success ? `更新 ${d.updated} 套，新增 ${d.added} 套（共 ${d.total} 套）` : (d.error || '失敗');
+      this.hsrResult = d.success
+        ? `更新 ${d.updated} 套，新增 ${d.added} 套（共 ${d.total} 套）`
+        : (d.error || '失敗');
     } catch(e) { this.hsrError = true; this.hsrResult = e.message; }
     this.hsrLoading = false;
   }
