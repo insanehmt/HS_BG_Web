@@ -33,6 +33,7 @@
   token: '{{ token }}',
   updateLoading: false, updateResult: null, updateError: false,
   scrapeLoading: false, scrapeResult: null, scrapeError: false,
+  hsrLoading: false, hsrResult: null, hsrError: false,
 
   authHeaders() {
     return {'Content-Type': 'application/json', 'X-Admin-Token': this.token};
@@ -73,6 +74,17 @@
       this.scrapeResult = d.success ? `更新 ${d.updated} 套，新增 ${d.added} 套` : (d.error || '失敗');
     } catch(e) { this.scrapeError = true; this.scrapeResult = e.message; }
     this.scrapeLoading = false;
+  },
+
+  async scrapeHSReplay() {
+    this.hsrLoading = true; this.hsrResult = null;
+    try {
+      const r = await fetch('/api/scrape-hsreplay', {method:'POST', headers: this.authHeaders()});
+      const d = await r.json();
+      this.hsrError = !d.success;
+      this.hsrResult = d.success ? `更新 ${d.updated} 套，新增 ${d.added} 套（共 ${d.total} 套）` : (d.error || '失敗');
+    } catch(e) { this.hsrError = true; this.hsrResult = e.message; }
+    this.hsrLoading = false;
   }
 }">
 
@@ -100,6 +112,17 @@
     x-text="scrapeLoading ? '⏳ 抓取中…（約30秒）' : '🕷️ 抓取 Firestone'">🕷️ 抓取 Firestone</button>
   <div x-show="scrapeResult" class="result" :class="scrapeError ? 'error' : ''"
     x-text="scrapeResult"></div>
+</div>
+
+<div class="card">
+  <h2>🌐 HSReplay 牌組</h2>
+  <p style="font-size:.8rem;color:#7060a0;margin:0 0 12px">
+    從 HSReplay 抓取最新推薦組合卡牌，補齊或更新現有牌組（需要 Playwright）。
+  </p>
+  <button class="btn-blue" @click="scrapeHSReplay()" :disabled="hsrLoading"
+    x-text="hsrLoading ? '⏳ 抓取中…（約30秒）' : '🌐 抓取 HSReplay'">🌐 抓取 HSReplay</button>
+  <div x-show="hsrResult" class="result" :class="hsrError ? 'error' : ''"
+    x-text="hsrResult"></div>
 </div>
 
 <div class="card" style="border-color:#2a1a00">
