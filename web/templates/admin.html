@@ -18,32 +18,60 @@
   .btn-green:hover:not(:disabled){background:#0a2018;border-color:#40a070}
   .btn-blue{border-color:#204060;color:#60a0d0}
   .btn-blue:hover:not(:disabled){background:#0a1828;border-color:#4080b0}
+  .btn-orange{border-color:#503010;color:#d09040}
+  .btn-orange:hover:not(:disabled){background:#1a0e04;border-color:#a07030}
   .result{margin-top:12px;padding:10px 14px;background:#0a0820;border-radius:8px;
     font-size:.78rem;font-family:monospace;white-space:pre-wrap;max-height:260px;overflow-y:auto;
     border:1px solid #1a0a30;color:#90d090}
   .result.error{color:#ff7070;border-color:#3a1020}
-  .tag{display:inline-block;padding:2px 8px;border-radius:6px;font-size:.7rem;font-weight:700}
-  .tag-ok{background:#0a2818;border:1px solid #205040;color:#40c070}
-  .tag-err{background:#2a0a10;border:1px solid #602020;color:#ff6060}
+  textarea{width:100%;box-sizing:border-box;background:#0a0820;border:1px solid #2a1040;
+    border-radius:8px;color:#c0a0e0;font-family:monospace;font-size:.75rem;padding:10px;
+    resize:vertical;outline:none}
+  textarea:focus{border-color:#4a2080}
+  .step-label{font-size:.75rem;color:#6a50a0;margin:8px 0 4px}
   a.back{color:#7050a0;font-size:.8rem;text-decoration:none;display:inline-block;margin-bottom:16px}
   a.back:hover{color:#b090d0}
+  a.ext{color:#4080b0;font-size:.75rem}
+  .parsed-row{display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px solid #1a0a30;font-size:.75rem}
+  .parsed-row:last-child{border:none}
+  .badge{display:inline-block;padding:1px 6px;border-radius:4px;font-size:.65rem;font-weight:700}
+  .badge-S{background:#3a2000;color:#ffa020}.badge-A{background:#002a20;color:#30d090}
+  .badge-B{background:#001830;color:#40a0d0}.badge-C{background:#1a1a30;color:#8080c0}
+  .badge-new{background:#200a30;color:#c060ff}.badge-upd{background:#0a1a00;color:#60c040}
 </style>
 </head>
 <body x-data="{
   token: '{{ token }}',
   updateLoading: false, updateResult: null, updateError: false,
   scrapeLoading: false, scrapeResult: null, scrapeError: false,
-  hsrLoading: false, hsrResult: null, hsrError: false,
+
+  /* HSReplay 貼上匯入 */
+  hsrText: '',
+  hsrParsed: null,
+  hsrParseErr: null,
+  hsrParseLoading: false,
+  hsrImportLoading: false,
+  hsrImportResult: null,
+  hsrImportError: false,
 
   authHeaders() {
     return {'Content-Type': 'application/json', 'X-Admin-Token': this.token};
   },
 
+  async _safePost(url, body) {
+    const opts = {method:'POST', headers: this.authHeaders()};
+    if (body !== undefined) opts.body = JSON.stringify(body);
+    const r = await fetch(url, opts);
+    const text = await r.text();
+    if (!text || !text.trim()) throw new Error(`伺服器回應為空（HTTP ${r.status}），可能已逾時`);
+    try { return JSON.parse(text); }
+    catch(e) { throw new Error(`回應非 JSON（HTTP ${r.status}）: ${text.slice(0,120)}`); }
+  },
+
   async updateCards() {
     this.updateLoading = true; this.updateResult = null;
     try {
-      const r = await fetch('/api/update-cards', {method:'POST', headers: this.authHeaders()});
-      const d = await r.json();
+      const d = await this._safePost('/api/update-cards');
       this.updateError = !d.success;
       if (d.success) {
         const u = d.updated;
@@ -65,14 +93,6 @@
     this.updateLoading = false;
   },
 
-  async _safePost(url) {
-    const r = await fetch(url, {method:'POST', headers: this.authHeaders()});
-    const text = await r.text();
-    if (!text || !text.trim()) throw new Error(`伺服器回應為空（HTTP ${r.status}），可能已逾時`);
-    try { return JSON.parse(text); }
-    catch(e) { throw new Error(`回應非 JSON（HTTP ${r.status}）: ${text.slice(0,120)}`); }
-  },
-
   async scrapeFirestone() {
     this.scrapeLoading = true; this.scrapeResult = null;
     try {
@@ -91,21 +111,29 @@
     this.scrapeLoading = false;
   },
 
-  async scrapeHSReplay() {
-    this.hsrLoading = true; this.hsrResult = null;
+  async hsrParse() {
+    if (!this.hsrText.trim()) return;
+    this.hsrParseLoading = true; this.hsrParsed = null; this.hsrParseErr = null;
     try {
-      const d = await this._safePost('/api/scrape-hsreplay');
-      this.hsrError = !d.success;
-      if (d.success) {
-        this.hsrResult = `更新 ${d.updated} 套，新增 ${d.added} 套（共 ${d.total} 套）`;
-      } else {
-        let msg = d.error || '失敗';
-        if (d.tried_urls && d.tried_urls.length)
-          msg += '\n\n已嘗試 API:\n' + d.tried_urls.join('\n');
-        this.hsrResult = msg;
-      }
-    } catch(e) { this.hsrError = true; this.hsrResult = e.message; }
-    this.hsrLoading = false;
+      const d = await this._safePost('/api/parse-hsreplay', {text: this.hsrText});
+      if (d.error) { this.hsrParseErr = d.error; }
+      else { this.hsrParsed = d.parsed || []; }
+    } catch(e) { this.hsrParseErr = e.message; }
+    this.hsrParseLoading = false;
+  },
+
+  async hsrImport() {
+    if (!this.hsrParsed || !this.hsrParsed.length) return;
+    this.hsrImportLoading = true; this.hsrImportResult = null; this.hsrImportError = false;
+    try {
+      const d = await this._safePost('/api/import-hsreplay', {comps: this.hsrParsed});
+      this.hsrImportError = !d.success;
+      this.hsrImportResult = d.success
+        ? `匯入完成：更新 ${d.updated} 套，新增 ${d.added} 套（共 ${d.total} 套）`
+        : (d.error || '匯入失敗');
+      if (d.success) { this.hsrParsed = null; this.hsrText = ''; }
+    } catch(e) { this.hsrImportError = true; this.hsrImportResult = e.message; }
+    this.hsrImportLoading = false;
   }
 }">
 
@@ -127,24 +155,57 @@
 <div class="card">
   <h2>🕷️ 抓取牌組</h2>
   <p style="font-size:.8rem;color:#7060a0;margin:0 0 12px">
-    從 Firestone 自動抓取最新推薦組合（需要 Playwright）。
+    從 Firestone（Zero-to-Heroes CDN）直接抓取最新推薦組合。
   </p>
   <button class="btn-blue" @click="scrapeFirestone()" :disabled="scrapeLoading"
-    x-text="scrapeLoading ? '⏳ 抓取中…（約30秒）' : '🕷️ 抓取 Firestone'">🕷️ 抓取 Firestone</button>
+    x-text="scrapeLoading ? '⏳ 抓取中…' : '🕷️ 抓取 Firestone'">🕷️ 抓取 Firestone</button>
   <div x-show="scrapeResult" class="result" :class="scrapeError ? 'error' : ''"
     x-text="scrapeResult"></div>
 </div>
 
 <div class="card">
-  <h2>🌐 HSReplay 牌組</h2>
-  <p style="font-size:.8rem;color:#7060a0;margin:0 0 12px">
-    直接呼叫 HSReplay API 抓取牌組資料（不需要瀏覽器）。<br>
-    若 API 不可用，請改用下方「貼上匯入」功能。
+  <h2>🌐 HSReplay 牌組（貼上匯入）</h2>
+  <p style="font-size:.8rem;color:#7060a0;margin:0 0 10px">
+    HSReplay API 需要登入，無法自動抓取。請手動複製貼上：<br>
+    1. 開啟 <a class="ext" href="https://hsreplay.net/battlegrounds/comps/" target="_blank">hsreplay.net/battlegrounds/comps/</a>
+    ，全選（Ctrl+A）→ 複製（Ctrl+C）<br>
+    2. 貼入下方文字框 → 點「解析」→ 確認後點「匯入」
   </p>
-  <button class="btn-blue" @click="scrapeHSReplay()" :disabled="hsrLoading"
-    x-text="hsrLoading ? '⏳ 抓取中…' : '🌐 抓取 HSReplay'">🌐 抓取 HSReplay</button>
-  <div x-show="hsrResult" class="result" :class="hsrError ? 'error' : ''"
-    x-text="hsrResult"></div>
+
+  <div class="step-label">貼上 HSReplay 頁面文字：</div>
+  <textarea x-model="hsrText" rows="6" placeholder="貼上從 HSReplay 網頁複製的全文…"></textarea>
+
+  <div style="margin-top:8px;display:flex;gap:8px;align-items:center">
+    <button class="btn-blue" @click="hsrParse()" :disabled="hsrParseLoading || !hsrText.trim()"
+      x-text="hsrParseLoading ? '⏳ 解析中…' : '🔍 解析'">🔍 解析</button>
+    <button class="btn-green" @click="hsrImport()" :disabled="hsrImportLoading || !hsrParsed || !hsrParsed.length"
+      x-text="hsrImportLoading ? '⏳ 匯入中…' : '✅ 匯入'">✅ 匯入</button>
+    <span x-show="hsrParsed" style="font-size:.75rem;color:#8060a0"
+      x-text="hsrParsed ? `解析到 ${hsrParsed.length} 套牌組` : ''"></span>
+  </div>
+
+  <!-- 解析錯誤 -->
+  <div x-show="hsrParseErr" class="result error" x-text="hsrParseErr"></div>
+
+  <!-- 解析結果預覽 -->
+  <div x-show="hsrParsed && hsrParsed.length" style="margin-top:10px">
+    <div class="step-label">解析預覽（確認後點「匯入」）：</div>
+    <div style="background:#0a0820;border:1px solid #1a0a30;border-radius:8px;padding:8px;max-height:200px;overflow-y:auto">
+      <template x-for="c in (hsrParsed || [])" :key="c.id">
+        <div class="parsed-row">
+          <span class="badge" :class="'badge-'+(c.tier||'B')" x-text="c.tier||'?'"></span>
+          <span class="badge" :class="c.action==='update'?'badge-upd':'badge-new'"
+            x-text="c.action==='update'?'更新':'新增'"></span>
+          <span x-text="c.comp_name||c.name||c.id" style="flex:1"></span>
+          <span style="color:#6060a0;font-size:.7rem" x-text="(c.core_names||[]).slice(0,3).join('、')"></span>
+        </div>
+      </template>
+    </div>
+  </div>
+
+  <!-- 匯入結果 -->
+  <div x-show="hsrImportResult" class="result" :class="hsrImportError ? 'error' : ''"
+    x-text="hsrImportResult"></div>
 </div>
 
 <div class="card" style="border-color:#2a1a00">
