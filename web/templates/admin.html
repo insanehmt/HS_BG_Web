@@ -75,8 +75,9 @@
       this.updateError = !d.success;
       if (d.success) {
         const u = d.updated;
-        let msg = `手下: ${u.minions}  法術: ${u.spells}  英雄: ${u.heroes}  飾品: ${u.trinkets}`;
-        if (d.build) msg += `\nBuild: ${d.build}`;
+        let msg = `手下: ${u.minions}  法術: ${u.spells}  英雄: ${u.heroes}  飾品: ${u.trinkets}  變異: ${u.anomalies??'-'}`;
+        if (d.version) msg += `\n版本: v${d.version}`;
+        if (d.build) msg += `  Build: ${d.build}`;
         if (d.git) {
           if (d.git.pushed) {
             msg += `\n\nGit push ✅  ${d.git.files.join(', ')}`;

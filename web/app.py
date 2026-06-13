@@ -837,7 +837,8 @@ def _git_push_data():
 
     # Files to sync
     data_files = ["bg_minions_cache.json", "bg_spells_cache.json",
-                  "bg_trinkets_cache.json", "bg_heroes_cache.json", "bg_config.json"]
+                  "bg_trinkets_cache.json", "bg_heroes_cache.json",
+                  "bg_anomaly_cache.json", "bg_config.json"]
 
     now = _dt.datetime.now().strftime("%Y-%m-%d %H:%M")
     pushed = []
@@ -1124,8 +1125,10 @@ def api_update_cards():
             "spells": len(spells),
             "trinkets": len(trinkets),
             "heroes": hero_count,
+            "anomalies": len(anomalies),
         },
         "build": current_build,
+        "version": current_version,
         "git": git_result,
     })
 
