@@ -82,8 +82,8 @@
         this.scrapeResult = `更新 ${d.updated} 套，新增 ${d.added} 套`;
       } else {
         let msg = d.error || '失敗';
-        if (d.captured_urls && d.captured_urls.length)
-          msg += '\n已攔截 URL:\n' + d.captured_urls.join('\n');
+        if (d.errors && d.errors.length)
+          msg += '\n\n各端點錯誤:\n' + d.errors.join('\n');
         if (d.hint) msg += '\n\n' + d.hint;
         this.scrapeResult = msg;
       }

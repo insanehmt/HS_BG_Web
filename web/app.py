@@ -1213,134 +1213,79 @@ def api_scrape_comps():
         'elemental_shop_buff': '旅店強化元素流',
     }
 
-    # ── 直接 HTTP 抓取（嘗試已知靜態端點）──
+    # ── 直接 HTTP 抓取（不使用 Playwright，避免雲端逾時）──
+    # Firestone 開發商 Zero-to-Heroes 的靜態資料 CDN
+    import urllib.request as _ur, urllib.error as _urlerr
+
+    _FETCH_HEADERS = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+        "Accept": "application/json, */*",
+        "Accept-Encoding": "gzip",
+        "Referer": "https://www.firestoneapp.com/",
+    }
+
+    # Zero-to-Heroes CDN + Firestone 已知端點（依可能性排序）
     DIRECT_URLS = [
+        # Zero-to-Heroes 靜態 CDN（Firestone 開發商）
+        "https://static.zerotoheroes.com/hearthstone/data/bgs-comps-strategies.json",
+        "https://static.zerotoheroes.com/hearthstone/data/battlegrounds/bgs-comps-strategies.json",
+        "https://static.zerotoheroes.com/hearthstone/data/battlegrounds/comps/strategies.json",
+        "https://static.zerotoheroes.com/hearthstone/data/bgs/bgs-comps-strategies.json",
+        # Firestone 自有 CDN
         "https://static.firestoneapp.com/data/bgs-comps-strategies.json",
-        "https://static.firestoneapp.com/data/bgs/bgs-comps-strategies.json",
-        "https://static.firestoneapp.com/bgs-comps-strategies.json",
+        "https://static.firestoneapp.com/data/battlegrounds/bgs-comps-strategies.json",
+        "https://static.firestoneapp.com/data/bgs/comps/strategies.json",
+        # Firebase Realtime DB（Zero-to-Heroes 專案）
+        "https://firestone-app-default-rtdb.firebaseio.com/bgs-comps-strategies.json",
+        "https://zerotoheroes-default-rtdb.firebaseio.com/bgs-comps-strategies.json",
     ]
 
-    def _try_direct_fetch():
-        import urllib.request as _ur
-        for url in DIRECT_URLS:
-            try:
-                req = _ur.Request(url, headers={"User-Agent": "Mozilla/5.0", "Accept-Encoding": "gzip"})
-                with _ur.urlopen(req, timeout=20) as r:
-                    raw = r.read()
-                try:
-                    raw = gz.decompress(raw)
-                except Exception:
-                    pass
-                data = json.loads(raw.decode("utf-8", "ignore"))
-                if isinstance(data, list) and data and "compId" in data[0]:
-                    return data
-                if isinstance(data, dict) and isinstance(data.get("strategies"), list):
-                    return data["strategies"]
-            except Exception:
-                pass
+    def _try_fetch(url):
+        req = _ur.Request(url, headers=_FETCH_HEADERS)
+        with _ur.urlopen(req, timeout=15) as r:
+            raw = r.read()
+        try:
+            raw = gz.decompress(raw)
+        except Exception:
+            pass
+        data = json.loads(raw.decode("utf-8", "ignore"))
+        # 辨識策略資料：list[{compId, cards}] 或 {strategies: [...]}
+        if isinstance(data, list) and data and isinstance(data[0], dict):
+            if "compId" in data[0] or "cards" in data[0]:
+                return data
+        if isinstance(data, dict):
+            for key in ("strategies", "comps", "data"):
+                inner = data.get(key)
+                if isinstance(inner, list) and inner and isinstance(inner[0], dict):
+                    if "compId" in inner[0] or "cards" in inner[0]:
+                        return inner
         return None
 
-    # ── Playwright 抓取 ──
     strategies = None
     stats_map = {}
+    tried_urls = []
+    fetch_errors = []
 
-    # 先嘗試直接 HTTP 抓取（速度快、不需要 Playwright）
-    strategies = _try_direct_fetch()
-
-    if not strategies:
+    for url in DIRECT_URLS:
+        tried_urls.append(url)
         try:
-            with sync_playwright() as pw:
-                browser = pw.chromium.launch(headless=True)
-                page = browser.new_page()
-                captured = {}        # url -> parsed JSON
-                captured_urls = []   # 所有成功解析的 JSON URL（含非 firestone 域）
-
-                def on_response(resp):
-                    url = resp.url
-                    # 略過靜態資源、圖片、字型
-                    low = url.lower()
-                    if any(low.endswith(ext) for ext in (
-                        ".png", ".jpg", ".jpeg", ".webp", ".svg",
-                        ".woff", ".woff2", ".ttf", ".otf", ".css",
-                        ".js", ".map", ".ico",
-                    )):
-                        return
-                    try:
-                        body = resp.body()
-                        if not body:
-                            return
-                        try:
-                            body = gz.decompress(body)
-                        except Exception:
-                            pass
-                        data = json.loads(body.decode("utf-8", "ignore"))
-                        captured[url] = data
-                        captured_urls.append(url)
-                    except Exception:
-                        pass
-
-                page.on("response", on_response)
-                try:
-                    page.goto("https://www.firestoneapp.com/battlegrounds/comps",
-                              wait_until="networkidle", timeout=60000)
-                except Exception:
-                    pass
-                import time as _time
-                _time.sleep(5)
-                browser.close()
-
-            # 根據內容結構辨識策略資料（不依賴域名或 URL 關鍵字）
-            def _looks_like_strategies(data):
-                if isinstance(data, list) and data and isinstance(data[0], dict):
-                    first = data[0]
-                    return "compId" in first or "cards" in first
-                return False
-
-            def _extract_comp_stats(data, stats_map):
-                entries = []
-                if isinstance(data, dict):
-                    entries = data.get("compStats", [])
-                elif isinstance(data, list):
-                    entries = data
-                for s in entries:
-                    arch = s.get("archetype", "") or s.get("compId", "")
-                    if arch:
-                        stats_map[arch] = {
-                            "avg_placement": round(s.get("averagePlacement", 0), 2),
-                            "data_points":   s.get("dataPoints", 0),
-                        }
-
-            for url, data in captured.items():
-                if _looks_like_strategies(data):
-                    strategies = data
-                    break
-                if isinstance(data, dict):
-                    inner = data.get("strategies") or data.get("comps") or data.get("data")
-                    if isinstance(inner, list) and _looks_like_strategies(inner):
-                        strategies = inner
-                        break
-                    if data.get("compStats"):
-                        _extract_comp_stats(data, stats_map)
-
-            # 第二輪：補充 comp-stats（strategies 找到後再掃一遍）
-            if strategies:
-                for url, data in captured.items():
-                    if isinstance(data, dict) and data.get("compStats"):
-                        _extract_comp_stats(data, stats_map)
-
-            if not strategies:
-                return jsonify({
-                    "success": False,
-                    "error": "無法取得 Firestone 牌組策略數據",
-                    "captured_urls": captured_urls[:15],
-                    "hint": "請把 captured_urls 貼給開發者，用於更新 API 端點",
-                }), 500
-
+            result = _try_fetch(url)
+            if result:
+                strategies = result
+                break
+        except _urlerr.HTTPError as e:
+            fetch_errors.append(f"{url} → HTTP {e.code}")
         except Exception as e:
-            return jsonify({"success": False, "error": f"Playwright 錯誤: {e}"}), 500
+            fetch_errors.append(f"{url} → {type(e).__name__}: {e}")
 
     if not strategies:
-        return jsonify({"success": False, "error": "無法取得 Firestone 牌組策略數據"}), 500
+        return jsonify({
+            "success": False,
+            "error": "無法取得 Firestone 牌組策略數據，所有已知 API 端點均失敗。",
+            "tried_urls": tried_urls,
+            "errors": fetch_errors,
+            "hint": "Firestone 的 API 端點可能已變更。請在本機執行 Playwright 偵測後告知新 URL。",
+        }), 500
 
     # ── 解析 ──
     comps = []
