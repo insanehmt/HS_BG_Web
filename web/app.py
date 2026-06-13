@@ -320,11 +320,11 @@ def anomalies_page():
 @app.route("/api/anomalies")
 def api_anomalies():
     if not os.path.exists(BG_ANOMALY_CACHE):
-        return jsonify({"anomalies": [], "total": 0, "current_season": 0})
+        return jsonify({"anomalies": [], "total": 0, "current_season": 0, "pool_size": 0})
     with open(BG_ANOMALY_CACHE, encoding="utf-8") as f:
         anomalies = json.load(f)
 
-    # Determine current season from version in config (e.g. "35.6.2" → 35)
+    pool_names = set()
     current_season = 0
     if os.path.exists(BG_CONFIG_PATH):
         try:
@@ -333,17 +333,27 @@ def api_anomalies():
             ver = cfg.get("version", "")
             if ver:
                 current_season = int(ver.split(".")[0])
+            pool_names = set(cfg.get("anomaly_pool_names", []))
         except Exception:
             pass
     if not current_season:
         current_season = max((a.get("season", 0) for a in anomalies), default=0)
 
+    for a in anomalies:
+        a["text"] = _clean_card_text(a.get("text") or "")
+        a["in_pool"] = (a.get("name", "") in pool_names) if pool_names else True
+
     q = (request.args.get("q") or "").strip().lower()
     if q:
         anomalies = [a for a in anomalies if q in a.get("name", "").lower() or q in (a.get("text") or "").lower()]
-    for a in anomalies:
-        a["text"] = _clean_card_text(a.get("text") or "")
-    return jsonify({"anomalies": anomalies, "total": len(anomalies), "current_season": current_season})
+    pool_size = sum(1 for a in anomalies if a.get("in_pool"))
+    return jsonify({
+        "anomalies": anomalies,
+        "total": len(anomalies),
+        "current_season": current_season,
+        "pool_size": pool_size,
+        "has_pool": bool(pool_names),
+    })
 
 
 @app.route("/api/trinkets")
@@ -1076,6 +1086,40 @@ def api_update_cards():
     with open(BG_ANOMALY_CACHE, "w", encoding="utf-8") as f:
         json.dump(anomalies, f, ensure_ascii=False, indent=2)
 
+    # Fetch official anomaly pool (75 cards, cardTypeId=43) from Blizzard API
+    try:
+        import urllib.request as _ur2, gzip as _gz2
+        _pool_names = set()
+        _bg_page1 = _ur2.Request(
+            "https://hearthstone.blizzard.com/en-us/api/cards?gameMode=battlegrounds&pageSize=200&page=1",
+            headers={"User-Agent": "Mozilla/5.0"}
+        )
+        with _ur2.urlopen(_bg_page1, timeout=20) as _br:
+            _bd = _br.read()
+            try: _bd = _gz2.decompress(_bd)
+            except: pass
+            _bj = json.loads(_bd)
+        _bg_pages = _bj.get("pageCount", 1)
+        _all_bg = list(_bj.get("cards", []))
+        for _bp in range(2, _bg_pages + 1):
+            _bpreq = _ur2.Request(
+                f"https://hearthstone.blizzard.com/en-us/api/cards?gameMode=battlegrounds&pageSize=200&page={_bp}",
+                headers={"User-Agent": "Mozilla/5.0"}
+            )
+            with _ur2.urlopen(_bpreq, timeout=20) as _br2:
+                _bd2 = _br2.read()
+                try: _bd2 = _gz2.decompress(_bd2)
+                except: pass
+                _all_bg.extend(json.loads(_bd2).get("cards", []))
+        for _bc in _all_bg:
+            if _bc.get("cardTypeId") == 43:
+                _bname = _bc.get("name", {})
+                _tw = _bname.get("zh_TW", "") if isinstance(_bname, dict) else ""
+                if _tw:
+                    _pool_names.add(_tw)
+    except Exception:
+        _pool_names = set()
+
     # Clean up raw file
     try:
         os.remove(raw_path)
@@ -1127,6 +1171,8 @@ def api_update_cards():
     cfg["last_updated"] = _dt.datetime.now().isoformat()
     if current_version:
         cfg["version"] = current_version
+    if _pool_names:
+        cfg["anomaly_pool_names"] = sorted(_pool_names)
     with open(BG_CONFIG_PATH, "w", encoding="utf-8") as f:
         json.dump(cfg, f, ensure_ascii=False, indent=2)
 
