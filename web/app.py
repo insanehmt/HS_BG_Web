@@ -1021,23 +1021,30 @@ def api_update_cards():
 
     # --- Anomalies ---
     anomalies = []
-    seen = set()
-    for card in all_cards:
+    seen_ids = set()
+    seen_names = set()
+    for card in sorted(all_cards, key=lambda c: c.get("id", "")):
         cid = card.get("id", "")
+        name = card.get("name", "")
         if card.get("type") != "BATTLEGROUND_ANOMALY":
             continue
-        if not card.get("name") or cid in seen:
+        if not name or cid in seen_ids:
             continue
-        # Skip token variants (IDs ending with t, t2, t3, … t10)
+        # Skip token variants (IDs ending with t, t2 … t10)
         if re.search(r"t\d*$", cid):
             continue
+        # Skip duplicate names (keep earliest ID alphabetically)
+        if name in seen_names:
+            continue
+        duo = cid.startswith("BGDUO")
         anomalies.append({
             "id":   cid,
-            "name": card.get("name", ""),
+            "name": name,
             "text": card.get("text", "").replace("\n", " "),
-            "set":  card.get("set", ""),
+            "duo":  duo,
         })
-        seen.add(cid)
+        seen_ids.add(cid)
+        seen_names.add(name)
     anomalies.sort(key=lambda x: x["name"])
     with open(BG_ANOMALY_CACHE, "w", encoding="utf-8") as f:
         json.dump(anomalies, f, ensure_ascii=False, indent=2)

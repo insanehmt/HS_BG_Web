@@ -85,6 +85,11 @@
 
   <!-- Toolbar -->
   <div class="toolbar mb-5">
+    <span style="font-size:.78rem;color:#6a4a80;font-weight:700">模式</span>
+    <button class="fbtn" :class="modeFilter==='all'?'on':''"  @click="modeFilter='all';applyFilter()">全部</button>
+    <button class="fbtn" :class="modeFilter==='solo'?'on':''" @click="modeFilter='solo';applyFilter()">⚔️ 一般</button>
+    <button class="fbtn" :class="modeFilter==='duo'?'on':''"  @click="modeFilter='duo';applyFilter()">👥 雙人</button>
+    <span style="color:#2a1040;font-size:1.2rem;padding:0 2px">|</span>
     <input class="search-box" type="text" placeholder="🔍 搜尋變異名稱或效果…"
            x-model="search" @input="applyFilter()">
     <span class="count-bar ml-auto">
@@ -110,7 +115,11 @@
                onerror="this.style.opacity='.08'">
         </div>
         <!-- name -->
-        <div class="a-name" x-text="a.name"></div>
+        <div style="display:flex;align-items:center;gap:4px;width:100%">
+          <div class="a-name" x-text="a.name" style="flex:1"></div>
+          <span x-show="a.duo" style="font-size:.6rem;background:#1a2040;border:1px solid #304060;
+            color:#6090c0;padding:1px 5px;border-radius:4px;white-space:nowrap">👥</span>
+        </div>
         <!-- effect text -->
         <div class="a-text" x-html="a.text || '—'"></div>
       </div>
@@ -133,6 +142,7 @@ function app() {
     all: [], filtered: [],
     total: 0,
     search: '',
+    modeFilter: 'all',
 
     async init() { await this.load() },
 
@@ -148,6 +158,8 @@ function app() {
 
     applyFilter() {
       let list = [...this.all]
+      if (this.modeFilter === 'duo')  list = list.filter(a => a.duo)
+      if (this.modeFilter === 'solo') list = list.filter(a => !a.duo)
       const q = this.search.trim().toLowerCase()
       if (q) list = list.filter(a =>
         (a.name || '').toLowerCase().includes(q) ||
