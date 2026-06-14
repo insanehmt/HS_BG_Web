@@ -1273,7 +1273,7 @@ def api_tier_list_add():
     else:
         comps = []
 
-    comps.append(new_comp)
+    comps.append(_sanitize_comp_texts(new_comp))
     with open(BG_COMPS_CACHE, "w", encoding="utf-8") as f:
         json.dump(comps, f, ensure_ascii=False, indent=2)
 
@@ -1576,6 +1576,7 @@ def api_scrape_comps():
 
     # ── 所有 existing_map 的 comp 都保留（包含舊組合）──
     all_comps = list(existing_map.values())
+    all_comps = [_sanitize_comp_texts(c) for c in all_comps]
 
     # 依 tier 排序
     tier_order = {"S": 0, "A": 1, "B": 2, "C": 3, "D": 4}
@@ -1853,6 +1854,7 @@ def api_scrape_hsreplay():
             added_count += 1
 
     all_comps = list(existing_map.values())
+    all_comps = [_sanitize_comp_texts(c) for c in all_comps]
     kept = len(all_comps) - updated_count - added_count
     tier_order = {"S": 0, "A": 1, "B": 2, "C": 3, "D": 4}
     all_comps.sort(key=lambda c: (tier_order.get(c["tier"], 9), c["name"]))
@@ -1959,6 +1961,19 @@ def _load_comps():
 def _save_comps(comps):
     with open(BG_COMPS_CACHE, "w", encoding="utf-8") as f:
         json.dump(comps, f, ensure_ascii=False, indent=2)
+
+
+_CHINESE_RE = re.compile(r"[一-鿿]")
+
+def _has_chinese(s: str) -> bool:
+    return bool(_CHINESE_RE.search(s or ""))
+
+def _sanitize_comp_texts(comp: dict) -> dict:
+    """清除非中文的 strategy 和 tips，防止英文或空白說明被存入。"""
+    if not _has_chinese(comp.get("strategy", "")):
+        comp["strategy"] = ""
+    comp["tips"] = [t for t in comp.get("tips", []) if _has_chinese(t)]
+    return comp
 
 
 def _match_comp(parsed_name, comps):
