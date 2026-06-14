@@ -1,52 +1,52 @@
 [
   {
-    "id": "undead_forsaken",
+    "id": "mech_magnet",
     "tier": "S",
-    "name": "Undead Forsaken",
-    "original_name": "Undead Forsaken",
+    "name": "Mech Magnet",
+    "original_name": "Mech Magnet",
     "races": [],
-    "difficulty": "medium",
+    "difficulty": "easy",
     "core": [
-      "BG34_692",
-      "BG31_835",
-      "BG25_010",
-      "BG33_823",
-      "BG33_825"
+      "BG26_148",
+      "BG35_890",
+      "BG25_354",
+      "BGS_012"
     ],
     "core_names": [
-      "被遺忘者編織師",
-      "致命先鋒",
-      "沒有手的被遺忘者",
-      "空軍上將羅傑斯",
-      "傲氣私掠者"
+      "廢料搜刮者",
+      "靈巧發明家",
+      "提圖斯‧瑞文戴爾",
+      "崗古的學徒"
     ],
     "addon": [
       [
-        "BG25_354",
-        "BG_LOE_077",
-        "BG34_694",
-        "BG32_324",
-        "BG25_009",
+        "BGS_078",
+        "BG35_342",
+        "BG34_175",
         "BG_DEEP_015",
-        "BG28_303"
+        "BG29_503",
+        "BG31_175",
+        "BG32_172",
+        "BGS_071"
       ]
     ],
     "addon_names": [
       [
-        "提圖斯‧瑞文戴爾",
-        "布萊恩‧銅鬚",
-        "冬握食屍鬼",
-        "墮落佐司特屠夫",
-        "永恆召喚者",
+        "恐怖的鸚鵡",
+        "墜毀的飛天魔像",
+        "廢料槍騎",
         "義體手",
-        "偽裝的盜墓賊"
+        "破爛廢鐵",
+        "投影單輪機器人",
+        "自動組裝機",
+        "偏斜防護機器人"
       ]
     ],
-    "strategy": "Generate a lot of spells with Roger + Proud privateer and cast them with Forsaken Weaver on board",
+    "strategy": "Generate some Magnet (Best is Moonsteel Juggernaut, Scrap Scraper, Holo Rover) Then boost your board with Junk Jouster",
     "tips": [],
     "avg_placement": null,
     "data_points": 0,
-    "patch": 235290
+    "patch": 231720
   },
   {
     "id": "undead_poison_scythe",
@@ -101,62 +101,64 @@
     ]
   },
   {
-    "id": "dragon_ring_bearer",
+    "id": "pirate_bounty",
     "tier": "S",
-    "name": "戒指持有者龍族流",
-    "original_name": "Dragon Ring Bearer",
+    "name": "賞金海盜流",
+    "original_name": "Pirate Bounty ",
     "races": [
-      "DRAGON",
-      "NAGA"
+      "PIRATE"
     ],
-    "difficulty": "medium",
+    "difficulty": "hard",
     "core": [
-      "BG34_921",
-      "BG25_354",
-      "BG34_731",
-      "BG34_922",
-      "BG32_821",
-      "BG29_813"
+      "BG33_825",
+      "BG33_823"
     ],
     "core_names": [
-      "戒指持有者",
-      "提圖斯‧瑞文戴爾",
-      "暮光育母",
-      "漩渦湧現者",
-      "魔焰咒術師",
-      "堅持的吟詩龍"
+      "傲氣私掠者",
+      "空軍上將羅傑斯"
     ],
     "addon": [
       [
-        "BG24_500",
+        "BG_LOE_077",
+        "BG33_822",
+        "BG27_005",
+        "BG35_700",
+        "BG35_701",
+        "BG26_ICC_901",
         "BG32_821",
-        "BG34_731",
-        "BG34_922",
-        "BG25_354",
-        "BG33_240"
+        "BG32_835",
+        "BG33_821",
+        "BG32_822",
+        "BG34_765",
+        "BG33_923"
       ]
     ],
     "addon_names": [
       [
-        "琥珀守護者",
+        "布萊恩‧銅鬚",
+        "大尾強盜",
+        "時光船長鉤尾",
+        "跳船者",
+        "狂妄海賊",
+        "德拉克瑞附魔師",
         "魔焰咒術師",
-        "暮光育母",
-        "漩渦湧現者",
-        "提圖斯‧瑞文戴爾",
-        "魅翼"
+        "寧靜冥想",
+        "船難無賴",
+        "炎鑄喚術師",
+        "死海劫毀者",
+        "碎裂女族長"
       ]
     ],
-    "strategy": "核心機制：戒指持有者（NAGA/DRAGON）在每次友方手下攻擊時施放「刺眼戒指」，讓場上隨從持續獲得聖盾術保護。辛多雷直擊者天生聖盾術＋風怒，每回合攻擊兩次觸發兩次戒指效果。堅持的吟詩龍讓旁邊的龍族永久保留聖盾術及戰鬥體質。充能女皇在你施放旅店法術時為所有有聖盾術的隨從追加+3攻擊力，形成聖盾→充能→攻擊→新聖盾的完美循環。",
+    "strategy": "賞金機制是此流核心：多張海盜能在回合中或死亡時獲得隨機賞金（各種強力效果）。傲氣私掠者讓所有賞金觸發兩次，卑劣佐司特在你每次獲得海盜時強化全場。迷城掠寶者每回合自動獲得賞金，船難無賴出場和死亡都各得一個賞金，形成連環觸發。",
     "tips": [
-      "戒指持有者需在中後期（T6）才能找到，前期優先拿聖盾術手下",
-      "辛多雷直擊者一定要放在場上，風怒讓他每回合觸發兩次戒指",
-      "充能女皇搭配旅店法術能讓聖盾手下攻擊力爆炸性成長",
-      "堅持的吟詩龍要放在有高攻擊力龍族旁讓永久體質加持",
-      "此流爆發力極高但需精確排板，練習各手下的位置配置"
+      "傲氣私掠者是核心，要優先確保他在場，讓所有賞金效果雙倍",
+      "賞金是隨機的，要有心理準備應對不同效果，靈活調整陣容",
+      "卑劣佐司特讓每次獲得海盜都強化全場，可搭配大量翻牌動作",
+      "此流難度高，需要了解所有賞金效果才能最大化利用"
     ],
     "avg_placement": null,
     "data_points": 0,
-    "patch": 235290
+    "patch": 231720
   },
   {
     "id": "quilboar_smuggler",
@@ -213,47 +215,48 @@
     "patch": 235290
   },
   {
-    "id": "beast_leviathan",
-    "tier": "A",
-    "name": "Beast Leviathan",
-    "original_name": "Beast Leviathan",
+    "id": "neutral_back_to_back",
+    "tier": "S",
+    "name": "連續觸發流",
+    "original_name": "Back to Back",
     "races": [],
-    "difficulty": "medium",
+    "difficulty": "easy",
     "core": [
-      "BG26_802",
-      "BG35_604",
-      "BG35_602"
+      "BG35_952",
+      "BG35_883",
+      "BG26_ICC_901",
+      "BG35_123"
     ],
     "core_names": [
-      "蕉流猩",
-      "下水道之王",
-      "潛伏海獸"
+      "BG35_952",
+      "巴琳達‧石爐",
+      "德拉克瑞附魔師",
+      "災變預示者"
     ],
     "addon": [
       [
-        "BGS_018",
-        "BG25_354",
-        "BGS_078",
-        "BG25_806",
-        "BG27_084",
-        "BG28_603"
+        "BG32_821",
+        "BG33_891",
+        "BG32_835"
       ]
     ],
     "addon_names": [
       [
-        "『巨狼先祖』戈德林",
-        "提圖斯‧瑞文戴爾",
-        "恐怖的鸚鵡",
-        "狡詐迅猛龍",
-        "活力甲蟲",
-        "甲蟲恩澤"
+        "魔焰咒術師",
+        "魔術魚真菌學家",
+        "寧靜冥想"
       ]
     ],
-    "strategy": "",
-    "tips": [],
+    "strategy": "火球手出售時全場+1攻擊力並強化下一個球手；雪球手出售時全場+1生命值並強化下一個球手——連續「背靠背」出售重購球手使每張效果越來越大。沙丘居怪讓旅店元素提前獲得基礎加成，紫外線晉升者在大量元素被打出後給全場元素+3/+2。",
+    "tips": [
+      "每回合循環：出售球手→從旅店買同名球手→繼續出售，每次全場累積更多加成",
+      "火球手和雪球手交替出售可以讓攻擊力和生命值均衡成長",
+      "每出售一張球手，下一張同名球手的加成效果就更強，盡早開始循環",
+      "紫外線晉升者在元素打出越多後越強，中後期是核心戰力"
+    ],
     "avg_placement": null,
     "data_points": 0,
-    "patch": 235290
+    "patch": 231720
   },
   {
     "id": "naga_groundbreaker",
@@ -294,7 +297,7 @@
     "tips": [],
     "avg_placement": null,
     "data_points": 0,
-    "patch": 235290
+    "patch": 231720
   },
   {
     "id": "naga_spellbuff",
@@ -322,7 +325,9 @@
         "BG26_801",
         "BG34_635t",
         "BGS_078",
-        "BG27_084"
+        "BG27_084",
+        "BG33_923",
+        "BG33_920"
       ]
     ],
     "addon_names": [
@@ -334,14 +339,16 @@
         "鐵頭萊拉克",
         "黑色炫彩龍",
         "恐怖的鸚鵡",
-        "活力甲蟲"
+        "活力甲蟲",
+        "碎裂女族長",
+        "怒鱗盜賊"
       ]
     ],
     "strategy": "Boost your tavern spells with Tranquil Meditative/Felfire conjurer. Then Trigger Ruthless Queensguard or Ring Bearer multiple time with Maelstrom Emergent, Titus, Rylak ",
     "tips": [],
     "avg_placement": null,
     "data_points": 0,
-    "patch": 235290
+    "patch": 231720
   },
   {
     "id": "pirate_end_of_turn",
@@ -354,20 +361,21 @@
       "BG26_ICC_901",
       "BG35_701",
       "BG26_817",
-      "BG35_700"
+      "BG34_765"
     ],
     "core_names": [
       "德拉克瑞附魔師",
       "狂妄海賊",
       "刀劍收藏家",
-      "跳船者"
+      "死海劫毀者"
     ],
     "addon": [
       [
         "BG33_823",
         "BG_LOE_077",
         "BG33_825",
-        "BGS_049"
+        "BGS_049",
+        "BG35_700"
       ]
     ],
     "addon_names": [
@@ -375,10 +383,60 @@
         "空軍上將羅傑斯",
         "布萊恩‧銅鬚",
         "傲氣私掠者",
-        "保本賭客"
+        "保本賭客",
+        "跳船者"
       ]
     ],
     "strategy": "Cycle a lot of card (with brann, or Rogers & Proud Privateer) Then boost Blade Collector or Ship Jumper with Brazen Buccaneer & Drakkari",
+    "tips": [],
+    "avg_placement": null,
+    "data_points": 0,
+    "patch": 231720
+  },
+  {
+    "id": "quilboar_felboar",
+    "tier": "A",
+    "name": "Quilboar Felboar",
+    "original_name": "Quilboar Felboar",
+    "races": [],
+    "difficulty": "medium",
+    "core": [
+      "BG28_633",
+      "BG_LOE_077",
+      "BG34_682"
+    ],
+    "core_names": [
+      "惡魔野豬",
+      "布萊恩‧銅鬚",
+      "剃刀沼澤舞者"
+    ],
+    "addon": [
+      [
+        "BG34_689",
+        "BG34_683",
+        "BG35_433",
+        "BG32_341",
+        "BG26_801",
+        "BG35_153",
+        "BG25_354",
+        "BG32_891",
+        "BG28_886"
+      ]
+    ],
+    "addon_names": [
+      [
+        "BG34_689",
+        "棘背鼓手",
+        "赤牙喚棘者",
+        "大猛菇斯",
+        "鐵頭萊拉克",
+        "頂尖征服者",
+        "提圖斯‧瑞文戴爾",
+        "暗影舞者",
+        "BG28_886"
+      ]
+    ],
+    "strategy": "",
     "tips": [],
     "avg_placement": null,
     "data_points": 0,
@@ -488,7 +546,56 @@
     "tips": [],
     "avg_placement": null,
     "data_points": 0,
-    "patch": 235290
+    "patch": 231720
+  },
+  {
+    "id": "undead_forsaken",
+    "tier": "A",
+    "name": "Undead Forsaken",
+    "original_name": "Undead Forsaken",
+    "races": [],
+    "difficulty": "medium",
+    "core": [
+      "BG34_692",
+      "BG31_835",
+      "BG25_010",
+      "BG33_823",
+      "BG33_825"
+    ],
+    "core_names": [
+      "被遺忘者編織師",
+      "致命先鋒",
+      "沒有手的被遺忘者",
+      "空軍上將羅傑斯",
+      "傲氣私掠者"
+    ],
+    "addon": [
+      [
+        "BG25_354",
+        "BG_LOE_077",
+        "BG34_694",
+        "BG32_324",
+        "BG25_009",
+        "BG_DEEP_015",
+        "BG28_303"
+      ]
+    ],
+    "addon_names": [
+      [
+        "提圖斯‧瑞文戴爾",
+        "布萊恩‧銅鬚",
+        "冬握食屍鬼",
+        "墮落佐司特屠夫",
+        "永恆召喚者",
+        "義體手",
+        "偽裝的盜墓賊"
+      ]
+    ],
+    "strategy": "Generate a lot of spells with Roger + Proud privateer and cast them with Forsaken Weaver on board",
+    "tips": [],
+    "avg_placement": null,
+    "data_points": 0,
+    "patch": 231720
   },
   {
     "id": "neutral_poison_scout",
@@ -712,6 +819,58 @@
     ]
   },
   {
+    "id": "dragon_ring_bearer",
+    "tier": "A",
+    "name": "戒指持有者龍族流",
+    "original_name": "Dragon Ring Bearer",
+    "races": [
+      "DRAGON",
+      "NAGA"
+    ],
+    "difficulty": "medium",
+    "core": [
+      "BG34_921",
+      "BG29_813",
+      "BG32_822"
+    ],
+    "core_names": [
+      "戒指持有者",
+      "堅持的吟詩龍",
+      "炎鑄喚術師"
+    ],
+    "addon": [
+      [
+        "BG24_500",
+        "BG32_821",
+        "BG34_731",
+        "BG34_922",
+        "BG25_354",
+        "BG33_240"
+      ]
+    ],
+    "addon_names": [
+      [
+        "琥珀守護者",
+        "魔焰咒術師",
+        "暮光育母",
+        "漩渦湧現者",
+        "提圖斯‧瑞文戴爾",
+        "魅翼"
+      ]
+    ],
+    "strategy": "核心機制：戒指持有者（NAGA/DRAGON）在每次友方手下攻擊時施放「刺眼戒指」，讓場上隨從持續獲得聖盾術保護。辛多雷直擊者天生聖盾術＋風怒，每回合攻擊兩次觸發兩次戒指效果。堅持的吟詩龍讓旁邊的龍族永久保留聖盾術及戰鬥體質。充能女皇在你施放旅店法術時為所有有聖盾術的隨從追加+3攻擊力，形成聖盾→充能→攻擊→新聖盾的完美循環。",
+    "tips": [
+      "戒指持有者需在中後期（T6）才能找到，前期優先拿聖盾術手下",
+      "辛多雷直擊者一定要放在場上，風怒讓他每回合觸發兩次戒指",
+      "充能女皇搭配旅店法術能讓聖盾手下攻擊力爆炸性成長",
+      "堅持的吟詩龍要放在有高攻擊力龍族旁讓永久體質加持",
+      "此流爆發力極高但需精確排板，練習各手下的位置配置"
+    ],
+    "avg_placement": null,
+    "data_points": 0,
+    "patch": 231720
+  },
+  {
     "id": "elemental_shop_buff",
     "tier": "A",
     "name": "旅店強化元素流",
@@ -721,21 +880,19 @@
     ],
     "difficulty": "hard",
     "core": [
-      "BG26_162",
+      "BG35_883",
       "BG35_881",
-      "BG_LOE_077",
-      "BG35_883"
+      "BG34_858",
+      "BG_LOE_077"
     ],
     "core_names": [
-      "勁舞穀倉風暴",
+      "巴琳達‧石爐",
       "地脈具現元素",
-      "布萊恩‧銅鬚",
-      "巴琳達‧石爐"
+      "陣風亡魄",
+      "布萊恩‧銅鬚"
     ],
     "addon": [
       [
-        "BG34_858",
-        "BG_LOE_077",
         "BGS_126",
         "BG34_500",
         "BG26_175",
@@ -752,8 +909,6 @@
     ],
     "addon_names": [
       [
-        "陣風亡魄",
-        "布萊恩‧銅鬚",
         "野火元素",
         "燃焰執行者",
         "驚喜元素",
@@ -777,7 +932,7 @@
     ],
     "avg_placement": null,
     "data_points": 0,
-    "patch": 235290
+    "patch": 231720
   },
   {
     "id": "mech_annoy_divine",
@@ -828,110 +983,6 @@
       "神聖火花機器人配合聖盾更新機制，讓聖盾持續存在",
       "機械弱點是AOE全體傷害，注意對手的傷害類型"
     ]
-  },
-  {
-    "id": "pirate_bounty",
-    "tier": "A",
-    "name": "賞金海盜流",
-    "original_name": "Pirate Bounty ",
-    "races": [
-      "PIRATE"
-    ],
-    "difficulty": "hard",
-    "core": [
-      "BG33_825",
-      "BG33_823",
-      "BG_LOE_077",
-      "BG35_701"
-    ],
-    "core_names": [
-      "傲氣私掠者",
-      "空軍上將羅傑斯",
-      "布萊恩‧銅鬚",
-      "狂妄海賊"
-    ],
-    "addon": [
-      [
-        "BG_LOE_077",
-        "BG33_822",
-        "BG27_005",
-        "BG35_700",
-        "BG35_701",
-        "BG26_ICC_901",
-        "BG32_821",
-        "BG32_835",
-        "BG33_821",
-        "BG32_822"
-      ]
-    ],
-    "addon_names": [
-      [
-        "布萊恩‧銅鬚",
-        "大尾強盜",
-        "時光船長鉤尾",
-        "跳船者",
-        "狂妄海賊",
-        "德拉克瑞附魔師",
-        "魔焰咒術師",
-        "寧靜冥想",
-        "船難無賴",
-        "炎鑄喚術師"
-      ]
-    ],
-    "strategy": "賞金機制是此流核心：多張海盜能在回合中或死亡時獲得隨機賞金（各種強力效果）。傲氣私掠者讓所有賞金觸發兩次，卑劣佐司特在你每次獲得海盜時強化全場。迷城掠寶者每回合自動獲得賞金，船難無賴出場和死亡都各得一個賞金，形成連環觸發。",
-    "tips": [
-      "傲氣私掠者是核心，要優先確保他在場，讓所有賞金效果雙倍",
-      "賞金是隨機的，要有心理準備應對不同效果，靈活調整陣容",
-      "卑劣佐司特讓每次獲得海盜都強化全場，可搭配大量翻牌動作",
-      "此流難度高，需要了解所有賞金效果才能最大化利用"
-    ],
-    "avg_placement": null,
-    "data_points": 0,
-    "patch": 235290
-  },
-  {
-    "id": "neutral_back_to_back",
-    "tier": "A",
-    "name": "連續觸發流",
-    "original_name": "Back to Back",
-    "races": [],
-    "difficulty": "easy",
-    "core": [
-      "BG32_821",
-      "BG26_ICC_901",
-      "BG35_123",
-      "BG35_883"
-    ],
-    "core_names": [
-      "魔焰咒術師",
-      "德拉克瑞附魔師",
-      "災變預示者",
-      "巴琳達‧石爐"
-    ],
-    "addon": [
-      [
-        "BG32_821",
-        "BG33_891",
-        "BG32_835"
-      ]
-    ],
-    "addon_names": [
-      [
-        "魔焰咒術師",
-        "魔術魚真菌學家",
-        "寧靜冥想"
-      ]
-    ],
-    "strategy": "火球手出售時全場+1攻擊力並強化下一個球手；雪球手出售時全場+1生命值並強化下一個球手——連續「背靠背」出售重購球手使每張效果越來越大。沙丘居怪讓旅店元素提前獲得基礎加成，紫外線晉升者在大量元素被打出後給全場元素+3/+2。",
-    "tips": [
-      "每回合循環：出售球手→從旅店買同名球手→繼續出售，每次全場累積更多加成",
-      "火球手和雪球手交替出售可以讓攻擊力和生命值均衡成長",
-      "每出售一張球手，下一張同名球手的加成效果就更強，盡早開始循環",
-      "紫外線晉升者在元素打出越多後越強，中後期是核心戰力"
-    ],
-    "avg_placement": null,
-    "data_points": 0,
-    "patch": 235290
   },
   {
     "id": "undead_attack",
@@ -1057,17 +1108,13 @@
     ],
     "difficulty": "medium",
     "core": [
-      "BG_LOE_077",
       "BG35_155",
-      "BG32_873",
-      "BG26_524",
+      "BG_LOE_077",
       "BG35_153"
     ],
     "core_names": [
-      "布萊恩‧銅鬚",
       "扭曲的憤怒守衛",
-      "灰燼墮落者",
-      "『舞動王子』莫克札",
+      "布萊恩‧銅鬚",
       "頂尖征服者"
     ],
     "addon": [
@@ -1101,7 +1148,7 @@
     ],
     "avg_placement": null,
     "data_points": 0,
-    "patch": 235290
+    "patch": 231720
   },
   {
     "id": "beast_banana",
@@ -1234,21 +1281,70 @@
       [
         "BG25_806",
         "BG27_084",
-        "BG28_603"
+        "BG28_603",
+        "BG31_801",
+        "BG31_809"
       ]
     ],
     "addon_names": [
       [
         "狡詐迅猛龍",
         "活力甲蟲",
-        "BG28_603"
+        "BG28_603",
+        "森林甲蟲",
+        "青色爬行蟲"
       ]
     ],
     "strategy": "Trigger Goldrinn as much as possible with Macaw, Titus etc.",
     "tips": [],
     "avg_placement": null,
     "data_points": 0,
-    "patch": 235290
+    "patch": 231720
+  },
+  {
+    "id": "beast_leviathan",
+    "tier": "B",
+    "name": "Beast Leviathan",
+    "original_name": "Beast Leviathan",
+    "races": [],
+    "difficulty": "medium",
+    "core": [
+      "BG26_802",
+      "BG35_604",
+      "BG35_602"
+    ],
+    "core_names": [
+      "蕉流猩",
+      "下水道之王",
+      "潛伏海獸"
+    ],
+    "addon": [
+      [
+        "BGS_018",
+        "BG25_354",
+        "BGS_078",
+        "BG25_806",
+        "BG27_084",
+        "BG28_603",
+        "BG29_808"
+      ]
+    ],
+    "addon_names": [
+      [
+        "『巨狼先祖』戈德林",
+        "提圖斯‧瑞文戴爾",
+        "恐怖的鸚鵡",
+        "狡詐迅猛龍",
+        "活力甲蟲",
+        "BG28_603",
+        "尖刺救星"
+      ]
+    ],
+    "strategy": "",
+    "tips": [],
+    "avg_placement": null,
+    "data_points": 0,
+    "patch": 231720
   },
   {
     "id": "demon_damage",
@@ -1272,7 +1368,8 @@
         "BGS_078",
         "BG33_155",
         "BG21_015",
-        "BG29_813"
+        "BG29_813",
+        "BG32_204"
       ]
     ],
     "addon_names": [
@@ -1280,57 +1377,11 @@
         "恐怖的鸚鵡",
         "虔誠的喚魔者",
         "塔瑞克苟莎",
-        "堅持的吟詩龍"
+        "堅持的吟詩龍",
+        "絲柔幻光蛾"
       ]
     ],
     "strategy": "",
-    "tips": [],
-    "avg_placement": null,
-    "data_points": 0,
-    "patch": 235290
-  },
-  {
-    "id": "mech_magnet",
-    "tier": "B",
-    "name": "Mech Magnet",
-    "original_name": "Mech Magnet",
-    "races": [],
-    "difficulty": "easy",
-    "core": [
-      "BG34_175",
-      "BG31_171",
-      "BG26_148",
-      "BG31_175"
-    ],
-    "core_names": [
-      "廢料槍騎",
-      "月鋼飛行巨艦",
-      "廢料搜刮者",
-      "投影單輪機器人"
-    ],
-    "addon": [
-      [
-        "BG25_354",
-        "BG26_149",
-        "BGS_071",
-        "BG26_ICC_901",
-        "BGS_012",
-        "BGS_078",
-        "BG26_147"
-      ]
-    ],
-    "addon_names": [
-      [
-        "提圖斯‧瑞文戴爾",
-        "電磁節奏口技手",
-        "偏斜防護機器人",
-        "德拉克瑞附魔師",
-        "崗古的學徒",
-        "恐怖的鸚鵡",
-        "手風琴機器人"
-      ]
-    ],
-    "strategy": "Generate some Magnet (Best is Moonsteel Juggernaut, Scrap Scraper, Holo Rover) Then boost your board with Junk Jouster",
     "tips": [],
     "avg_placement": null,
     "data_points": 0,
@@ -1345,20 +1396,20 @@
     "difficulty": "medium",
     "core": [
       "BG26_867",
-      "BG35_431",
       "BG25_354",
-      "BG35_433"
+      "BG35_433",
+      "BG26_157",
+      "BG35_437"
     ],
     "core_names": [
       "三隻小野豬人",
-      "地歌薩滿",
       "提圖斯‧瑞文戴爾",
-      "赤牙喚棘者"
+      "赤牙喚棘者",
+      "剛鬃作曲家",
+      "藤蔓語者"
     ],
     "addon": [
       [
-        "BG26_157",
-        "BG35_437",
         "BG26_ICC_901",
         "BG23_018",
         "BG32_433",
@@ -1367,13 +1418,12 @@
         "BG26_801",
         "BG26_159",
         "BG32_430",
-        "BG33_888"
+        "BG33_888",
+        "BG35_431"
       ]
     ],
     "addon_names": [
       [
-        "剛鬃作曲家",
-        "藤蔓語者",
         "德拉克瑞附魔師",
         "暗視長老",
         "做夢織棘者",
@@ -1382,14 +1432,15 @@
         "鐵頭萊拉克",
         "月之培根爵士樂手",
         "螢喉督軍",
-        "野豬看守者"
+        "野豬看守者",
+        "地歌薩滿"
       ]
     ],
     "strategy": "Boost your gems with Prickly Piper, Vinespeaker or Dreaming Thornweaver. Keep Redtush Thornraiser on board to farm Reborn blood gems. then you can reborn three lil'quilboar, Earthsong Shaman etc. Pick all hogwatcher you see",
     "tips": [],
     "avg_placement": null,
     "data_points": 0,
-    "patch": 235290
+    "patch": 231720
   },
   {
     "id": "elemental_hot_cold",
@@ -1454,13 +1505,11 @@
     "difficulty": "medium",
     "core": [
       "BGS_041",
-      "BG_LOE_077",
-      "BG34_633"
+      "BG_LOE_077"
     ],
     "core_names": [
       "『秘法巨龍』卡雷苟斯",
-      "布萊恩‧銅鬚",
-      "龍族看守者"
+      "布萊恩‧銅鬚"
     ],
     "addon": [
       [
@@ -1499,7 +1548,7 @@
     ],
     "avg_placement": null,
     "data_points": 0,
-    "patch": 235290
+    "patch": 231720
   },
   {
     "id": "neutral_unity_travelers",
@@ -1666,6 +1715,55 @@
     ]
   },
   {
+    "id": "murloc_handbuff",
+    "tier": "B",
+    "name": "手牌強化魚人流",
+    "original_name": "Murloc Handbuff",
+    "races": [
+      "MURLOC"
+    ],
+    "difficulty": "hard",
+    "core": [
+      "BG26_354",
+      "BG26_137",
+      "BG30_122",
+      "BG27_556",
+      "BG_LOE_077"
+    ],
+    "core_names": [
+      "魚人合唱團",
+      "鯛魚計數員",
+      "魚人竊賊",
+      "沼泥採獵者",
+      "布萊恩‧銅鬚"
+    ],
+    "addon": [
+      [
+        "BG33_318",
+        "BG33_891",
+        "BG34_140",
+        "BGS_020",
+        "BG22_202",
+        "BG32_330"
+      ]
+    ],
+    "addon_names": [
+      [
+        "膽汁噴吐者",
+        "魔術魚真菌學家",
+        "專家飛行員",
+        "原魚偵查兵",
+        "泰德",
+        "飄忽斥候"
+      ]
+    ],
+    "strategy": "Generate Murloc with Brann Bronzebeard, Primalfin Lookout & Magicfin Mycologist and boost your Bream Counter with Mrglin' Burglar. Summon it in fight with Diremuck Forager",
+    "tips": [],
+    "avg_placement": null,
+    "data_points": 0,
+    "patch": 231720
+  },
+  {
     "id": "naga_spellspam",
     "tier": "B",
     "name": "法術狂納迦流",
@@ -1791,16 +1889,14 @@
     ],
     "difficulty": "easy",
     "core": [
-      "BGS_018",
-      "BG25_354",
-      "BGS_078",
-      "BG35_604"
+      "BG26_502",
+      "BG26_505",
+      "BG35_883"
     ],
     "core_names": [
-      "『巨狼先祖』戈德林",
-      "提圖斯‧瑞文戴爾",
-      "恐怖的鸚鵡",
-      "下水道之王"
+      "深情藍調歌手",
+      "熱情沙鈴手",
+      "巴琳達‧石爐"
     ],
     "addon": [
       [
@@ -1808,7 +1904,8 @@
         "BG25_039",
         "BG23_009",
         "BG23_008",
-        "EBG_Spell_017"
+        "EBG_Spell_017",
+        "BG33_920"
       ]
     ],
     "addon_names": [
@@ -1817,7 +1914,8 @@
         "鼓囊野豬人",
         "熔岩潛伏者",
         "亮鱗",
-        "EBG_Spell_017"
+        "EBG_Spell_017",
+        "怒鱗盜賊"
       ]
     ],
     "strategy": "核心是堆疊多張深情藍調歌手形成連鎖：每張歌手造法後都強化下一張同名歌手的造法效果，效果隨張數指數成長。深淵衛士在本賽局每施放一個旅店法術就+1/+1，礁岩複奏者讓造法給目標等同酒館等級的體質。多張歌手連鎖後每個造法效果加成越來越巨大。",
@@ -1829,7 +1927,7 @@
     ],
     "avg_placement": null,
     "data_points": 0,
-    "patch": 235290
+    "patch": 231720
   },
   {
     "id": "neutral_back_to_back_t2",
@@ -1951,19 +2049,25 @@
     "core": [
       "BG_TTN_401",
       "BGS_012",
-      "BG32_172"
+      "BG_DEEP_015",
+      "BG32_172",
+      "BG25_354"
     ],
     "core_names": [
       "遠古自動機",
       "崗古的學徒",
-      "自動組裝機"
+      "義體手",
+      "自動組裝機",
+      "提圖斯‧瑞文戴爾"
     ],
     "addon": [
       [
         "BG26_148",
         "BG35_342",
         "BG_BOT_911",
-        "EBG_Spell_017"
+        "EBG_Spell_017",
+        "BG29_503",
+        "BG31_175"
       ]
     ],
     "addon_names": [
@@ -1971,7 +2075,9 @@
         "廢料搜刮者",
         "墜毀的飛天魔像",
         "煩人模組",
-        "EBG_Spell_017"
+        "EBG_Spell_017",
+        "破爛廢鐵",
+        "投影單輪機器人"
       ]
     ],
     "strategy": "遠古自動機讓本賽局召喚過的每一個其他自動機都使其+3/+2（永久，無論在哪裡）。疊加多張遠古自動機後互相強化，每新增一張都讓現有的所有自動機大幅提升。搭配聖盾術機械保護自動機的成長，充能女皇進一步強化有聖盾術的手下。",
@@ -1983,7 +2089,7 @@
     ],
     "avg_placement": null,
     "data_points": 0,
-    "patch": 235290
+    "patch": 231720
   },
   {
     "id": "murloc_chorus_buff",
@@ -2047,16 +2153,14 @@
     ],
     "difficulty": "medium",
     "core": [
+      "BG35_142",
       "BG_LOE_077",
-      "BG33_893",
-      "BG34_140",
-      "BG33_891"
+      "BG26_ICC_901"
     ],
     "core_names": [
+      "厄格表弟",
       "布萊恩‧銅鬚",
-      "原始畫家",
-      "專家飛行員",
-      "魔術魚真菌學家"
+      "德拉克瑞附魔師"
     ],
     "addon": [
       [
@@ -2091,7 +2195,7 @@
     ],
     "avg_placement": null,
     "data_points": 0,
-    "patch": 235290
+    "patch": 231720
   },
   {
     "id": "easter_egg",
@@ -2109,6 +2213,51 @@
     "addon": [],
     "addon_names": [],
     "strategy": "I lost my egg ...",
+    "tips": [],
+    "avg_placement": null,
+    "data_points": 0,
+    "patch": 231720
+  },
+  {
+    "id": "elemental_cycle",
+    "tier": "C",
+    "name": "Elemental Cycle",
+    "original_name": "Elemental Cycle",
+    "races": [],
+    "difficulty": "easy",
+    "core": [
+      "BG_LOE_077",
+      "BG32_846"
+    ],
+    "core_names": [
+      "布萊恩‧銅鬚",
+      "釋放的法力湧流"
+    ],
+    "addon": [
+      [
+        "BG26_801",
+        "BG32_841",
+        "BGS_116",
+        "BGS_123",
+        "BG32_842",
+        "BGS_078",
+        "BGS_115",
+        "BG26_175"
+      ]
+    ],
+    "addon_names": [
+      [
+        "鐵頭萊拉克",
+        "捲沙者",
+        "重置異常體",
+        "旅店風暴",
+        "微光燼火",
+        "恐怖的鸚鵡",
+        "資本元素",
+        "驚喜元素"
+      ]
+    ],
+    "strategy": "",
     "tips": [],
     "avg_placement": null,
     "data_points": 0,
@@ -2153,7 +2302,7 @@
     "tips": [],
     "avg_placement": null,
     "data_points": 0,
-    "patch": 235290
+    "patch": 231720
   },
   {
     "id": "pirate_eudora",
@@ -2239,7 +2388,7 @@
     "tips": [],
     "avg_placement": null,
     "data_points": 0,
-    "patch": 235290,
+    "patch": 231720,
     "user_locked": true
   },
   {
@@ -2381,56 +2530,7 @@
     "tips": [],
     "avg_placement": null,
     "data_points": 0,
-    "patch": 235290
-  },
-  {
-    "id": "murloc_handbuff",
-    "tier": "C",
-    "name": "手牌強化魚人流",
-    "original_name": "Murloc Handbuff",
-    "races": [
-      "MURLOC"
-    ],
-    "difficulty": "hard",
-    "core": [
-      "BG26_354",
-      "BG26_137",
-      "BG30_122",
-      "BG27_556",
-      "BG_LOE_077"
-    ],
-    "core_names": [
-      "魚人合唱團",
-      "鯛魚計數員",
-      "魚人竊賊",
-      "沼泥採獵者",
-      "布萊恩‧銅鬚"
-    ],
-    "addon": [
-      [
-        "BG33_318",
-        "BG33_891",
-        "BG34_140",
-        "BGS_020",
-        "BG22_202",
-        "BG32_330"
-      ]
-    ],
-    "addon_names": [
-      [
-        "膽汁噴吐者",
-        "魔術魚真菌學家",
-        "專家飛行員",
-        "原魚偵查兵",
-        "泰德",
-        "飄忽斥候"
-      ]
-    ],
-    "strategy": "Generate Murloc with Brann Bronzebeard, Primalfin Lookout & Magicfin Mycologist and boost your Bream Counter with Mrglin' Burglar. Summon it in fight with Diremuck Forager",
-    "tips": [],
-    "avg_placement": null,
-    "data_points": 0,
-    "patch": 235290
+    "patch": 231720
   },
   {
     "id": "undead_overflow",
@@ -2457,7 +2557,8 @@
         "BGS_078",
         "BG27_004",
         "BG23_009",
-        "BG28_303"
+        "BG28_303",
+        "BG28_308"
       ]
     ],
     "addon_names": [
@@ -2468,14 +2569,15 @@
         "恐怖的鸚鵡",
         "海洋雙拼",
         "熔岩潛伏者",
-        "偽裝的盜墓賊"
+        "偽裝的盜墓賊",
+        "大巫妖科爾蘇加德"
       ]
     ],
     "strategy": "Trigger your summoning minion (Cadaver Caretaker or Lava Lurker + Surf n' Surf's spellcraft) as much as you can",
     "tips": [],
     "avg_placement": null,
     "data_points": 0,
-    "patch": 235290
+    "patch": 231720
   },
   {
     "id": "beast_self_damage",
@@ -2524,7 +2626,7 @@
     "tips": [],
     "avg_placement": null,
     "data_points": 0,
-    "patch": 235290
+    "patch": 231720
   },
   {
     "id": "murloc_scam",
@@ -2536,13 +2638,13 @@
     ],
     "difficulty": "medium",
     "core": [
-      "BG23_318",
       "BG33_318",
+      "BG23_318",
       "BG27_556"
     ],
     "core_names": [
-      "『魯莽者』李洛伊",
       "膽汁噴吐者",
+      "『魯莽者』李洛伊",
       "沼泥採獵者"
     ],
     "addon": [
@@ -2574,7 +2676,7 @@
     ],
     "avg_placement": null,
     "data_points": 0,
-    "patch": 235290
+    "patch": 231720
   },
   {
     "id": "mech_shield",
@@ -2586,13 +2688,15 @@
     ],
     "difficulty": "easy",
     "core": [
-      "BG35_342",
-      "BGS_012",
+      "BG33_809",
+      "BGS_071",
+      "BG_DEEP_015",
       "BG25_354"
     ],
     "core_names": [
-      "墜毀的飛天魔像",
-      "崗古的學徒",
+      "神聖火花機器人",
+      "偏斜防護機器人",
+      "義體手",
       "提圖斯‧瑞文戴爾"
     ],
     "addon": [
@@ -2603,7 +2707,8 @@
         "BGS_078",
         "BGS_012",
         "BG35_342",
-        "BG33_817"
+        "BG33_817",
+        "BG29_503"
       ]
     ],
     "addon_names": [
@@ -2614,14 +2719,15 @@
         "恐怖的鸚鵡",
         "崗古的學徒",
         "墜毀的飛天魔像",
-        "BG33_817"
+        "BG33_817",
+        "破爛廢鐵"
       ]
     ],
     "strategy": "Generate Sanctify with Divine Sparkbot + Titus Rivendare/Monstrous Macaw/Kangor's Apprentice. If possible try to boost your Tavern Spells (Humon'gozz for ex)",
     "tips": [],
     "avg_placement": null,
     "data_points": 0,
-    "patch": 235290
+    "patch": 231720
   },
   {
     "id": "beast_goldrinn_frenzy",
