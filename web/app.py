@@ -1332,13 +1332,14 @@ def api_scrape_comps():
 
     # ── 建立卡片中文名映射 ──
     name_map = {}
-    if os.path.exists(BG_MINIONS_CACHE):
-        with open(BG_MINIONS_CACHE, encoding="utf-8") as f:
-            for m in json.load(f):
-                cid = m.get("id") or m.get("card_id", "")
-                nm  = m.get("name", "")
-                if cid and nm:
-                    name_map[cid] = nm
+    for cache_path in (BG_MINIONS_CACHE, BG_SPELLS_CACHE):
+        if os.path.exists(cache_path):
+            with open(cache_path, encoding="utf-8") as f:
+                for m in json.load(f):
+                    cid = m.get("id") or m.get("card_id", "")
+                    nm  = m.get("name", "")
+                    if cid and nm:
+                        name_map[cid] = nm
 
     # ── 族群映射 ──
     RACES_MAP = {
@@ -1632,13 +1633,14 @@ def api_scrape_hsreplay():
 
     # 卡片名稱映射
     name_map = {}
-    if os.path.exists(BG_MINIONS_CACHE):
-        with open(BG_MINIONS_CACHE, encoding="utf-8") as f:
-            for m in json.load(f):
-                cid = m.get("id") or m.get("card_id", "")
-                nm  = m.get("name", "")
-                if cid and nm:
-                    name_map[cid] = nm
+    for cache_path in (BG_MINIONS_CACHE, BG_SPELLS_CACHE):
+        if os.path.exists(cache_path):
+            with open(cache_path, encoding="utf-8") as f:
+                for m in json.load(f):
+                    cid = m.get("id") or m.get("card_id", "")
+                    nm  = m.get("name", "")
+                    if cid and nm:
+                        name_map[cid] = nm
 
     # HSReplay 英文名 → 我們的 comp ID
     HSREPLAY_NAME_TO_ID = {
