@@ -436,6 +436,49 @@ def api_trinkets():
     return jsonify({"trinkets": result, "total": len(result)})
 
 
+@app.route("/hero-powers")
+def hero_powers_page():
+    return render_template("hero_powers.html")
+
+
+@app.route("/api/hero-powers")
+def api_hero_powers():
+    raw = _load_json(HS_CARDS_FULL) or {}
+    q   = (request.args.get("q") or "").strip().lower()
+
+    # Build hero id → name map from heroes cache
+    hero_name_map = {}
+    if os.path.exists(BG_HEROES_CACHE):
+        with open(BG_HEROES_CACHE, encoding="utf-8") as f:
+            for h in json.load(f):
+                hero_name_map[h.get("id", "")] = h.get("name", "")
+
+    result = []
+    for cid, v in raw.items():
+        if not cid.startswith("BG") or v.get("type") != "HERO_POWER":
+            continue
+        name = v.get("name", "")
+        text = _clean_card_text(v.get("text", "") or "")
+        cost = v.get("cost", 0)
+        if q and q not in name.lower() and q not in text.lower() and q not in cid.lower():
+            continue
+        # Derive hero name: hero power id pattern → hero id
+        # BG20_HERO_100p → BG20_HERO_100, BG20_HERO_100p2 → BG20_HERO_100
+        hero_id = re.sub(r"p\d*$", "", cid)
+        hero_name = hero_name_map.get(hero_id, "")
+        result.append({
+            "id":         cid,
+            "name":       name,
+            "text":       text,
+            "cost":       cost,
+            "hero_id":    hero_id,
+            "hero_name":  hero_name,
+        })
+
+    result.sort(key=lambda x: (x["hero_name"] or x["name"]))
+    return jsonify({"hero_powers": result, "total": len(result)})
+
+
 @app.route("/minions")
 def minions_page():
     return render_template("minions.html")

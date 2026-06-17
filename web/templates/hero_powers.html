@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>英雄技能圖鑑 — HS BG Tracker</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  [x-cloak]{display:none}
+  body{background:#0d0718;color:#d4c4a8;font-family:'Segoe UI',sans-serif;min-height:100vh}
+  ::-webkit-scrollbar{width:5px;height:5px}
+  ::-webkit-scrollbar-track{background:#0d0718}
+  ::-webkit-scrollbar-thumb{background:#3a1a50;border-radius:3px}
+
+  .page-title{font-family:'Cinzel',serif;font-size:1.6rem;font-weight:900;color:#d0a0f0;text-shadow:0 0 30px #9060c080}
+  .nav-link{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:8px;
+    border:1px solid #3a1a50;color:#8060a0;font-size:.82rem;transition:all .15s;text-decoration:none}
+  .nav-link:hover,.nav-link.active{border-color:#9060c0;color:#d0a0f0;background:#1a0a28}
+
+  .toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+    background:#120820;border:1px solid #2a1040;border-radius:10px;padding:10px 14px}
+  .fbtn{padding:4px 11px;border-radius:6px;border:1px solid #3a1a50;
+    color:#8060a0;font-size:.75rem;cursor:pointer;transition:all .15s;background:transparent;white-space:nowrap}
+  .fbtn.on,.fbtn:hover{background:#2a0a40;border-color:#9060c0;color:#d0a0ff}
+  .search-box{flex:1;min-width:140px;max-width:260px;
+    background:#0d0718;border:1px solid #3a1a50;border-radius:6px;
+    color:#d4c4a8;font-size:.8rem;padding:5px 10px;outline:none}
+  .search-box:focus{border-color:#7040b0}
+  .sep{color:#2a1040;font-size:1.2rem;padding:0 2px}
+  .count-bar{font-size:.75rem;color:#7050a0}
+  .empty{text-align:center;padding:60px;color:#4a3060}
+
+  /* Grid */
+  .hp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:14px}
+
+  /* Card */
+  .hp-card{
+    background:linear-gradient(160deg,#0e0e22,#14122a);
+    border:1px solid #1e1a50;border-radius:12px;
+    padding:10px 8px 10px;
+    display:flex;flex-direction:column;align-items:center;gap:6px;
+    transition:border-color .15s,transform .12s,box-shadow .15s;
+    cursor:default;position:relative;
+  }
+  .hp-card:hover{border-color:#5040c0;transform:translateY(-3px);box-shadow:0 8px 24px #00000070}
+
+  /* Hero power art — circular like real hero power button */
+  .hp-art-wrap{
+    width:72px;height:72px;border-radius:50%;
+    overflow:hidden;border:2px solid #3040a0;background:#080c20;flex-shrink:0;
+  }
+  .hp-art-wrap img{width:100%;height:100%;object-fit:cover;object-position:center 20%}
+
+  .hp-cost{
+    position:absolute;top:6px;left:8px;
+    font-size:.62rem;color:#a0d0ff;font-weight:900;
+    background:#0a1040;border:1px solid #2040a0;
+    border-radius:4px;padding:0 4px;min-width:16px;text-align:center
+  }
+
+  .hp-name{font-size:.7rem;font-weight:700;color:#9090e0;text-align:center;line-height:1.3;max-width:120px;word-break:break-all}
+  .hp-hero{font-size:.62rem;color:#6060a0;text-align:center;line-height:1.2;max-width:120px;word-break:break-all}
+
+  /* tooltip */
+  .card-text-tip{
+    display:none;position:absolute;bottom:calc(100% + 6px);left:50%;
+    transform:translateX(-50%);z-index:30;
+    background:#080c20;border:1px solid #3050a0;border-radius:8px;
+    padding:8px 10px;min-width:150px;max-width:220px;
+    font-size:.67rem;color:#9090d0;line-height:1.5;
+    pointer-events:none;box-shadow:0 4px 20px #00000090;white-space:pre-line;
+  }
+  .hp-card:hover .card-text-tip{display:block}
+</style>
+</head>
+<body x-data="hpApp()" x-init="init()" x-cloak>
+<div class="max-w-7xl mx-auto px-4 py-6">
+
+  <!-- Header -->
+  <header class="flex items-center justify-between mb-6 flex-wrap gap-3">
+    <div>
+      <h1 class="page-title">🎴 英雄技能圖鑑</h1>
+      <p class="text-xs mt-1" style="color:#5a3a70">
+        BG Hero Power Database · <span x-text="total"></span> 個技能{% if current_version %} · <span style="color:#6a4a80">v{{ current_version }}</span>{% endif %}
+      </p>
+    </div>
+    <div class="flex gap-2 flex-wrap">
+      {% if not public_mode %}<a href="/"             class="nav-link">📋 紀錄總覽</a>{% endif %}
+      {% if not public_mode %}<a href="/heroes"       class="nav-link">🏆 英雄排名</a>{% endif %}
+      <a href="/hero-guide"   class="nav-link">🦸 英雄圖鑑</a>
+      <a href="/tier-list"    class="nav-link">⚔️ 當季最強</a>
+      {% if not public_mode %}<a href="/comps"        class="nav-link">🎯 組合排名</a>{% endif %}
+      <a href="/minions"      class="nav-link">🐾 手下圖鑑</a>
+      <a href="/spells"       class="nav-link">✨ 法術圖鑑</a>
+      <a href="/hero-powers"  class="nav-link active">🎴 英雄技能</a>
+      <a href="/trinkets"     class="nav-link">💎 飾品圖鑑</a>
+      <a href="/anomalies"    class="nav-link">🔀 變異圖鑑</a>
+    </div>
+  </header>
+
+  <!-- Toolbar -->
+  <div class="toolbar mb-4">
+    <input class="search-box" type="text" placeholder="🔍 搜尋技能或英雄名稱…"
+           x-model="q" @input.debounce.250ms="applyFilter()">
+    <span class="sep">|</span>
+    <button class="fbtn" :class="onlyWithHero?'on':''" @click="onlyWithHero=!onlyWithHero;applyFilter()">
+      只顯示有英雄名稱
+    </button>
+    <span class="count-bar ml-auto" x-text="filtered.length + ' / ' + total + ' 個技能'"></span>
+  </div>
+
+  <!-- Grid -->
+  <div class="hp-grid" x-show="!loading && filtered.length > 0">
+    <template x-for="hp in filtered" :key="hp.id">
+      <div class="hp-card">
+        <div class="card-text-tip" x-html="hp.text || hp.name"></div>
+        <span class="hp-cost" x-text="hp.cost ?? '?'"></span>
+        <div class="hp-art-wrap">
+          <img :src="'https://art.hearthstonejson.com/v1/256x/'+hp.id+'.jpg'"
+               onerror="this.style.display='none'" :alt="hp.name">
+        </div>
+        <div class="hp-name" x-text="hp.name"></div>
+        <div class="hp-hero" x-show="hp.hero_name" x-text="hp.hero_name"></div>
+      </div>
+    </template>
+  </div>
+  <div class="empty" x-show="!loading && filtered.length === 0">找不到相符的技能</div>
+  <div class="empty" x-show="loading">⏳ 載入中…</div>
+
+</div>
+<script>
+function hpApp() {
+  return {
+    all: [], filtered: [], total: 0,
+    q: '', onlyWithHero: false, loading: true,
+
+    async init() {
+      const r = await fetch('/api/hero-powers')
+      const d = await r.json()
+      this.all   = d.hero_powers || []
+      this.total = d.total || 0
+      this.loading = false
+      this.applyFilter()
+    },
+
+    applyFilter() {
+      const q = this.q.trim().toLowerCase()
+      this.filtered = this.all.filter(hp => {
+        if (this.onlyWithHero && !hp.hero_name) return false
+        if (q) {
+          const inName = hp.name.toLowerCase().includes(q)
+          const inHero = (hp.hero_name || '').toLowerCase().includes(q)
+          const inText = (hp.text || '').toLowerCase().includes(q)
+          if (!inName && !inHero && !inText) return false
+        }
+        return true
+      })
+    },
+  }
+}
+</script>
+</body>
+</html>
