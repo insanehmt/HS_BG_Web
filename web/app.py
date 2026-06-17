@@ -519,9 +519,11 @@ def api_minions():
         p = personal.get(cid, {})
         cnt = p.get("count", 0)
         avg_p = round(sum(p["placements"]) / cnt, 2) if cnt else None
-        races = card.get("races", ["NONE"])
+        races = card.get("races", [])
         if isinstance(races, str):
             races = [races]
+        if not races:
+            races = ["NONE"]
         has_golden = card.get("has_golden", False)
         in_pool    = card.get("in_pool", False)
         # 舊快取沒有 timewarp/buddy 欄位時，從 card_id 推斷
