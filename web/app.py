@@ -755,6 +755,46 @@ def api_spells():
         return jsonify({"spells": [], "total": 0})
     with open(BG_SPELLS_CACHE, encoding="utf-8") as f:
         spells = json.load(f)
+
+    # Also pull anomaly-generated spell tokens from hs_cards_full.json
+    existing_ids = {s.get("id") for s in spells}
+    full_cards = _load_json(HS_CARDS_FULL) or {}
+    for cid, v in full_cards.items():
+        if "Anomaly" not in cid:
+            continue
+        if v.get("type") != "SPELL":
+            continue
+        name = v.get("name", "")
+        if not name or "[DNT]" in name or "[DNT]" in (v.get("text") or ""):
+            continue
+        if cid in existing_ids:
+            continue
+        spells.append({
+            "id": cid,
+            "name": name,
+            "text": v.get("text") or "",
+            "type": "SPELL",
+            "tech_level": v.get("techLevel") or 1,
+            "cost": v.get("cost") or 0,
+            "in_pool": False,
+            "timewarp": False,
+            "related_card": None,
+            "category": "變異法術",
+        })
+        existing_ids.add(cid)
+
+    # BG35 anomaly spell tokens not yet in hs_cards_full.json
+    _BG35_ANOMALY_SPELLS = [
+        {"id": "BG35_Anomaly_001t", "name": "搖旗吶喊 變異",
+         "text": "將一個手下的未加成分身放入你的備選手下庫",
+         "tech_level": 1, "cost": 0},
+    ]
+    for entry in _BG35_ANOMALY_SPELLS:
+        if entry["id"] not in existing_ids:
+            spells.append({**entry, "type": "SPELL", "in_pool": False,
+                           "timewarp": False, "related_card": None, "category": "變異法術"})
+            existing_ids.add(entry["id"])
+
     q = (request.args.get("q") or "").strip().lower()
     if q:
         spells = [s for s in spells if q in s.get("name", "").lower() or q in s.get("id", "").lower()]
@@ -771,7 +811,9 @@ def api_spells():
         in_pool = s.get("in_pool", False)
         timewarp = s.get("timewarp", False)
         related = s.get("related_card")
-        if sid.startswith("BGS_Treasures"):
+        if s.get("category") == "變異法術":
+            pass  # already set
+        elif sid.startswith("BGS_Treasures"):
             s["category"] = "暗月獎品"
         elif sid.startswith("BGDUO"):
             s["category"] = "雙人模式"
