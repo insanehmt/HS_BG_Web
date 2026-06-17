@@ -1,0 +1,666 @@
+[
+  {
+    "id": "BG31_HERO_811p",
+    "name": "孵化池",
+    "text": "[x]解鎖蟲族第2階。\n每個回合消耗減少(1)。\n<b><b>被動：</b></b>在賽局開始時，\n獲得一個2/2幼蟲",
+    "cost": 6,
+    "hero_id": "BG31_HERO_811",
+    "hero_name": "『刀鋒女皇』凱莉根"
+  },
+  {
+    "id": "BG31_HERO_811p2",
+    "name": "進化室",
+    "text": "[x]解鎖蟲族第3階。\n每個回合消耗減少(1)。\n<b>被動：</b>你的蟲族可以\n變形至第2階",
+    "cost": 8,
+    "hero_id": "BG31_HERO_811",
+    "hero_name": "『刀鋒女皇』凱莉根"
+  },
+  {
+    "id": "BG31_HERO_811p3",
+    "name": "雷獸洞穴",
+    "text": "你的蟲族可以變形至第3階",
+    "cost": 0,
+    "hero_id": "BG31_HERO_811",
+    "hero_name": "『刀鋒女皇』凱莉根"
+  },
+  {
+    "id": "BG25_HERO_105p",
+    "name": "和新藝人簽約",
+    "text": "<b>發現</b>一個<b>夥伴</b>\n<i>(於旅店等級2解鎖)</i>",
+    "cost": 3,
+    "hero_id": "BG25_HERO_105",
+    "hero_name": "『樂團經理』精英牛頭大佬"
+  },
+  {
+    "id": "BG34_HERO_000p",
+    "name": "其他時間線",
+    "text": "在第8回合，造訪大型<b>時光扭曲</b>\n<i>(剩7回合！)</i>7在第8回合，造訪大型<b>時光扭曲</b>\n<i>(完成！)</i>",
+    "cost": 0,
+    "hero_id": "BG34_HERO_000",
+    "hero_name": "『無縛者』姆多茲諾"
+  },
+  {
+    "id": "BG35_HERO_001p",
+    "name": "雙面之王",
+    "text": "在第4回合，<b>發現</b>兩個英雄能力來替換\n<i>(還差3回合！)</i>3在第4回合，<b>發現</b>兩個英雄能力來替換\n<i>(完成！)</i>",
+    "cost": 0,
+    "hero_id": "BG35_HERO_001",
+    "hero_name": "『狼人之王』吉恩"
+  },
+  {
+    "id": "BG26_HERO_102p",
+    "name": "大調禮頌",
+    "text": "賦予一個手下等同於你旅店等級的攻擊力。<i>(下回合改為生命值！)</i>",
+    "cost": 0,
+    "hero_id": "BG26_HERO_102",
+    "hero_name": "『鋼鐵禮頌』英格"
+  },
+  {
+    "id": "BG26_HERO_102p2",
+    "name": "小調禮頌",
+    "text": "賦予一個手下等同於你旅店等級的生命值。<i>(下回合改為攻擊力！)</i>",
+    "cost": 0,
+    "hero_id": "BG26_HERO_102",
+    "hero_name": "『鋼鐵禮頌』英格"
+  },
+  {
+    "id": "BG27_HERO_801p2",
+    "name": "挑選你的勇士",
+    "text": "<b><b>被動</b></b>\n在賽局開始時，<b>發現</b>一個旅店等級7的手下，在你花費60枚金幣後獲得該手下<i>(還差 60枚！)</i>",
+    "cost": 0,
+    "hero_id": "BG27_HERO_801",
+    "hero_name": "『風暴之王』索林姆"
+  },
+  {
+    "id": "BGDUO_HERO_222p",
+    "name": "加倍麻煩",
+    "text": "每當打出金卡手下，\n你和加利都會獲得\n三合一獎勵\n<i>（還剩3次！）</i>",
+    "cost": 0,
+    "hero_id": "BGDUO_HERO_222",
+    "hero_name": "丘"
+  },
+  {
+    "id": "BG31_HERO_802p",
+    "name": "空間之門",
+    "text": "在賽局開始時，從\n2個神族手下中擇一。在你購買14張牌後獲得該手下<i>（還差14張！）</i>14在賽局開始時，從\n2個神族手下中擇一。在你購買14張牌後獲得該手下<i>（完成！）</i>",
+    "cost": 0,
+    "hero_id": "BG31_HERO_802",
+    "hero_name": "亞坦尼斯"
+  },
+  {
+    "id": "BG20_HERO_103p",
+    "name": "鮮血之縛",
+    "text": "獲得2顆<b>鮮血寶石</b>\n<i>(每回合兩次)</i>",
+    "cost": 1,
+    "hero_id": "BG20_HERO_103",
+    "hero_name": "亡語者黑棘"
+  },
+  {
+    "id": "BG22_HERO_200p",
+    "name": "馬蓋機",
+    "text": "[x]在9個友方手下死亡後，\n獲得一個隨機機械",
+    "cost": 0,
+    "hero_id": "BG22_HERO_200",
+    "hero_name": "伊尼‧風暴線圈"
+  },
+  {
+    "id": "BG31_HERO_003p",
+    "name": "銀河透鏡",
+    "text": "獲得你最後施放的旅店法術複製品。每回合你的下一個英雄能力消耗減少(1)",
+    "cost": 3,
+    "hero_id": "BG31_HERO_003",
+    "hero_name": "先知諾柏多"
+  },
+  {
+    "id": "BG20_HERO_280p5",
+    "name": "戰刃彈跳",
+    "text": "每回合一次，在你購買3個手下後，獲得其中一個手下的未加成分身<i>（還差3個！）</i>3每回合一次，在你購買3個手下後，獲得其中一個手下的未加成分身<i>（完成！）</i>",
+    "cost": 0,
+    "hero_id": "BG20_HERO_280",
+    "hero_name": "克圖斯‧灰殞"
+  },
+  {
+    "id": "BG22_HERO_000p_Alt",
+    "name": "全面備戰",
+    "text": "移除一個旅店中的手下。當在下場戰鬥中有空位時，將其射向一個隨機敵方手下",
+    "cost": 0,
+    "hero_id": "BG22_HERO_000p_Alt",
+    "hero_name": ""
+  },
+  {
+    "id": "BG21_HERO_000p",
+    "name": "信念",
+    "text": "賦予1個隨機友方手下+1/+1。<b><b>被動</b>：</b>每場戰鬥後，選擇一項強化1賦予1個隨機友方手下+1/+1。<b><b>被動</b>：</b>每場戰鬥後，選擇一項強化",
+    "cost": 1,
+    "hero_id": "BG21_HERO_000",
+    "hero_name": "凱瑞爾‧羅姆"
+  },
+  {
+    "id": "BGDUO_HERO_223p",
+    "name": "加倍麻煩",
+    "text": "[x]每當你打出金卡手下，\n你和丘都會獲得三合一獎勵\n<i>（還剩3次！）</i>",
+    "cost": 0,
+    "hero_id": "BGDUO_HERO_223",
+    "hero_name": "加利"
+  },
+  {
+    "id": "BG23_HERO_305p",
+    "name": "完美犯罪",
+    "text": "偷取旅店的全部卡牌。每回合你的下一個英雄能力消耗減少(1)",
+    "cost": 11,
+    "hero_id": "BG23_HERO_305",
+    "hero_name": "劫匪大亨托戈瓦哥"
+  },
+  {
+    "id": "BG21_HERO_010p",
+    "name": "王牌間諜",
+    "text": "<b>發現</b>你下個對手陣容中一個手下的未加成分身",
+    "cost": 2,
+    "hero_id": "BG21_HERO_010",
+    "hero_name": "史蓋伯斯‧油切"
+  },
+  {
+    "id": "BG31_HERO_801p",
+    "name": "升空",
+    "text": "開局獲得一張\n2/2戰巡艦。每當旅店\n<b>重置</b>時，都會獲得一個戰巡艦升級",
+    "cost": 0,
+    "hero_id": "BG31_HERO_801",
+    "hero_name": "吉姆‧雷諾"
+  },
+  {
+    "id": "BG22_HERO_000p_t3",
+    "name": "向上瞄準！",
+    "text": "<b>被動</b>\n<b>戰鬥開始：</b>對生命值最高的敵方手下造成99點傷害",
+    "cost": 0,
+    "hero_id": "BG22_HERO_000p_t3",
+    "hero_name": ""
+  },
+  {
+    "id": "BG22_HERO_000p_t2",
+    "name": "向下瞄準！",
+    "text": "<b>被動</b>\n<b>戰鬥開始：</b>對生命值最低的敵方手下造成99點傷害",
+    "cost": 0,
+    "hero_id": "BG22_HERO_000p_t2",
+    "hero_name": ""
+  },
+  {
+    "id": "BG20_HERO_301p",
+    "name": "吞噬",
+    "text": "出售一個友方手下。把該手下的體質吐給另一個手下",
+    "cost": 0,
+    "hero_id": "BG20_HERO_301",
+    "hero_name": "吞噬者穆坦努斯"
+  },
+  {
+    "id": "BG20_HERO_282p",
+    "name": "香氛骨匣",
+    "text": "<b>戰鬥開始：</b>賦予你攻擊力最低的手下「<b>死亡之聲：</b>將此手下的體質賦予你的其他手下」",
+    "cost": 0,
+    "hero_id": "BG20_HERO_282",
+    "hero_name": "塔姆辛‧羅姆"
+  },
+  {
+    "id": "BG22_HERO_000p",
+    "name": "彈無虛發",
+    "text": "瞄準！<b>戰鬥開始：</b>對你的目標造成99點傷害",
+    "cost": 0,
+    "hero_id": "BG22_HERO_000",
+    "hero_name": "塔維西‧雷矛"
+  },
+  {
+    "id": "BG22_HERO_001p_t1",
+    "name": "大地祈願",
+    "text": "<b>戰鬥開始：</b>賦予4個隨機友方手下\n<i><b>死亡之聲：</b>召喚一個1/1元素</i>",
+    "cost": 0,
+    "hero_id": "BG22_HERO_001p_t1",
+    "hero_name": ""
+  },
+  {
+    "id": "BG22_HERO_305p",
+    "name": "黑龍育母",
+    "text": "<b>報復(4)：</b>召喚一個會立刻攻擊的1/1幼龍，並使此能力提升+1/+1",
+    "cost": 0,
+    "hero_id": "BG22_HERO_305",
+    "hero_name": "奧妮克希亞"
+  },
+  {
+    "id": "BG31_HERO_006p",
+    "name": "秘法知識",
+    "text": "你購買的下一個旅店法術消耗減少(1)<i>(於回合3解鎖)</i>",
+    "cost": 0,
+    "hero_id": "BG31_HERO_006",
+    "hero_name": "奧薩爾主教"
+  },
+  {
+    "id": "BG22_HERO_001p",
+    "name": "擁抱元素",
+    "text": "選擇一個元素。\n<b>戰鬥開始：</b>呼喚該元素",
+    "cost": 0,
+    "hero_id": "BG22_HERO_001",
+    "hero_name": "布魯坎"
+  },
+  {
+    "id": "BG23_HERO_306p",
+    "name": "回收靈魂",
+    "text": "<b>發現</b>一個上場戰鬥中死亡手下的未加成\n分身\n<i>(於第3回合解鎖)</i>",
+    "cost": 2,
+    "hero_id": "BG23_HERO_306",
+    "hero_name": "希瓦娜斯‧風行者"
+  },
+  {
+    "id": "BG24_HERO_204p",
+    "name": "增強化",
+    "text": "旅店<b>重置</b>後，賦予旅店的一個隨機手下<b>額外關鍵字</b>",
+    "cost": 0,
+    "hero_id": "BG24_HERO_204",
+    "hero_name": "強化機器人"
+  },
+  {
+    "id": "BG31_Anomaly_117t",
+    "name": "彈射！",
+    "text": "選擇一個手下，把你的備選手下庫中所有相同的牌永久移除<i>(每回合兩次)</i>",
+    "cost": 0,
+    "hero_id": "BG31_Anomaly_117t",
+    "hero_name": ""
+  },
+  {
+    "id": "BG22_HERO_002p",
+    "name": "霜狼狂熱",
+    "text": "當你在戰鬥中有空間時，召喚一個你攻擊力最高\n手下的複製體\n<i>（於第7回合解鎖）</i>",
+    "cost": 0,
+    "hero_id": "BG22_HERO_002",
+    "hero_name": "德雷克塔爾"
+  },
+  {
+    "id": "BG24_HERO_100p",
+    "name": "誰是兇手？",
+    "text": "賽局開始時，從兩個<b>任務</b>中選擇一個",
+    "cost": 0,
+    "hero_id": "BG24_HERO_100",
+    "hero_name": "戴納瑟斯王"
+  },
+  {
+    "id": "BG27_Anomaly_805t",
+    "name": "打假賽",
+    "text": "猜測你的下次戰鬥會贏的玩家。",
+    "cost": 0,
+    "hero_id": "BG27_Anomaly_805t",
+    "hero_name": ""
+  },
+  {
+    "id": "BG32_HERO_002p",
+    "name": "日益增長的收藏",
+    "text": "第8回合時，選擇一個強效<b>飾品</b>購買<i>(還剩7回合！)</i>7第8回合時，選擇一個強效<b>飾品</b>購買<i>(完成！)</i>",
+    "cost": 0,
+    "hero_id": "BG32_HERO_002",
+    "hero_name": "扣仔"
+  },
+  {
+    "id": "BG26_HERO_104p",
+    "name": "輕快和諧",
+    "text": "每3個回合結束時，\n獲得你手中最左側卡牌的一張未加成分身<i>（還剩3回合！）</i>3每3個回合結束時，\n獲得你手中最左邊卡牌的一張未加成分身<i>（本回合結束觸發！）</i>",
+    "cost": 0,
+    "hero_id": "BG26_HERO_104",
+    "hero_name": "搖滾大師沃恩"
+  },
+  {
+    "id": "BG21_HERO_030p",
+    "name": "駕駛伐木機",
+    "text": "對戰開始時，獲得一個可從你手中召喚手下\n並賦予它<b>聖盾術</b>的\n2/1伐木機",
+    "cost": 0,
+    "hero_id": "BG21_HERO_030",
+    "hero_name": "斯尼德"
+  },
+  {
+    "id": "BG34_HERO_001p",
+    "name": "法力時速",
+    "text": "以旅店法術\n<b>重置</b>旅店",
+    "cost": 0,
+    "hero_id": "BG34_HERO_001",
+    "hero_name": "時光轉繞者克羅米"
+  },
+  {
+    "id": "BG25_HERO_100p",
+    "name": "打造不死族",
+    "text": "縫合一個自訂的不死族\n<i>(還有3個作品！)</i>",
+    "cost": 3,
+    "hero_id": "BG25_HERO_100",
+    "hero_name": "普崔希德教授"
+  },
+  {
+    "id": "BG20_HERO_283p_t3",
+    "name": "東瘟疫之地",
+    "text": "在3回合後，<b>發現</b>一個你旅店等級的手下\n<i>（還差3回合！）</i>",
+    "cost": 0,
+    "hero_id": "BG20_HERO_283p_t3",
+    "hero_name": ""
+  },
+  {
+    "id": "BG32_HERO_001p",
+    "name": "先祖智慧",
+    "text": "你的金幣上限提高1枚",
+    "cost": 3,
+    "hero_id": "BG32_HERO_001",
+    "hero_name": "森林之王塞納留斯"
+  },
+  {
+    "id": "BG23_HERO_201p",
+    "name": "處處觸手",
+    "text": "當你的場上有空間時，\n召喚一個有<b>嘲諷</b>的2/2\n觸手<i>（在你出售手下後獲得+1/+1！）</i>",
+    "cost": 0,
+    "hero_id": "BG23_HERO_201",
+    "hero_name": "歐蘇瑪特"
+  },
+  {
+    "id": "BG20_HERO_201p",
+    "name": "交換靈魂",
+    "text": "選擇2個手下，獲得彼此的攻擊力，直到下一回合",
+    "cost": 0,
+    "hero_id": "BG20_HERO_201",
+    "hero_name": "沃金"
+  },
+  {
+    "id": "BG20_HERO_201p2",
+    "name": "交換靈魂",
+    "text": "選擇一個手下，獲得0的攻擊力",
+    "cost": 0,
+    "hero_id": "BG20_HERO_201",
+    "hero_name": "沃金"
+  },
+  {
+    "id": "BG25_HERO_103p",
+    "name": "急速復生",
+    "text": "選擇一個友方\n手下。<b>戰鬥開始：</b>摧毀它。當你的場上有空間時，重新召喚一個一樣的分身",
+    "cost": 0,
+    "hero_id": "BG25_HERO_103",
+    "hero_name": "泰朗‧血魔"
+  },
+  {
+    "id": "BG28_HERO_800p",
+    "name": "聖匣研究",
+    "text": "你每購買三個旅店法術後，下一個購買的旅店法術消耗為(0)",
+    "cost": 0,
+    "hero_id": "BG28_HERO_800",
+    "hero_name": "泰瑟連‧血腥看守者"
+  },
+  {
+    "id": "BG20_HERO_100p",
+    "name": "戰鬥榮耀",
+    "text": "[x]在友方手下殺死敵人後，\n永久賦予它+1攻擊力",
+    "cost": 0,
+    "hero_id": "BG20_HERO_100",
+    "hero_name": "洛卡菈"
+  },
+  {
+    "id": "BG22_HERO_001p_t3",
+    "name": "流水祈願",
+    "text": "<b>戰鬥開始：</b>賦予你最右邊的手下\n<b>聖盾術</b>和<b>嘲諷</b>",
+    "cost": 0,
+    "hero_id": "BG22_HERO_001p_t3",
+    "hero_name": ""
+  },
+  {
+    "id": "BG22_HERO_001p_t2",
+    "name": "火焰祈願",
+    "text": "<b>戰鬥開始：</b>你最左邊的手下的攻擊力加倍",
+    "cost": 0,
+    "hero_id": "BG22_HERO_001p_t2",
+    "hero_name": ""
+  },
+  {
+    "id": "BGDUO_HERO_100p",
+    "name": "[x]",
+    "text": "<b>對戰開始：</b>複製你\n隊友的英雄能力",
+    "cost": 0,
+    "hero_id": "BGDUO_HERO_100",
+    "hero_name": "無名者"
+  },
+  {
+    "id": "BG22_HERO_004p",
+    "name": "冰霜分身",
+    "text": "在旅店<b>重置</b>後，複製\n旅店等級最高的手下，並<b>凍結</b>該手下與其分身",
+    "cost": 0,
+    "hero_id": "BG22_HERO_004",
+    "hero_name": "瓦登‧晨握"
+  },
+  {
+    "id": "BG23_HERO_304p",
+    "name": "深海文物",
+    "text": "[x]在每回合開始時，\n獲得一個隨機<b>造法</b>法術",
+    "cost": 0,
+    "hero_id": "BG23_HERO_304",
+    "hero_name": "瓦許女士"
+  },
+  {
+    "id": "BG22_HERO_000p_t4",
+    "name": "瞄準右邊！",
+    "text": "<b>被動</b>\n<b>戰鬥開始：</b>對最右邊的敵方手下造成99點傷害",
+    "cost": 0,
+    "hero_id": "BG22_HERO_000p_t4",
+    "hero_name": ""
+  },
+  {
+    "id": "BG22_HERO_000p_t1",
+    "name": "瞄準左邊！",
+    "text": "<b><b>被動</b>\n戰鬥開始：</b>對最左側的敵方手下造成\n99點傷害",
+    "cost": 0,
+    "hero_id": "BG22_HERO_000p_t1",
+    "hero_name": ""
+  },
+  {
+    "id": "BG34_HERO_004p",
+    "name": "扭曲的時光合流",
+    "text": "在第5回合，造訪小型<b>時光扭曲</b>\n<i>(還剩4回合！)</i>4在第5回合，造訪小型<b>時光扭曲</b>\n<i>(完成！)</i>",
+    "cost": 0,
+    "hero_id": "BG34_HERO_004",
+    "hero_name": "米羅克"
+  },
+  {
+    "id": "BG30_HERO_304p",
+    "name": "驚人的寶藏",
+    "text": "第5回合時，選擇一個次級<b>飾品</b>購買<i>(還剩4回合！)</i>4第5回合時，選擇一個次級<b>飾品</b>購買<i>(完成！)</i>",
+    "cost": 0,
+    "hero_id": "BG30_HERO_304",
+    "hero_name": "經理馬林"
+  },
+  {
+    "id": "BG22_HERO_007p",
+    "name": "艾薩拉的野心",
+    "text": "當你的陣容總攻擊力達到30點時，開始你的納迦征服0當你的陣容總攻擊力達到30點時，開始你的\n納迦征服\n<i>（還差0點！）</i>",
+    "cost": 0,
+    "hero_id": "BG22_HERO_007",
+    "hero_name": "艾薩拉女王"
+  },
+  {
+    "id": "BG22_HERO_007p2",
+    "name": "納迦征服",
+    "text": "<b>發現</b>一個納迦",
+    "cost": 1,
+    "hero_id": "BG22_HERO_007",
+    "hero_name": "艾薩拉女王"
+  },
+  {
+    "id": "BGDUO_HERO_104p",
+    "name": "有效交換",
+    "text": "<b>傳遞</b>一個非金卡\n手下",
+    "cost": 2,
+    "hero_id": "BGDUO_HERO_104",
+    "hero_name": "苟雅女士"
+  },
+  {
+    "id": "BG33_HERO_001p_ALT",
+    "name": "英勇鼓舞",
+    "text": "在15個友方手下攻擊後，獲得一個三合一獎勵<i>(還差15個！)</i>",
+    "cost": 0,
+    "hero_id": "BG33_HERO_001p_ALT",
+    "hero_name": ""
+  },
+  {
+    "id": "BG22_HERO_003p",
+    "name": "雷矛之力",
+    "text": "當你在戰鬥中有空間時，召喚一個你生命值最高\n手下的複製體\n<i>（於第7回合解鎖）</i>",
+    "cost": 0,
+    "hero_id": "BG22_HERO_003",
+    "hero_name": "范達爾·雷矛"
+  },
+  {
+    "id": "BG20_HERO_242p",
+    "name": "自然平衡",
+    "text": "購買共20個旅店等級的卡牌後，獲得一個\n三合一獎勵\n<i>（還差20個！）</i>",
+    "cost": 0,
+    "hero_id": "BG20_HERO_242",
+    "hero_name": "葛夫‧符文圖騰"
+  },
+  {
+    "id": "BG20_HERO_102p",
+    "name": "為了部落！",
+    "text": "旅店的手下獲得+1/+1。在你購買4個手下後強化此效果\n<i>（還差4個！）</i>",
+    "cost": 0,
+    "hero_id": "BG20_HERO_102",
+    "hero_name": "薩魯法爾霸王"
+  },
+  {
+    "id": "BG28_HERO_400p",
+    "name": "幸運骰",
+    "text": "擲出一顆6面骰，獲得等同於點數的金幣\n<i>(經過等同於點數的回合後才能再次使用！)</i>",
+    "cost": 1,
+    "hero_id": "BG28_HERO_400",
+    "hero_name": "蛇眼"
+  },
+  {
+    "id": "BG28_HERO_400p2",
+    "name": "幸運骰",
+    "text": "擲出一顆6面骰，獲得等同於點數的金幣\n<i>(經過等同於點數的回合後才能再次使用！)</i>",
+    "cost": 0,
+    "hero_id": "BG28_HERO_400",
+    "hero_name": "蛇眼"
+  },
+  {
+    "id": "BG31_HERO_005p",
+    "name": "複製收藏",
+    "text": "每賽局僅限一次，召喚一個友方手下的相同分身0每賽局僅限一次，召喚一個友方手下的相同分身\n<i>(<b>時光扭曲</b>手下除外)</i>",
+    "cost": 0,
+    "hero_id": "BG31_HERO_005",
+    "hero_name": "複製大師澤瑞克"
+  },
+  {
+    "id": "BG20_HERO_283p_t1",
+    "name": "西部荒野",
+    "text": "[x]在1回合後，獲得一個\n消耗為1的隨機旅店法術\n<i>（還差1回合！）</i>",
+    "cost": 0,
+    "hero_id": "BG20_HERO_283p_t1",
+    "hero_name": ""
+  },
+  {
+    "id": "BG22_HERO_201p",
+    "name": "探險計畫",
+    "text": "跳過你的第一回合\n<b>發現</b>一個等級6、4和2的手下，並在升至該等級時取得它們",
+    "cost": 0,
+    "hero_id": "BG22_HERO_201",
+    "hero_name": "費林大使"
+  },
+  {
+    "id": "BGDUO_Anomaly_007t",
+    "name": "資源豐沛",
+    "text": "你的隊友獲得1枚金幣",
+    "cost": 1,
+    "hero_id": "BGDUO_Anomaly_007t",
+    "hero_name": ""
+  },
+  {
+    "id": "BG20_HERO_101p",
+    "name": "見證聖光",
+    "text": "從旅店選擇一個手下。將其體質改為2然後放到你的手中",
+    "cost": 2,
+    "hero_id": "BG20_HERO_101",
+    "hero_name": "賽瑞菈"
+  },
+  {
+    "id": "BG28_HERO_801p",
+    "name": "九蛙祝福",
+    "text": "獲得一個隨機旅店法術",
+    "cost": 1,
+    "hero_id": "BG28_HERO_801",
+    "hero_name": "醫生荷利代"
+  },
+  {
+    "id": "BG34_HERO_002p",
+    "name": "雙倍速",
+    "text": "你只需要2個手下，就能合成金卡。金卡手下不再給予三合一獎勵，改為給予旅店幸運幣",
+    "cost": 0,
+    "hero_id": "BG34_HERO_002",
+    "hero_name": "鐘錶沃斯先生"
+  },
+  {
+    "id": "BG20_HERO_283p_t2",
+    "name": "鐵爐堡",
+    "text": "在2回合後，\n獲得2枚金幣\n<i>（還差2回合）</i>",
+    "cost": 0,
+    "hero_id": "BG20_HERO_283p_t2",
+    "hero_name": ""
+  },
+  {
+    "id": "BG20_HERO_202p",
+    "name": "風暴之力",
+    "text": "在每回合開始時，\n從2個新的英雄能力中\n挑選一個",
+    "cost": 0,
+    "hero_id": "BG20_HERO_202",
+    "hero_name": "阮大師"
+  },
+  {
+    "id": "BG22_HERO_001p_t4",
+    "name": "雷電祈願",
+    "text": "<b>戰鬥開始：</b>對5個隨機敵方手下造成1點傷害",
+    "cost": 0,
+    "hero_id": "BG22_HERO_001p_t4",
+    "hero_name": ""
+  },
+  {
+    "id": "BG26_HERO_101p",
+    "name": "我是船長",
+    "text": "當你購買海盜後，\n獲得1枚金幣",
+    "cost": 0,
+    "hero_id": "BG26_HERO_101",
+    "hero_name": "霍格爾船長"
+  },
+  {
+    "id": "BG20_HERO_283p",
+    "name": "杜加爾的獅鷲獸",
+    "text": "選擇一條新的飛行路線，完成後可獲得獎勵！",
+    "cost": 0,
+    "hero_id": "BG20_HERO_283",
+    "hero_name": "飆翼"
+  },
+  {
+    "id": "BG21_HERO_020p",
+    "name": "攪動湯鍋",
+    "text": "丟一個手下到你的大鍋。\n當你收集了3個，<b>發現</b>與其相同類型的手下<i>(還差3個！)</i>",
+    "cost": 0,
+    "hero_id": "BG21_HERO_020",
+    "hero_name": "餅乾大廚"
+  },
+  {
+    "id": "BG23_HERO_303p2",
+    "name": "私家偵探",
+    "text": "查看2個手下。猜中你的下一個對手上場戰鬥使用哪個手下，即可獲得一枚旅店幸運幣",
+    "cost": 0,
+    "hero_id": "BG23_HERO_303",
+    "hero_name": "魚爾摩斯"
+  },
+  {
+    "id": "BGDUO_Anomaly_003t",
+    "name": "黃金友誼",
+    "text": "將一個手下變成金卡並<b>傳遞</b>\n<i>(每賽局僅限一次)</i>",
+    "cost": 0,
+    "hero_id": "BGDUO_Anomaly_003t",
+    "hero_name": ""
+  },
+  {
+    "id": "BGDUO_HERO_101p",
+    "name": "輝煌黏液",
+    "text": "選擇一名友方手下\n<b>戰鬥開始：</b>將其變形為你隊友旅店等級最高的手下",
+    "cost": 0,
+    "hero_id": "BGDUO_HERO_101",
+    "hero_name": "黏糊糊的弗洛普"
+  }
+]

@@ -16,7 +16,8 @@ BG_MINIONS_CACHE   = os.path.join(os.path.dirname(__file__), "..", "data", "bg_m
 BG_SPELLS_CACHE    = os.path.join(os.path.dirname(__file__), "..", "data", "bg_spells_cache.json")
 BG_ANOMALY_CACHE   = os.path.join(os.path.dirname(__file__), "..", "data", "bg_anomaly_cache.json")
 BG_CONFIG_PATH     = os.path.join(os.path.dirname(__file__), "..", "data", "bg_config.json")
-BG_HEROES_CACHE    = os.path.join(os.path.dirname(__file__), "..", "data", "bg_heroes_cache.json")
+BG_HEROES_CACHE      = os.path.join(os.path.dirname(__file__), "..", "data", "bg_heroes_cache.json")
+BG_HERO_POWERS_CACHE = os.path.join(os.path.dirname(__file__), "..", "data", "bg_hero_powers_cache.json")
 BG_COMPS_CACHE    = os.path.join(os.path.dirname(__file__), "..", "data", "bg_comps.json")
 CARDS_CACHE       = os.path.join(os.path.dirname(__file__), "..", "data", "cards_cache.json")
 HS_CARDS_FULL     = os.path.join(os.path.dirname(__file__), "..", "data", "hs_cards_full.json")
@@ -443,39 +444,28 @@ def hero_powers_page():
 
 @app.route("/api/hero-powers")
 def api_hero_powers():
-    raw = _load_json(HS_CARDS_FULL) or {}
-    q   = (request.args.get("q") or "").strip().lower()
+    if not os.path.exists(BG_HERO_POWERS_CACHE):
+        return jsonify({"hero_powers": [], "total": 0})
+    with open(BG_HERO_POWERS_CACHE, encoding="utf-8") as f:
+        all_powers = json.load(f)
 
-    # Build hero id → name map from heroes cache
-    hero_name_map = {}
-    if os.path.exists(BG_HEROES_CACHE):
-        with open(BG_HEROES_CACHE, encoding="utf-8") as f:
-            for h in json.load(f):
-                hero_name_map[h.get("id", "")] = h.get("name", "")
-
+    q = (request.args.get("q") or "").strip().lower()
     result = []
-    for cid, v in raw.items():
-        if not cid.startswith("BG") or v.get("type") != "HERO_POWER":
+    for hp in all_powers:
+        name = hp.get("name", "")
+        text = _clean_card_text(hp.get("text", "") or "")
+        hero_name = hp.get("hero_name", "")
+        if q and q not in name.lower() and q not in text.lower() and q not in hero_name.lower():
             continue
-        name = v.get("name", "")
-        text = _clean_card_text(v.get("text", "") or "")
-        cost = v.get("cost", 0)
-        if q and q not in name.lower() and q not in text.lower() and q not in cid.lower():
-            continue
-        # Derive hero name: hero power id pattern → hero id
-        # BG20_HERO_100p → BG20_HERO_100, BG20_HERO_100p2 → BG20_HERO_100
-        hero_id = re.sub(r"p\d*$", "", cid)
-        hero_name = hero_name_map.get(hero_id, "")
         result.append({
-            "id":         cid,
-            "name":       name,
-            "text":       text,
-            "cost":       cost,
-            "hero_id":    hero_id,
-            "hero_name":  hero_name,
+            "id":        hp["id"],
+            "name":      name,
+            "text":      text,
+            "cost":      hp.get("cost", 0),
+            "hero_id":   hp.get("hero_id", ""),
+            "hero_name": hero_name,
         })
 
-    result.sort(key=lambda x: (x["hero_name"] or x["name"]))
     return jsonify({"hero_powers": result, "total": len(result)})
 
 
@@ -795,6 +785,34 @@ def api_spells():
                            "timewarp": False, "related_card": None, "category": "變異法術"})
             existing_ids.add(entry["id"])
 
+    # Pull Quest / Reward / Blood Gem special spells from hs_cards_full.json
+    _SPECIAL_PATTERNS = ("Quest", "Reward", "GEM")
+    for cid, v in full_cards.items():
+        if not cid.startswith("BG"):
+            continue
+        if v.get("type") != "SPELL":
+            continue
+        if not any(p in cid for p in _SPECIAL_PATTERNS):
+            continue
+        name = v.get("name", "")
+        if not name or "[DNT]" in name or "[DNT]" in (v.get("text") or ""):
+            continue
+        if cid in existing_ids:
+            continue
+        spells.append({
+            "id": cid,
+            "name": name,
+            "text": v.get("text") or "",
+            "type": "SPELL",
+            "tech_level": v.get("techLevel") or 1,
+            "cost": v.get("cost") or 0,
+            "in_pool": False,
+            "timewarp": False,
+            "related_card": None,
+            "category": "特殊法術",
+        })
+        existing_ids.add(cid)
+
     q = (request.args.get("q") or "").strip().lower()
     if q:
         spells = [s for s in spells if q in s.get("name", "").lower() or q in s.get("id", "").lower()]
@@ -811,7 +829,7 @@ def api_spells():
         in_pool = s.get("in_pool", False)
         timewarp = s.get("timewarp", False)
         related = s.get("related_card")
-        if s.get("category") == "變異法術":
+        if s.get("category") in ("變異法術", "特殊法術"):
             pass  # already set
         elif sid.startswith("BGS_Treasures"):
             s["category"] = "暗月獎品"
