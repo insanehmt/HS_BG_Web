@@ -18,6 +18,7 @@ BG_ANOMALY_CACHE   = os.path.join(os.path.dirname(__file__), "..", "data", "bg_a
 BG_CONFIG_PATH     = os.path.join(os.path.dirname(__file__), "..", "data", "bg_config.json")
 BG_HEROES_CACHE      = os.path.join(os.path.dirname(__file__), "..", "data", "bg_heroes_cache.json")
 BG_HERO_POWERS_CACHE = os.path.join(os.path.dirname(__file__), "..", "data", "bg_hero_powers_cache.json")
+BG_HERO_GUIDE_CACHE  = os.path.join(os.path.dirname(__file__), "..", "data", "bg_hero_guide_cache.json")
 BG_COMPS_CACHE    = os.path.join(os.path.dirname(__file__), "..", "data", "bg_comps.json")
 CARDS_CACHE       = os.path.join(os.path.dirname(__file__), "..", "data", "cards_cache.json")
 HS_CARDS_FULL     = os.path.join(os.path.dirname(__file__), "..", "data", "hs_cards_full.json")
@@ -2499,10 +2500,9 @@ def api_card_picker():
         cards.sort(key=lambda x: x["name"])
 
     elif card_type == "hero_power":
-        raw = _load_json(HS_CARDS_FULL) or {}
-        for cid, v in raw.items():
-            if not cid.startswith("BG") or v.get("type") != "HERO_POWER":
-                continue
+        raw = _load_json(BG_HERO_POWERS_CACHE) or []
+        for v in raw:
+            cid  = v.get("id", "")
             name = v.get("name", "")
             text = v.get("text", "") or ""
             if q and q not in name.lower() and q not in text.lower() and q not in cid.lower():
@@ -2931,13 +2931,28 @@ def _find_hero_power(cards, cid):
 
 @app.route("/api/hero-guide")
 def api_hero_guide():
-    # Prefer full cards file; fall back to lightweight pre-built heroes file
+    # Use pre-built cache; fall back to building from hs_cards_full.json if available locally
+    if os.path.exists(BG_HERO_GUIDE_CACHE):
+        all_heroes = _load_json(BG_HERO_GUIDE_CACHE) or []
+        q = (request.args.get("q") or "").strip().lower()
+        if q:
+            result = []
+            for h in all_heroes:
+                searchable = (h.get("name","") + h.get("power_name","") + h.get("power_text","") +
+                              (h.get("buddy_name") or "") + (h.get("buddy_text") or "")).lower()
+                if q in searchable:
+                    result.append(h)
+        else:
+            result = all_heroes
+        return jsonify({"heroes": result, "total": len(result)})
+
+    # Fallback: build on-the-fly from hs_cards_full.json (local dev only)
     if os.path.exists(HS_CARDS_FULL):
         cards = _load_json(HS_CARDS_FULL)
     elif os.path.exists(HS_BG_HEROES):
         cards = _load_json(HS_BG_HEROES)
     else:
-        cards = {}
+        return jsonify({"heroes": [], "total": 0})
     q = (request.args.get("q") or "").strip().lower()
     heroes = []
     for cid, card in cards.items():
