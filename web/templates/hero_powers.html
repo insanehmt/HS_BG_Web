@@ -105,6 +105,9 @@
     <input class="search-box" type="text" placeholder="🔍 搜尋技能或英雄名稱…"
            x-model="q" @input.debounce.250ms="applyFilter()">
     <span class="sep">|</span>
+    <button class="fbtn" :class="onlySwappable?'on':''" @click="onlySwappable=!onlySwappable;applyFilter()">
+      🔄 揭露身分可交換
+    </button>
     <button class="fbtn" :class="onlyWithHero?'on':''" @click="onlyWithHero=!onlyWithHero;applyFilter()">
       只顯示有英雄名稱
     </button>
@@ -123,6 +126,7 @@
         </div>
         <div class="hp-name" x-text="hp.name"></div>
         <div class="hp-hero" x-show="hp.hero_name" x-text="hp.hero_name"></div>
+        <div x-show="hp.swappable" style="font-size:.55rem;color:#70a060;margin-top:1px">🔄 可交換</div>
       </div>
     </template>
   </div>
@@ -134,7 +138,7 @@
 function hpApp() {
   return {
     all: [], filtered: [], total: 0,
-    q: '', onlyWithHero: false, loading: true,
+    q: '', onlyWithHero: false, onlySwappable: false, loading: true,
 
     async init() {
       const r = await fetch('/api/hero-powers')
@@ -148,6 +152,7 @@ function hpApp() {
     applyFilter() {
       const q = this.q.trim().toLowerCase()
       this.filtered = this.all.filter(hp => {
+        if (this.onlySwappable && !hp.swappable) return false
         if (this.onlyWithHero && !hp.hero_name) return false
         if (q) {
           const inName = hp.name.toLowerCase().includes(q)
