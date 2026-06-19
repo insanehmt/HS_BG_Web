@@ -1,0 +1,451 @@
+[
+  {
+    "id": "mech_magnet",
+    "name": "Mech Magnet",
+    "core_names": [
+      "廢料搜刮者",
+      "靈巧發明家",
+      "提圖斯‧瑞文戴爾",
+      "崗古的學徒"
+    ],
+    "addon_names": [
+      "恐怖的鸚鵡",
+      "墜毀的飛天魔像",
+      "廢料槍騎",
+      "義體手",
+      "破爛廢鐵",
+      "投影單輪機器人",
+      "自動組裝機",
+      "偏斜防護機器人"
+    ],
+    "races": [],
+    "difficulty": "easy",
+    "tier": "S"
+  },
+  {
+    "id": "naga_groundbreaker",
+    "name": "Naga Groundbreaker",
+    "core_names": [
+      "破土者",
+      "海床招募者",
+      "暗羽戰略家"
+    ],
+    "addon_names": [
+      "漩渦湧現者",
+      "戒指持有者",
+      "巴琳達‧石爐",
+      "無情的女王近衛",
+      "寧靜冥想"
+    ],
+    "races": [],
+    "difficulty": "hard",
+    "tier": "A"
+  },
+  {
+    "id": "naga_spellbuff",
+    "name": "Naga Spell Buff",
+    "core_names": [
+      "無情的女王近衛",
+      "漩渦湧現者",
+      "寧靜冥想"
+    ],
+    "addon_names": [
+      "提圖斯‧瑞文戴爾",
+      "戒指持有者",
+      "布萊恩‧銅鬚",
+      "海床招募者",
+      "鐵頭萊拉克",
+      "黑色炫彩龍",
+      "恐怖的鸚鵡",
+      "活力甲蟲",
+      "碎裂女族長",
+      "怒鱗盜賊"
+    ],
+    "races": [],
+    "difficulty": "hard",
+    "tier": "A"
+  },
+  {
+    "id": "pirate_end_of_turn",
+    "name": "Pirate End Of Turn",
+    "core_names": [
+      "德拉克瑞附魔師",
+      "狂妄海賊",
+      "刀劍收藏家",
+      "死海劫毀者"
+    ],
+    "addon_names": [
+      "空軍上將羅傑斯",
+      "布萊恩‧銅鬚",
+      "傲氣私掠者",
+      "保本賭客",
+      "跳船者"
+    ],
+    "races": [],
+    "difficulty": "hard",
+    "tier": "A"
+  },
+  {
+    "id": "quilboar_felboar",
+    "name": "Quilboar Felboar",
+    "core_names": [
+      "惡魔野豬",
+      "布萊恩‧銅鬚",
+      "剃刀沼澤舞者"
+    ],
+    "addon_names": [
+      "鮮血寶石彈幕",
+      "棘背鼓手",
+      "赤牙喚棘者",
+      "大猛菇斯",
+      "鐵頭萊拉克",
+      "頂尖征服者",
+      "提圖斯‧瑞文戴爾",
+      "暗影舞者",
+      "蓬勃之杖"
+    ],
+    "races": [],
+    "difficulty": "medium",
+    "tier": "A"
+  },
+  {
+    "id": "undead_butcher",
+    "name": "Undead Butcher",
+    "core_names": [
+      "墮落佐司特屠夫",
+      "致命先鋒",
+      "巴琳達‧石爐",
+      "友善的魂屍",
+      "提圖斯‧瑞文戴爾"
+    ],
+    "addon_names": [
+      "被遺忘者編織師",
+      "永恆召喚者",
+      "恐怖的鸚鵡",
+      "沒有手的被遺忘者",
+      "義體手",
+      "屠殺"
+    ],
+    "races": [],
+    "difficulty": "medium",
+    "tier": "A"
+  },
+  {
+    "id": "undead_forsaken",
+    "name": "Undead Forsaken",
+    "core_names": [
+      "被遺忘者編織師",
+      "致命先鋒",
+      "沒有手的被遺忘者",
+      "空軍上將羅傑斯",
+      "傲氣私掠者"
+    ],
+    "addon_names": [
+      "提圖斯‧瑞文戴爾",
+      "布萊恩‧銅鬚",
+      "冬握食屍鬼",
+      "墮落佐司特屠夫",
+      "永恆召喚者",
+      "義體手",
+      "偽裝的盜墓賊"
+    ],
+    "races": [],
+    "difficulty": "medium",
+    "tier": "A"
+  },
+  {
+    "id": "beast_goldrinn",
+    "name": "Beast Goldrinn",
+    "core_names": [
+      "『巨狼先祖』戈德林",
+      "提圖斯‧瑞文戴爾",
+      "下水道之王",
+      "恐怖的鸚鵡",
+      "蕉流猩"
+    ],
+    "addon_names": [
+      "狡詐迅猛龍",
+      "活力甲蟲",
+      "甲蟲恩澤",
+      "森林甲蟲",
+      "青色爬行蟲"
+    ],
+    "races": [],
+    "difficulty": "medium",
+    "tier": "B"
+  },
+  {
+    "id": "beast_leviathan",
+    "name": "Beast Leviathan",
+    "core_names": [
+      "蕉流猩",
+      "下水道之王",
+      "潛伏海獸"
+    ],
+    "addon_names": [
+      "『巨狼先祖』戈德林",
+      "提圖斯‧瑞文戴爾",
+      "恐怖的鸚鵡",
+      "狡詐迅猛龍",
+      "活力甲蟲",
+      "甲蟲恩澤",
+      "尖刺救星"
+    ],
+    "races": [],
+    "difficulty": "medium",
+    "tier": "B"
+  },
+  {
+    "id": "demon_damage",
+    "name": "Demon Damage",
+    "core_names": [
+      "毀壞領主",
+      "提圖斯‧瑞文戴爾",
+      "靜默執行者"
+    ],
+    "addon_names": [
+      "恐怖的鸚鵡",
+      "虔誠的喚魔者",
+      "塔瑞克苟莎",
+      "堅持的吟詩龍",
+      "絲柔幻光蛾"
+    ],
+    "races": [],
+    "difficulty": "medium",
+    "tier": "B"
+  },
+  {
+    "id": "quilboar_deathrattle",
+    "name": "Quilboar Deathrattle",
+    "core_names": [
+      "三隻小野豬人",
+      "提圖斯‧瑞文戴爾",
+      "赤牙喚棘者",
+      "剛鬃作曲家",
+      "藤蔓語者"
+    ],
+    "addon_names": [
+      "德拉克瑞附魔師",
+      "暗視長老",
+      "做夢織棘者",
+      "鼓囊野豬人",
+      "多毛風笛手",
+      "鐵頭萊拉克",
+      "月之培根爵士樂手",
+      "螢喉督軍",
+      "野豬看守者",
+      "地歌薩滿"
+    ],
+    "races": [],
+    "difficulty": "medium",
+    "tier": "B"
+  },
+  {
+    "id": "murloc_handbuff",
+    "name": "手牌強化魚人流",
+    "core_names": [
+      "魚人合唱團",
+      "鯛魚計數員",
+      "魚人竊賊",
+      "沼泥採獵者",
+      "布萊恩‧銅鬚"
+    ],
+    "addon_names": [
+      "膽汁噴吐者",
+      "魔術魚真菌學家",
+      "專家飛行員",
+      "原魚偵查兵",
+      "泰德",
+      "飄忽斥候"
+    ],
+    "races": [
+      "MURLOC"
+    ],
+    "difficulty": "hard",
+    "tier": "B"
+  },
+  {
+    "id": "easter_egg",
+    "name": "Easter Egg",
+    "core_names": [
+      "終焉時刻之蛋"
+    ],
+    "addon_names": [],
+    "races": [],
+    "difficulty": "easy",
+    "tier": "C"
+  },
+  {
+    "id": "elemental_cycle",
+    "name": "Elemental Cycle",
+    "core_names": [
+      "布萊恩‧銅鬚",
+      "釋放的法力湧流"
+    ],
+    "addon_names": [
+      "鐵頭萊拉克",
+      "捲沙者",
+      "重置異常體",
+      "旅店風暴",
+      "微光燼火",
+      "恐怖的鸚鵡",
+      "資本元素",
+      "驚喜元素"
+    ],
+    "races": [],
+    "difficulty": "easy",
+    "tier": "C"
+  },
+  {
+    "id": "neutral_nalaa",
+    "name": "Nalaa",
+    "core_names": [
+      "『救贖者』娜拉"
+    ],
+    "addon_names": [
+      "布萊恩‧銅鬚",
+      "點火專家",
+      "充能女皇",
+      "霜鱗女祭司",
+      "大賽跑馬燈機器人",
+      "警覺的恐慌製造者",
+      "馴牛表演者"
+    ],
+    "races": [],
+    "difficulty": "easy",
+    "tier": "C"
+  },
+  {
+    "id": "pirate_eudora",
+    "name": "Pirate Eudora",
+    "core_names": [
+      "提圖斯‧瑞文戴爾",
+      "恐怖的鸚鵡"
+    ],
+    "addon_names": [
+      "金燦桂冠詩人",
+      "塔瑞克苟莎",
+      "堅持的吟詩龍",
+      "活力甲蟲",
+      "EBG_Spell_017"
+    ],
+    "races": [],
+    "difficulty": "hard",
+    "tier": "C"
+  },
+  {
+    "id": "elemental_tier2_ballers",
+    "name": "二費球手元素流",
+    "core_names": [
+      "雪球手",
+      "火球手",
+      "時光扭曲跳越者"
+    ],
+    "addon_names": [
+      "霹靂旋風",
+      "靈魂倒帶手",
+      "煩人機器人",
+      "拔線者",
+      "金燦桂冠詩人",
+      "挖到石油",
+      "主廚精選"
+    ],
+    "races": [
+      "ELEMENTAL"
+    ],
+    "difficulty": "easy",
+    "tier": "C"
+  },
+  {
+    "id": "undead_end_of_turn",
+    "name": "回合結束亡靈流",
+    "core_names": [
+      "骷髏懲擊者",
+      "德拉克瑞附魔師",
+      "提圖斯‧瑞文戴爾"
+    ],
+    "addon_names": [
+      "暮光育母",
+      "暮光雛龍",
+      "下水道之王",
+      "恐怖的鸚鵡"
+    ],
+    "races": [
+      "UNDEAD"
+    ],
+    "difficulty": "medium",
+    "tier": "C"
+  },
+  {
+    "id": "undead_overflow",
+    "name": "溢出亡靈流",
+    "core_names": [
+      "墓穴破壞者",
+      "提圖斯‧瑞文戴爾"
+    ],
+    "addon_names": [
+      "屍體管理者",
+      "巴琳達‧石爐",
+      "墜毀的飛天魔像",
+      "恐怖的鸚鵡",
+      "海洋雙拼",
+      "熔岩潛伏者",
+      "偽裝的盜墓賊",
+      "大巫妖科爾蘇加德"
+    ],
+    "races": [
+      "UNDEAD"
+    ],
+    "difficulty": "easy",
+    "tier": "C"
+  },
+  {
+    "id": "beast_self_damage",
+    "name": "自傷野獸流",
+    "core_names": [
+      "狂野獵豹",
+      "『鞭笞者』特里高雷",
+      "鐵頭萊拉克",
+      "狩獵虎鯊",
+      "虹彩天焰"
+    ],
+    "addon_names": [
+      "布萊恩‧銅鬚",
+      "尖刺救星",
+      "蠍尾獅先遣騎",
+      "提圖斯‧瑞文戴爾",
+      "恐怖的鸚鵡",
+      "活力甲蟲"
+    ],
+    "races": [
+      "BEAST"
+    ],
+    "difficulty": "medium",
+    "tier": "C"
+  },
+  {
+    "id": "mech_shield",
+    "name": "護盾機械流",
+    "core_names": [
+      "神聖火花機器人",
+      "偏斜防護機器人",
+      "義體手",
+      "提圖斯‧瑞文戴爾"
+    ],
+    "addon_names": [
+      "充能女皇",
+      "大猛菇斯",
+      "辛多雷直擊者",
+      "恐怖的鸚鵡",
+      "崗古的學徒",
+      "墜毀的飛天魔像",
+      "聖化",
+      "破爛廢鐵"
+    ],
+    "races": [
+      "MECHANICAL"
+    ],
+    "difficulty": "easy",
+    "tier": "C"
+  }
+]
