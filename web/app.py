@@ -1116,49 +1116,62 @@ def api_update_cards():
         json.dump(spells, f, ensure_ascii=False, indent=2)
 
     # --- Heroes ---
+    def _is_bg_hero_id(cid):
+        return cid.startswith("BG") or cid.startswith("TB_BaconShop_HERO_")
+
     heroes = []
+    seen_names = set()
     seen = set()
-    for card in all_cards:
+    # Process BG-prefix first so BG version wins over duplicate TB version
+    for card in sorted(all_cards, key=lambda c: (0 if c.get("id","").startswith("BG") else 1, c.get("id",""))):
         cid = card.get("id", "")
+        name = card.get("name", "")
         if not (card.get("type") == "HERO" and
-                cid.startswith("BG") and
-                card.get("name") and
-                cid not in seen):
+                _is_bg_hero_id(cid) and
+                name and
+                "_SKIN" not in cid and
+                "Tutorial" not in cid and
+                cid != "TB_BaconShop_HERO_PH" and
+                "[DNT]" not in name and
+                cid not in seen and
+                name not in seen_names):
             continue
         heroes.append({
             "id": cid,
-            "name": card.get("name", ""),
+            "name": name,
             "text": card.get("text", "").replace("\n", " "),
         })
         seen.add(cid)
+        seen_names.add(name)
     with open(BG_HEROES_CACHE, "w", encoding="utf-8") as f:
         json.dump(heroes, f, ensure_ascii=False, indent=2)
     hero_count = len(heroes)
 
     # --- Hero Guide & Hero Powers caches (derived from all_cards) ---
-    cards_by_id = {c.get("id", ""): c for c in all_cards if c.get("id")}
+    cards_by_id  = {c.get("id", ""): c for c in all_cards if c.get("id")}
+    cards_by_dbf = {c.get("dbfId"): c for c in all_cards if c.get("dbfId")}
     hero_name_map_scrape = {h["id"]: h["name"] for h in heroes}
+    # Map hero power dbfId → hero card (for reverse lookup)
+    hp_dbf_to_hero = {h.get("heroPowerDbfId"): h for h in heroes if h.get("heroPowerDbfId")}
 
-    def _find_hero_power_scrape(cards_dict, cid):
-        bases = [cid]
-        if cid.endswith("t"):
-            bases.append(cid[:-1])
-        for base in bases:
-            for sfx in ("p", "p2", "p3", "p4", "p5", "p_ALT"):
-                c = cards_dict.get(base + sfx)
-                if isinstance(c, dict) and c.get("type") == "HERO_POWER":
-                    return base + sfx, c
-        return cid + "p", {}
-
-    # Hero guide cache
+    # Hero guide cache — use heroPowerDbfId and battlegroundsBuddyDbfId for accuracy
     guide_entries = []
     for h in heroes:
         cid = h["id"]
         if "_SKIN" in cid:
             continue
-        power_id, power = _find_hero_power_scrape(cards_by_id, cid)
-        buddy_id = cid + "_Buddy"
-        buddy = cards_by_id.get(buddy_id, {})
+        # Hero power via heroPowerDbfId (works for both BG and TB heroes)
+        hp_dbf = h.get("heroPowerDbfId")
+        power = cards_by_dbf.get(hp_dbf, {}) if hp_dbf else {}
+        if not power and cid.startswith("BG"):
+            _, power = _find_hero_power(cards_by_id, cid)
+        power_id = power.get("id", cid + "p")
+        # Buddy via battlegroundsBuddyDbfId
+        buddy_dbf = h.get("battlegroundsBuddyDbfId")
+        buddy = cards_by_dbf.get(buddy_dbf, {}) if buddy_dbf else {}
+        if not buddy:
+            buddy = cards_by_id.get(cid + "_Buddy", {})
+        buddy_id = buddy.get("id") if buddy else None
         guide_entries.append({
             "id": cid,
             "name": h["name"],
@@ -1166,7 +1179,7 @@ def api_update_cards():
             "power_name": power.get("name", ""),
             "power_cost": power.get("cost", 0),
             "power_text": _clean_card_text(power.get("text", "")),
-            "buddy_id":     buddy_id if buddy else None,
+            "buddy_id":     buddy_id,
             "buddy_name":   buddy.get("name", "") if buddy else None,
             "buddy_attack": buddy.get("attack") if buddy else None,
             "buddy_health": buddy.get("health") if buddy else None,
@@ -1176,19 +1189,27 @@ def api_update_cards():
     with open(BG_HERO_GUIDE_CACHE, "w", encoding="utf-8") as f:
         json.dump(guide_entries, f, ensure_ascii=False, indent=2)
 
-    # Hero powers cache
+    # Hero powers cache — include both BG and TB_BaconShop_HP_ powers
     live_hero_ids_scrape = {h["id"] for h in heroes}
     powers_entries = []
     seen_powers = set()
     for card in all_cards:
         cid = card.get("id", "")
-        if not cid.startswith("BG") or card.get("type") != "HERO_POWER":
+        is_bg_hp = (cid.startswith("BG") or cid.startswith("TB_BaconShop_HP_")) and card.get("type") == "HERO_POWER"
+        if not is_bg_hp:
             continue
         name = card.get("name", "")
         if not name or "[DNT]" in name or cid in seen_powers:
             continue
-        hero_id = re.sub(r"p\d*$", "", cid)
-        is_main = bool(re.search(r"p$", cid))
+        # Find owning hero via reverse dbfId lookup
+        dbf = card.get("dbfId")
+        hero_card = hp_dbf_to_hero.get(dbf)
+        if hero_card:
+            hero_id = hero_card["id"]
+            is_main = True
+        else:
+            hero_id = re.sub(r"p\d*$", "", cid) if cid.startswith("BG") else ""
+            is_main = bool(re.search(r"p$", cid))
         is_duo  = cid.startswith("BGDUO")
         in_pool = hero_id in live_hero_ids_scrape
         powers_entries.append({
