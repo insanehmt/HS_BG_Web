@@ -1135,6 +1135,76 @@ def api_update_cards():
         json.dump(heroes, f, ensure_ascii=False, indent=2)
     hero_count = len(heroes)
 
+    # --- Hero Guide & Hero Powers caches (derived from all_cards) ---
+    cards_by_id = {c.get("id", ""): c for c in all_cards if c.get("id")}
+    hero_name_map_scrape = {h["id"]: h["name"] for h in heroes}
+
+    def _find_hero_power_scrape(cards_dict, cid):
+        bases = [cid]
+        if cid.endswith("t"):
+            bases.append(cid[:-1])
+        for base in bases:
+            for sfx in ("p", "p2", "p3", "p4", "p5", "p_ALT"):
+                c = cards_dict.get(base + sfx)
+                if isinstance(c, dict) and c.get("type") == "HERO_POWER":
+                    return base + sfx, c
+        return cid + "p", {}
+
+    # Hero guide cache
+    guide_entries = []
+    for h in heroes:
+        cid = h["id"]
+        if "_SKIN" in cid:
+            continue
+        power_id, power = _find_hero_power_scrape(cards_by_id, cid)
+        buddy_id = cid + "_Buddy"
+        buddy = cards_by_id.get(buddy_id, {})
+        guide_entries.append({
+            "id": cid,
+            "name": h["name"],
+            "power_id": power_id,
+            "power_name": power.get("name", ""),
+            "power_cost": power.get("cost", 0),
+            "power_text": _clean_card_text(power.get("text", "")),
+            "buddy_id":     buddy_id if buddy else None,
+            "buddy_name":   buddy.get("name", "") if buddy else None,
+            "buddy_attack": buddy.get("attack") if buddy else None,
+            "buddy_health": buddy.get("health") if buddy else None,
+            "buddy_text":   _clean_card_text(buddy.get("text", "")) if buddy else None,
+        })
+    guide_entries.sort(key=lambda x: x["name"])
+    with open(BG_HERO_GUIDE_CACHE, "w", encoding="utf-8") as f:
+        json.dump(guide_entries, f, ensure_ascii=False, indent=2)
+
+    # Hero powers cache
+    live_hero_ids_scrape = {h["id"] for h in heroes}
+    powers_entries = []
+    seen_powers = set()
+    for card in all_cards:
+        cid = card.get("id", "")
+        if not cid.startswith("BG") or card.get("type") != "HERO_POWER":
+            continue
+        name = card.get("name", "")
+        if not name or "[DNT]" in name or cid in seen_powers:
+            continue
+        hero_id = re.sub(r"p\d*$", "", cid)
+        is_main = bool(re.search(r"p$", cid))
+        is_duo  = cid.startswith("BGDUO")
+        in_pool = hero_id in live_hero_ids_scrape
+        powers_entries.append({
+            "id": cid,
+            "name": name,
+            "text": card.get("text", "") or "",
+            "cost": card.get("cost", 0),
+            "hero_id": hero_id,
+            "hero_name": hero_name_map_scrape.get(hero_id, ""),
+            "swappable": is_main and not is_duo and in_pool,
+        })
+        seen_powers.add(cid)
+    powers_entries.sort(key=lambda x: (x["hero_name"] or x["name"]))
+    with open(BG_HERO_POWERS_CACHE, "w", encoding="utf-8") as f:
+        json.dump(powers_entries, f, ensure_ascii=False, indent=2)
+
     # --- Trinkets ---
     trinkets = []
     seen = set()
