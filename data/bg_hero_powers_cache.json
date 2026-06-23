@@ -42,7 +42,7 @@
     "cost": 0,
     "hero_id": "BG33_HERO_001",
     "hero_name": "『活蹦亂跳的傳奇』樂樂",
-    "swappable": false
+    "swappable": true
   },
   {
     "id": "TB_BaconShop_HP_039t",
@@ -51,7 +51,7 @@
     "cost": 0,
     "hero_id": "TB_BaconShop_HERO_35",
     "hero_name": "『深沉絕望』尤格薩倫",
-    "swappable": false
+    "swappable": true
   },
   {
     "id": "TB_BaconShop_HP_087",
@@ -105,7 +105,7 @@
     "cost": 0,
     "hero_id": "BG27_HERO_801",
     "hero_name": "『風暴之王』索林姆",
-    "swappable": false
+    "swappable": true
   },
   {
     "id": "TB_BaconShop_HP_041k",
@@ -222,7 +222,7 @@
     "cost": 0,
     "hero_id": "BG20_HERO_280",
     "hero_name": "克圖斯‧灰殞",
-    "swappable": false
+    "swappable": true
   },
   {
     "id": "TB_BaconShop_HP_104",
@@ -348,7 +348,7 @@
     "cost": 0,
     "hero_id": "BG22_HERO_000",
     "hero_name": "塔維西‧雷矛",
-    "swappable": false
+    "swappable": true
   },
   {
     "id": "TB_BaconShop_HP_010",
@@ -600,7 +600,7 @@
     "cost": 0,
     "hero_id": "TB_BaconShop_HERO_75",
     "hero_name": "拉卡尼休",
-    "swappable": false
+    "swappable": true
   },
   {
     "id": "TB_BaconShop_HP_106",
@@ -897,7 +897,7 @@
     "cost": 0,
     "hero_id": "TB_BaconShop_HERO_14",
     "hero_name": "瓦哥托戈女王",
-    "swappable": false
+    "swappable": true
   },
   {
     "id": "BG22_HERO_004p",
@@ -1041,7 +1041,7 @@
     "cost": 1,
     "hero_id": "BG22_HERO_007t",
     "hero_name": "納迦女王艾薩拉",
-    "swappable": false
+    "swappable": true
   },
   {
     "id": "BG30_HERO_304p",
@@ -1383,7 +1383,7 @@
     "cost": 1,
     "hero_id": "TB_BaconShop_HERO_702",
     "hero_name": "閻獄之主",
-    "swappable": false
+    "swappable": true
   },
   {
     "id": "BG20_HERO_202p",
@@ -1473,7 +1473,7 @@
     "cost": 0,
     "hero_id": "BG23_HERO_303",
     "hero_name": "魚爾摩斯",
-    "swappable": false
+    "swappable": true
   },
   {
     "id": "BGDUO_Anomaly_003t",

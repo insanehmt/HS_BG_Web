@@ -5,12 +5,12 @@
     "power_id": "BG31_HERO_811p",
     "power_name": "孵化池",
     "power_cost": 6,
-    "power_text": "解鎖蟲族第2階。\n每個回合消耗減少(1)。\n<b>被動：</b>在賽局開始時，\n獲得一個2/2幼蟲",
+    "power_text": "解鎖蟲族第2階。<br>每個回合消耗減少(1)。<br><b>被動：</b>在賽局開始時，<br>獲得一個2/2幼蟲",
     "buddy_id": "BG31_HERO_811_Buddy",
     "buddy_name": "碎角異化蟲",
     "buddy_attack": 4,
     "buddy_health": 4,
-    "buddy_text": "當你出售此手下時，\n<b>發現</b>一個蟲族手下並把其體質改為6/6，它不會變形"
+    "buddy_text": "當你出售此手下時，<br><b>發現</b>一個蟲族手下並把其體質改為6/6，它不會變形"
   },
   {
     "id": "BG25_HERO_105",
@@ -18,7 +18,7 @@
     "power_id": "BG25_HERO_105p",
     "power_name": "和新藝人簽約",
     "power_cost": 3,
-    "power_text": "<b>發現</b>一個<b>夥伴</b>\n<i>(於旅店等級2解鎖)</i>",
+    "power_text": "<b>發現</b>一個<b>夥伴</b><br><i>(於旅店等級2解鎖)</i>",
     "buddy_id": "BG25_HERO_105_Buddy",
     "buddy_name": "星探",
     "buddy_attack": 4,
@@ -44,7 +44,7 @@
     "power_id": "TB_BaconShop_HP_039t",
     "power_name": "謎題箱",
     "power_cost": 0,
-    "power_text": "在你的回合開始時，\n施放一個隨機旅店法術\n<i>（於第3回合解鎖）</i>",
+    "power_text": "在你的回合開始時，<br>施放一個隨機旅店法術<br><i>（於第3回合解鎖）</i>",
     "buddy_id": "TB_BaconShop_HERO_35_Buddy",
     "buddy_name": "尤格薩倫侍僧",
     "buddy_attack": 6,
@@ -57,12 +57,12 @@
     "power_id": "TB_BaconShop_HP_087",
     "power_name": "買吧，蟲子！",
     "power_cost": 0,
-    "power_text": "在你購買16張卡牌後，獲得薩弗拉斯\n<i>（還差16張！）</i>",
+    "power_text": "在你購買16張卡牌後，獲得薩弗拉斯<br><i>（還差16張！）</i>",
     "buddy_id": "TB_BaconShop_HERO_11_Buddy",
     "buddy_name": "魯西弗隆",
     "buddy_attack": 6,
     "buddy_health": 5,
-    "buddy_text": "你在回合結束時觸發的效果會額外\n生效一次"
+    "buddy_text": "你在回合結束時觸發的效果會額外<br>生效一次"
   },
   {
     "id": "BG34_HERO_000",
@@ -70,7 +70,7 @@
     "power_id": "BG34_HERO_000p",
     "power_name": "其他時間線",
     "power_cost": 0,
-    "power_text": "在第8回合，造訪大型<b>時光扭曲</b>\n<i>(剩7回合！)</i>7在第8回合，造訪大型<b>時光扭曲</b>\n<i>(完成！)</i>",
+    "power_text": "在第8回合，造訪大型<b>時光扭曲</b><br><i>(剩7回合！)</i>",
     "buddy_id": null,
     "buddy_name": null,
     "buddy_attack": null,
@@ -83,7 +83,7 @@
     "power_id": "BG35_HERO_001p",
     "power_name": "雙面之王",
     "power_cost": 0,
-    "power_text": "在第4回合，<b>發現</b>兩個英雄能力來替換\n<i>(還差3回合！)</i>3在第4回合，<b>發現</b>兩個英雄能力來替換\n<i>(完成！)</i>",
+    "power_text": "在第4回合，<b>發現</b>兩個英雄能力來替換<br><i>(還差3回合！)</i>",
     "buddy_id": null,
     "buddy_name": null,
     "buddy_attack": null,
@@ -109,7 +109,7 @@
     "power_id": "BG27_HERO_801p2",
     "power_name": "挑選你的勇士",
     "power_cost": 0,
-    "power_text": "<b>被動</b>\n在賽局開始時，<b>發現</b>一個旅店等級7的手下，在你花費60枚金幣後獲得該手下<i>(還差 60枚！)</i>",
+    "power_text": "<b>被動</b><br>在賽局開始時，<b>發現</b>一個旅店等級7的手下，在你花費60枚金幣後獲得該手下<i>(還差 60枚！)</i>",
     "buddy_id": "BG27_HERO_801_Buddy",
     "buddy_name": "風暴之王的坐騎維拉努斯",
     "buddy_attack": 5,
@@ -122,7 +122,7 @@
     "power_id": "BGDUO_HERO_222p",
     "power_name": "加倍麻煩",
     "power_cost": 0,
-    "power_text": "每當打出金卡手下，\n你和加利都會獲得\n三合一獎勵\n<i>（還剩3次！）</i>",
+    "power_text": "每當打出金卡手下，<br>你和加利都會獲得<br>三合一獎勵<br><i>（還剩3次！）</i>",
     "buddy_id": "BGDUO_HERO_222_Buddy",
     "buddy_name": "強者哈福斯",
     "buddy_attack": 5,
@@ -135,12 +135,12 @@
     "power_id": "BG31_HERO_802p",
     "power_name": "空間之門",
     "power_cost": 0,
-    "power_text": "在賽局開始時，從\n2個神族手下中擇一。在你購買14張牌後獲得該手下<i>（還差14張！）</i>14在賽局開始時，從\n2個神族手下中擇一。在你購買14張牌後獲得該手下<i>（完成！）</i>",
+    "power_text": "在賽局開始時，從<br>2個神族手下中擇一。在你購買14張牌後獲得該手下<i>（還差14張！）</i>14在賽局開始時，從<br>2個神族手下中擇一。在你購買14張牌後獲得該手下<i>（完成！）</i>",
     "buddy_id": "BG31_HERO_802_Buddy",
     "buddy_name": "普羅比斯",
     "buddy_attack": 8,
     "buddy_health": 4,
-    "buddy_text": "<b>合體</b>\n將和此手下<b>合體</b>的機械變為金卡"
+    "buddy_text": "<b>合體</b><br>將和此手下<b>合體</b>的機械變為金卡"
   },
   {
     "id": "TB_BaconShop_HERO_92",
@@ -174,7 +174,7 @@
     "power_id": "BG20_HERO_103p",
     "power_name": "鮮血之縛",
     "power_cost": 1,
-    "power_text": "獲得2顆<b>鮮血寶石</b>\n<i>(每回合兩次)</i>",
+    "power_text": "獲得2顆<b>鮮血寶石</b><br><i>(每回合兩次)</i>",
     "buddy_id": "BG20_HERO_103_Buddy",
     "buddy_name": "亡首賢者",
     "buddy_attack": 3,
@@ -187,7 +187,7 @@
     "power_id": "TB_BaconShop_HP_069",
     "power_name": "雙翼夾擊",
     "power_cost": 0,
-    "power_text": "<b>戰鬥開始：</b>\n你最左側與最右側的\n手下獲得+2/+1，\n並立刻攻擊",
+    "power_text": "<b>戰鬥開始：</b><br>你最左側與最右側的<br>手下獲得+2/+1，<br>並立刻攻擊",
     "buddy_id": "TB_BaconShop_HERO_08_Buddy",
     "buddy_name": "伊克利普森伊利達瑞",
     "buddy_attack": 6,
@@ -200,7 +200,7 @@
     "power_id": "BG22_HERO_200p",
     "power_name": "馬蓋機",
     "power_cost": 0,
-    "power_text": "在9個友方手下死亡後，\n獲得一個隨機機械",
+    "power_text": "在9個友方手下死亡後，<br>獲得一個隨機機械",
     "buddy_id": "BG22_HERO_200_Buddy",
     "buddy_name": "水下清潔機",
     "buddy_attack": 6,
@@ -213,7 +213,7 @@
     "power_id": "TB_BaconShop_HP_062",
     "power_name": "夢境之門",
     "power_cost": 0,
-    "power_text": "每當旅店<b>重置</b>時，\n旅店會提供一個額外的龍類",
+    "power_text": "每當旅店<b>重置</b>時，<br>旅店會提供一個額外的龍類",
     "buddy_id": "TB_BaconShop_HERO_53_Buddy",
     "buddy_name": "瓦莉絲瑞雅‧夢行者",
     "buddy_attack": 6,
@@ -239,12 +239,12 @@
     "power_id": "TB_BaconShop_HP_102",
     "power_name": "三個願望",
     "power_cost": 3,
-    "power_text": "若你有兩個相同的手下，找到第三個\n<i>(剩3個願望)</i>",
+    "power_text": "若你有兩個相同的手下，找到第三個<br><i>(剩3個願望)</i>",
     "buddy_id": "TB_BaconShop_HERO_91_Buddy",
     "buddy_name": "法爾斯",
     "buddy_attack": 4,
     "buddy_health": 4,
-    "buddy_text": "當你出售此手下時，\n<b>發現</b>一個你只有正好一張的不同手下未加成分身"
+    "buddy_text": "當你出售此手下時，<br><b>發現</b>一個你只有正好一張的不同手下未加成分身"
   },
   {
     "id": "BG31_HERO_003",
@@ -278,7 +278,7 @@
     "power_id": "TB_BaconShop_HP_104",
     "power_name": "克蘇恩大放送",
     "power_cost": 1,
-    "power_text": "回合結束時，賦予一個友方手下+1/+1，\n重複0次\n<i>（每回合強化！）</i>",
+    "power_text": "回合結束時，賦予一個友方手下+1/+1，<br>重複0次<br><i>（每回合強化！）</i>",
     "buddy_id": "TB_BaconShop_HERO_29_Buddy",
     "buddy_name": "克蘇恩的觸手",
     "buddy_attack": 3,
@@ -296,7 +296,7 @@
     "buddy_name": "紅手百夫長",
     "buddy_attack": 3,
     "buddy_health": 3,
-    "buddy_text": "<b>聖盾術</b>\n觸發「綠焰光球」後，獲得你最後購買的手下的體質"
+    "buddy_text": "<b>聖盾術</b><br>觸發「綠焰光球」後，獲得你最後購買的手下的體質"
   },
   {
     "id": "BG21_HERO_000",
@@ -317,7 +317,7 @@
     "power_id": "BGDUO_HERO_223p",
     "power_name": "加倍麻煩",
     "power_cost": 0,
-    "power_text": "每當你打出金卡手下，\n你和丘都會獲得三合一獎勵\n<i>（還剩3次！）</i>",
+    "power_text": "每當你打出金卡手下，<br>你和丘都會獲得三合一獎勵<br><i>（還剩3次！）</i>",
     "buddy_id": "BGDUO_HERO_223_Buddy",
     "buddy_name": "智者哈福斯",
     "buddy_attack": 5,
@@ -356,7 +356,7 @@
     "power_id": "BG31_HERO_801p",
     "power_name": "升空",
     "power_cost": 0,
-    "power_text": "開局獲得一張\n2/2戰巡艦。每當旅店\n<b>重置</b>時，都會獲得一個戰巡艦升級",
+    "power_text": "開局獲得一張<br>2/2戰巡艦。每當旅店<br><b>重置</b>時，都會獲得一個戰巡艦升級",
     "buddy_id": "BG31_HERO_801_Buddy",
     "buddy_name": "泰科斯‧芬利",
     "buddy_attack": 4,
@@ -374,7 +374,7 @@
     "buddy_name": "夢魘軟漿怪",
     "buddy_attack": 6,
     "buddy_health": 6,
-    "buddy_text": "吞噬此手下時，\n將它的體質吐給1個額外手下"
+    "buddy_text": "吞噬此手下時，<br>將它的體質吐給1個額外手下"
   },
   {
     "id": "TB_BaconShop_HERO_23",
@@ -382,7 +382,7 @@
     "power_id": "TB_BaconShop_HP_022",
     "power_name": "我笑我咬",
     "power_cost": 0,
-    "power_text": "觸發一個友方手下的<b>戰吼</b>\n<i>(於第3回合解鎖)</i>",
+    "power_text": "觸發一個友方手下的<b>戰吼</b><br><i>(於第3回合解鎖)</i>",
     "buddy_id": "TB_BaconShop_HERO_23_Buddy",
     "buddy_name": "擲泥者",
     "buddy_attack": 5,
@@ -421,7 +421,7 @@
     "power_id": "TB_BaconShop_HP_010",
     "power_name": "聖光恩澤",
     "power_cost": 1,
-    "power_text": "賦予一個\n手下<b>聖盾術</b>",
+    "power_text": "賦予一個<br>手下<b>聖盾術</b>",
     "buddy_id": "TB_BaconShop_HERO_15_Buddy",
     "buddy_name": "迷路的卡爾",
     "buddy_attack": 3,
@@ -434,7 +434,7 @@
     "power_id": "TB_BaconShop_HP_017",
     "power_name": "魚人王",
     "power_cost": 1,
-    "power_text": "在下場戰鬥開始時，賦予你的手下\n<i><b>死亡之聲：</b>召喚一個1/1魚人</i>",
+    "power_text": "在下場戰鬥開始時，賦予你的手下<br><i><b>死亡之聲：</b>召喚一個1/1魚人</i>",
     "buddy_id": null,
     "buddy_name": null,
     "buddy_attack": null,
@@ -486,7 +486,7 @@
     "power_id": "TB_BaconShop_HP_086",
     "power_name": "拍死蟲子",
     "power_cost": 0,
-    "power_text": "<b>戰鬥開始：</b>賦予你最左側的手下<b>風怒</b>、\n<b>聖盾術</b>和<b>嘲諷</b>",
+    "power_text": "<b>戰鬥開始：</b>賦予你最左側的手下<b>風怒</b>、<br><b>聖盾術</b>和<b>嘲諷</b>",
     "buddy_id": "TB_BaconShop_HERO_76_Buddy",
     "buddy_name": "風之靈",
     "buddy_attack": 5,
@@ -512,7 +512,7 @@
     "power_id": "TB_BaconShop_HP_074",
     "power_name": "埋藏的寶藏",
     "power_cost": 1,
-    "power_text": "挖掘一個金卡手下\n<i>(還要挖掘4次)</i>",
+    "power_text": "挖掘一個金卡手下<br><i>(還要挖掘4次)</i>",
     "buddy_id": "TB_BaconShop_HERO_64_Buddy",
     "buddy_name": "達格威‧黏趾",
     "buddy_attack": 5,
@@ -530,7 +530,7 @@
     "buddy_name": "出土嘍囉",
     "buddy_attack": 5,
     "buddy_health": 5,
-    "buddy_text": "每當你的英雄受到傷害，回溯此傷害並獲得相當於該數值\n的體質"
+    "buddy_text": "每當你的英雄受到傷害，回溯此傷害並獲得相當於該數值<br>的體質"
   },
   {
     "id": "TB_BaconShop_HERO_22",
@@ -538,12 +538,12 @@
     "power_id": "TB_BaconShop_HP_024",
     "power_name": "重生儀式",
     "power_cost": 0,
-    "power_text": "賦予一個手\n下<b>重生</b>，直到下一回合",
+    "power_text": "賦予一個手<br>下<b>重生</b>，直到下一回合",
     "buddy_id": "TB_BaconShop_HERO_22_Buddy",
     "buddy_name": "阿福斯",
     "buddy_attack": 8,
     "buddy_health": 4,
-    "buddy_text": "在友方手下<b>重生</b>後，賦予其此手下的\n攻擊力"
+    "buddy_text": "在友方手下<b>重生</b>後，賦予其此手下的<br>攻擊力"
   },
   {
     "id": "TB_BaconShop_HERO_72",
@@ -564,7 +564,7 @@
     "power_id": "BG22_HERO_001p",
     "power_name": "擁抱元素",
     "power_cost": 0,
-    "power_text": "選擇一個元素。\n<b>戰鬥開始：</b>呼喚該元素",
+    "power_text": "選擇一個元素。<br><b>戰鬥開始：</b>呼喚該元素",
     "buddy_id": "BG22_HERO_001_Buddy",
     "buddy_name": "幽靈迅猛龍",
     "buddy_attack": 3,
@@ -577,12 +577,12 @@
     "power_id": "TB_BaconShop_HP_101",
     "power_name": "來喔！來喔！",
     "power_cost": 0,
-    "power_text": "旅店會出現暗月獎品券！\n取得3張就能<b>發現</b>一個\n你旅店等級的手下",
+    "power_text": "旅店會出現暗月獎品券！<br>取得3張就能<b>發現</b>一個<br>你旅店等級的手下",
     "buddy_id": "TB_BaconShop_HERO_90_Buddy",
     "buddy_name": "伯斯",
     "buddy_attack": 6,
     "buddy_health": 7,
-    "buddy_text": "在你<b>發現</b>手下後，賦予它+2/+2並強化\n此效果"
+    "buddy_text": "在你<b>發現</b>手下後，賦予它+2/+2並強化<br>此效果"
   },
   {
     "id": "BG23_HERO_306",
@@ -590,7 +590,7 @@
     "power_id": "BG23_HERO_306p",
     "power_name": "回收靈魂",
     "power_cost": 2,
-    "power_text": "<b>發現</b>一個上場戰鬥中死亡手下的未加成\n分身\n<i>(於第3回合解鎖)</i>",
+    "power_text": "<b>發現</b>一個上場戰鬥中死亡手下的未加成<br>分身<br><i>(於第3回合解鎖)</i>",
     "buddy_id": "BG23_HERO_306_Buddy",
     "buddy_name": "納薩諾斯‧凋零者",
     "buddy_attack": 6,
@@ -616,7 +616,7 @@
     "power_id": "BG22_HERO_002p",
     "power_name": "霜狼狂熱",
     "power_cost": 0,
-    "power_text": "當你在戰鬥中有空間時，召喚一個你攻擊力最高\n手下的複製體\n<i>（於第7回合解鎖）</i>",
+    "power_text": "當你在戰鬥中有空間時，召喚一個你攻擊力最高<br>手下的複製體<br><i>（於第7回合解鎖）</i>",
     "buddy_id": "BG22_HERO_002_Buddy",
     "buddy_name": "霜狼中尉",
     "buddy_attack": 7,
@@ -634,7 +634,7 @@
     "buddy_name": "布萊恩的史詩蛋蛋",
     "buddy_attack": 0,
     "buddy_health": 3,
-    "buddy_text": "<b>嘲諷</b>\n<b>死亡之聲：</b>召喚並獲得一個隨機<b>戰吼</b>手下"
+    "buddy_text": "<b>嘲諷</b><br><b>死亡之聲：</b>召喚並獲得一個隨機<b>戰吼</b>手下"
   },
   {
     "id": "TB_BaconShop_HERO_93",
@@ -642,7 +642,7 @@
     "power_id": "TB_BaconShop_HP_105",
     "power_name": "恩若司化身",
     "power_cost": 0,
-    "power_text": "對戰開始時獲得一條\n2/2的魚，擁有你戰鬥中\n全部<b>死亡之聲</b>效果",
+    "power_text": "對戰開始時獲得一條<br>2/2的魚，擁有你戰鬥中<br>全部<b>死亡之聲</b>效果",
     "buddy_id": "TB_BaconShop_HERO_93_Buddy",
     "buddy_name": "恩若司寶寶",
     "buddy_attack": 8,
@@ -668,7 +668,7 @@
     "power_id": "BG32_HERO_002p",
     "power_name": "日益增長的收藏",
     "power_cost": 0,
-    "power_text": "第8回合時，選擇一個強效<b>飾品</b>購買<i>(還剩7回合！)</i>7第8回合時，選擇一個強效<b>飾品</b>購買<i>(完成！)</i>",
+    "power_text": "第8回合時，選擇一個強效<b>飾品</b>購買<i>(還剩7回合！)</i>",
     "buddy_id": "BG32_HERO_002_Buddy",
     "buddy_name": "拉鍊仔",
     "buddy_attack": 5,
@@ -694,7 +694,7 @@
     "power_id": "TB_BaconShop_HP_106",
     "power_name": "獎品牆",
     "power_cost": 0,
-    "power_text": "每4回合<b>發現</b>一個\n暗月獎品\n<i>（還差3回合！）</i>",
+    "power_text": "每4回合<b>發現</b>一個<br>暗月獎品<br><i>（還差3回合！）</i>",
     "buddy_id": "TB_BaconShop_HERO_94_Buddy",
     "buddy_name": "獎品券收集者",
     "buddy_attack": 6,
@@ -720,12 +720,12 @@
     "power_id": "BG26_HERO_104p",
     "power_name": "輕快和諧",
     "power_cost": 0,
-    "power_text": "每3個回合結束時，\n獲得你手中最左側卡牌的一張未加成分身<i>（還剩3回合！）</i>3每3個回合結束時，\n獲得你手中最左邊卡牌的一張未加成分身<i>（本回合結束觸發！）</i>",
+    "power_text": "每3個回合結束時，<br>獲得你手中最左側卡牌的一張未加成分身<i>（還剩3回合！）</i>3每3個回合結束時，<br>獲得你手中最左邊卡牌的一張未加成分身<i>（本回合結束觸發！）</i>",
     "buddy_id": "BG26_HERO_104_Buddy",
     "buddy_name": "『石犀牛』阿卡利",
     "buddy_attack": 6,
     "buddy_health": 6,
-    "buddy_text": "每第2個回合結束時，獲得你手中最左邊卡牌的一張未加成分身<i>(還剩2回合！)</i>2每第2個回合結束時，獲得你手中最左邊卡牌的一張未加成分身<i>(本回合結束觸發！)</i>"
+    "buddy_text": "每第2個回合結束時，獲得你手中最左邊卡牌的一張未加成分身<i>(還剩2回合！)</i>"
   },
   {
     "id": "BG21_HERO_030",
@@ -733,12 +733,12 @@
     "power_id": "BG21_HERO_030p",
     "power_name": "駕駛伐木機",
     "power_cost": 0,
-    "power_text": "對戰開始時，獲得一個可從你手中召喚手下\n並賦予它<b>聖盾術</b>的\n2/1伐木機",
+    "power_text": "對戰開始時，獲得一個可從你手中召喚手下<br>並賦予它<b>聖盾術</b>的<br>2/1伐木機",
     "buddy_id": "BG21_HERO_030_Buddy",
     "buddy_name": "有駕駛的迴旋機器人",
     "buddy_attack": 6,
     "buddy_health": 4,
-    "buddy_text": "<b>戰鬥開始：</b>複製最左側兩名手下的<b>死亡之聲</b>\n<i>(其他迴旋機器人除外)</i>"
+    "buddy_text": "<b>戰鬥開始：</b>複製最左側兩名手下的<b>死亡之聲</b><br><i>(其他迴旋機器人除外)</i>"
   },
   {
     "id": "BG34_HERO_001",
@@ -746,7 +746,7 @@
     "power_id": "BG34_HERO_001p",
     "power_name": "法力時速",
     "power_cost": 0,
-    "power_text": "以旅店法術\n<b>重置</b>旅店",
+    "power_text": "以旅店法術<br><b>重置</b>旅店",
     "buddy_id": null,
     "buddy_name": null,
     "buddy_attack": null,
@@ -759,12 +759,12 @@
     "power_id": "BG25_HERO_100p",
     "power_name": "打造不死族",
     "power_cost": 3,
-    "power_text": "縫合一個自訂的不死族\n<i>(還有3個作品！)</i>",
+    "power_text": "縫合一個自訂的不死族<br><i>(還有3個作品！)</i>",
     "buddy_id": "BG25_HERO_100_Buddy",
     "buddy_name": "膿腸",
     "buddy_attack": 6,
     "buddy_health": 2,
-    "buddy_text": "<b>死亡之聲：</b>召喚並獲得一個隨機\n不死族造物"
+    "buddy_text": "<b>死亡之聲：</b>召喚並獲得一個隨機<br>不死族造物"
   },
   {
     "id": "BG32_HERO_001",
@@ -798,7 +798,7 @@
     "power_id": "TB_BaconShop_HP_053",
     "power_name": "我要那個！",
     "power_cost": 1,
-    "power_text": "下場戰鬥，你殺死第一個手下時，獲得一張它的未加成\n分身",
+    "power_text": "下場戰鬥，你殺死第一個手下時，獲得一張它的未加成<br>分身",
     "buddy_id": "TB_BaconShop_HERO_45_Buddy",
     "buddy_name": "忠誠的嘍囉",
     "buddy_attack": 4,
@@ -811,7 +811,7 @@
     "power_id": "BG23_HERO_201p",
     "power_name": "處處觸手",
     "power_cost": 0,
-    "power_text": "當你的場上有空間時，\n召喚一個有<b>嘲諷</b>的2/2\n觸手<i>（在你出售手下後獲得+1/+1！）</i>",
+    "power_text": "當你的場上有空間時，<br>召喚一個有<b>嘲諷</b>的2/2<br>觸手<i>（在你出售手下後獲得+1/+1！）</i>",
     "buddy_id": "BG23_HERO_201_Buddy",
     "buddy_name": "塔姆卓",
     "buddy_attack": 4,
@@ -824,7 +824,7 @@
     "power_id": "TB_BaconShop_HP_061",
     "power_name": "全部毀滅！",
     "power_cost": 0,
-    "power_text": "<b>戰鬥開始：</b>永久賦予\n全部手下+2攻擊力",
+    "power_text": "<b>戰鬥開始：</b>永久賦予<br>全部手下+2攻擊力",
     "buddy_id": "TB_BaconShop_HERO_52_Buddy",
     "buddy_name": "賽絲特拉",
     "buddy_attack": 2,
@@ -850,7 +850,7 @@
     "power_id": "TB_BaconShop_HP_088",
     "power_name": "雪崩",
     "power_cost": 0,
-    "power_text": "在你打出3個元素後，\n使旅店的升級費用降低(3)",
+    "power_text": "在你打出3個元素後，<br>使旅店的升級費用降低(3)",
     "buddy_id": "TB_BaconShop_HERO_78_Buddy",
     "buddy_name": "冰雪元素",
     "buddy_attack": 5,
@@ -863,7 +863,7 @@
     "power_id": "BG25_HERO_103p",
     "power_name": "急速復生",
     "power_cost": 0,
-    "power_text": "選擇一個友方\n手下。<b>戰鬥開始：</b>摧毀它。當你的場上有空間時，重新召喚一個一樣的分身",
+    "power_text": "選擇一個友方<br>手下。<b>戰鬥開始：</b>摧毀它。當你的場上有空間時，重新召喚一個一樣的分身",
     "buddy_id": "BG25_HERO_103_Buddy",
     "buddy_name": "幽暗靈體",
     "buddy_attack": 4,
@@ -881,7 +881,7 @@
     "buddy_name": "聖匣侍從",
     "buddy_attack": 6,
     "buddy_health": 4,
-    "buddy_text": "每回合一次，在你施放一個旅店法術後，獲得一張該法術的\n新複製品"
+    "buddy_text": "每回合一次，在你施放一個旅店法術後，獲得一張該法術的<br>新複製品"
   },
   {
     "id": "TB_BaconShop_HERO_50",
@@ -894,7 +894,7 @@
     "buddy_name": "老練的獵人",
     "buddy_attack": 5,
     "buddy_health": 3,
-    "buddy_text": "在你的回合開始時，獲得你上個對手的\n<b>夥伴</b>"
+    "buddy_text": "在你的回合開始時，獲得你上個對手的<br><b>夥伴</b>"
   },
   {
     "id": "BG20_HERO_100",
@@ -902,12 +902,12 @@
     "power_id": "BG20_HERO_100p",
     "power_name": "戰鬥榮耀",
     "power_cost": 0,
-    "power_text": "在友方手下殺死敵人後，\n永久賦予它+1攻擊力",
+    "power_text": "在友方手下殺死敵人後，<br>永久賦予它+1攻擊力",
     "buddy_id": "BG20_HERO_100_Buddy",
     "buddy_name": "強大的冰哮",
     "buddy_attack": 6,
     "buddy_health": 2,
-    "buddy_text": "在友方手下\n殺死敵人後，永久獲得+3生命值"
+    "buddy_text": "在友方手下<br>殺死敵人後，永久獲得+3生命值"
   },
   {
     "id": "TB_BaconShop_HERO_18",
@@ -915,12 +915,12 @@
     "power_id": "TB_BaconShop_HP_072",
     "power_name": "海盜派對！",
     "power_cost": 3,
-    "power_text": "獲得一個海盜\n在你購買海盜後，下一次的英雄能力消耗減少(1)",
+    "power_text": "獲得一個海盜<br>在你購買海盜後，下一次的英雄能力消耗減少(1)",
     "buddy_id": "TB_BaconShop_HERO_18_Buddy",
     "buddy_name": "巨牙海民劫掠者",
     "buddy_attack": 6,
     "buddy_health": 6,
-    "buddy_text": "<b>戰吼、死亡之聲、\n奮戰：</b>獲得一個隨機<b>賞金</b>"
+    "buddy_text": "<b>戰吼、死亡之聲、<br>奮戰：</b>獲得一個隨機<b>賞金</b>"
   },
   {
     "id": "TB_BaconShop_HERO_95",
@@ -941,7 +941,7 @@
     "power_id": "BGDUO_HERO_100p",
     "power_name": "[x]",
     "power_cost": 0,
-    "power_text": "<b>對戰開始：</b>複製你\n隊友的英雄能力",
+    "power_text": "<b>對戰開始：</b>複製你<br>隊友的英雄能力",
     "buddy_id": "BGDUO_HERO_100_Buddy",
     "buddy_name": "無面者",
     "buddy_attack": 1,
@@ -967,7 +967,7 @@
     "power_id": "TB_BaconShop_HP_068",
     "power_name": "囚禁",
     "power_cost": 1,
-    "power_text": "從旅店選擇一張卡牌，並鎖定於你\n的手中。2回合後解鎖",
+    "power_text": "從旅店選擇一張卡牌，並鎖定於你<br>的手中。2回合後解鎖",
     "buddy_id": "TB_BaconShop_HERO_62_Buddy",
     "buddy_name": "暗影看守者",
     "buddy_attack": 5,
@@ -980,7 +980,7 @@
     "power_id": "TB_BaconShop_HP_052",
     "power_name": "秘法改造",
     "power_cost": 0,
-    "power_text": "將一張卡牌替換成相同旅店等級的隨機卡牌。<i>(每回合\n兩次)</i>",
+    "power_text": "將一張卡牌替換成相同旅店等級的隨機卡牌。<i>(每回合<br>兩次)</i>",
     "buddy_id": "TB_BaconShop_HERO_58_Buddy",
     "buddy_name": "奧核領主",
     "buddy_attack": 6,
@@ -998,7 +998,7 @@
     "buddy_name": "塔加瓦格長老",
     "buddy_attack": 4,
     "buddy_health": 4,
-    "buddy_text": "<b>戰鬥開始：</b>若你場上有\n4個不同類型的手下，獲得你手下中最高的攻擊力與生命值"
+    "buddy_text": "<b>戰鬥開始：</b>若你場上有<br>4個不同類型的手下，獲得你手下中最高的攻擊力與生命值"
   },
   {
     "id": "BG22_HERO_004",
@@ -1006,7 +1006,7 @@
     "power_id": "BG22_HERO_004p",
     "power_name": "冰霜分身",
     "power_cost": 0,
-    "power_text": "在旅店<b>重置</b>後，複製\n旅店等級最高的手下，並<b>凍結</b>該手下與其分身",
+    "power_text": "在旅店<b>重置</b>後，複製<br>旅店等級最高的手下，並<b>凍結</b>該手下與其分身",
     "buddy_id": "BG22_HERO_004_Buddy",
     "buddy_name": "瓦登的水靈戰士",
     "buddy_attack": 3,
@@ -1019,7 +1019,7 @@
     "power_id": "BG23_HERO_304p",
     "power_name": "深海文物",
     "power_cost": 0,
-    "power_text": "在每回合開始時，\n獲得一個隨機<b>造法</b>法術",
+    "power_text": "在每回合開始時，<br>獲得一個隨機<b>造法</b>法術",
     "buddy_id": "BG23_HERO_304_Buddy",
     "buddy_name": "盤牙精英",
     "buddy_attack": 3,
@@ -1032,7 +1032,7 @@
     "power_id": "TB_BaconShop_HP_080",
     "power_name": "科爾蘇加德的小貓",
     "power_cost": 0,
-    "power_text": "當另一名英雄死亡後，\n<b>發現</b>一個來自其陣容\n的手下，並保留附魔",
+    "power_text": "當另一名英雄死亡後，<br><b>發現</b>一個來自其陣容<br>的手下，並保留附魔",
     "buddy_id": "TB_BaconShop_HERO_70_Buddy",
     "buddy_name": "小小科",
     "buddy_attack": 5,
@@ -1097,7 +1097,7 @@
     "power_id": "TB_BaconShop_HP_054",
     "power_name": "法力風暴",
     "power_cost": 0,
-    "power_text": "手下與<b>重置</b>花費改為2，\n升級旅店的花費增加(1)",
+    "power_text": "手下與<b>重置</b>花費改為2，<br>升級旅店的花費增加(1)",
     "buddy_id": "TB_BaconShop_HERO_49_Buddy",
     "buddy_name": "瑪格努斯‧曼納斯頓",
     "buddy_attack": 4,
@@ -1110,7 +1110,7 @@
     "power_id": "TB_BaconShop_HP_015",
     "power_name": "巧手工匠",
     "power_cost": 1,
-    "power_text": "<b>發現</b>一個<b>合體</b>機械\n<i>(於旅店等級4解鎖)</i>",
+    "power_text": "<b>發現</b>一個<b>合體</b>機械<br><i>(於旅店等級4解鎖)</i>",
     "buddy_id": "TB_BaconShop_HERO_17_Buddy",
     "buddy_name": "源質松鼠炸彈",
     "buddy_attack": 4,
@@ -1123,7 +1123,7 @@
     "power_id": "BG34_HERO_004p",
     "power_name": "扭曲的時光合流",
     "power_cost": 0,
-    "power_text": "在第5回合，造訪小型<b>時光扭曲</b>\n<i>(還剩4回合！)</i>4在第5回合，造訪小型<b>時光扭曲</b>\n<i>(完成！)</i>",
+    "power_text": "在第5回合，造訪小型<b>時光扭曲</b><br><i>(還剩4回合！)</i>",
     "buddy_id": null,
     "buddy_name": null,
     "buddy_attack": null,
@@ -1149,7 +1149,7 @@
     "power_id": "BG30_HERO_304p",
     "power_name": "驚人的寶藏",
     "power_cost": 0,
-    "power_text": "第5回合時，選擇一個次級<b>飾品</b>購買<i>(還剩4回合！)</i>4第5回合時，選擇一個次級<b>飾品</b>購買<i>(完成！)</i>",
+    "power_text": "第5回合時，選擇一個次級<b>飾品</b>購買<i>(還剩4回合！)</i>",
     "buddy_id": "BG30_HERO_304_Buddy",
     "buddy_name": "驚奇行李員",
     "buddy_attack": 6,
@@ -1175,7 +1175,7 @@
     "power_id": "TB_BaconShop_HP_041",
     "power_name": "鼠王的故事",
     "power_cost": 2,
-    "power_text": "<b>發現</b>一個特定類型的手下\n(每回合換類型)",
+    "power_text": "<b>發現</b>一個特定類型的手下<br>(每回合換類型)",
     "buddy_id": "TB_BaconShop_HERO_12_Buddy",
     "buddy_name": "鴿子領主",
     "buddy_attack": 3,
@@ -1188,7 +1188,7 @@
     "power_id": "TB_BaconShop_HP_001",
     "power_name": "打磨利刃",
     "power_cost": 1,
-    "power_text": "賦予一個手下+2/+2。\n購買5張卡牌後強化\n<i>（還差5張！）</i>",
+    "power_text": "賦予一個手下+2/+2。<br>購買5張卡牌後強化<br><i>（還差5張！）</i>",
     "buddy_id": "TB_BaconShop_HERO_01_Buddy",
     "buddy_name": "軍情七處斥候",
     "buddy_attack": 2,
@@ -1201,7 +1201,7 @@
     "power_id": "BG22_HERO_007p",
     "power_name": "艾薩拉的野心",
     "power_cost": 0,
-    "power_text": "當你的陣容總攻擊力達到30點時，開始你的納迦征服0當你的陣容總攻擊力達到30點時，開始你的\n納迦征服\n<i>（還差0點！）</i>",
+    "power_text": "當你的陣容總攻擊力達到30點時，開始你的納迦征服0當你的陣容總攻擊力達到30點時，開始你的<br>納迦征服<br><i>（還差0點！）</i>",
     "buddy_id": "BG22_HERO_007_Buddy",
     "buddy_name": "皇家防衛者",
     "buddy_attack": 3,
@@ -1232,7 +1232,7 @@
     "buddy_name": "『威猛蟲騎』麥斯威爾",
     "buddy_attack": 1,
     "buddy_health": 1,
-    "buddy_text": "當你出售此手下時，獲得你英雄能力的\n<b>夥伴</b>"
+    "buddy_text": "當你出售此手下時，獲得你英雄能力的<br><b>夥伴</b>"
   },
   {
     "id": "BGDUO_HERO_104",
@@ -1240,7 +1240,7 @@
     "power_id": "BGDUO_HERO_104p",
     "power_name": "有效交換",
     "power_cost": 2,
-    "power_text": "<b>傳遞</b>一個非金卡\n手下",
+    "power_text": "<b>傳遞</b>一個非金卡<br>手下",
     "buddy_id": "BGDUO_HERO_104_Buddy",
     "buddy_name": "朱先生",
     "buddy_attack": 5,
@@ -1253,7 +1253,7 @@
     "power_id": "BG22_HERO_003p",
     "power_name": "雷矛之力",
     "power_cost": 0,
-    "power_text": "當你在戰鬥中有空間時，召喚一個你生命值最高\n手下的複製體\n<i>（於第7回合解鎖）</i>",
+    "power_text": "當你在戰鬥中有空間時，召喚一個你生命值最高<br>手下的複製體<br><i>（於第7回合解鎖）</i>",
     "buddy_id": "BG22_HERO_003_Buddy",
     "buddy_name": "雷矛士官",
     "buddy_attack": 4,
@@ -1266,7 +1266,7 @@
     "power_id": "BG20_HERO_242p",
     "power_name": "自然平衡",
     "power_cost": 0,
-    "power_text": "購買共20個旅店等級的卡牌後，獲得一個\n三合一獎勵\n<i>（還差20個！）</i>",
+    "power_text": "購買共20個旅店等級的卡牌後，獲得一個<br>三合一獎勵<br><i>（還差20個！）</i>",
     "buddy_id": "BG20_HERO_242_Buddy",
     "buddy_name": "小科多獸",
     "buddy_attack": 3,
@@ -1292,7 +1292,7 @@
     "power_id": "BG20_HERO_102p",
     "power_name": "為了部落！",
     "power_cost": 0,
-    "power_text": "旅店的手下獲得+1/+1。在你購買4個手下後強化此效果\n<i>（還差4個！）</i>",
+    "power_text": "旅店的手下獲得+1/+1。在你購買4個手下後強化此效果<br><i>（還差4個！）</i>",
     "buddy_id": "BG20_HERO_102_Buddy",
     "buddy_name": "德拉諾許‧薩魯法爾",
     "buddy_attack": 6,
@@ -1305,7 +1305,7 @@
     "power_id": "BG28_HERO_400p",
     "power_name": "幸運骰",
     "power_cost": 1,
-    "power_text": "擲出一顆6面骰，獲得等同於點數的金幣\n<i>(經過等同於點數的回合後才能再次使用！)</i>",
+    "power_text": "擲出一顆6面骰，獲得等同於點數的金幣<br><i>(經過等同於點數的回合後才能再次使用！)</i>",
     "buddy_id": "BG28_HERO_400_Buddy",
     "buddy_name": "雙六",
     "buddy_attack": 6,
@@ -1318,7 +1318,7 @@
     "power_id": "BG31_HERO_005p",
     "power_name": "複製收藏",
     "power_cost": 0,
-    "power_text": "每賽局僅限一次，召喚一個友方手下的相同分身0每賽局僅限一次，召喚一個友方手下的相同分身\n<i>(<b>時光扭曲</b>手下除外)</i>",
+    "power_text": "每賽局僅限一次，召喚一個友方手下的相同分身0每賽局僅限一次，召喚一個友方手下的相同分身<br><i>(<b>時光扭曲</b>手下除外)</i>",
     "buddy_id": "BG31_HERO_005_Buddy",
     "buddy_name": "迷你澤瑞克",
     "buddy_attack": 1,
@@ -1344,12 +1344,12 @@
     "power_id": "TB_BaconShop_HP_044",
     "power_name": "拖延時間",
     "power_cost": 0,
-    "power_text": "跳過你的前兩回合，\n然後<b>發現</b>一個來自旅店等級3和4的手下",
+    "power_text": "跳過你的前兩回合，<br>然後<b>發現</b>一個來自旅店等級3和4的手下",
     "buddy_id": "TB_BaconShop_HERO_16_Buddy",
     "buddy_name": "零食小販",
     "buddy_attack": 6,
     "buddy_health": 6,
-    "buddy_text": "在你的回合結束時，將此手下的體質賦予給一個旅店等級3的\n手下"
+    "buddy_text": "在你的回合結束時，將此手下的體質賦予給一個旅店等級3的<br>手下"
   },
   {
     "id": "TB_BaconShop_HERO_71",
@@ -1375,7 +1375,7 @@
     "buddy_name": "克羅米",
     "buddy_attack": 6,
     "buddy_health": 6,
-    "buddy_text": "每回合的一次<b>重置</b>\n會很有幫助！\n<i>（還剩1次！）</i>"
+    "buddy_text": "每回合的一次<b>重置</b><br>會很有幫助！<br><i>（還剩1次！）</i>"
   },
   {
     "id": "BG22_HERO_201",
@@ -1383,7 +1383,7 @@
     "power_id": "BG22_HERO_201p",
     "power_name": "探險計畫",
     "power_cost": 0,
-    "power_text": "跳過你的第一回合\n<b>發現</b>旅店等級6、4和2的手下，並在升級時取得對應等級",
+    "power_text": "跳過你的第一回合<br><b>發現</b>旅店等級6、4和2的手下，並在升級時取得對應等級",
     "buddy_id": "BG22_HERO_201_Buddy",
     "buddy_name": "潛海主廚",
     "buddy_attack": 4,
@@ -1401,7 +1401,7 @@
     "buddy_name": "污水大亨",
     "buddy_attack": 6,
     "buddy_health": 5,
-    "buddy_text": "在你的回合結束時，使你的金幣上限\n提高1枚"
+    "buddy_text": "在你的回合結束時，使你的金幣上限<br>提高1枚"
   },
   {
     "id": "TB_BaconShop_HERO_37",
@@ -1414,7 +1414,7 @@
     "buddy_name": "基瑞克",
     "buddy_attack": 3,
     "buddy_health": 6,
-    "buddy_text": "<b>嘲諷</b>\n<b>死亡之聲：</b>獲得一個隨機惡魔"
+    "buddy_text": "<b>嘲諷</b><br><b>死亡之聲：</b>獲得一個隨機惡魔"
   },
   {
     "id": "BG20_HERO_101",
@@ -1435,7 +1435,7 @@
     "power_id": "TB_BaconShop_HP_042",
     "power_name": "帽子戲法",
     "power_cost": 0,
-    "power_text": "當你打出手下時，賦予該手下一頂+1/+1的帽子；\n在你出售該手下時，\n把帽子交給友方手下",
+    "power_text": "當你打出手下時，賦予該手下一頂+1/+1的帽子；<br>在你出售該手下時，<br>把帽子交給友方手下",
     "buddy_id": "TB_BaconShop_HERO_36_Buddy",
     "buddy_name": "『男裝商人』艾許",
     "buddy_attack": 2,
@@ -1453,7 +1453,7 @@
     "buddy_name": "解凍勇士",
     "buddy_attack": 4,
     "buddy_health": 5,
-    "buddy_text": "在你的回合結束時，使旅店中一個隨機\n<b>凍結</b>手下變為金卡"
+    "buddy_text": "在你的回合結束時，使旅店中一個隨機<br><b>凍結</b>手下變為金卡"
   },
   {
     "id": "TB_BaconShop_HERO_31",
@@ -1479,7 +1479,7 @@
     "buddy_name": "九蛙",
     "buddy_attack": 9,
     "buddy_health": 9,
-    "buddy_text": "在你購買一個手下後，獲得一個該旅店等級的隨機旅店法術\n<i>（還剩9個！）</i>"
+    "buddy_text": "在你購買一個手下後，獲得一個該旅店等級的隨機旅店法術<br><i>（還剩9個！）</i>"
   },
   {
     "id": "TB_BaconShop_HERO_41",
@@ -1492,7 +1492,7 @@
     "buddy_name": "資深探墓者",
     "buddy_attack": 5,
     "buddy_health": 1,
-    "buddy_text": "<b>嘲諷</b>\n<b>死亡之聲：</b>使你最右邊的手下變為金卡"
+    "buddy_text": "<b>嘲諷</b><br><b>死亡之聲：</b>使你最右邊的手下變為金卡"
   },
   {
     "id": "TB_BaconShop_HERO_67",
@@ -1500,7 +1500,7 @@
     "power_id": "TB_BaconShop_HP_075",
     "power_name": "廢物利用",
     "power_cost": 0,
-    "power_text": "移除一個友方手下\n<b>發現</b>一個旅店等級低一級的手下並獲得它",
+    "power_text": "移除一個友方手下<br><b>發現</b>一個旅店等級低一級的手下並獲得它",
     "buddy_id": "TB_BaconShop_HERO_67_Buddy",
     "buddy_name": "狂怒的參賽者",
     "buddy_attack": 6,
@@ -1539,12 +1539,12 @@
     "power_id": "BG20_HERO_202p",
     "power_name": "風暴之力",
     "power_cost": 0,
-    "power_text": "在每回合開始時，\n從2個新的英雄能力中\n挑選一個",
+    "power_text": "在每回合開始時，<br>從2個新的英雄能力中<br>挑選一個",
     "buddy_id": "BG20_HERO_202_Buddy",
     "buddy_name": "雷義‧焰掌",
     "buddy_attack": 4,
     "buddy_health": 6,
-    "buddy_text": "在你的回合開始時，獲得你英雄能力的\n<b>夥伴</b>"
+    "buddy_text": "在你的回合開始時，獲得你英雄能力的<br><b>夥伴</b>"
   },
   {
     "id": "TB_BaconShop_HERO_56",
@@ -1552,7 +1552,7 @@
     "power_id": "TB_BaconShop_HP_064",
     "power_name": "群龍之后",
     "power_cost": 1,
-    "power_text": "<b>發現</b>一個龍類\n<i>(於旅店等級4解鎖)</i>",
+    "power_text": "<b>發現</b>一個龍類<br><i>(於旅店等級4解鎖)</i>",
     "buddy_id": "TB_BaconShop_HERO_56_Buddy",
     "buddy_name": "瓦拉斯塔茲",
     "buddy_attack": 6,
@@ -1565,12 +1565,12 @@
     "power_id": "BG26_HERO_101p",
     "power_name": "我是船長",
     "power_cost": 0,
-    "power_text": "當你購買海盜後，\n獲得1枚金幣",
+    "power_text": "當你購買海盜後，<br>獲得1枚金幣",
     "buddy_id": "BG26_HERO_101_Buddy",
     "buddy_name": "閃耀的水手",
     "buddy_attack": 4,
     "buddy_health": 5,
-    "buddy_text": "<b>聖盾術</b>\n每當旅店<b>重置</b>時，旅店會提供一個額外的海盜"
+    "buddy_text": "<b>聖盾術</b><br>每當旅店<b>重置</b>時，旅店會提供一個額外的海盜"
   },
   {
     "id": "BG20_HERO_283",
@@ -1591,7 +1591,7 @@
     "power_id": "BG21_HERO_020p",
     "power_name": "攪動湯鍋",
     "power_cost": 0,
-    "power_text": "丟一個手下到你的大鍋。\n當你收集了3個，<b>發現</b>與其相同類型的手下<i>(還差3個！)</i>",
+    "power_text": "丟一個手下到你的大鍋。<br>當你收集了3個，<b>發現</b>與其相同類型的手下<i>(還差3個！)</i>",
     "buddy_id": "BG21_HERO_020_Buddy",
     "buddy_name": "副主廚",
     "buddy_attack": 2,
@@ -1643,11 +1643,11 @@
     "power_id": "BGDUO_HERO_101p",
     "power_name": "輝煌黏液",
     "power_cost": 0,
-    "power_text": "選擇一名友方手下\n<b>戰鬥開始：</b>將其變形為你隊友旅店等級最高的手下",
+    "power_text": "選擇一名友方手下<br><b>戰鬥開始：</b>將其變形為你隊友旅店等級最高的手下",
     "buddy_id": "BGDUO_HERO_101_Buddy",
     "buddy_name": "神奇小黏液",
     "buddy_attack": 7,
     "buddy_health": 7,
-    "buddy_text": "每2個回合開始時，獲得一個你隊友最高階手下的未加成分身\n<i>(還剩2回合！)</i>2每2個回合開始時，獲得一個你隊友最高階手下的未加成分身\n<i>(下回合！)</i>"
+    "buddy_text": "每2個回合開始時，獲得一個你隊友最高階手下的未加成分身<br><i>(還剩2回合！)</i>"
   }
 ]
